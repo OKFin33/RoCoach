@@ -1,0 +1,230 @@
+version: 2
+
+purpose: >
+  Candidate field alignment matrix for battle-relevant entities in 洛克王国世界.
+  This is a discovery artifact for P1a, not a final schema. Version 2 has
+  been reviewed against the bounded wiki field discovery run on 2026-04-13.
+
+status_values:
+  - confirmed
+  - provisional
+  - forbidden_by_default
+
+source_policy:
+  primary_structured_source: wiki / structured dex pages
+  mechanic_verification_source: official notices, game screenshots, in-game recordings
+  low_confidence_supplement: community reports, strategy posts, self-media summaries
+  latest_field_discovery_artifact: data/wiki_field_discovery/2026-04-13/candidate_field_aggregate.json
+
+entities:
+  species:
+    notes:
+      - battle-analysis oriented only
+      - form separation must remain possible
+      - wiki detail pages expose structured template 精灵信息
+      - raw wiki names are confirmed before normalized local IDs
+    fields:
+      species_key:
+        status: confirmed
+        evidence_basis: internal modeling requirement
+        usage_note: stable local identifier
+      dex_no:
+        status: provisional
+        evidence_basis: 精灵编号 / 序号 appeared only in sampled index projections, not detail templates
+        usage_note: external dex number, not guaranteed unique across forms; do not require for ingestion MVP
+      base_name:
+        status: confirmed
+        evidence_basis: 精灵名称 appeared in 9/9 sampled species detail pages
+        usage_note: canonical raw species name from wiki
+      initial_species_name:
+        status: provisional
+        evidence_basis: 精灵初阶名称 appeared in 9/9 sampled species detail pages but family semantics need review
+        usage_note: possible evolution-family anchor, not battle-critical for Phase 2 MVP
+      form_name:
+        status: confirmed
+        evidence_basis: 精灵形态 appeared in 9/9 sampled species detail pages
+        usage_note: source form label, e.g. 原始形态 / 地区形态
+      regional_form_name:
+        status: provisional
+        evidence_basis: 地区形态名称 appeared in sampled species detail pages, but semantics are separate from 精灵形态
+        usage_note: do not merge blindly with form_name
+      evolution_stage:
+        status: confirmed
+        evidence_basis: 精灵阶段 appeared in 9/9 sampled species detail pages
+        usage_note: game-native stage label, e.g. Ⅰ阶 / Ⅱ阶 / 最终形态
+      primary_type:
+        status: confirmed
+        evidence_basis: 主属性 appeared in 9/9 sampled species detail pages
+        usage_note: main attribute
+      secondary_type:
+        status: confirmed
+        evidence_basis: 2属性 appeared in 9/9 sampled species detail pages
+        usage_note: optional secondary attribute
+      base_stats:
+        status: confirmed
+        evidence_basis: 生命 / 物攻 / 魔攻 / 物防 / 魔防 / 速度 appeared in 9/9 sampled species detail pages
+        usage_note: preserve game-native stat dimensions; do not rename to HP/Atk/SpA without mapping review
+      ability_names:
+        status: confirmed
+        evidence_basis: 特性 appeared in 9/9 sampled species detail pages
+        usage_note: raw ability names embedded in species template
+      ability_ids:
+        status: provisional
+        evidence_basis: no standalone ability page/category was found in 2026-04-13 recon
+        usage_note: references require generated local IDs or a stronger ability source
+      ability_effect_texts:
+        status: confirmed
+        evidence_basis: 特性描述 appeared in 9/9 sampled species detail pages
+        usage_note: raw effect text embedded in species template
+      learned_move_names:
+        status: confirmed
+        evidence_basis: 技能 appeared in 9/9 sampled species detail pages
+        usage_note: raw move names from species learnset
+      move_unlock_levels:
+        status: confirmed
+        evidence_basis: 技能解锁等级 appeared in 9/9 sampled species detail pages
+        usage_note: align by position with learned_move_names during ingestion; validate list length
+      skill_stone_move_names:
+        status: confirmed
+        evidence_basis: 可学技能石 appeared in 9/9 sampled species detail pages
+        usage_note: raw skill-stone accessible move names; skill-stone pages are acquisition evidence, not separate battle move entities
+      bloodline_move_names:
+        status: confirmed
+        evidence_basis: 血脉技能 appeared in 9/9 sampled species detail pages
+        usage_note: raw bloodline move names; include in theoretical move pool by default, but defer mutual-exclusion and acquisition legality to a later legality layer
+      move_ids:
+        status: provisional
+        evidence_basis: species pages expose move names, not canonical move IDs
+        usage_note: references require name normalization against canonical move records from 技能信息 when available
+      rarity:
+        status: forbidden_by_default
+        evidence_basis: not battle-critical for current phases
+        usage_note: exclude unless a battle use case appears
+      acquisition_method:
+        status: forbidden_by_default
+        evidence_basis: 分布地区 is observed but encyclopedia concern, not battle analysis
+        usage_note: exclude from Phase 2 battle schema
+      cosmetic_or_lore_metadata:
+        status: forbidden_by_default
+        evidence_basis: 体型 / 重量 / 精灵描述 / 精灵类型 / 宠物立绘形态 / 是否有异色 are observed but outside battle-analysis scope
+        usage_note: exclude from battle schema unless a specific product requirement appears
+      collection_task_metadata:
+        status: forbidden_by_default
+        evidence_basis: 图鉴课题 / 课题技能石 / 进化条件 are observed but not needed for current battle analysis
+        usage_note: keep out of P2 MVP unless progression-planning becomes a requirement
+
+  move:
+    notes:
+      - high contamination risk from other games
+      - must be aligned to game-native move model before final schema
+      - wiki detail pages expose structured template 技能信息
+    fields:
+      move_id:
+        status: confirmed
+        evidence_basis: internal modeling requirement
+        usage_note: stable local identifier
+      name:
+        status: confirmed
+        evidence_basis: 技能名称 appeared in 8/8 sampled move detail pages and 2 index pages
+        usage_note: canonical move name
+      type:
+        status: confirmed
+        evidence_basis: 属性 appeared in 8/8 sampled move detail pages and 2 index pages
+        usage_note: move attribute
+      category:
+        status: confirmed
+        evidence_basis: 技能类别 appeared in 8/8 sampled move detail pages and 2 index pages
+        usage_note: preserve game-native category names such as 状态 / 防御 / 物攻 / 魔攻
+      power:
+        status: confirmed
+        evidence_basis: 威力 appeared in 8/8 sampled move detail pages and 2 index pages
+        usage_note: numeric source field; 0 is valid for non-damaging moves
+      energy_cost:
+        status: confirmed
+        evidence_basis: 耗能 appeared in 8/8 sampled move detail pages and 2 index pages
+        usage_note: numeric source field; game-native resource cost
+      initiative_level:
+        status: provisional
+        evidence_basis: community / methodology material suggests先手等级 semantics
+        usage_note: do not rename to foreign-game terminology by default
+      effect_text:
+        status: confirmed
+        evidence_basis: 效果 appeared in 8/8 sampled move detail pages
+        usage_note: raw source text for later feature derivation
+      description_text:
+        status: provisional
+        evidence_basis: 描述 appeared in 8/8 sampled move detail pages but examples were empty in this pass
+        usage_note: store only if non-empty content is observed in broader crawl
+      tags:
+        status: provisional
+        evidence_basis: derived feature extraction layer
+        usage_note: normalized battle-analysis tags
+      derived_features:
+        status: provisional
+        evidence_basis: internal interpretation layer
+        usage_note: bridge from raw text to Engine logic
+      source_version:
+        status: provisional
+        evidence_basis: 技能版本 appeared in sampled move detail pages, but runtime relevance is unclear
+        usage_note: provenance candidate, not battle logic
+      source_filter_metadata:
+        status: forbidden_by_default
+        evidence_basis: 筛选项 is index filter metadata, not a move property
+        usage_note: do not store in battle schema unless needed for crawler diagnostics
+      accuracy:
+        status: forbidden_by_default
+        evidence_basis: 2026-04-13 recon found no accuracy / 命中 field in sampled 技能信息 templates
+        usage_note: do not import from Pokemon-like assumptions
+      pp:
+        status: forbidden_by_default
+        evidence_basis: 2026-04-13 recon found no PP / usage-count field in sampled 技能信息 templates
+        usage_note: exclude until direct evidence exists
+      cooldown:
+        status: forbidden_by_default
+        evidence_basis: 2026-04-13 recon found no stable cooldown field in sampled 技能信息 templates
+        usage_note: exclude as a raw wiki field; PM reports a provisional defense-skill reuse-lock rule that belongs in mechanics modeling, not this source-field matrix
+      defense_move_reuse_lock_rule:
+        status: provisional
+        evidence_basis: PM gameplay experience reports defense skills cannot be used in consecutive turns by default, with at least one ground-type exception that reduces cooldown after responding to attacks
+        usage_note: model later as a combat rule or derived feature after effect-text verification; do not treat as a confirmed wiki field
+
+  ability:
+    notes:
+      - prioritize raw description first, structured tags second
+      - no standalone ability page or category was found in the 2026-04-13 recon
+      - current ability evidence is embedded in species 精灵信息 fields
+    fields:
+      ability_id:
+        status: provisional
+        evidence_basis: internal modeling need only; wiki currently exposes names/descriptions embedded in species pages
+        usage_note: generate only if ability is promoted to a derived entity
+      name:
+        status: confirmed
+        evidence_basis: 特性 appeared in 9/9 sampled species detail pages
+        usage_note: raw ability name embedded in species template
+      effect_text:
+        status: confirmed
+        evidence_basis: 特性描述 appeared in 9/9 sampled species detail pages
+        usage_note: raw source text
+      source_species_refs:
+        status: provisional
+        evidence_basis: ability records currently must be derived from species pages
+        usage_note: keep traceability to species pages until a standalone ability source exists
+      tags:
+        status: provisional
+        evidence_basis: internal derived interpretation
+        usage_note: normalized battle-analysis tags
+      trigger_condition:
+        status: provisional
+        evidence_basis: requires source confirmation that trigger structure is stably exposable
+        usage_note: only structure if evidence supports it
+      numeric_modifier:
+        status: forbidden_by_default
+        evidence_basis: may exist in text but not necessarily as a stable schema field
+        usage_note: avoid premature numeric abstraction
+
+alignment_rules:
+  - no field may be promoted from forbidden_by_default to confirmed without explicit evidence update
+  - provisional fields may be stored, but must not silently drive high-confidence runtime conclusions
+  - game-native terminology must be preferred over imported genre terminology
+  - derived_features must remain traceable to raw text

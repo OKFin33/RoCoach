@@ -1,0 +1,101 @@
+version: 1
+plan_ref: specs/p1_locked_execution_plan.md
+project_phase: post_p0_p1
+state_date: 2026-04-20
+
+current_gate:
+  gate_id: gate_2_open
+  name: before_p1a_implementation
+  status: open
+  opened_by: specs/p1a_synthesis_implementation_spec.md
+
+sequence_progress:
+  - step_id: 1
+    name: enzo_integration_review
+    status: completed
+    artifact: specs/enzo_integration_review.md
+  - step_id: 2
+    name: p1a_synthesis_implementation_spec
+    status: completed
+    artifact: specs/p1a_synthesis_implementation_spec.md
+  - step_id: 3
+    name: p1a_implementation
+    status: next_unlocked
+    artifact: null
+  - step_id: 4
+    name: p1a_audit
+    status: blocked
+    artifact: null
+  - step_id: 5
+    name: p1b_presentation_implementation_spec
+    status: blocked
+    artifact: null
+  - step_id: 6
+    name: p1b_implementation
+    status: blocked
+    artifact: null
+  - step_id: 7
+    name: p1b_audit
+    status: blocked
+    artifact: null
+  - step_id: 8
+    name: revisit_p1c_p1d_p1e_p1f
+    status: blocked
+    artifact: null
+
+next_action:
+  action_id: execute_p1a_implementation
+  owner: main_thread
+  executor: 主开发线程
+  deliverable:
+    - agent_core/synthesis.py
+    - agent_core/contracts.py
+    - agent_core/orchestrator.py
+    - agent_core/adapters/advisor.py
+    - tests/test_agent_core_orchestrator.py
+    - tests/test_agent_core_contracts.py
+    - tests/test_api.py
+  may_forward: true
+
+allowed_forwarding_targets:
+  - 主开发线程
+  - QA-1
+  - 女娲线程
+
+blocked_tracks:
+  - p1a_audit
+  - p1b_presentation_spec
+  - p1b_implementation
+  - p1b_audit
+  - p1c_runtime_persona_registry
+  - p1d_persona_source_adapter_implementation
+  - p1e_persona_ingestion_implementation
+  - p1f_managed_persona_creation_flow
+  - additional_persona_samples
+  - nexus_original_design_adapter
+  - session_persistence
+  - embeddings
+  - case_retrieval
+  - web_in_loop
+
+latest_completed_artifacts:
+  - specs/enzo_integration_review.md
+  - specs/p1a_synthesis_implementation_spec.md
+  - docs/personas/enzo_internal_persona_doctrine.yaml
+  - docs/personas/enzo_internal_mapping_note.md
+  - docs/personas/enzo_internal_distillation_memo.md
+  - specs/p1a_implementation_task_packet.md
+
+operational_rules:
+  - main_thread chooses next task and target thread
+  - computer_use may forward approved packets only
+  - forwarded packet must start with executor and absolute spec path
+  - no stage unlock without main-thread acceptance
+
+pm_console_recommendation:
+  current_thread_usable: true
+  new_console_thread_recommended_after_state_machine: false
+  reason: >
+    This thread is now acting as the accepted PM control console. Continue
+    sequence control here unless the main thread explicitly requests another
+    handoff.

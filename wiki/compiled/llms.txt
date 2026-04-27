@@ -1,0 +1,37 @@
+# Roco Battle Wiki LLM Context
+
+Built at: 2026-04-24T19:10:52.682995+00:00
+Compiler: battle-wiki-compiler-v0.1
+
+## Runtime Rules
+
+- This is B-layer doctrine, not A-layer fact authority.
+- Exact species, move, ability, type-chart, stat, and formula facts must be checked against A-layer references.
+- Roco is not Pokemon; cross-game analogies cannot import mechanics.
+- Persona/style overlays must not alter default B doctrine.
+- Provisional pages can guide soft reasoning but must preserve uncertainty.
+
+## Reviewed Pages
+- pages/archetypes/archetype_loops_v1.md | archetype_methodology | provisional | Archetype Loops V1
+- pages/casebank/balance_bone_dragon_role_compression.md | casebank | provisional | Balance Bone Dragon Role Compression
+- pages/casebank/firefox_wingking_balance_team_reconciliation.md | casebank | provisional | Fire Fox Wing King Balance Team Reconciliation
+- pages/casebank/synthetic_team_review_protocol.md | casebank | provisional | Synthetic Team Review Protocol
+- pages/mechanics/bug_contribution_fengxian.md | mechanics | provisional | Bug Contribution (奉献)
+- pages/mechanics/burn_timing_and_full_combustion.md | mechanics | provisional | Burn Timing And Full Combustion
+- pages/mechanics/burst_trigger_and_entry_actions.md | mechanics | provisional | Burst Trigger And Entry Actions
+- pages/mechanics/charge_and_release.md | mechanics | provisional | Charge And Release
+- pages/mechanics/degeneration_and_menghua.md | mechanics | provisional | Degeneration And 萌化
+- pages/mechanics/energy_actions_and_focus.md | mechanics | provisional | Energy Actions And Focus
+- pages/mechanics/entry_exit_and_replacement_timing.md | mechanics | provisional | Entry, Exit, And Replacement Timing
+- pages/mechanics/marks_and_persistence.md | mechanics | provisional | Marks And Persistence
+- pages/mechanics/morale_and_revive.md | mechanics | provisional | Morale And Revive
+- pages/mechanics/pvp_stat_normalization_and_iv_selection.md | mechanics | provisional | PvP Stat Normalization And IV Selection
+- pages/mechanics/response_counterplay.md | mechanics | provisional | Response Counterplay
+- pages/mechanics/speed_priority_and_swift.md | mechanics | provisional | Speed, Priority, And Swift
+- pages/mechanics/status_effects_and_persistence.md | mechanics | provisional | Status Effects And Persistence
+- pages/mechanics/transmission_and_skill_slots.md | mechanics | provisional | Transmission And Skill Slots
+- pages/mechanics/type_bloodline_move_boundary.md | mechanics | provisional | Type, Bloodline, And Move Boundary
+- pages/mechanics/weather_and_field_effects.md | mechanics | provisional | Weather And Field Effects
+- pages/recommendation_taste/early_meta_uncertainty.md | recommendation_taste | provisional | Early Meta Uncertainty
+- pages/roles/role_taxonomy.md | role_methodology | provisional | Role Taxonomy
+- pages/team_building/core_team_construction.md | team_building | provisional | Core Team Construction

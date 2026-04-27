@@ -1,0 +1,89 @@
+version: 1
+
+purpose: >
+  Define how persona artifacts produced by upstream source adapters are
+  validated, normalized, reviewed, and admitted into the persona registry.
+
+applies_to:
+  - managed persona creation pipeline
+  - internal persona review workflow
+  - future registry admission checks
+
+input_requirements:
+  - source adapter output bundle
+  - normalized doctrine draft targeting `specs/persona_doctrine_contract.yaml`
+  - provenance metadata
+  - mapping note
+
+hard_rules:
+  - ingestion is mandatory even for internally generated persona artifacts
+  - no persona artifact may enter runtime directly from an upstream adapter
+  - ingestion may reject or downgrade an artifact without modifying source
+    provenance
+  - public-safe approval is a separate status, not the default outcome
+
+validation_steps:
+  - schema_validation
+  - provenance_presence_check
+  - reasoning_rendering_split_check
+  - honesty_boundary_presence_check
+  - fact_policy_check
+  - ip_safety_review
+  - runtime_scope_review
+
+output_statuses:
+  - rejected
+  - review_required
+  - internal_only
+  - review_ready
+  - public_safe
+
+registry_output_fields:
+  persona_id:
+    type: string
+    required: true
+  version:
+    type: string
+    required: true
+  status:
+    type: string
+    required: true
+    enum:
+      - rejected
+      - review_required
+      - internal_only
+      - review_ready
+      - public_safe
+  source_adapter_id:
+    type: string
+    required: true
+  doctrine_ref:
+    type: string
+    required: true
+  provenance_ref:
+    type: string
+    required: true
+  mapping_note_ref:
+    type: string
+    required: true
+  supported_analysis_types:
+    type: array
+    required: true
+    items:
+      type: string
+  public_safe:
+    type: boolean
+    required: true
+
+review_questions:
+  - does the doctrine contain enough cognitive structure to affect reasoning
+  - does the doctrine preserve honesty boundaries
+  - does the rendering layer remain separate from reasoning inputs
+  - does the artifact introduce IP-sensitive naming or framing
+  - can the doctrine be meaningfully used on battle-analysis tasks
+
+non_goals:
+  - no direct UX exposure rules
+  - no source-adapter execution logic
+  - no runtime prompt composition details
+

@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "Roco Advisor",
+    "slug": "roco-advisor-mobile",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "rocoadvisor",
+    "userInterfaceStyle": "light",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "extra": {
+      "defaultApiBaseUrl": "http://127.0.0.1:8000"
+    },
+    "plugins": [
+      "expo-secure-store"
+    ]
+  }
+}

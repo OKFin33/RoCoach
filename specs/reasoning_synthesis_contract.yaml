@@ -1,0 +1,77 @@
+version: 1
+
+purpose: >
+  Grounded synthesis-layer contract. This sits above analytical/runtime facts
+  and below presentation/persona rendering.
+
+applies_to:
+  - post-P0 advisory reasoning
+  - LLM synthesis over grounded inputs
+
+input_dependency:
+  - analytical_fact_contracts
+  - approved_battle_doctrine_pack
+  - persona_doctrine_contract (reasoning-facing subset only)
+
+hard_rules:
+  - synthesized_judgement must preserve grounded facts from the analytical layer
+  - battle doctrine may constrain or inform reasoning, but may not override
+    Engine / SQL / approved-doc truth
+  - provisional interpretation must remain visibly provisional
+  - synthesis must not erase refusal or downgrade boundaries
+
+fields:
+  synthesis_version:
+    type: string
+    required: true
+
+  synthesized_judgement:
+    type: string
+    required: true
+
+  why_summary:
+    type: string
+    required: true
+
+  surfaced_warnings:
+    type: array
+    required: true
+    items:
+      type: object
+      fields:
+        code:
+          type: string
+          required: true
+        severity:
+          type: string
+          required: true
+          enum: [high, medium, low]
+        message:
+          type: string
+          required: true
+
+  followup_directions:
+    type: array
+    required: true
+    items:
+      type: string
+
+  grounding_refs:
+    type: array
+    required: true
+    items:
+      type: string
+
+  doctrine_refs:
+    type: array
+    required: true
+    items:
+      type: string
+
+required_warning_cases:
+  - partial_team
+  - provisional_only
+  - deterministic_fallback
+  - unsupported_scope
+  - refused_missing_context
+  - refused_missing_species

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+  <title>Default user avatar</title>
+  <circle cx="48" cy="48" r="44" fill="#F7D957" stroke="#171717" stroke-width="5"/>
+  <circle cx="48" cy="43" r="24" fill="#FFE3A2" stroke="#171717" stroke-width="4"/>
+  <path d="M27 37 C34 22 53 16 69 31 C64 27 55 28 50 34 C43 28 33 29 27 37Z" fill="#6A4B2D"/>
+  <path d="M32 22 C42 10 61 13 67 29 C57 22 44 21 32 22Z" fill="#7A42C7" stroke="#171717" stroke-width="4"/>
+  <circle cx="39" cy="46" r="3" fill="#171717"/>
+  <circle cx="57" cy="46" r="3" fill="#171717"/>
+  <path d="M40 57 C45 61 52 61 57 57" stroke="#171717" stroke-width="3" stroke-linecap="round"/>
+</svg>

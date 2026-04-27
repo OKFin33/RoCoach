@@ -1,0 +1,73 @@
+{
+  "run_timestamp": "2026-04-13T15:56:07+00:00",
+  "api_base_url": "https://wiki.biligame.com/rocom/api.php",
+  "detail_limit": 8,
+  "output_dir": "/Users/okfin3/project/GitHub/OKFin33/Roco/data/wiki_field_discovery/2026-04-13",
+  "scope": "P1a field discovery only; no database ingestion",
+  "discovery_notes": {
+    "species": {
+      "category": "分类:精灵",
+      "category_size": 591,
+      "category_pages": 591,
+      "selected_detail_titles": [
+        "迪莫",
+        "阿布",
+        "火花",
+        "果冻",
+        "阿米亚特",
+        "阿米樱",
+        "矮脚爬爬",
+        "暗影灵面（闭眼的样子）",
+        "暗影灵面（睁眼的样子）"
+      ]
+    },
+    "move": {
+      "category": "分类:技能",
+      "category_size": 493,
+      "category_pages": 493,
+      "selected_detail_titles": [
+        "暴风眼",
+        "暗突袭",
+        "孢子",
+        "暗箱操作",
+        "爆冲",
+        "暴风雪",
+        "报复",
+        "爆裂飞弹"
+      ]
+    },
+    "ability": {
+      "standalone_index_pages_found": [],
+      "missing_index_page_candidates": [
+        "特性图鉴",
+        "特性列表",
+        "特性"
+      ],
+      "category_candidates": {
+        "分类:特性": {
+          "missing": true,
+          "categoryinfo": null
+        },
+        "分类:能力": {
+          "missing": true,
+          "categoryinfo": null
+        }
+      },
+      "allpages_prefix_results": {
+        "特性": []
+      },
+      "embedded_source": "species.精灵信息",
+      "embedded_sample_titles": [
+        "暗影灵面（睁眼的样子）",
+        "暗影灵面（闭眼的样子）",
+        "果冻",
+        "火花",
+        "矮脚爬爬",
+        "迪莫",
+        "阿布",
+        "阿米亚特",
+        "阿米樱"
+      ]
+    }
+  }
+}

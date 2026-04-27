@@ -1,0 +1,12 @@
+{
+  "run_id": "2026-04-14Tfailed_preflight_validation",
+  "baseline_database": null,
+  "added": {},
+  "updated": {},
+  "removed": {},
+  "unchanged": {},
+  "conflicts": {
+    "failure": "API preflight failed: MediaWiki API request failed after 3 attempts: HTTPConnectionPool(host='127.0.0.1', port=9): Max retries exceeded with url: /api.php?action=query&meta=siteinfo&siprop=general&format=json (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=9): Failed to establish a new connection: [Errno 61] Connection refused\"))"
+  },
+  "requires_pm_review": true
+}

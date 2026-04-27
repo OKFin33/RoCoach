@@ -1,0 +1,4027 @@
+{
+  "metadata": {
+    "run_timestamp": "2026-04-13T15:56:07+00:00",
+    "api_base_url": "https://wiki.biligame.com/rocom/api.php",
+    "detail_limit": 8,
+    "output_dir": "/Users/okfin3/project/GitHub/OKFin33/Roco/data/wiki_field_discovery/2026-04-13",
+    "scope": "P1a field discovery only; no database ingestion",
+    "discovery_notes": {
+      "species": {
+        "category": "分类:精灵",
+        "category_size": 591,
+        "category_pages": 591,
+        "selected_detail_titles": [
+          "迪莫",
+          "阿布",
+          "火花",
+          "果冻",
+          "阿米亚特",
+          "阿米樱",
+          "矮脚爬爬",
+          "暗影灵面（闭眼的样子）",
+          "暗影灵面（睁眼的样子）"
+        ]
+      },
+      "move": {
+        "category": "分类:技能",
+        "category_size": 493,
+        "category_pages": 493,
+        "selected_detail_titles": [
+          "暴风眼",
+          "暗突袭",
+          "孢子",
+          "暗箱操作",
+          "爆冲",
+          "暴风雪",
+          "报复",
+          "爆裂飞弹"
+        ]
+      },
+      "ability": {
+        "standalone_index_pages_found": [],
+        "missing_index_page_candidates": [
+          "特性图鉴",
+          "特性列表",
+          "特性"
+        ],
+        "category_candidates": {
+          "分类:特性": {
+            "missing": true,
+            "categoryinfo": null
+          },
+          "分类:能力": {
+            "missing": true,
+            "categoryinfo": null
+          }
+        },
+        "allpages_prefix_results": {
+          "特性": []
+        },
+        "embedded_source": "species.精灵信息",
+        "embedded_sample_titles": [
+          "暗影灵面（睁眼的样子）",
+          "暗影灵面（闭眼的样子）",
+          "果冻",
+          "火花",
+          "矮脚爬爬",
+          "迪莫",
+          "阿布",
+          "阿米亚特",
+          "阿米樱"
+        ]
+      }
+    }
+  },
+  "samples": [
+    {
+      "entity_type": "species",
+      "page_type": "species_index",
+      "source_url": "https://wiki.biligame.com/rocom/%E7%B2%BE%E7%81%B5%E5%9B%BE%E9%89%B4",
+      "page_title": "精灵图鉴",
+      "pageid": 194,
+      "revid": 28467,
+      "revision_timestamp": "2026-04-04T16:31:18Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "筛选项",
+          "normalized_label": "筛选项",
+          "source": "filter_template",
+          "example_value": "查看全部, Ⅰ阶, Ⅱ阶, 最终形态, 地区形态"
+        }
+      ],
+      "example_values": {
+        "筛选项": [
+          "查看全部, Ⅰ阶, Ⅱ阶, 最终形态, 地区形态"
+        ]
+      },
+      "templates_seen": [
+        "#Widget:FilterTest",
+        ":精灵图鉴/原始形态",
+        ":精灵图鉴/地区形态",
+        ":精灵图鉴/首领形态",
+        "筛选项",
+        "面包屑"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "species",
+      "page_type": "species_index",
+      "source_url": "https://wiki.biligame.com/rocom/%E7%B2%BE%E7%81%B5%E5%9B%BE%E9%89%B4/%E5%8E%9F%E5%A7%8B%E5%BD%A2%E6%80%81",
+      "page_title": "精灵图鉴/原始形态",
+      "pageid": 8304,
+      "revid": 24543,
+      "revision_timestamp": "2026-04-01T04:22:14Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "精灵名称",
+          "normalized_label": "精灵名称",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "序号",
+          "normalized_label": "序号",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "精灵编号",
+          "normalized_label": "精灵编号",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "主属性",
+          "normalized_label": "主属性",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "地区形态名称",
+          "normalized_label": "地区形态名称",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "2属性",
+          "normalized_label": "2属性",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "精灵阶段",
+          "normalized_label": "精灵阶段",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "精灵形态",
+          "normalized_label": "精灵形态",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "属性",
+          "normalized_label": "属性",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "是否有异色",
+          "normalized_label": "是否有异色",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "宠物立绘形态",
+          "normalized_label": "宠物立绘形态",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        }
+      ],
+      "example_values": {},
+      "templates_seen": [],
+      "missing": false
+    },
+    {
+      "entity_type": "species",
+      "page_type": "species_index",
+      "source_url": "https://wiki.biligame.com/rocom/%E7%B2%BE%E7%81%B5%E5%9B%BE%E9%89%B4/%E5%9C%B0%E5%8C%BA%E5%BD%A2%E6%80%81",
+      "page_title": "精灵图鉴/地区形态",
+      "pageid": 8306,
+      "revid": 28100,
+      "revision_timestamp": "2026-04-03T04:00:20Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "精灵名称",
+          "normalized_label": "精灵名称",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "序号",
+          "normalized_label": "序号",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "精灵编号",
+          "normalized_label": "精灵编号",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "主属性",
+          "normalized_label": "主属性",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "地区形态名称",
+          "normalized_label": "地区形态名称",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "2属性",
+          "normalized_label": "2属性",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "精灵阶段",
+          "normalized_label": "精灵阶段",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "精灵形态",
+          "normalized_label": "精灵形态",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "属性",
+          "normalized_label": "属性",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "是否有异色",
+          "normalized_label": "是否有异色",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "宠物立绘形态",
+          "normalized_label": "宠物立绘形态",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        }
+      ],
+      "example_values": {},
+      "templates_seen": [],
+      "missing": false
+    },
+    {
+      "entity_type": "species",
+      "page_type": "species_index",
+      "source_url": "https://wiki.biligame.com/rocom/%E7%B2%BE%E7%81%B5%E5%9B%BE%E9%89%B4/%E9%A6%96%E9%A2%86%E5%BD%A2%E6%80%81",
+      "page_title": "精灵图鉴/首领形态",
+      "pageid": 8305,
+      "revid": 28099,
+      "revision_timestamp": "2026-04-03T03:59:54Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "精灵名称",
+          "normalized_label": "精灵名称",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "序号",
+          "normalized_label": "序号",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "精灵编号",
+          "normalized_label": "精灵编号",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "主属性",
+          "normalized_label": "主属性",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "地区形态名称",
+          "normalized_label": "地区形态名称",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "2属性",
+          "normalized_label": "2属性",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "精灵阶段",
+          "normalized_label": "精灵阶段",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "精灵形态",
+          "normalized_label": "精灵形态",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "属性",
+          "normalized_label": "属性",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "是否有异色",
+          "normalized_label": "是否有异色",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "宠物立绘形态",
+          "normalized_label": "宠物立绘形态",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        }
+      ],
+      "example_values": {},
+      "templates_seen": [],
+      "missing": false
+    },
+    {
+      "entity_type": "species",
+      "page_type": "species_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E6%9A%97%E5%BD%B1%E7%81%B5%E9%9D%A2%EF%BC%88%E7%9D%81%E7%9C%BC%E7%9A%84%E6%A0%B7%E5%AD%90%EF%BC%89",
+      "page_title": "暗影灵面（睁眼的样子）",
+      "pageid": 3207,
+      "revid": 27733,
+      "revision_timestamp": "2026-04-02T13:32:58Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "精灵名称",
+          "normalized_label": "精灵名称",
+          "source": "template:精灵信息",
+          "example_value": "暗影灵面"
+        },
+        {
+          "raw_label": "精灵形态",
+          "normalized_label": "精灵形态",
+          "source": "template:精灵信息",
+          "example_value": "原始形态"
+        },
+        {
+          "raw_label": "地区形态名称",
+          "normalized_label": "地区形态名称",
+          "source": "template:精灵信息",
+          "example_value": "睁眼的样子"
+        },
+        {
+          "raw_label": "精灵初阶名称",
+          "normalized_label": "精灵初阶名称",
+          "source": "template:精灵信息",
+          "example_value": "小灵面"
+        },
+        {
+          "raw_label": "是否有异色",
+          "normalized_label": "是否有异色",
+          "source": "template:精灵信息",
+          "example_value": "否"
+        },
+        {
+          "raw_label": "精灵阶段",
+          "normalized_label": "精灵阶段",
+          "source": "template:精灵信息",
+          "example_value": "Ⅱ阶"
+        },
+        {
+          "raw_label": "精灵类型",
+          "normalized_label": "精灵类型",
+          "source": "template:精灵信息",
+          "example_value": "假面精灵"
+        },
+        {
+          "raw_label": "精灵描述",
+          "normalized_label": "精灵描述",
+          "source": "template:精灵信息",
+          "example_value": "被两团冷火环绕着，从头到脚都充满了谜团。进食之后重量也毫不增加，被它面具下的嘴吞下的食物仿佛消失了一样。"
+        },
+        {
+          "raw_label": "主属性",
+          "normalized_label": "主属性",
+          "source": "template:精灵信息",
+          "example_value": "幽"
+        },
+        {
+          "raw_label": "2属性",
+          "normalized_label": "2属性",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "特性",
+          "normalized_label": "特性",
+          "source": "template:精灵信息",
+          "example_value": "惊吓"
+        },
+        {
+          "raw_label": "特性描述",
+          "normalized_label": "特性描述",
+          "source": "template:精灵信息",
+          "example_value": "能量等于0的精灵，无法对自己造成伤害。"
+        },
+        {
+          "raw_label": "生命",
+          "normalized_label": "生命",
+          "source": "template:精灵信息",
+          "example_value": "74"
+        },
+        {
+          "raw_label": "物攻",
+          "normalized_label": "物攻",
+          "source": "template:精灵信息",
+          "example_value": "40"
+        },
+        {
+          "raw_label": "魔攻",
+          "normalized_label": "魔攻",
+          "source": "template:精灵信息",
+          "example_value": "96"
+        },
+        {
+          "raw_label": "物防",
+          "normalized_label": "物防",
+          "source": "template:精灵信息",
+          "example_value": "78"
+        },
+        {
+          "raw_label": "魔防",
+          "normalized_label": "魔防",
+          "source": "template:精灵信息",
+          "example_value": "108"
+        },
+        {
+          "raw_label": "速度",
+          "normalized_label": "速度",
+          "source": "template:精灵信息",
+          "example_value": "92"
+        },
+        {
+          "raw_label": "体型",
+          "normalized_label": "体型",
+          "source": "template:精灵信息",
+          "example_value": "0.75~0.86"
+        },
+        {
+          "raw_label": "重量",
+          "normalized_label": "重量",
+          "source": "template:精灵信息",
+          "example_value": "0.12~1.16"
+        },
+        {
+          "raw_label": "分布地区",
+          "normalized_label": "分布地区",
+          "source": "template:精灵信息",
+          "example_value": "常见于城镇周边"
+        },
+        {
+          "raw_label": "图鉴课题",
+          "normalized_label": "图鉴课题",
+          "source": "template:精灵信息",
+          "example_value": "捕捉1只精灵,捕捉1只了不起天分的精灵,使精灵成功进化1次,确认2种不同样子的暗影灵面"
+        },
+        {
+          "raw_label": "课题技能石",
+          "normalized_label": "课题技能石",
+          "source": "template:精灵信息",
+          "example_value": "-"
+        },
+        {
+          "raw_label": "技能",
+          "normalized_label": "技能",
+          "source": "template:精灵信息",
+          "example_value": "防御,鬼火,勾魂,许愿星,取念,幽灵爆发,聒噪,报复,背袭,嘲弄,恐吓,降灵,恶作剧"
+        },
+        {
+          "raw_label": "技能解锁等级",
+          "normalized_label": "技能解锁等级",
+          "source": "template:精灵信息",
+          "example_value": "1,1,5,10,11,16,21,27,34,35,39,40,45"
+        },
+        {
+          "raw_label": "血脉技能",
+          "normalized_label": "血脉技能",
+          "source": "template:精灵信息",
+          "example_value": "休息回复,诋毁,升龙咆哮,麻痹,化劲,火焰箭,灵媒,徒长,霜降,假寐,虹光冲击,啮合传递,甜心续航,超维投射,泥浆铠甲,毒孢子,蓄水,羽化加速"
+        },
+        {
+          "raw_label": "可学技能石",
+          "normalized_label": "可学技能石",
+          "source": "template:精灵信息",
+          "example_value": "力量吞噬,吓退,引燃,掠夺,摇篮曲,操控,暗箱操作,流火,激怒,热身,穿膛,精神扰乱,贪婪,黑手"
+        },
+        {
+          "raw_label": "宠物立绘形态",
+          "normalized_label": "宠物立绘形态",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "进化条件",
+          "normalized_label": "进化条件",
+          "source": "template:精灵信息",
+          "example_value": "时间为夜晚进化"
+        },
+        {
+          "raw_label": "更新版本",
+          "normalized_label": "更新版本",
+          "source": "template:精灵信息",
+          "example_value": "0.6"
+        }
+      ],
+      "example_values": {
+        "精灵名称": [
+          "暗影灵面"
+        ],
+        "精灵形态": [
+          "原始形态"
+        ],
+        "地区形态名称": [
+          "睁眼的样子"
+        ],
+        "精灵初阶名称": [
+          "小灵面"
+        ],
+        "是否有异色": [
+          "否"
+        ],
+        "精灵阶段": [
+          "Ⅱ阶"
+        ],
+        "精灵类型": [
+          "假面精灵"
+        ],
+        "精灵描述": [
+          "被两团冷火环绕着，从头到脚都充满了谜团。进食之后重量也毫不增加，被它面具下的嘴吞下的食物仿佛消失了一样。"
+        ],
+        "主属性": [
+          "幽"
+        ],
+        "特性": [
+          "惊吓"
+        ],
+        "特性描述": [
+          "能量等于0的精灵，无法对自己造成伤害。"
+        ],
+        "生命": [
+          "74"
+        ],
+        "物攻": [
+          "40"
+        ],
+        "魔攻": [
+          "96"
+        ],
+        "物防": [
+          "78"
+        ],
+        "魔防": [
+          "108"
+        ],
+        "速度": [
+          "92"
+        ],
+        "体型": [
+          "0.75~0.86"
+        ],
+        "重量": [
+          "0.12~1.16"
+        ],
+        "分布地区": [
+          "常见于城镇周边"
+        ],
+        "图鉴课题": [
+          "捕捉1只精灵,捕捉1只了不起天分的精灵,使精灵成功进化1次,确认2种不同样子的暗影灵面"
+        ],
+        "课题技能石": [
+          "-"
+        ],
+        "技能": [
+          "防御,鬼火,勾魂,许愿星,取念,幽灵爆发,聒噪,报复,背袭,嘲弄,恐吓,降灵,恶作剧"
+        ],
+        "技能解锁等级": [
+          "1,1,5,10,11,16,21,27,34,35,39,40,45"
+        ],
+        "血脉技能": [
+          "休息回复,诋毁,升龙咆哮,麻痹,化劲,火焰箭,灵媒,徒长,霜降,假寐,虹光冲击,啮合传递,甜心续航,超维投射,泥浆铠甲,毒孢子,蓄水,羽化加速"
+        ],
+        "可学技能石": [
+          "力量吞噬,吓退,引燃,掠夺,摇篮曲,操控,暗箱操作,流火,激怒,热身,穿膛,精神扰乱,贪婪,黑手"
+        ],
+        "进化条件": [
+          "时间为夜晚进化"
+        ],
+        "更新版本": [
+          "0.6"
+        ]
+      },
+      "templates_seen": [
+        "精灵信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "species",
+      "page_type": "species_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E6%9A%97%E5%BD%B1%E7%81%B5%E9%9D%A2%EF%BC%88%E9%97%AD%E7%9C%BC%E7%9A%84%E6%A0%B7%E5%AD%90%EF%BC%89",
+      "page_title": "暗影灵面（闭眼的样子）",
+      "pageid": 4877,
+      "revid": 27734,
+      "revision_timestamp": "2026-04-02T13:32:58Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "精灵名称",
+          "normalized_label": "精灵名称",
+          "source": "template:精灵信息",
+          "example_value": "暗影灵面"
+        },
+        {
+          "raw_label": "精灵形态",
+          "normalized_label": "精灵形态",
+          "source": "template:精灵信息",
+          "example_value": "地区形态"
+        },
+        {
+          "raw_label": "地区形态名称",
+          "normalized_label": "地区形态名称",
+          "source": "template:精灵信息",
+          "example_value": "闭眼的样子"
+        },
+        {
+          "raw_label": "精灵初阶名称",
+          "normalized_label": "精灵初阶名称",
+          "source": "template:精灵信息",
+          "example_value": "小灵面"
+        },
+        {
+          "raw_label": "是否有异色",
+          "normalized_label": "是否有异色",
+          "source": "template:精灵信息",
+          "example_value": "否"
+        },
+        {
+          "raw_label": "精灵阶段",
+          "normalized_label": "精灵阶段",
+          "source": "template:精灵信息",
+          "example_value": "Ⅱ阶"
+        },
+        {
+          "raw_label": "精灵类型",
+          "normalized_label": "精灵类型",
+          "source": "template:精灵信息",
+          "example_value": "假面精灵"
+        },
+        {
+          "raw_label": "精灵描述",
+          "normalized_label": "精灵描述",
+          "source": "template:精灵信息",
+          "example_value": "常在空中徘徊，来去几乎无声，靠近它时会明显感觉变冷，像是体表的温度不断地被抽走。它们不进食也不说话，面具上闭着的眼睛图案似乎代表着什么。"
+        },
+        {
+          "raw_label": "主属性",
+          "normalized_label": "主属性",
+          "source": "template:精灵信息",
+          "example_value": "幽"
+        },
+        {
+          "raw_label": "2属性",
+          "normalized_label": "2属性",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "特性",
+          "normalized_label": "特性",
+          "source": "template:精灵信息",
+          "example_value": "惊吓"
+        },
+        {
+          "raw_label": "特性描述",
+          "normalized_label": "特性描述",
+          "source": "template:精灵信息",
+          "example_value": "能量等于0的精灵，无法对自己造成伤害。"
+        },
+        {
+          "raw_label": "生命",
+          "normalized_label": "生命",
+          "source": "template:精灵信息",
+          "example_value": "84"
+        },
+        {
+          "raw_label": "物攻",
+          "normalized_label": "物攻",
+          "source": "template:精灵信息",
+          "example_value": "30"
+        },
+        {
+          "raw_label": "魔攻",
+          "normalized_label": "魔攻",
+          "source": "template:精灵信息",
+          "example_value": "96"
+        },
+        {
+          "raw_label": "物防",
+          "normalized_label": "物防",
+          "source": "template:精灵信息",
+          "example_value": "83"
+        },
+        {
+          "raw_label": "魔防",
+          "normalized_label": "魔防",
+          "source": "template:精灵信息",
+          "example_value": "88"
+        },
+        {
+          "raw_label": "速度",
+          "normalized_label": "速度",
+          "source": "template:精灵信息",
+          "example_value": "92"
+        },
+        {
+          "raw_label": "体型",
+          "normalized_label": "体型",
+          "source": "template:精灵信息",
+          "example_value": "0.75~0.86"
+        },
+        {
+          "raw_label": "重量",
+          "normalized_label": "重量",
+          "source": "template:精灵信息",
+          "example_value": "0.12~1.16"
+        },
+        {
+          "raw_label": "分布地区",
+          "normalized_label": "分布地区",
+          "source": "template:精灵信息",
+          "example_value": "常见于城镇周边"
+        },
+        {
+          "raw_label": "图鉴课题",
+          "normalized_label": "图鉴课题",
+          "source": "template:精灵信息",
+          "example_value": "捕捉1只精灵,捕捉1只了不起天分的精灵,使精灵成功进化1次,确认2种不同样子的暗影灵面"
+        },
+        {
+          "raw_label": "课题技能石",
+          "normalized_label": "课题技能石",
+          "source": "template:精灵信息",
+          "example_value": "-"
+        },
+        {
+          "raw_label": "技能",
+          "normalized_label": "技能",
+          "source": "template:精灵信息",
+          "example_value": "防御,鬼火,勾魂,许愿星,取念,幽灵爆发,聒噪,报复,背袭,嘲弄,恐吓,降灵,恶作剧"
+        },
+        {
+          "raw_label": "技能解锁等级",
+          "normalized_label": "技能解锁等级",
+          "source": "template:精灵信息",
+          "example_value": "1,1,5,10,11,16,21,27,34,35,39,40,45"
+        },
+        {
+          "raw_label": "血脉技能",
+          "normalized_label": "血脉技能",
+          "source": "template:精灵信息",
+          "example_value": "休息回复,诋毁,升龙咆哮,麻痹,化劲,火焰箭,灵媒,徒长,霜降,假寐,虹光冲击,啮合传递,甜心续航,超维投射,泥浆铠甲,毒孢子,蓄水,羽化加速"
+        },
+        {
+          "raw_label": "可学技能石",
+          "normalized_label": "可学技能石",
+          "source": "template:精灵信息",
+          "example_value": "力量吞噬,吓退,引燃,掠夺,摇篮曲,操控,暗箱操作,栽赃,流火,激怒,热身,穿膛,精神扰乱,贪婪"
+        },
+        {
+          "raw_label": "宠物立绘形态",
+          "normalized_label": "宠物立绘形态",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "进化条件",
+          "normalized_label": "进化条件",
+          "source": "template:精灵信息",
+          "example_value": "时间为中午进化"
+        },
+        {
+          "raw_label": "更新版本",
+          "normalized_label": "更新版本",
+          "source": "template:精灵信息",
+          "example_value": "0.6"
+        }
+      ],
+      "example_values": {
+        "精灵名称": [
+          "暗影灵面"
+        ],
+        "精灵形态": [
+          "地区形态"
+        ],
+        "地区形态名称": [
+          "闭眼的样子"
+        ],
+        "精灵初阶名称": [
+          "小灵面"
+        ],
+        "是否有异色": [
+          "否"
+        ],
+        "精灵阶段": [
+          "Ⅱ阶"
+        ],
+        "精灵类型": [
+          "假面精灵"
+        ],
+        "精灵描述": [
+          "常在空中徘徊，来去几乎无声，靠近它时会明显感觉变冷，像是体表的温度不断地被抽走。它们不进食也不说话，面具上闭着的眼睛图案似乎代表着什么。"
+        ],
+        "主属性": [
+          "幽"
+        ],
+        "特性": [
+          "惊吓"
+        ],
+        "特性描述": [
+          "能量等于0的精灵，无法对自己造成伤害。"
+        ],
+        "生命": [
+          "84"
+        ],
+        "物攻": [
+          "30"
+        ],
+        "魔攻": [
+          "96"
+        ],
+        "物防": [
+          "83"
+        ],
+        "魔防": [
+          "88"
+        ],
+        "速度": [
+          "92"
+        ],
+        "体型": [
+          "0.75~0.86"
+        ],
+        "重量": [
+          "0.12~1.16"
+        ],
+        "分布地区": [
+          "常见于城镇周边"
+        ],
+        "图鉴课题": [
+          "捕捉1只精灵,捕捉1只了不起天分的精灵,使精灵成功进化1次,确认2种不同样子的暗影灵面"
+        ],
+        "课题技能石": [
+          "-"
+        ],
+        "技能": [
+          "防御,鬼火,勾魂,许愿星,取念,幽灵爆发,聒噪,报复,背袭,嘲弄,恐吓,降灵,恶作剧"
+        ],
+        "技能解锁等级": [
+          "1,1,5,10,11,16,21,27,34,35,39,40,45"
+        ],
+        "血脉技能": [
+          "休息回复,诋毁,升龙咆哮,麻痹,化劲,火焰箭,灵媒,徒长,霜降,假寐,虹光冲击,啮合传递,甜心续航,超维投射,泥浆铠甲,毒孢子,蓄水,羽化加速"
+        ],
+        "可学技能石": [
+          "力量吞噬,吓退,引燃,掠夺,摇篮曲,操控,暗箱操作,栽赃,流火,激怒,热身,穿膛,精神扰乱,贪婪"
+        ],
+        "进化条件": [
+          "时间为中午进化"
+        ],
+        "更新版本": [
+          "0.6"
+        ]
+      },
+      "templates_seen": [
+        "精灵信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "species",
+      "page_type": "species_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E6%9E%9C%E5%86%BB",
+      "page_title": "果冻",
+      "pageid": 3366,
+      "revid": 27672,
+      "revision_timestamp": "2026-04-02T13:25:15Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "精灵名称",
+          "normalized_label": "精灵名称",
+          "source": "template:精灵信息",
+          "example_value": "果冻"
+        },
+        {
+          "raw_label": "精灵形态",
+          "normalized_label": "精灵形态",
+          "source": "template:精灵信息",
+          "example_value": "原始形态"
+        },
+        {
+          "raw_label": "地区形态名称",
+          "normalized_label": "地区形态名称",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "精灵初阶名称",
+          "normalized_label": "精灵初阶名称",
+          "source": "template:精灵信息",
+          "example_value": "果冻"
+        },
+        {
+          "raw_label": "是否有异色",
+          "normalized_label": "是否有异色",
+          "source": "template:精灵信息",
+          "example_value": "否"
+        },
+        {
+          "raw_label": "精灵阶段",
+          "normalized_label": "精灵阶段",
+          "source": "template:精灵信息",
+          "example_value": "Ⅰ阶"
+        },
+        {
+          "raw_label": "精灵类型",
+          "normalized_label": "精灵类型",
+          "source": "template:精灵信息",
+          "example_value": "凝胶精灵"
+        },
+        {
+          "raw_label": "精灵描述",
+          "normalized_label": "精灵描述",
+          "source": "template:精灵信息",
+          "example_value": "透明而不起眼的精灵，经常在干净的水源被发现。研究发现，果冻精灵可以维护森林、湖泊和山脉的生态平衡，似乎是因为它们能让水变得清澈。"
+        },
+        {
+          "raw_label": "主属性",
+          "normalized_label": "主属性",
+          "source": "template:精灵信息",
+          "example_value": "水"
+        },
+        {
+          "raw_label": "2属性",
+          "normalized_label": "2属性",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "特性",
+          "normalized_label": "特性",
+          "source": "template:精灵信息",
+          "example_value": "茶多酚"
+        },
+        {
+          "raw_label": "特性描述",
+          "normalized_label": "特性描述",
+          "source": "template:精灵信息",
+          "example_value": "离场后，更换入场的精灵回复20%生命且免疫寄生。"
+        },
+        {
+          "raw_label": "生命",
+          "normalized_label": "生命",
+          "source": "template:精灵信息",
+          "example_value": "81"
+        },
+        {
+          "raw_label": "物攻",
+          "normalized_label": "物攻",
+          "source": "template:精灵信息",
+          "example_value": "26"
+        },
+        {
+          "raw_label": "魔攻",
+          "normalized_label": "魔攻",
+          "source": "template:精灵信息",
+          "example_value": "81"
+        },
+        {
+          "raw_label": "物防",
+          "normalized_label": "物防",
+          "source": "template:精灵信息",
+          "example_value": "75"
+        },
+        {
+          "raw_label": "魔防",
+          "normalized_label": "魔防",
+          "source": "template:精灵信息",
+          "example_value": "78"
+        },
+        {
+          "raw_label": "速度",
+          "normalized_label": "速度",
+          "source": "template:精灵信息",
+          "example_value": "96"
+        },
+        {
+          "raw_label": "体型",
+          "normalized_label": "体型",
+          "source": "template:精灵信息",
+          "example_value": "0.3~0.36"
+        },
+        {
+          "raw_label": "重量",
+          "normalized_label": "重量",
+          "source": "template:精灵信息",
+          "example_value": "4.35~5.6"
+        },
+        {
+          "raw_label": "分布地区",
+          "normalized_label": "分布地区",
+          "source": "template:精灵信息",
+          "example_value": "行踪神秘"
+        },
+        {
+          "raw_label": "图鉴课题",
+          "normalized_label": "图鉴课题",
+          "source": "template:精灵信息",
+          "example_value": "捕捉1只精灵,捕捉1只了不起天分的精灵,使精灵成功进化1次"
+        },
+        {
+          "raw_label": "课题技能石",
+          "normalized_label": "课题技能石",
+          "source": "template:精灵信息",
+          "example_value": "-"
+        },
+        {
+          "raw_label": "技能",
+          "normalized_label": "技能",
+          "source": "template:精灵信息",
+          "example_value": "水弹,洗礼,防御,落星,泡沫,泡沫幻影,肥皂泡,潮涌,水刃"
+        },
+        {
+          "raw_label": "技能解锁等级",
+          "normalized_label": "技能解锁等级",
+          "source": "template:精灵信息",
+          "example_value": "1,1,1,6,9,16,27,32,36"
+        },
+        {
+          "raw_label": "血脉技能",
+          "normalized_label": "血脉技能",
+          "source": "template:精灵信息",
+          "example_value": "防反,等价交换,升龙咆哮,集中,反击拳,火焰护盾,虚化,蜡质膜,雪替身,掩护,虹光冲击,离子震荡,魅惑,冥想,淤泥表皮,毒沼,水弹枪,羽翼庇护"
+        },
+        {
+          "raw_label": "可学技能石",
+          "normalized_label": "可学技能石",
+          "source": "template:精灵信息",
+          "example_value": "力量增效,复写,天洪,水幕冲击,水炮,水环,突袭,蓄水,血气,许愿星,阻断,魔法增效"
+        },
+        {
+          "raw_label": "宠物立绘形态",
+          "normalized_label": "宠物立绘形态",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "进化条件",
+          "normalized_label": "进化条件",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "更新版本",
+          "normalized_label": "更新版本",
+          "source": "template:精灵信息",
+          "example_value": "0.6"
+        }
+      ],
+      "example_values": {
+        "精灵名称": [
+          "果冻"
+        ],
+        "精灵形态": [
+          "原始形态"
+        ],
+        "精灵初阶名称": [
+          "果冻"
+        ],
+        "是否有异色": [
+          "否"
+        ],
+        "精灵阶段": [
+          "Ⅰ阶"
+        ],
+        "精灵类型": [
+          "凝胶精灵"
+        ],
+        "精灵描述": [
+          "透明而不起眼的精灵，经常在干净的水源被发现。研究发现，果冻精灵可以维护森林、湖泊和山脉的生态平衡，似乎是因为它们能让水变得清澈。"
+        ],
+        "主属性": [
+          "水"
+        ],
+        "特性": [
+          "茶多酚"
+        ],
+        "特性描述": [
+          "离场后，更换入场的精灵回复20%生命且免疫寄生。"
+        ],
+        "生命": [
+          "81"
+        ],
+        "物攻": [
+          "26"
+        ],
+        "魔攻": [
+          "81"
+        ],
+        "物防": [
+          "75"
+        ],
+        "魔防": [
+          "78"
+        ],
+        "速度": [
+          "96"
+        ],
+        "体型": [
+          "0.3~0.36"
+        ],
+        "重量": [
+          "4.35~5.6"
+        ],
+        "分布地区": [
+          "行踪神秘"
+        ],
+        "图鉴课题": [
+          "捕捉1只精灵,捕捉1只了不起天分的精灵,使精灵成功进化1次"
+        ],
+        "课题技能石": [
+          "-"
+        ],
+        "技能": [
+          "水弹,洗礼,防御,落星,泡沫,泡沫幻影,肥皂泡,潮涌,水刃"
+        ],
+        "技能解锁等级": [
+          "1,1,1,6,9,16,27,32,36"
+        ],
+        "血脉技能": [
+          "防反,等价交换,升龙咆哮,集中,反击拳,火焰护盾,虚化,蜡质膜,雪替身,掩护,虹光冲击,离子震荡,魅惑,冥想,淤泥表皮,毒沼,水弹枪,羽翼庇护"
+        ],
+        "可学技能石": [
+          "力量增效,复写,天洪,水幕冲击,水炮,水环,突袭,蓄水,血气,许愿星,阻断,魔法增效"
+        ],
+        "更新版本": [
+          "0.6"
+        ]
+      },
+      "templates_seen": [
+        "精灵信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "species",
+      "page_type": "species_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E7%81%AB%E8%8A%B1",
+      "page_title": "火花",
+      "pageid": 3171,
+      "revid": 27499,
+      "revision_timestamp": "2026-04-02T13:21:48Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "精灵名称",
+          "normalized_label": "精灵名称",
+          "source": "template:精灵信息",
+          "example_value": "火花"
+        },
+        {
+          "raw_label": "精灵形态",
+          "normalized_label": "精灵形态",
+          "source": "template:精灵信息",
+          "example_value": "原始形态"
+        },
+        {
+          "raw_label": "地区形态名称",
+          "normalized_label": "地区形态名称",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "精灵初阶名称",
+          "normalized_label": "精灵初阶名称",
+          "source": "template:精灵信息",
+          "example_value": "火花"
+        },
+        {
+          "raw_label": "是否有异色",
+          "normalized_label": "是否有异色",
+          "source": "template:精灵信息",
+          "example_value": "否"
+        },
+        {
+          "raw_label": "精灵阶段",
+          "normalized_label": "精灵阶段",
+          "source": "template:精灵信息",
+          "example_value": "Ⅰ阶"
+        },
+        {
+          "raw_label": "精灵类型",
+          "normalized_label": "精灵类型",
+          "source": "template:精灵信息",
+          "example_value": "火元素精灵"
+        },
+        {
+          "raw_label": "精灵描述",
+          "normalized_label": "精灵描述",
+          "source": "template:精灵信息",
+          "example_value": "像一团迸发的小火花，坦诚炙热，生性勇敢无畏。能熟练运用火元素，偶尔有点冒失，是值得信赖的伙伴。"
+        },
+        {
+          "raw_label": "主属性",
+          "normalized_label": "主属性",
+          "source": "template:精灵信息",
+          "example_value": "火"
+        },
+        {
+          "raw_label": "2属性",
+          "normalized_label": "2属性",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "特性",
+          "normalized_label": "特性",
+          "source": "template:精灵信息",
+          "example_value": "助燃"
+        },
+        {
+          "raw_label": "特性描述",
+          "normalized_label": "特性描述",
+          "source": "template:精灵信息",
+          "example_value": "使用火系技能后，获得双攻+20%。"
+        },
+        {
+          "raw_label": "生命",
+          "normalized_label": "生命",
+          "source": "template:精灵信息",
+          "example_value": "70"
+        },
+        {
+          "raw_label": "物攻",
+          "normalized_label": "物攻",
+          "source": "template:精灵信息",
+          "example_value": "84"
+        },
+        {
+          "raw_label": "魔攻",
+          "normalized_label": "魔攻",
+          "source": "template:精灵信息",
+          "example_value": "37"
+        },
+        {
+          "raw_label": "物防",
+          "normalized_label": "物防",
+          "source": "template:精灵信息",
+          "example_value": "56"
+        },
+        {
+          "raw_label": "魔防",
+          "normalized_label": "魔防",
+          "source": "template:精灵信息",
+          "example_value": "43"
+        },
+        {
+          "raw_label": "速度",
+          "normalized_label": "速度",
+          "source": "template:精灵信息",
+          "example_value": "78"
+        },
+        {
+          "raw_label": "体型",
+          "normalized_label": "体型",
+          "source": "template:精灵信息",
+          "example_value": "0.53~0.71"
+        },
+        {
+          "raw_label": "重量",
+          "normalized_label": "重量",
+          "source": "template:精灵信息",
+          "example_value": "7.6~8.5"
+        },
+        {
+          "raw_label": "分布地区",
+          "normalized_label": "分布地区",
+          "source": "template:精灵信息",
+          "example_value": "岚语峰西侧 / 乌黑巷 / 叽叽喳喳台地 / 商店街周边 / 奥贝斯坦湖 / 学院驻地 / 岚语峰 / 挽风屏障 / 月牙湖岸 / 月牙镇 / 皇家办事处 / 聆风塔地 / 聆风镇 / 轻风山 / 风眠圣所"
+        },
+        {
+          "raw_label": "图鉴课题",
+          "normalized_label": "图鉴课题",
+          "source": "template:精灵信息",
+          "example_value": "捕捉1只精灵,捕捉1只了不起天分的精灵,使精灵成功进化1次"
+        },
+        {
+          "raw_label": "课题技能石",
+          "normalized_label": "课题技能石",
+          "source": "template:精灵信息",
+          "example_value": "-"
+        },
+        {
+          "raw_label": "技能",
+          "normalized_label": "技能",
+          "source": "template:精灵信息",
+          "example_value": "猛烈撞击,火苗,力量增效,火焰切割,防御,吹火,晒太阳,怒火,持续高温,火云车,热身,闪燃,山火"
+        },
+        {
+          "raw_label": "技能解锁等级",
+          "normalized_label": "技能解锁等级",
+          "source": "template:精灵信息",
+          "example_value": "1,1,6,8,10,12,17,21,29,30,36,42,48"
+        },
+        {
+          "raw_label": "血脉技能",
+          "normalized_label": "血脉技能",
+          "source": "template:精灵信息",
+          "example_value": "星星撞击,恶能量,升龙咆哮,球状闪电,缠丝劲,火焰箭,灵媒,花香,冰爪,噬心,透射,械斗,碰爪,星云漩涡,跺地,毒沼,泡沫,鹰爪"
+        },
+        {
+          "raw_label": "可学技能石",
+          "normalized_label": "可学技能石",
+          "source": "template:精灵信息",
+          "example_value": "乘风,力量吞噬,压扁,复写,扇风,暗突袭,精神扰乱,诋毁,锐利眼神,阻断,风矢,龙之利爪,龙卷风"
+        },
+        {
+          "raw_label": "宠物立绘形态",
+          "normalized_label": "宠物立绘形态",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "进化条件",
+          "normalized_label": "进化条件",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "更新版本",
+          "normalized_label": "更新版本",
+          "source": "template:精灵信息",
+          "example_value": "0.6"
+        }
+      ],
+      "example_values": {
+        "精灵名称": [
+          "火花"
+        ],
+        "精灵形态": [
+          "原始形态"
+        ],
+        "精灵初阶名称": [
+          "火花"
+        ],
+        "是否有异色": [
+          "否"
+        ],
+        "精灵阶段": [
+          "Ⅰ阶"
+        ],
+        "精灵类型": [
+          "火元素精灵"
+        ],
+        "精灵描述": [
+          "像一团迸发的小火花，坦诚炙热，生性勇敢无畏。能熟练运用火元素，偶尔有点冒失，是值得信赖的伙伴。"
+        ],
+        "主属性": [
+          "火"
+        ],
+        "特性": [
+          "助燃"
+        ],
+        "特性描述": [
+          "使用火系技能后，获得双攻+20%。"
+        ],
+        "生命": [
+          "70"
+        ],
+        "物攻": [
+          "84"
+        ],
+        "魔攻": [
+          "37"
+        ],
+        "物防": [
+          "56"
+        ],
+        "魔防": [
+          "43"
+        ],
+        "速度": [
+          "78"
+        ],
+        "体型": [
+          "0.53~0.71"
+        ],
+        "重量": [
+          "7.6~8.5"
+        ],
+        "分布地区": [
+          "岚语峰西侧 / 乌黑巷 / 叽叽喳喳台地 / 商店街周边 / 奥贝斯坦湖 / 学院驻地 / 岚语峰 / 挽风屏障 / 月牙湖岸 / 月牙镇 / 皇家办事处 / 聆风塔地 / 聆风镇 / 轻风山 / 风眠圣所"
+        ],
+        "图鉴课题": [
+          "捕捉1只精灵,捕捉1只了不起天分的精灵,使精灵成功进化1次"
+        ],
+        "课题技能石": [
+          "-"
+        ],
+        "技能": [
+          "猛烈撞击,火苗,力量增效,火焰切割,防御,吹火,晒太阳,怒火,持续高温,火云车,热身,闪燃,山火"
+        ],
+        "技能解锁等级": [
+          "1,1,6,8,10,12,17,21,29,30,36,42,48"
+        ],
+        "血脉技能": [
+          "星星撞击,恶能量,升龙咆哮,球状闪电,缠丝劲,火焰箭,灵媒,花香,冰爪,噬心,透射,械斗,碰爪,星云漩涡,跺地,毒沼,泡沫,鹰爪"
+        ],
+        "可学技能石": [
+          "乘风,力量吞噬,压扁,复写,扇风,暗突袭,精神扰乱,诋毁,锐利眼神,阻断,风矢,龙之利爪,龙卷风"
+        ],
+        "更新版本": [
+          "0.6"
+        ]
+      },
+      "templates_seen": [
+        "精灵信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "species",
+      "page_type": "species_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E7%9F%AE%E8%84%9A%E7%88%AC%E7%88%AC",
+      "page_title": "矮脚爬爬",
+      "pageid": 7108,
+      "revid": 27623,
+      "revision_timestamp": "2026-04-02T13:24:14Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "精灵名称",
+          "normalized_label": "精灵名称",
+          "source": "template:精灵信息",
+          "example_value": "矮脚爬爬"
+        },
+        {
+          "raw_label": "精灵形态",
+          "normalized_label": "精灵形态",
+          "source": "template:精灵信息",
+          "example_value": "原始形态"
+        },
+        {
+          "raw_label": "地区形态名称",
+          "normalized_label": "地区形态名称",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "精灵初阶名称",
+          "normalized_label": "精灵初阶名称",
+          "source": "template:精灵信息",
+          "example_value": "矮脚爬爬"
+        },
+        {
+          "raw_label": "是否有异色",
+          "normalized_label": "是否有异色",
+          "source": "template:精灵信息",
+          "example_value": "否"
+        },
+        {
+          "raw_label": "精灵阶段",
+          "normalized_label": "精灵阶段",
+          "source": "template:精灵信息",
+          "example_value": "Ⅰ阶"
+        },
+        {
+          "raw_label": "精灵类型",
+          "normalized_label": "精灵类型",
+          "source": "template:精灵信息",
+          "example_value": "蜘蛛精灵"
+        },
+        {
+          "raw_label": "精灵描述",
+          "normalized_label": "精灵描述",
+          "source": "template:精灵信息",
+          "example_value": "足较短，翻倒后很难再顺利站起来。野外发现的矮脚爬爬里面十个有八个正在努力翻身。因为可爱的外表而受到许多小洛克的喜爱，但受惊时会咬人，致使王国只能贴出告示，警告大家不要轻易触碰。"
+        },
+        {
+          "raw_label": "主属性",
+          "normalized_label": "主属性",
+          "source": "template:精灵信息",
+          "example_value": "虫"
+        },
+        {
+          "raw_label": "2属性",
+          "normalized_label": "2属性",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "特性",
+          "normalized_label": "特性",
+          "source": "template:精灵信息",
+          "example_value": "振奋虫心"
+        },
+        {
+          "raw_label": "特性描述",
+          "normalized_label": "特性描述",
+          "source": "template:精灵信息",
+          "example_value": "主动击败敌方后，己方队伍获得5次随机奉献。"
+        },
+        {
+          "raw_label": "生命",
+          "normalized_label": "生命",
+          "source": "template:精灵信息",
+          "example_value": "80"
+        },
+        {
+          "raw_label": "物攻",
+          "normalized_label": "物攻",
+          "source": "template:精灵信息",
+          "example_value": "117"
+        },
+        {
+          "raw_label": "魔攻",
+          "normalized_label": "魔攻",
+          "source": "template:精灵信息",
+          "example_value": "110"
+        },
+        {
+          "raw_label": "物防",
+          "normalized_label": "物防",
+          "source": "template:精灵信息",
+          "example_value": "74"
+        },
+        {
+          "raw_label": "魔防",
+          "normalized_label": "魔防",
+          "source": "template:精灵信息",
+          "example_value": "59"
+        },
+        {
+          "raw_label": "速度",
+          "normalized_label": "速度",
+          "source": "template:精灵信息",
+          "example_value": "92"
+        },
+        {
+          "raw_label": "体型",
+          "normalized_label": "体型",
+          "source": "template:精灵信息",
+          "example_value": "0.28~0.44"
+        },
+        {
+          "raw_label": "重量",
+          "normalized_label": "重量",
+          "source": "template:精灵信息",
+          "example_value": "3.3~4.2"
+        },
+        {
+          "raw_label": "分布地区",
+          "normalized_label": "分布地区",
+          "source": "template:精灵信息",
+          "example_value": "常见于山地"
+        },
+        {
+          "raw_label": "图鉴课题",
+          "normalized_label": "图鉴课题",
+          "source": "template:精灵信息",
+          "example_value": "捕捉1只精灵,捕捉1只了不起天分的精灵,使精灵成功进化1次"
+        },
+        {
+          "raw_label": "课题技能石",
+          "normalized_label": "课题技能石",
+          "source": "template:精灵信息",
+          "example_value": "-"
+        },
+        {
+          "raw_label": "技能",
+          "normalized_label": "技能",
+          "source": "template:精灵信息",
+          "example_value": "蝙蝠,锐利眼神,飞断,尾后针,防御,网缚,力量吞噬,极限撕裂,以重制重,草虫冲击,虫茧,虫击,等价交换,灾厄"
+        },
+        {
+          "raw_label": "技能解锁等级",
+          "normalized_label": "技能解锁等级",
+          "source": "template:精灵信息",
+          "example_value": "1,1,1,4,8,13,16,23,28,29,30,33,35,38"
+        },
+        {
+          "raw_label": "血脉技能",
+          "normalized_label": "血脉技能",
+          "source": "template:精灵信息",
+          "example_value": "星星撞击,诋毁,升龙咆哮,球状闪电,缠丝劲,火焰冲锋,幻象,花香,冷风,噬心,透射,离子震荡,魅惑,星云漩涡,扬沙,溃烂触碰,泡沫,鹰爪"
+        },
+        {
+          "raw_label": "可学技能石",
+          "normalized_label": "可学技能石",
+          "source": "template:精灵信息",
+          "example_value": "伪造账单,偷袭,力量增效,取念,寸拳,当头棒喝,提气,斩断,暗箱操作,毒针,破绽,蛰针,跌落"
+        },
+        {
+          "raw_label": "宠物立绘形态",
+          "normalized_label": "宠物立绘形态",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "进化条件",
+          "normalized_label": "进化条件",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "更新版本",
+          "normalized_label": "更新版本",
+          "source": "template:精灵信息",
+          "example_value": "0.6"
+        }
+      ],
+      "example_values": {
+        "精灵名称": [
+          "矮脚爬爬"
+        ],
+        "精灵形态": [
+          "原始形态"
+        ],
+        "精灵初阶名称": [
+          "矮脚爬爬"
+        ],
+        "是否有异色": [
+          "否"
+        ],
+        "精灵阶段": [
+          "Ⅰ阶"
+        ],
+        "精灵类型": [
+          "蜘蛛精灵"
+        ],
+        "精灵描述": [
+          "足较短，翻倒后很难再顺利站起来。野外发现的矮脚爬爬里面十个有八个正在努力翻身。因为可爱的外表而受到许多小洛克的喜爱，但受惊时会咬人，致使王国只能贴出告示，警告大家不要轻易触碰。"
+        ],
+        "主属性": [
+          "虫"
+        ],
+        "特性": [
+          "振奋虫心"
+        ],
+        "特性描述": [
+          "主动击败敌方后，己方队伍获得5次随机奉献。"
+        ],
+        "生命": [
+          "80"
+        ],
+        "物攻": [
+          "117"
+        ],
+        "魔攻": [
+          "110"
+        ],
+        "物防": [
+          "74"
+        ],
+        "魔防": [
+          "59"
+        ],
+        "速度": [
+          "92"
+        ],
+        "体型": [
+          "0.28~0.44"
+        ],
+        "重量": [
+          "3.3~4.2"
+        ],
+        "分布地区": [
+          "常见于山地"
+        ],
+        "图鉴课题": [
+          "捕捉1只精灵,捕捉1只了不起天分的精灵,使精灵成功进化1次"
+        ],
+        "课题技能石": [
+          "-"
+        ],
+        "技能": [
+          "蝙蝠,锐利眼神,飞断,尾后针,防御,网缚,力量吞噬,极限撕裂,以重制重,草虫冲击,虫茧,虫击,等价交换,灾厄"
+        ],
+        "技能解锁等级": [
+          "1,1,1,4,8,13,16,23,28,29,30,33,35,38"
+        ],
+        "血脉技能": [
+          "星星撞击,诋毁,升龙咆哮,球状闪电,缠丝劲,火焰冲锋,幻象,花香,冷风,噬心,透射,离子震荡,魅惑,星云漩涡,扬沙,溃烂触碰,泡沫,鹰爪"
+        ],
+        "可学技能石": [
+          "伪造账单,偷袭,力量增效,取念,寸拳,当头棒喝,提气,斩断,暗箱操作,毒针,破绽,蛰针,跌落"
+        ],
+        "更新版本": [
+          "0.6"
+        ]
+      },
+      "templates_seen": [
+        "精灵信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "species",
+      "page_type": "species_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E8%BF%AA%E8%8E%AB",
+      "page_title": "迪莫",
+      "pageid": 3167,
+      "revid": 27495,
+      "revision_timestamp": "2026-04-02T13:21:46Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "精灵名称",
+          "normalized_label": "精灵名称",
+          "source": "template:精灵信息",
+          "example_value": "迪莫"
+        },
+        {
+          "raw_label": "精灵形态",
+          "normalized_label": "精灵形态",
+          "source": "template:精灵信息",
+          "example_value": "原始形态"
+        },
+        {
+          "raw_label": "地区形态名称",
+          "normalized_label": "地区形态名称",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "精灵初阶名称",
+          "normalized_label": "精灵初阶名称",
+          "source": "template:精灵信息",
+          "example_value": "迪莫"
+        },
+        {
+          "raw_label": "是否有异色",
+          "normalized_label": "是否有异色",
+          "source": "template:精灵信息",
+          "example_value": "否"
+        },
+        {
+          "raw_label": "精灵阶段",
+          "normalized_label": "精灵阶段",
+          "source": "template:精灵信息",
+          "example_value": "最终形态"
+        },
+        {
+          "raw_label": "精灵类型",
+          "normalized_label": "精灵类型",
+          "source": "template:精灵信息",
+          "example_value": "永远的伙伴"
+        },
+        {
+          "raw_label": "精灵描述",
+          "normalized_label": "精灵描述",
+          "source": "template:精灵信息",
+          "example_value": "这是关于勇气的故事，它很脆弱却也不曾退缩；这是关于梦想的故事，梦很简单却也执着。这就是我，迪莫。"
+        },
+        {
+          "raw_label": "主属性",
+          "normalized_label": "主属性",
+          "source": "template:精灵信息",
+          "example_value": "光"
+        },
+        {
+          "raw_label": "2属性",
+          "normalized_label": "2属性",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "特性",
+          "normalized_label": "特性",
+          "source": "template:精灵信息",
+          "example_value": "最好的伙伴"
+        },
+        {
+          "raw_label": "特性描述",
+          "normalized_label": "特性描述",
+          "source": "template:精灵信息",
+          "example_value": "造成克制伤害后，获得攻防速+20%，并回复2能量。"
+        },
+        {
+          "raw_label": "生命",
+          "normalized_label": "生命",
+          "source": "template:精灵信息",
+          "example_value": "120"
+        },
+        {
+          "raw_label": "物攻",
+          "normalized_label": "物攻",
+          "source": "template:精灵信息",
+          "example_value": "80"
+        },
+        {
+          "raw_label": "魔攻",
+          "normalized_label": "魔攻",
+          "source": "template:精灵信息",
+          "example_value": "80"
+        },
+        {
+          "raw_label": "物防",
+          "normalized_label": "物防",
+          "source": "template:精灵信息",
+          "example_value": "105"
+        },
+        {
+          "raw_label": "魔防",
+          "normalized_label": "魔防",
+          "source": "template:精灵信息",
+          "example_value": "105"
+        },
+        {
+          "raw_label": "速度",
+          "normalized_label": "速度",
+          "source": "template:精灵信息",
+          "example_value": "92"
+        },
+        {
+          "raw_label": "体型",
+          "normalized_label": "体型",
+          "source": "template:精灵信息",
+          "example_value": "0.54~0.78"
+        },
+        {
+          "raw_label": "重量",
+          "normalized_label": "重量",
+          "source": "template:精灵信息",
+          "example_value": "5.5~7"
+        },
+        {
+          "raw_label": "分布地区",
+          "normalized_label": "分布地区",
+          "source": "template:精灵信息",
+          "example_value": "叽叽喳喳台地"
+        },
+        {
+          "raw_label": "图鉴课题",
+          "normalized_label": "图鉴课题",
+          "source": "template:精灵信息",
+          "example_value": "捕捉1只精灵,捕捉1只了不起天分的精灵,使迪莫的亲密度等级达到5级,获得「命定勇者」奖牌,使用1次闪光,使用1次光刃"
+        },
+        {
+          "raw_label": "课题技能石",
+          "normalized_label": "课题技能石",
+          "source": "template:精灵信息",
+          "example_value": "光刃,闪光"
+        },
+        {
+          "raw_label": "技能",
+          "normalized_label": "技能",
+          "source": "template:精灵信息",
+          "example_value": "猛烈撞击,闪光,防御,魔法增效,光球,火焰箭,力量增效,棘突,潮涌,超导,闪光冲击,漫反射,冰爪,热砂,念力膨胀,放晴,过曝,光刃,折射"
+        },
+        {
+          "raw_label": "技能解锁等级",
+          "normalized_label": "技能解锁等级",
+          "source": "template:精灵信息",
+          "example_value": "1,1,1,7,9,11,13,16,19,22,27,30,32,34,36,40,42,47,48"
+        },
+        {
+          "raw_label": "血脉技能",
+          "normalized_label": "血脉技能",
+          "source": "template:精灵信息",
+          "example_value": "星星撞击,恶能量,升龙咆哮,球状闪电,缠丝劲,火焰冲锋,幻象,花香,冷风,噬心,折线冲击,离子震荡,魅惑,星云漩涡,扬沙,溃烂触碰,泡沫,鹰爪"
+        },
+        {
+          "raw_label": "可学技能石",
+          "normalized_label": "可学技能石",
+          "source": "template:精灵信息",
+          "example_value": "借用,坍缩,天洪,寒风吹,怒火,抽枝,有效预防,气泡,氧输送,润泽,炎打,电弧,藤绞,跺地,闪燃"
+        },
+        {
+          "raw_label": "宠物立绘形态",
+          "normalized_label": "宠物立绘形态",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "进化条件",
+          "normalized_label": "进化条件",
+          "source": "template:精灵信息",
+          "example_value": "无法进化"
+        },
+        {
+          "raw_label": "更新版本",
+          "normalized_label": "更新版本",
+          "source": "template:精灵信息",
+          "example_value": "0.6"
+        }
+      ],
+      "example_values": {
+        "精灵名称": [
+          "迪莫"
+        ],
+        "精灵形态": [
+          "原始形态"
+        ],
+        "精灵初阶名称": [
+          "迪莫"
+        ],
+        "是否有异色": [
+          "否"
+        ],
+        "精灵阶段": [
+          "最终形态"
+        ],
+        "精灵类型": [
+          "永远的伙伴"
+        ],
+        "精灵描述": [
+          "这是关于勇气的故事，它很脆弱却也不曾退缩；这是关于梦想的故事，梦很简单却也执着。这就是我，迪莫。"
+        ],
+        "主属性": [
+          "光"
+        ],
+        "特性": [
+          "最好的伙伴"
+        ],
+        "特性描述": [
+          "造成克制伤害后，获得攻防速+20%，并回复2能量。"
+        ],
+        "生命": [
+          "120"
+        ],
+        "物攻": [
+          "80"
+        ],
+        "魔攻": [
+          "80"
+        ],
+        "物防": [
+          "105"
+        ],
+        "魔防": [
+          "105"
+        ],
+        "速度": [
+          "92"
+        ],
+        "体型": [
+          "0.54~0.78"
+        ],
+        "重量": [
+          "5.5~7"
+        ],
+        "分布地区": [
+          "叽叽喳喳台地"
+        ],
+        "图鉴课题": [
+          "捕捉1只精灵,捕捉1只了不起天分的精灵,使迪莫的亲密度等级达到5级,获得「命定勇者」奖牌,使用1次闪光,使用1次光刃"
+        ],
+        "课题技能石": [
+          "光刃,闪光"
+        ],
+        "技能": [
+          "猛烈撞击,闪光,防御,魔法增效,光球,火焰箭,力量增效,棘突,潮涌,超导,闪光冲击,漫反射,冰爪,热砂,念力膨胀,放晴,过曝,光刃,折射"
+        ],
+        "技能解锁等级": [
+          "1,1,1,7,9,11,13,16,19,22,27,30,32,34,36,40,42,47,48"
+        ],
+        "血脉技能": [
+          "星星撞击,恶能量,升龙咆哮,球状闪电,缠丝劲,火焰冲锋,幻象,花香,冷风,噬心,折线冲击,离子震荡,魅惑,星云漩涡,扬沙,溃烂触碰,泡沫,鹰爪"
+        ],
+        "可学技能石": [
+          "借用,坍缩,天洪,寒风吹,怒火,抽枝,有效预防,气泡,氧输送,润泽,炎打,电弧,藤绞,跺地,闪燃"
+        ],
+        "进化条件": [
+          "无法进化"
+        ],
+        "更新版本": [
+          "0.6"
+        ]
+      },
+      "templates_seen": [
+        "精灵信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "species",
+      "page_type": "species_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E9%98%BF%E5%B8%83",
+      "page_title": "阿布",
+      "pageid": 3503,
+      "revid": 15926,
+      "revision_timestamp": "2025-04-27T03:34:05Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "精灵名称",
+          "normalized_label": "精灵名称",
+          "source": "template:精灵信息",
+          "example_value": "阿布"
+        },
+        {
+          "raw_label": "精灵形态",
+          "normalized_label": "精灵形态",
+          "source": "template:精灵信息",
+          "example_value": "原始形态"
+        },
+        {
+          "raw_label": "地区形态名称",
+          "normalized_label": "地区形态名称",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "精灵初阶名称",
+          "normalized_label": "精灵初阶名称",
+          "source": "template:精灵信息",
+          "example_value": "阿布"
+        },
+        {
+          "raw_label": "是否有异色",
+          "normalized_label": "是否有异色",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "精灵阶段",
+          "normalized_label": "精灵阶段",
+          "source": "template:精灵信息",
+          "example_value": "Ⅰ阶"
+        },
+        {
+          "raw_label": "精灵类型",
+          "normalized_label": "精灵类型",
+          "source": "template:精灵信息",
+          "example_value": "守护精灵"
+        },
+        {
+          "raw_label": "精灵描述",
+          "normalized_label": "精灵描述",
+          "source": "template:精灵信息",
+          "example_value": "虽然长着小巧而可爱的翅膀，但是不用来煽动飞行,完全是凭借自身的魔法浮空，似乎能与洛克心灵相通。 “平时非常柔弱胆小,但是在特殊情况下会变得非常的强大，让人难以想象”。"
+        },
+        {
+          "raw_label": "主属性",
+          "normalized_label": "主属性",
+          "source": "template:精灵信息",
+          "example_value": "普通"
+        },
+        {
+          "raw_label": "2属性",
+          "normalized_label": "2属性",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "特性",
+          "normalized_label": "特性",
+          "source": "template:精灵信息",
+          "example_value": "超聚能"
+        },
+        {
+          "raw_label": "特性描述",
+          "normalized_label": "特性描述",
+          "source": "template:精灵信息",
+          "example_value": "蓄力时，聚能变为积蓄。"
+        },
+        {
+          "raw_label": "生命",
+          "normalized_label": "生命",
+          "source": "template:精灵信息",
+          "example_value": "79"
+        },
+        {
+          "raw_label": "物攻",
+          "normalized_label": "物攻",
+          "source": "template:精灵信息",
+          "example_value": "68"
+        },
+        {
+          "raw_label": "魔攻",
+          "normalized_label": "魔攻",
+          "source": "template:精灵信息",
+          "example_value": "68"
+        },
+        {
+          "raw_label": "物防",
+          "normalized_label": "物防",
+          "source": "template:精灵信息",
+          "example_value": "83"
+        },
+        {
+          "raw_label": "魔防",
+          "normalized_label": "魔防",
+          "source": "template:精灵信息",
+          "example_value": "83"
+        },
+        {
+          "raw_label": "速度",
+          "normalized_label": "速度",
+          "source": "template:精灵信息",
+          "example_value": "80"
+        },
+        {
+          "raw_label": "体型",
+          "normalized_label": "体型",
+          "source": "template:精灵信息",
+          "example_value": "0.60,0.86"
+        },
+        {
+          "raw_label": "重量",
+          "normalized_label": "重量",
+          "source": "template:精灵信息",
+          "example_value": "14.60,18.60"
+        },
+        {
+          "raw_label": "分布地区",
+          "normalized_label": "分布地区",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "图鉴课题",
+          "normalized_label": "图鉴课题",
+          "source": "template:精灵信息",
+          "example_value": "捕捉1只精灵 使用3/5/7次升龙咆哮 使用3/5绵里藏针 使精灵成功进化1次"
+        },
+        {
+          "raw_label": "课题技能石",
+          "normalized_label": "课题技能石",
+          "source": "template:精灵信息",
+          "example_value": "龙血"
+        },
+        {
+          "raw_label": "技能",
+          "normalized_label": "技能",
+          "source": "template:精灵信息",
+          "example_value": "抓挠,龙吼,力量增效,扫尾,防御,火爪,锐利眼神,龙之舞,升龙咆哮,龙炮,热身,天旋地转,快速移动,当头棒喝,绵里藏针,破防,彗星,怒火,龙之利爪,应激反应,湮灭,借用,吞噬,龙威,逆袭,怨力打击,架势,,"
+        },
+        {
+          "raw_label": "技能解锁等级",
+          "normalized_label": "技能解锁等级",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "血脉技能",
+          "normalized_label": "血脉技能",
+          "source": "template:精灵信息",
+          "example_value": "休息回复,徒长,引燃,蓄水,虹光冲击,泥浆铠甲,霜降,角击,麻痹,毒孢子,假寐,化劲,羽化加速,柔弱,小偷小摸,贪婪,啮合传递,超维投射"
+        },
+        {
+          "raw_label": "可学技能石",
+          "normalized_label": "可学技能石",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "是否有错别字",
+          "normalized_label": "是否有错别字",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "宠物立绘形态",
+          "normalized_label": "宠物立绘形态",
+          "source": "template:精灵信息",
+          "example_value": ""
+        }
+      ],
+      "example_values": {
+        "精灵名称": [
+          "阿布"
+        ],
+        "精灵形态": [
+          "原始形态"
+        ],
+        "精灵初阶名称": [
+          "阿布"
+        ],
+        "精灵阶段": [
+          "Ⅰ阶"
+        ],
+        "精灵类型": [
+          "守护精灵"
+        ],
+        "精灵描述": [
+          "虽然长着小巧而可爱的翅膀，但是不用来煽动飞行,完全是凭借自身的魔法浮空，似乎能与洛克心灵相通。 “平时非常柔弱胆小,但是在特殊情况下会变得非常的强大，让人难以想象”。"
+        ],
+        "主属性": [
+          "普通"
+        ],
+        "特性": [
+          "超聚能"
+        ],
+        "特性描述": [
+          "蓄力时，聚能变为积蓄。"
+        ],
+        "生命": [
+          "79"
+        ],
+        "物攻": [
+          "68"
+        ],
+        "魔攻": [
+          "68"
+        ],
+        "物防": [
+          "83"
+        ],
+        "魔防": [
+          "83"
+        ],
+        "速度": [
+          "80"
+        ],
+        "体型": [
+          "0.60,0.86"
+        ],
+        "重量": [
+          "14.60,18.60"
+        ],
+        "图鉴课题": [
+          "捕捉1只精灵 使用3/5/7次升龙咆哮 使用3/5绵里藏针 使精灵成功进化1次"
+        ],
+        "课题技能石": [
+          "龙血"
+        ],
+        "技能": [
+          "抓挠,龙吼,力量增效,扫尾,防御,火爪,锐利眼神,龙之舞,升龙咆哮,龙炮,热身,天旋地转,快速移动,当头棒喝,绵里藏针,破防,彗星,怒火,龙之利爪,应激反应,湮灭,借用,吞噬,龙威,逆袭,怨力打击,架势,,"
+        ],
+        "血脉技能": [
+          "休息回复,徒长,引燃,蓄水,虹光冲击,泥浆铠甲,霜降,角击,麻痹,毒孢子,假寐,化劲,羽化加速,柔弱,小偷小摸,贪婪,啮合传递,超维投射"
+        ]
+      },
+      "templates_seen": [
+        "精灵信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "species",
+      "page_type": "species_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E9%98%BF%E7%B1%B3%E4%BA%9A%E7%89%B9",
+      "page_title": "阿米亚特",
+      "pageid": 3283,
+      "revid": 27877,
+      "revision_timestamp": "2026-04-02T15:13:35Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "精灵名称",
+          "normalized_label": "精灵名称",
+          "source": "template:精灵信息",
+          "example_value": "阿米亚特"
+        },
+        {
+          "raw_label": "精灵形态",
+          "normalized_label": "精灵形态",
+          "source": "template:精灵信息",
+          "example_value": "原始形态"
+        },
+        {
+          "raw_label": "地区形态名称",
+          "normalized_label": "地区形态名称",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "精灵初阶名称",
+          "normalized_label": "精灵初阶名称",
+          "source": "template:精灵信息",
+          "example_value": "阿米亚特"
+        },
+        {
+          "raw_label": "是否有异色",
+          "normalized_label": "是否有异色",
+          "source": "template:精灵信息",
+          "example_value": "否"
+        },
+        {
+          "raw_label": "精灵阶段",
+          "normalized_label": "精灵阶段",
+          "source": "template:精灵信息",
+          "example_value": "Ⅰ阶"
+        },
+        {
+          "raw_label": "精灵类型",
+          "normalized_label": "精灵类型",
+          "source": "template:精灵信息",
+          "example_value": "石头精灵"
+        },
+        {
+          "raw_label": "精灵描述",
+          "normalized_label": "精灵描述",
+          "source": "template:精灵信息",
+          "example_value": "全身都是岩石，但是眼睛周围没有岩石保护，是十分脆弱的柔软皮肤。喜欢吃不同口味的矿石，总是静静呆着，没什么存在感。"
+        },
+        {
+          "raw_label": "主属性",
+          "normalized_label": "主属性",
+          "source": "template:精灵信息",
+          "example_value": "地"
+        },
+        {
+          "raw_label": "2属性",
+          "normalized_label": "2属性",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "特性",
+          "normalized_label": "特性",
+          "source": "template:精灵信息",
+          "example_value": "石头大餐"
+        },
+        {
+          "raw_label": "特性描述",
+          "normalized_label": "特性描述",
+          "source": "template:精灵信息",
+          "example_value": "能量不足时，消耗5%生命，代替1能量。"
+        },
+        {
+          "raw_label": "生命",
+          "normalized_label": "生命",
+          "source": "template:精灵信息",
+          "example_value": "64"
+        },
+        {
+          "raw_label": "物攻",
+          "normalized_label": "物攻",
+          "source": "template:精灵信息",
+          "example_value": "95"
+        },
+        {
+          "raw_label": "魔攻",
+          "normalized_label": "魔攻",
+          "source": "template:精灵信息",
+          "example_value": "47"
+        },
+        {
+          "raw_label": "物防",
+          "normalized_label": "物防",
+          "source": "template:精灵信息",
+          "example_value": "67"
+        },
+        {
+          "raw_label": "魔防",
+          "normalized_label": "魔防",
+          "source": "template:精灵信息",
+          "example_value": "42"
+        },
+        {
+          "raw_label": "速度",
+          "normalized_label": "速度",
+          "source": "template:精灵信息",
+          "example_value": "45"
+        },
+        {
+          "raw_label": "体型",
+          "normalized_label": "体型",
+          "source": "template:精灵信息",
+          "example_value": "0.57~0.79"
+        },
+        {
+          "raw_label": "重量",
+          "normalized_label": "重量",
+          "source": "template:精灵信息",
+          "example_value": "38.5~49.2"
+        },
+        {
+          "raw_label": "分布地区",
+          "normalized_label": "分布地区",
+          "source": "template:精灵信息",
+          "example_value": "乌黑巷 / 叽叽喳喳台地 / 商店街周边 / 奥贝斯坦湖 / 学院驻地 / 岚语峰 / 挽风屏障 / 月牙湖岸 / 月牙镇 / 皇家办事处 / 聆风塔地 / 聆风镇 / 轻风山 / 风眠圣所"
+        },
+        {
+          "raw_label": "图鉴课题",
+          "normalized_label": "图鉴课题",
+          "source": "template:精灵信息",
+          "example_value": "捕捉1只精灵,捕捉1只了不起天分的精灵,使精灵成功进化1次"
+        },
+        {
+          "raw_label": "课题技能石",
+          "normalized_label": "课题技能石",
+          "source": "template:精灵信息",
+          "example_value": "-"
+        },
+        {
+          "raw_label": "技能",
+          "normalized_label": "技能",
+          "source": "template:精灵信息",
+          "example_value": "魔爪,蝙蝠,贪婪,力量增效,先发制人,钧势,鸣沙陷阱,力量吞噬,岩土暴击,砂石冲撞,泥浆铠甲,暗突袭,地刺,地震"
+        },
+        {
+          "raw_label": "技能解锁等级",
+          "normalized_label": "技能解锁等级",
+          "source": "template:精灵信息",
+          "example_value": "1,1,1,5,6,13,16,21,29,31,33,35,37,45"
+        },
+        {
+          "raw_label": "血脉技能",
+          "normalized_label": "血脉技能",
+          "source": "template:精灵信息",
+          "example_value": "星星撞击,诋毁,升龙咆哮,球状闪电,缠丝劲,火焰箭,灵媒,花香,冰爪,噬心,透射,械斗,碰爪,星云漩涡,跺地,毒沼,泡沫,风矢"
+        },
+        {
+          "raw_label": "可学技能石",
+          "normalized_label": "可学技能石",
+          "source": "template:精灵信息",
+          "example_value": "借用,加固,反击拳,后发制人,地陷,彼岸之手,怒火,有效预防,火焰切割,石肤术,锐利眼神,闪燃,防御,鼓劲"
+        },
+        {
+          "raw_label": "宠物立绘形态",
+          "normalized_label": "宠物立绘形态",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "进化条件",
+          "normalized_label": "进化条件",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "更新版本",
+          "normalized_label": "更新版本",
+          "source": "template:精灵信息",
+          "example_value": "0.6"
+        }
+      ],
+      "example_values": {
+        "精灵名称": [
+          "阿米亚特"
+        ],
+        "精灵形态": [
+          "原始形态"
+        ],
+        "精灵初阶名称": [
+          "阿米亚特"
+        ],
+        "是否有异色": [
+          "否"
+        ],
+        "精灵阶段": [
+          "Ⅰ阶"
+        ],
+        "精灵类型": [
+          "石头精灵"
+        ],
+        "精灵描述": [
+          "全身都是岩石，但是眼睛周围没有岩石保护，是十分脆弱的柔软皮肤。喜欢吃不同口味的矿石，总是静静呆着，没什么存在感。"
+        ],
+        "主属性": [
+          "地"
+        ],
+        "特性": [
+          "石头大餐"
+        ],
+        "特性描述": [
+          "能量不足时，消耗5%生命，代替1能量。"
+        ],
+        "生命": [
+          "64"
+        ],
+        "物攻": [
+          "95"
+        ],
+        "魔攻": [
+          "47"
+        ],
+        "物防": [
+          "67"
+        ],
+        "魔防": [
+          "42"
+        ],
+        "速度": [
+          "45"
+        ],
+        "体型": [
+          "0.57~0.79"
+        ],
+        "重量": [
+          "38.5~49.2"
+        ],
+        "分布地区": [
+          "乌黑巷 / 叽叽喳喳台地 / 商店街周边 / 奥贝斯坦湖 / 学院驻地 / 岚语峰 / 挽风屏障 / 月牙湖岸 / 月牙镇 / 皇家办事处 / 聆风塔地 / 聆风镇 / 轻风山 / 风眠圣所"
+        ],
+        "图鉴课题": [
+          "捕捉1只精灵,捕捉1只了不起天分的精灵,使精灵成功进化1次"
+        ],
+        "课题技能石": [
+          "-"
+        ],
+        "技能": [
+          "魔爪,蝙蝠,贪婪,力量增效,先发制人,钧势,鸣沙陷阱,力量吞噬,岩土暴击,砂石冲撞,泥浆铠甲,暗突袭,地刺,地震"
+        ],
+        "技能解锁等级": [
+          "1,1,1,5,6,13,16,21,29,31,33,35,37,45"
+        ],
+        "血脉技能": [
+          "星星撞击,诋毁,升龙咆哮,球状闪电,缠丝劲,火焰箭,灵媒,花香,冰爪,噬心,透射,械斗,碰爪,星云漩涡,跺地,毒沼,泡沫,风矢"
+        ],
+        "可学技能石": [
+          "借用,加固,反击拳,后发制人,地陷,彼岸之手,怒火,有效预防,火焰切割,石肤术,锐利眼神,闪燃,防御,鼓劲"
+        ],
+        "更新版本": [
+          "0.6"
+        ]
+      },
+      "templates_seen": [
+        "精灵信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "species",
+      "page_type": "species_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E9%98%BF%E7%B1%B3%E6%A8%B1",
+      "page_title": "阿米樱",
+      "pageid": 3284,
+      "revid": 27878,
+      "revision_timestamp": "2026-04-02T15:13:36Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "精灵名称",
+          "normalized_label": "精灵名称",
+          "source": "template:精灵信息",
+          "example_value": "阿米樱"
+        },
+        {
+          "raw_label": "精灵形态",
+          "normalized_label": "精灵形态",
+          "source": "template:精灵信息",
+          "example_value": "原始形态"
+        },
+        {
+          "raw_label": "地区形态名称",
+          "normalized_label": "地区形态名称",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "精灵初阶名称",
+          "normalized_label": "精灵初阶名称",
+          "source": "template:精灵信息",
+          "example_value": "阿米亚特"
+        },
+        {
+          "raw_label": "是否有异色",
+          "normalized_label": "是否有异色",
+          "source": "template:精灵信息",
+          "example_value": "否"
+        },
+        {
+          "raw_label": "精灵阶段",
+          "normalized_label": "精灵阶段",
+          "source": "template:精灵信息",
+          "example_value": "Ⅱ阶"
+        },
+        {
+          "raw_label": "精灵类型",
+          "normalized_label": "精灵类型",
+          "source": "template:精灵信息",
+          "example_value": "石头精灵"
+        },
+        {
+          "raw_label": "精灵描述",
+          "normalized_label": "精灵描述",
+          "source": "template:精灵信息",
+          "example_value": "石头组成的上身和双臂异常粗壮，腿部短小，经常会腿痛。重重挥拳的时候会把构成手部的石头都打散，不过很快就会用岩石修补好。"
+        },
+        {
+          "raw_label": "主属性",
+          "normalized_label": "主属性",
+          "source": "template:精灵信息",
+          "example_value": "地"
+        },
+        {
+          "raw_label": "2属性",
+          "normalized_label": "2属性",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "特性",
+          "normalized_label": "特性",
+          "source": "template:精灵信息",
+          "example_value": "石头大餐"
+        },
+        {
+          "raw_label": "特性描述",
+          "normalized_label": "特性描述",
+          "source": "template:精灵信息",
+          "example_value": "能量不足时，消耗5%生命，代替1能量。"
+        },
+        {
+          "raw_label": "生命",
+          "normalized_label": "生命",
+          "source": "template:精灵信息",
+          "example_value": "86"
+        },
+        {
+          "raw_label": "物攻",
+          "normalized_label": "物攻",
+          "source": "template:精灵信息",
+          "example_value": "127"
+        },
+        {
+          "raw_label": "魔攻",
+          "normalized_label": "魔攻",
+          "source": "template:精灵信息",
+          "example_value": "62"
+        },
+        {
+          "raw_label": "物防",
+          "normalized_label": "物防",
+          "source": "template:精灵信息",
+          "example_value": "89"
+        },
+        {
+          "raw_label": "魔防",
+          "normalized_label": "魔防",
+          "source": "template:精灵信息",
+          "example_value": "56"
+        },
+        {
+          "raw_label": "速度",
+          "normalized_label": "速度",
+          "source": "template:精灵信息",
+          "example_value": "60"
+        },
+        {
+          "raw_label": "体型",
+          "normalized_label": "体型",
+          "source": "template:精灵信息",
+          "example_value": "0.78~1.12"
+        },
+        {
+          "raw_label": "重量",
+          "normalized_label": "重量",
+          "source": "template:精灵信息",
+          "example_value": "94.2~143"
+        },
+        {
+          "raw_label": "分布地区",
+          "normalized_label": "分布地区",
+          "source": "template:精灵信息",
+          "example_value": "乌黑巷 / 叽叽喳喳台地 / 商店街周边 / 奥贝斯坦湖 / 学院驻地 / 岚语峰 / 挽风屏障 / 月牙湖岸 / 月牙镇 / 皇家办事处 / 聆风塔地 / 聆风镇 / 轻风山 / 风眠圣所"
+        },
+        {
+          "raw_label": "图鉴课题",
+          "normalized_label": "图鉴课题",
+          "source": "template:精灵信息",
+          "example_value": "捕捉1只精灵,捕捉1只了不起天分的精灵,使精灵成功进化1次"
+        },
+        {
+          "raw_label": "课题技能石",
+          "normalized_label": "课题技能石",
+          "source": "template:精灵信息",
+          "example_value": "-"
+        },
+        {
+          "raw_label": "技能",
+          "normalized_label": "技能",
+          "source": "template:精灵信息",
+          "example_value": "魔爪,蝙蝠,贪婪,力量增效,先发制人,钧势,鸣沙陷阱,力量吞噬,岩土暴击,砂石冲撞,泥浆铠甲,暗突袭,地刺,地震"
+        },
+        {
+          "raw_label": "技能解锁等级",
+          "normalized_label": "技能解锁等级",
+          "source": "template:精灵信息",
+          "example_value": "1,1,1,5,6,13,16,21,29,31,33,35,37,45"
+        },
+        {
+          "raw_label": "血脉技能",
+          "normalized_label": "血脉技能",
+          "source": "template:精灵信息",
+          "example_value": "星星撞击,诋毁,升龙咆哮,球状闪电,缠丝劲,火焰箭,灵媒,花香,冰爪,噬心,透射,械斗,碰爪,星云漩涡,跺地,毒沼,泡沫,风矢"
+        },
+        {
+          "raw_label": "可学技能石",
+          "normalized_label": "可学技能石",
+          "source": "template:精灵信息",
+          "example_value": "借用,加固,反击拳,后发制人,地陷,彼岸之手,怒火,有效预防,火焰切割,石肤术,锐利眼神,闪燃,防御,鼓劲"
+        },
+        {
+          "raw_label": "宠物立绘形态",
+          "normalized_label": "宠物立绘形态",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "进化条件",
+          "normalized_label": "进化条件",
+          "source": "template:精灵信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "更新版本",
+          "normalized_label": "更新版本",
+          "source": "template:精灵信息",
+          "example_value": "0.6"
+        }
+      ],
+      "example_values": {
+        "精灵名称": [
+          "阿米樱"
+        ],
+        "精灵形态": [
+          "原始形态"
+        ],
+        "精灵初阶名称": [
+          "阿米亚特"
+        ],
+        "是否有异色": [
+          "否"
+        ],
+        "精灵阶段": [
+          "Ⅱ阶"
+        ],
+        "精灵类型": [
+          "石头精灵"
+        ],
+        "精灵描述": [
+          "石头组成的上身和双臂异常粗壮，腿部短小，经常会腿痛。重重挥拳的时候会把构成手部的石头都打散，不过很快就会用岩石修补好。"
+        ],
+        "主属性": [
+          "地"
+        ],
+        "特性": [
+          "石头大餐"
+        ],
+        "特性描述": [
+          "能量不足时，消耗5%生命，代替1能量。"
+        ],
+        "生命": [
+          "86"
+        ],
+        "物攻": [
+          "127"
+        ],
+        "魔攻": [
+          "62"
+        ],
+        "物防": [
+          "89"
+        ],
+        "魔防": [
+          "56"
+        ],
+        "速度": [
+          "60"
+        ],
+        "体型": [
+          "0.78~1.12"
+        ],
+        "重量": [
+          "94.2~143"
+        ],
+        "分布地区": [
+          "乌黑巷 / 叽叽喳喳台地 / 商店街周边 / 奥贝斯坦湖 / 学院驻地 / 岚语峰 / 挽风屏障 / 月牙湖岸 / 月牙镇 / 皇家办事处 / 聆风塔地 / 聆风镇 / 轻风山 / 风眠圣所"
+        ],
+        "图鉴课题": [
+          "捕捉1只精灵,捕捉1只了不起天分的精灵,使精灵成功进化1次"
+        ],
+        "课题技能石": [
+          "-"
+        ],
+        "技能": [
+          "魔爪,蝙蝠,贪婪,力量增效,先发制人,钧势,鸣沙陷阱,力量吞噬,岩土暴击,砂石冲撞,泥浆铠甲,暗突袭,地刺,地震"
+        ],
+        "技能解锁等级": [
+          "1,1,1,5,6,13,16,21,29,31,33,35,37,45"
+        ],
+        "血脉技能": [
+          "星星撞击,诋毁,升龙咆哮,球状闪电,缠丝劲,火焰箭,灵媒,花香,冰爪,噬心,透射,械斗,碰爪,星云漩涡,跺地,毒沼,泡沫,风矢"
+        ],
+        "可学技能石": [
+          "借用,加固,反击拳,后发制人,地陷,彼岸之手,怒火,有效预防,火焰切割,石肤术,锐利眼神,闪燃,防御,鼓劲"
+        ],
+        "更新版本": [
+          "0.6"
+        ]
+      },
+      "templates_seen": [
+        "精灵信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "move",
+      "page_type": "move_index",
+      "source_url": "https://wiki.biligame.com/rocom/%E6%8A%80%E8%83%BD%E5%9B%BE%E9%89%B4",
+      "page_title": "技能图鉴",
+      "pageid": 1013,
+      "revid": 22837,
+      "revision_timestamp": "2026-03-31T09:47:37Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "技能名称",
+          "normalized_label": "技能名称",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "技能序号",
+          "normalized_label": "技能序号",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "耗能",
+          "normalized_label": "耗能",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "技能类别",
+          "normalized_label": "技能类别",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "属性",
+          "normalized_label": "属性",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "威力",
+          "normalized_label": "威力",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "技能名称",
+          "normalized_label": "技能名称",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "技能序号",
+          "normalized_label": "技能序号",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "耗能",
+          "normalized_label": "耗能",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "技能类别",
+          "normalized_label": "技能类别",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "属性",
+          "normalized_label": "属性",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "威力",
+          "normalized_label": "威力",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "筛选项",
+          "normalized_label": "筛选项",
+          "source": "filter_template",
+          "example_value": "查看全部, 物攻, 魔攻, 防御, 状态"
+        }
+      ],
+      "example_values": {
+        "筛选项": [
+          "查看全部, 物攻, 魔攻, 防御, 状态"
+        ]
+      },
+      "templates_seen": [
+        "#Widget:Filter",
+        "#tag:bstyle",
+        "筛选项",
+        "面包屑"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "move",
+      "page_type": "move_index",
+      "source_url": "https://wiki.biligame.com/rocom/%E6%8A%80%E8%83%BD%E7%AD%9B%E9%80%89",
+      "page_title": "技能筛选",
+      "pageid": 1505,
+      "revid": 22659,
+      "revision_timestamp": "2026-03-30T17:19:09Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "技能名称",
+          "normalized_label": "技能名称",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "技能序号",
+          "normalized_label": "技能序号",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "耗能",
+          "normalized_label": "耗能",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "技能类别",
+          "normalized_label": "技能类别",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "属性",
+          "normalized_label": "属性",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "威力",
+          "normalized_label": "威力",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "效果",
+          "normalized_label": "效果",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "技能版本",
+          "normalized_label": "技能版本",
+          "source": "smw_ask_projection",
+          "example_value": ""
+        },
+        {
+          "raw_label": "筛选项",
+          "normalized_label": "筛选项",
+          "source": "filter_template",
+          "example_value": "查看全部, 物攻, 魔攻, 防御, 状态"
+        }
+      ],
+      "example_values": {
+        "筛选项": [
+          "查看全部, 物攻, 魔攻, 防御, 状态"
+        ]
+      },
+      "templates_seen": [
+        "筛选项"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "move",
+      "page_type": "move_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E5%AD%A2%E5%AD%90",
+      "page_title": "孢子",
+      "pageid": 7043,
+      "revid": 22249,
+      "revision_timestamp": "2026-03-30T17:14:10Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "技能名称",
+          "normalized_label": "技能名称",
+          "source": "template:技能信息",
+          "example_value": "孢子"
+        },
+        {
+          "raw_label": "属性",
+          "normalized_label": "属性",
+          "source": "template:技能信息",
+          "example_value": "草"
+        },
+        {
+          "raw_label": "技能类别",
+          "normalized_label": "技能类别",
+          "source": "template:技能信息",
+          "example_value": "状态"
+        },
+        {
+          "raw_label": "耗能",
+          "normalized_label": "耗能",
+          "source": "template:技能信息",
+          "example_value": "3"
+        },
+        {
+          "raw_label": "威力",
+          "normalized_label": "威力",
+          "source": "template:技能信息",
+          "example_value": "0"
+        },
+        {
+          "raw_label": "效果",
+          "normalized_label": "效果",
+          "source": "template:技能信息",
+          "example_value": "敌方获得1层寄生。"
+        },
+        {
+          "raw_label": "描述",
+          "normalized_label": "描述",
+          "source": "template:技能信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "技能版本",
+          "normalized_label": "技能版本",
+          "source": "template:技能信息",
+          "example_value": "0.1"
+        }
+      ],
+      "example_values": {
+        "技能名称": [
+          "孢子"
+        ],
+        "属性": [
+          "草"
+        ],
+        "技能类别": [
+          "状态"
+        ],
+        "耗能": [
+          "3"
+        ],
+        "威力": [
+          "0"
+        ],
+        "效果": [
+          "敌方获得1层寄生。"
+        ],
+        "技能版本": [
+          "0.1"
+        ]
+      },
+      "templates_seen": [
+        "技能信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "move",
+      "page_type": "move_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E6%8A%A5%E5%A4%8D",
+      "page_title": "报复",
+      "pageid": 1392,
+      "revid": 22381,
+      "revision_timestamp": "2026-03-30T17:15:15Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "技能名称",
+          "normalized_label": "技能名称",
+          "source": "template:技能信息",
+          "example_value": "报复"
+        },
+        {
+          "raw_label": "属性",
+          "normalized_label": "属性",
+          "source": "template:技能信息",
+          "example_value": "幽"
+        },
+        {
+          "raw_label": "技能类别",
+          "normalized_label": "技能类别",
+          "source": "template:技能信息",
+          "example_value": "防御"
+        },
+        {
+          "raw_label": "耗能",
+          "normalized_label": "耗能",
+          "source": "template:技能信息",
+          "example_value": "2"
+        },
+        {
+          "raw_label": "威力",
+          "normalized_label": "威力",
+          "source": "template:技能信息",
+          "example_value": "0"
+        },
+        {
+          "raw_label": "效果",
+          "normalized_label": "效果",
+          "source": "template:技能信息",
+          "example_value": "减伤70%，应对攻击：敌方失去3能量。"
+        },
+        {
+          "raw_label": "描述",
+          "normalized_label": "描述",
+          "source": "template:技能信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "技能版本",
+          "normalized_label": "技能版本",
+          "source": "template:技能信息",
+          "example_value": "0.1"
+        }
+      ],
+      "example_values": {
+        "技能名称": [
+          "报复"
+        ],
+        "属性": [
+          "幽"
+        ],
+        "技能类别": [
+          "防御"
+        ],
+        "耗能": [
+          "2"
+        ],
+        "威力": [
+          "0"
+        ],
+        "效果": [
+          "减伤70%，应对攻击：敌方失去3能量。"
+        ],
+        "技能版本": [
+          "0.1"
+        ]
+      },
+      "templates_seen": [
+        "技能信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "move",
+      "page_type": "move_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E6%9A%97%E7%AA%81%E8%A2%AD",
+      "page_title": "暗突袭",
+      "pageid": 1399,
+      "revid": 22296,
+      "revision_timestamp": "2026-03-30T17:14:33Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "技能名称",
+          "normalized_label": "技能名称",
+          "source": "template:技能信息",
+          "example_value": "暗突袭"
+        },
+        {
+          "raw_label": "属性",
+          "normalized_label": "属性",
+          "source": "template:技能信息",
+          "example_value": "恶"
+        },
+        {
+          "raw_label": "技能类别",
+          "normalized_label": "技能类别",
+          "source": "template:技能信息",
+          "example_value": "物攻"
+        },
+        {
+          "raw_label": "耗能",
+          "normalized_label": "耗能",
+          "source": "template:技能信息",
+          "example_value": "4"
+        },
+        {
+          "raw_label": "威力",
+          "normalized_label": "威力",
+          "source": "template:技能信息",
+          "example_value": "70"
+        },
+        {
+          "raw_label": "效果",
+          "normalized_label": "效果",
+          "source": "template:技能信息",
+          "example_value": "造成物伤，吸血50%，应对状态：本次技能威力翻倍。"
+        },
+        {
+          "raw_label": "描述",
+          "normalized_label": "描述",
+          "source": "template:技能信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "技能版本",
+          "normalized_label": "技能版本",
+          "source": "template:技能信息",
+          "example_value": "0.1"
+        }
+      ],
+      "example_values": {
+        "技能名称": [
+          "暗突袭"
+        ],
+        "属性": [
+          "恶"
+        ],
+        "技能类别": [
+          "物攻"
+        ],
+        "耗能": [
+          "4"
+        ],
+        "威力": [
+          "70"
+        ],
+        "效果": [
+          "造成物伤，吸血50%，应对状态：本次技能威力翻倍。"
+        ],
+        "技能版本": [
+          "0.1"
+        ]
+      },
+      "templates_seen": [
+        "技能信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "move",
+      "page_type": "move_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E6%9A%97%E7%AE%B1%E6%93%8D%E4%BD%9C",
+      "page_title": "暗箱操作",
+      "pageid": 3985,
+      "revid": 22376,
+      "revision_timestamp": "2026-03-30T17:15:13Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "技能名称",
+          "normalized_label": "技能名称",
+          "source": "template:技能信息",
+          "example_value": "暗箱操作"
+        },
+        {
+          "raw_label": "属性",
+          "normalized_label": "属性",
+          "source": "template:技能信息",
+          "example_value": "恶"
+        },
+        {
+          "raw_label": "技能类别",
+          "normalized_label": "技能类别",
+          "source": "template:技能信息",
+          "example_value": "状态"
+        },
+        {
+          "raw_label": "耗能",
+          "normalized_label": "耗能",
+          "source": "template:技能信息",
+          "example_value": "1"
+        },
+        {
+          "raw_label": "威力",
+          "normalized_label": "威力",
+          "source": "template:技能信息",
+          "example_value": "0"
+        },
+        {
+          "raw_label": "效果",
+          "normalized_label": "效果",
+          "source": "template:技能信息",
+          "example_value": "自己获得双攻和双防-100%，应对防御：改为敌方获得双攻和双防-100%。"
+        },
+        {
+          "raw_label": "描述",
+          "normalized_label": "描述",
+          "source": "template:技能信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "技能版本",
+          "normalized_label": "技能版本",
+          "source": "template:技能信息",
+          "example_value": "0.1"
+        }
+      ],
+      "example_values": {
+        "技能名称": [
+          "暗箱操作"
+        ],
+        "属性": [
+          "恶"
+        ],
+        "技能类别": [
+          "状态"
+        ],
+        "耗能": [
+          "1"
+        ],
+        "威力": [
+          "0"
+        ],
+        "效果": [
+          "自己获得双攻和双防-100%，应对防御：改为敌方获得双攻和双防-100%。"
+        ],
+        "技能版本": [
+          "0.1"
+        ]
+      },
+      "templates_seen": [
+        "技能信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "move",
+      "page_type": "move_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E6%9A%B4%E9%A3%8E%E7%9C%BC",
+      "page_title": "暴风眼",
+      "pageid": 1005,
+      "revid": 22575,
+      "revision_timestamp": "2026-03-30T17:16:52Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "技能名称",
+          "normalized_label": "技能名称",
+          "source": "template:技能信息",
+          "example_value": "暴风眼"
+        },
+        {
+          "raw_label": "属性",
+          "normalized_label": "属性",
+          "source": "template:技能信息",
+          "example_value": "翼"
+        },
+        {
+          "raw_label": "技能类别",
+          "normalized_label": "技能类别",
+          "source": "template:技能信息",
+          "example_value": "状态"
+        },
+        {
+          "raw_label": "耗能",
+          "normalized_label": "耗能",
+          "source": "template:技能信息",
+          "example_value": "2"
+        },
+        {
+          "raw_label": "威力",
+          "normalized_label": "威力",
+          "source": "template:技能信息",
+          "example_value": "0"
+        },
+        {
+          "raw_label": "效果",
+          "normalized_label": "效果",
+          "source": "template:技能信息",
+          "example_value": "行动时连击数+100%。"
+        },
+        {
+          "raw_label": "描述",
+          "normalized_label": "描述",
+          "source": "template:技能信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "技能版本",
+          "normalized_label": "技能版本",
+          "source": "template:技能信息",
+          "example_value": "0.1"
+        }
+      ],
+      "example_values": {
+        "技能名称": [
+          "暴风眼"
+        ],
+        "属性": [
+          "翼"
+        ],
+        "技能类别": [
+          "状态"
+        ],
+        "耗能": [
+          "2"
+        ],
+        "威力": [
+          "0"
+        ],
+        "效果": [
+          "行动时连击数+100%。"
+        ],
+        "技能版本": [
+          "0.1"
+        ]
+      },
+      "templates_seen": [
+        "技能信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "move",
+      "page_type": "move_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E6%9A%B4%E9%A3%8E%E9%9B%AA",
+      "page_title": "暴风雪",
+      "pageid": 1312,
+      "revid": 22493,
+      "revision_timestamp": "2026-03-30T17:16:11Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "技能名称",
+          "normalized_label": "技能名称",
+          "source": "template:技能信息",
+          "example_value": "暴风雪"
+        },
+        {
+          "raw_label": "属性",
+          "normalized_label": "属性",
+          "source": "template:技能信息",
+          "example_value": "冰"
+        },
+        {
+          "raw_label": "技能类别",
+          "normalized_label": "技能类别",
+          "source": "template:技能信息",
+          "example_value": "物攻"
+        },
+        {
+          "raw_label": "耗能",
+          "normalized_label": "耗能",
+          "source": "template:技能信息",
+          "example_value": "3"
+        },
+        {
+          "raw_label": "威力",
+          "normalized_label": "威力",
+          "source": "template:技能信息",
+          "example_value": "85"
+        },
+        {
+          "raw_label": "效果",
+          "normalized_label": "效果",
+          "source": "template:技能信息",
+          "example_value": "造成物伤，敌方获得1层冻结。"
+        },
+        {
+          "raw_label": "描述",
+          "normalized_label": "描述",
+          "source": "template:技能信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "技能版本",
+          "normalized_label": "技能版本",
+          "source": "template:技能信息",
+          "example_value": "0.1"
+        }
+      ],
+      "example_values": {
+        "技能名称": [
+          "暴风雪"
+        ],
+        "属性": [
+          "冰"
+        ],
+        "技能类别": [
+          "物攻"
+        ],
+        "耗能": [
+          "3"
+        ],
+        "威力": [
+          "85"
+        ],
+        "效果": [
+          "造成物伤，敌方获得1层冻结。"
+        ],
+        "技能版本": [
+          "0.1"
+        ]
+      },
+      "templates_seen": [
+        "技能信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "move",
+      "page_type": "move_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E7%88%86%E5%86%B2",
+      "page_title": "爆冲",
+      "pageid": 3863,
+      "revid": 22543,
+      "revision_timestamp": "2026-03-30T17:16:36Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "技能名称",
+          "normalized_label": "技能名称",
+          "source": "template:技能信息",
+          "example_value": "爆冲"
+        },
+        {
+          "raw_label": "属性",
+          "normalized_label": "属性",
+          "source": "template:技能信息",
+          "example_value": "武"
+        },
+        {
+          "raw_label": "技能类别",
+          "normalized_label": "技能类别",
+          "source": "template:技能信息",
+          "example_value": "物攻"
+        },
+        {
+          "raw_label": "耗能",
+          "normalized_label": "耗能",
+          "source": "template:技能信息",
+          "example_value": "3"
+        },
+        {
+          "raw_label": "威力",
+          "normalized_label": "威力",
+          "source": "template:技能信息",
+          "example_value": "65"
+        },
+        {
+          "raw_label": "效果",
+          "normalized_label": "效果",
+          "source": "template:技能信息",
+          "example_value": "造成物伤，应对状态：本次技能威力变为5倍。"
+        },
+        {
+          "raw_label": "描述",
+          "normalized_label": "描述",
+          "source": "template:技能信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "技能版本",
+          "normalized_label": "技能版本",
+          "source": "template:技能信息",
+          "example_value": "0.1"
+        }
+      ],
+      "example_values": {
+        "技能名称": [
+          "爆冲"
+        ],
+        "属性": [
+          "武"
+        ],
+        "技能类别": [
+          "物攻"
+        ],
+        "耗能": [
+          "3"
+        ],
+        "威力": [
+          "65"
+        ],
+        "效果": [
+          "造成物伤，应对状态：本次技能威力变为5倍。"
+        ],
+        "技能版本": [
+          "0.1"
+        ]
+      },
+      "templates_seen": [
+        "技能信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "move",
+      "page_type": "move_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E7%88%86%E8%A3%82%E9%A3%9E%E5%BC%B9",
+      "page_title": "爆裂飞弹",
+      "pageid": 3898,
+      "revid": 22617,
+      "revision_timestamp": "2026-03-30T17:17:13Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "技能名称",
+          "normalized_label": "技能名称",
+          "source": "template:技能信息",
+          "example_value": "爆裂飞弹"
+        },
+        {
+          "raw_label": "属性",
+          "normalized_label": "属性",
+          "source": "template:技能信息",
+          "example_value": "火"
+        },
+        {
+          "raw_label": "技能类别",
+          "normalized_label": "技能类别",
+          "source": "template:技能信息",
+          "example_value": "魔攻"
+        },
+        {
+          "raw_label": "耗能",
+          "normalized_label": "耗能",
+          "source": "template:技能信息",
+          "example_value": "7"
+        },
+        {
+          "raw_label": "威力",
+          "normalized_label": "威力",
+          "source": "template:技能信息",
+          "example_value": "160"
+        },
+        {
+          "raw_label": "效果",
+          "normalized_label": "效果",
+          "source": "template:技能信息",
+          "example_value": "对敌方精灵造成魔法伤害。"
+        },
+        {
+          "raw_label": "描述",
+          "normalized_label": "描述",
+          "source": "template:技能信息",
+          "example_value": ""
+        },
+        {
+          "raw_label": "技能版本",
+          "normalized_label": "技能版本",
+          "source": "template:技能信息",
+          "example_value": "0.1"
+        }
+      ],
+      "example_values": {
+        "技能名称": [
+          "爆裂飞弹"
+        ],
+        "属性": [
+          "火"
+        ],
+        "技能类别": [
+          "魔攻"
+        ],
+        "耗能": [
+          "7"
+        ],
+        "威力": [
+          "160"
+        ],
+        "效果": [
+          "对敌方精灵造成魔法伤害。"
+        ],
+        "技能版本": [
+          "0.1"
+        ]
+      },
+      "templates_seen": [
+        "技能信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "ability",
+      "page_type": "ability_embedded_species_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E6%9A%97%E5%BD%B1%E7%81%B5%E9%9D%A2%EF%BC%88%E7%9D%81%E7%9C%BC%E7%9A%84%E6%A0%B7%E5%AD%90%EF%BC%89",
+      "page_title": "暗影灵面（睁眼的样子）",
+      "pageid": 3207,
+      "revid": 27733,
+      "revision_timestamp": "2026-04-02T13:32:58Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "特性",
+          "normalized_label": "特性",
+          "source": "template:精灵信息",
+          "example_value": "惊吓"
+        },
+        {
+          "raw_label": "特性描述",
+          "normalized_label": "特性描述",
+          "source": "template:精灵信息",
+          "example_value": "能量等于0的精灵，无法对自己造成伤害。"
+        }
+      ],
+      "example_values": {
+        "特性": [
+          "惊吓"
+        ],
+        "特性描述": [
+          "能量等于0的精灵，无法对自己造成伤害。"
+        ]
+      },
+      "templates_seen": [
+        "精灵信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "ability",
+      "page_type": "ability_embedded_species_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E6%9A%97%E5%BD%B1%E7%81%B5%E9%9D%A2%EF%BC%88%E9%97%AD%E7%9C%BC%E7%9A%84%E6%A0%B7%E5%AD%90%EF%BC%89",
+      "page_title": "暗影灵面（闭眼的样子）",
+      "pageid": 4877,
+      "revid": 27734,
+      "revision_timestamp": "2026-04-02T13:32:58Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "特性",
+          "normalized_label": "特性",
+          "source": "template:精灵信息",
+          "example_value": "惊吓"
+        },
+        {
+          "raw_label": "特性描述",
+          "normalized_label": "特性描述",
+          "source": "template:精灵信息",
+          "example_value": "能量等于0的精灵，无法对自己造成伤害。"
+        }
+      ],
+      "example_values": {
+        "特性": [
+          "惊吓"
+        ],
+        "特性描述": [
+          "能量等于0的精灵，无法对自己造成伤害。"
+        ]
+      },
+      "templates_seen": [
+        "精灵信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "ability",
+      "page_type": "ability_embedded_species_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E6%9E%9C%E5%86%BB",
+      "page_title": "果冻",
+      "pageid": 3366,
+      "revid": 27672,
+      "revision_timestamp": "2026-04-02T13:25:15Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "特性",
+          "normalized_label": "特性",
+          "source": "template:精灵信息",
+          "example_value": "茶多酚"
+        },
+        {
+          "raw_label": "特性描述",
+          "normalized_label": "特性描述",
+          "source": "template:精灵信息",
+          "example_value": "离场后，更换入场的精灵回复20%生命且免疫寄生。"
+        }
+      ],
+      "example_values": {
+        "特性": [
+          "茶多酚"
+        ],
+        "特性描述": [
+          "离场后，更换入场的精灵回复20%生命且免疫寄生。"
+        ]
+      },
+      "templates_seen": [
+        "精灵信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "ability",
+      "page_type": "ability_embedded_species_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E7%81%AB%E8%8A%B1",
+      "page_title": "火花",
+      "pageid": 3171,
+      "revid": 27499,
+      "revision_timestamp": "2026-04-02T13:21:48Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "特性",
+          "normalized_label": "特性",
+          "source": "template:精灵信息",
+          "example_value": "助燃"
+        },
+        {
+          "raw_label": "特性描述",
+          "normalized_label": "特性描述",
+          "source": "template:精灵信息",
+          "example_value": "使用火系技能后，获得双攻+20%。"
+        }
+      ],
+      "example_values": {
+        "特性": [
+          "助燃"
+        ],
+        "特性描述": [
+          "使用火系技能后，获得双攻+20%。"
+        ]
+      },
+      "templates_seen": [
+        "精灵信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "ability",
+      "page_type": "ability_embedded_species_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E7%9F%AE%E8%84%9A%E7%88%AC%E7%88%AC",
+      "page_title": "矮脚爬爬",
+      "pageid": 7108,
+      "revid": 27623,
+      "revision_timestamp": "2026-04-02T13:24:14Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "特性",
+          "normalized_label": "特性",
+          "source": "template:精灵信息",
+          "example_value": "振奋虫心"
+        },
+        {
+          "raw_label": "特性描述",
+          "normalized_label": "特性描述",
+          "source": "template:精灵信息",
+          "example_value": "主动击败敌方后，己方队伍获得5次随机奉献。"
+        }
+      ],
+      "example_values": {
+        "特性": [
+          "振奋虫心"
+        ],
+        "特性描述": [
+          "主动击败敌方后，己方队伍获得5次随机奉献。"
+        ]
+      },
+      "templates_seen": [
+        "精灵信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "ability",
+      "page_type": "ability_embedded_species_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E8%BF%AA%E8%8E%AB",
+      "page_title": "迪莫",
+      "pageid": 3167,
+      "revid": 27495,
+      "revision_timestamp": "2026-04-02T13:21:46Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "特性",
+          "normalized_label": "特性",
+          "source": "template:精灵信息",
+          "example_value": "最好的伙伴"
+        },
+        {
+          "raw_label": "特性描述",
+          "normalized_label": "特性描述",
+          "source": "template:精灵信息",
+          "example_value": "造成克制伤害后，获得攻防速+20%，并回复2能量。"
+        }
+      ],
+      "example_values": {
+        "特性": [
+          "最好的伙伴"
+        ],
+        "特性描述": [
+          "造成克制伤害后，获得攻防速+20%，并回复2能量。"
+        ]
+      },
+      "templates_seen": [
+        "精灵信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "ability",
+      "page_type": "ability_embedded_species_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E9%98%BF%E5%B8%83",
+      "page_title": "阿布",
+      "pageid": 3503,
+      "revid": 15926,
+      "revision_timestamp": "2025-04-27T03:34:05Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "特性",
+          "normalized_label": "特性",
+          "source": "template:精灵信息",
+          "example_value": "超聚能"
+        },
+        {
+          "raw_label": "特性描述",
+          "normalized_label": "特性描述",
+          "source": "template:精灵信息",
+          "example_value": "蓄力时，聚能变为积蓄。"
+        }
+      ],
+      "example_values": {
+        "特性": [
+          "超聚能"
+        ],
+        "特性描述": [
+          "蓄力时，聚能变为积蓄。"
+        ]
+      },
+      "templates_seen": [
+        "精灵信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "ability",
+      "page_type": "ability_embedded_species_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E9%98%BF%E7%B1%B3%E4%BA%9A%E7%89%B9",
+      "page_title": "阿米亚特",
+      "pageid": 3283,
+      "revid": 27877,
+      "revision_timestamp": "2026-04-02T15:13:35Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "特性",
+          "normalized_label": "特性",
+          "source": "template:精灵信息",
+          "example_value": "石头大餐"
+        },
+        {
+          "raw_label": "特性描述",
+          "normalized_label": "特性描述",
+          "source": "template:精灵信息",
+          "example_value": "能量不足时，消耗5%生命，代替1能量。"
+        }
+      ],
+      "example_values": {
+        "特性": [
+          "石头大餐"
+        ],
+        "特性描述": [
+          "能量不足时，消耗5%生命，代替1能量。"
+        ]
+      },
+      "templates_seen": [
+        "精灵信息"
+      ],
+      "missing": false
+    },
+    {
+      "entity_type": "ability",
+      "page_type": "ability_embedded_species_detail",
+      "source_url": "https://wiki.biligame.com/rocom/%E9%98%BF%E7%B1%B3%E6%A8%B1",
+      "page_title": "阿米樱",
+      "pageid": 3284,
+      "revid": 27878,
+      "revision_timestamp": "2026-04-02T15:13:36Z",
+      "field_source_mode": "structured_block",
+      "candidate_fields": [
+        {
+          "raw_label": "特性",
+          "normalized_label": "特性",
+          "source": "template:精灵信息",
+          "example_value": "石头大餐"
+        },
+        {
+          "raw_label": "特性描述",
+          "normalized_label": "特性描述",
+          "source": "template:精灵信息",
+          "example_value": "能量不足时，消耗5%生命，代替1能量。"
+        }
+      ],
+      "example_values": {
+        "特性": [
+          "石头大餐"
+        ],
+        "特性描述": [
+          "能量不足时，消耗5%生命，代替1能量。"
+        ]
+      },
+      "templates_seen": [
+        "精灵信息"
+      ],
+      "missing": false
+    }
+  ]
+}

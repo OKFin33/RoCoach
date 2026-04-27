@@ -1,0 +1,55 @@
+{
+  "run_id": "2026-04-14Tclean_only_validation",
+  "started_at": "2026-04-14T01:19:14+00:00",
+  "finished_at": "2026-04-14T01:19:14+00:00",
+  "run_mode": "dry_run",
+  "api_base_url": "https://wiki.biligame.com/rocom/api.php",
+  "parser_version": "p1c-001",
+  "schema_version": "battle_dex_schema.v1",
+  "field_alignment_matrix_version": "field_alignment_matrix.v2",
+  "scopes": [
+    "species",
+    "move",
+    "ability_embedded"
+  ],
+  "limits": {
+    "species_detail_pages": 8,
+    "move_detail_pages": 8,
+    "ability_embedded_species_pages": 8
+  },
+  "artifact_files": {
+    "source_pages": "source_pages.jsonl",
+    "raw_template_snapshots": "raw_template_snapshots.jsonl",
+    "species_form_candidates": "species_form_candidates.jsonl",
+    "move_candidates": "move_candidates.jsonl",
+    "derived_ability_candidates": "derived_ability_candidates.jsonl",
+    "species_move_pool_candidates": "species_move_pool_candidates.jsonl",
+    "validation_events": "validation_events.jsonl",
+    "rejected_fields": "rejected_fields.jsonl",
+    "dry_run_diff": "dry_run_diff.json",
+    "summary": "summary.md",
+    "run_manifest": "run_manifest.json"
+  },
+  "counts": {
+    "source_pages": 10,
+    "raw_template_snapshots": 10,
+    "species_form_candidates": 5,
+    "move_candidates": 5,
+    "derived_ability_candidates": 5,
+    "species_move_pool_candidates": 226,
+    "validation_events": 229,
+    "rejected_fields": 54,
+    "unresolved_move_names": 154,
+    "ability_conflicts": 0
+  },
+  "validation_summary": {
+    "hard_reject": 0,
+    "warning": 229,
+    "info": 0
+  },
+  "hard_reject_count": 0,
+  "warning_count": 229,
+  "status": "completed_with_warnings",
+  "failure_reason": null,
+  "fetch_strategy": "cached_source_pages"
+}

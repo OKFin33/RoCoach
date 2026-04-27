@@ -1,0 +1,162 @@
+version: 2
+
+purpose: >
+  Internal analytical report schema for Phase 1.5 structure analysis.
+  This schema describes a report-shaped analytical payload. It is not the
+  default end-user conversational surface.
+
+applies_to:
+  - phase1_team_structure_reports
+  - lightweight advisor responses grounded in Engine output and approved semantic evidence
+
+boundary_note:
+  - this schema is an analytical/report representation
+  - future product surfaces may first synthesize the grounded content into
+    product-facing reasoning, then render it as a coach-style conversational
+    reply
+  - evidence, confidence, and grounding remain mandatory even when the default
+    UI does not foreground raw report sections
+
+fields:
+  summary:
+    type: string
+    required: true
+    description: >
+      High-level one-paragraph conclusion about the team's current structural quality.
+
+  major_risks:
+    type: array
+    required: true
+    items:
+      type: object
+      fields:
+        title:
+          type: string
+          required: true
+        severity:
+          type: string
+          required: true
+          enum: [high, medium, low]
+        explanation:
+          type: string
+          required: true
+        grounded_in:
+          type: array
+          required: true
+          items:
+            type: string
+
+  defensive_takeaways:
+    type: array
+    required: true
+    items:
+      type: object
+      fields:
+        theme:
+          type: string
+          required: true
+        explanation:
+          type: string
+          required: true
+        grounded_in:
+          type: array
+          required: true
+          items:
+            type: string
+
+  offensive_takeaways:
+    type: array
+    required: true
+    items:
+      type: object
+      fields:
+        theme:
+          type: string
+          required: true
+        explanation:
+          type: string
+          required: true
+        grounded_in:
+          type: array
+          required: true
+          items:
+            type: string
+
+  semantic_takeaways:
+    type: array
+    required: true
+    items:
+      type: object
+      fields:
+        theme:
+          type: string
+          required: true
+        explanation:
+          type: string
+          required: true
+        grounded_in:
+          type: array
+          required: true
+          items:
+            type: string
+        confidence:
+          type: string
+          required: true
+          enum: [confirmed, provisional, low_confidence]
+
+  patch_guidance:
+    type: object
+    required: true
+    fields:
+      primary_patch_types:
+        type: array
+        required: true
+        items:
+          type: string
+      conditional_dual_patch_types:
+        type: array
+        required: true
+        items:
+          type: string
+      explanation:
+        type: string
+        required: true
+      constraints:
+        type: array
+        required: true
+        items:
+          type: string
+
+  evidence_summary:
+    type: array
+    required: true
+    items:
+      type: string
+
+  confidence_notes:
+    type: array
+    required: true
+    items:
+      type: object
+      fields:
+        claim_scope:
+          type: string
+          required: true
+        confidence:
+          type: string
+          required: true
+          enum: [confirmed, provisional, low_confidence]
+        note:
+          type: string
+          required: true
+
+constraints:
+  - Every major risk must include at least one Engine-grounded item in `grounded_in`
+  - Patch guidance must distinguish default single-type direction from conditional dual-type options
+  - No field may recommend a specific species in Phase 1.5
+  - No field may claim current meta dominance without explicit low_confidence labeling
+  - Summary must not contradict Engine facts
+  - Semantic takeaways must not contradict Engine-grounded structure findings
+  - Semantic takeaways must surface uncertainty when they depend on mechanics notes or interpretive synthesis
+  - This schema may be transformed by synthesis/presentation layers, but those
+    layers may not alter factual content, grounding, or confidence tier

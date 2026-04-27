@@ -1,0 +1,932 @@
+{
+  "nodes": [
+    {
+      "id": "pages/archetypes/archetype_loops_v1.md",
+      "title": "Archetype Loops V1",
+      "content_class": "archetype_methodology",
+      "confidence": "provisional",
+      "sources": [
+        "wiki/raw/source_notes/2026-03-26_mainstream_pvp_archetype_deck.md",
+        "wiki/cache/光合武队0414/NoteGPT_《光合武队怎么玩？一期视频讲清它的底层逻辑》.txt"
+      ],
+      "a_layer_refs": [
+        "data/runtime/battle_dex.sqlite"
+      ]
+    },
+    {
+      "id": "pages/casebank/balance_bone_dragon_role_compression.md",
+      "title": "Balance Bone Dragon Role Compression",
+      "content_class": "casebank",
+      "confidence": "provisional",
+      "sources": [
+        "wiki/cache/超长精灵评级0412/NoteGPT_一口气讲明白所有宠物强度？！洛克王国世界pvp排行榜.txt",
+        "wiki/pages/team_building/core_team_construction.md",
+        "wiki/pages/roles/role_taxonomy.md",
+        "wiki/pages/mechanics/morale_and_revive.md"
+      ],
+      "a_layer_refs": [
+        "data/runtime/battle_dex.sqlite"
+      ]
+    },
+    {
+      "id": "pages/casebank/firefox_wingking_balance_team_reconciliation.md",
+      "title": "Fire Fox Wing King Balance Team Reconciliation",
+      "content_class": "casebank",
+      "confidence": "provisional",
+      "sources": [
+        "wiki/raw/source_notes/2026-04-22_firefox_wingking_balance_team_share.md",
+        "wiki/pages/team_building/core_team_construction.md",
+        "wiki/pages/roles/role_taxonomy.md",
+        "wiki/pages/mechanics/speed_priority_and_swift.md",
+        "wiki/pages/mechanics/transmission_and_skill_slots.md",
+        "wiki/pages/mechanics/entry_exit_and_replacement_timing.md",
+        "wiki/pages/mechanics/marks_and_persistence.md"
+      ],
+      "a_layer_refs": [
+        "data/runtime/battle_dex.sqlite"
+      ]
+    },
+    {
+      "id": "pages/casebank/synthetic_team_review_protocol.md",
+      "title": "Synthetic Team Review Protocol",
+      "content_class": "casebank",
+      "confidence": "provisional",
+      "sources": [
+        "specs/battle_wiki_architecture_spec.md",
+        "wiki/schema/provenance_policy.md",
+        "wiki/pages/team_building/core_team_construction.md",
+        "wiki/pages/recommendation_taste/early_meta_uncertainty.md"
+      ],
+      "a_layer_refs": [
+        "data/runtime/battle_dex.sqlite"
+      ]
+    },
+    {
+      "id": "pages/mechanics/bug_contribution_fengxian.md",
+      "title": "Bug Contribution (奉献)",
+      "content_class": "mechanics",
+      "confidence": "provisional",
+      "sources": [
+        "wiki/raw/source_notes/2026-04-21_user_reviewed_mechanism_batch_v2.md",
+        "wiki/raw/source_notes/2026-04-02_bilibili_18_type_mechanism_detailed_extraction.md",
+        "wiki/raw/source_notes/2026-03-26_mainstream_pvp_archetype_deck.md"
+      ],
+      "a_layer_refs": [
+        "data/runtime/battle_dex.sqlite"
+      ]
+    },
+    {
+      "id": "pages/mechanics/burn_timing_and_full_combustion.md",
+      "title": "Burn Timing And Full Combustion",
+      "content_class": "mechanics",
+      "confidence": "provisional",
+      "sources": [
+        "wiki/raw/source_notes/2026-04-21_user_verified_burn_full_combustion_timing.md",
+        "wiki/raw/source_notes/2026-04-02_bilibili_18_type_mechanism_detailed_extraction.md",
+        "wiki/raw/source_notes/2026-04-02_bilibili_battle_system_intro_18_types.md"
+      ],
+      "a_layer_refs": [
+        "data/runtime/battle_dex.sqlite",
+        "data/reference/luoke_world_type_database_v2.json"
+      ]
+    },
+    {
+      "id": "pages/mechanics/burst_trigger_and_entry_actions.md",
+      "title": "Burst Trigger And Entry Actions",
+      "content_class": "mechanics",
+      "confidence": "provisional",
+      "sources": [
+        "wiki/raw/source_notes/2026-04-21_user_reviewed_mechanism_batch_v2.md",
+        "wiki/raw/source_notes/2026-04-02_bilibili_18_type_mechanism_detailed_extraction.md",
+        "wiki/raw/source_notes/2026-03-26_mainstream_pvp_archetype_deck.md"
+      ],
+      "a_layer_refs": [
+        "data/runtime/battle_dex.sqlite"
+      ]
+    },
+    {
+      "id": "pages/mechanics/charge_and_release.md",
+      "title": "Charge And Release",
+      "content_class": "mechanics",
+      "confidence": "provisional",
+      "sources": [
+        "wiki/raw/source_notes/2026-04-21_user_reviewed_mechanism_batch_v2.md",
+        "wiki/raw/source_notes/2026-04-02_bilibili_18_type_mechanism_detailed_extraction.md",
+        "docs/manual_battle_data_supplement_2026-04-14.md"
+      ],
+      "a_layer_refs": [
+        "data/runtime/battle_dex.sqlite"
+      ]
+    },
+    {
+      "id": "pages/mechanics/degeneration_and_menghua.md",
+      "title": "Degeneration And 萌化",
+      "content_class": "mechanics",
+      "confidence": "provisional",
+      "sources": [
+        "wiki/raw/source_notes/2026-04-21_user_reviewed_mechanism_batch_v2.md",
+        "wiki/raw/source_notes/2026-04-02_bilibili_18_type_mechanism_detailed_extraction.md",
+        "wiki/raw/source_notes/2026-04-02_bilibili_battle_system_intro_18_types.md"
+      ],
+      "a_layer_refs": [
+        "data/runtime/battle_dex.sqlite"
+      ]
+    },
+    {
+      "id": "pages/mechanics/energy_actions_and_focus.md",
+      "title": "Energy Actions And Focus",
+      "content_class": "mechanics",
+      "confidence": "provisional",
+      "sources": [
+        "wiki/raw/source_notes/2026-04-21_user_reviewed_mechanism_batch_v2.md",
+        "wiki/raw/source_notes/2026-04-02_bilibili_18_type_mechanism_detailed_extraction.md",
+        "wiki/raw/source_notes/2026-03-23_bilibili_basic_pvp_type_bloodline_move_categories.md",
+        "docs/research/luoke_world_pvp_domain_primer_v2.md"
+      ],
+      "a_layer_refs": [
+        "data/runtime/battle_dex.sqlite"
+      ]
+    },
+    {
+      "id": "pages/mechanics/entry_exit_and_replacement_timing.md",
+      "title": "Entry, Exit, And Replacement Timing",
+      "content_class": "mechanics",
+      "confidence": "provisional",
+      "sources": [
+        "wiki/raw/source_notes/2026-04-21_user_reviewed_mechanism_batch_v2.md",
+        "wiki/raw/source_notes/2026-04-02_bilibili_18_type_mechanism_detailed_extraction.md",
+        "wiki/pages/mechanics/speed_priority_and_swift.md",
+        "wiki/pages/mechanics/burst_trigger_and_entry_actions.md",
+        "wiki/pages/mechanics/marks_and_persistence.md"
+      ],
+      "a_layer_refs": [
+        "data/runtime/battle_dex.sqlite"
+      ]
+    },
+    {
+      "id": "pages/mechanics/marks_and_persistence.md",
+      "title": "Marks And Persistence",
+      "content_class": "mechanics",
+      "confidence": "provisional",
+      "sources": [
+        "wiki/raw/source_notes/2026-04-07_bilibili_mark_tutorial_screenshot.md",
+        "wiki/raw/source_notes/2026-04-02_bilibili_battle_system_intro_18_types.md",
+        "wiki/cache/PVP扫盲0419/NoteGPT_一口气让你彻底学会精灵对战！PVP扫盲，新手必看！.txt",
+        "docs/manual_battle_data_supplement_2026-04-14.md"
+      ],
+      "a_layer_refs": [
+        "docs/manual_battle_data_supplement_2026-04-14.md",
+        "data/reference/luoke_world_type_database_v2.json"
+      ]
+    },
+    {
+      "id": "pages/mechanics/morale_and_revive.md",
+      "title": "Morale And Revive",
+      "content_class": "mechanics",
+      "confidence": "provisional",
+      "sources": [
+        "wiki/cache/数值基础0405/NoteGPT_玩懂PVP！洛克王国属性&伤害计算公式！「洛克王国：世界」.txt",
+        "wiki/cache/萌新百科0411/NoteGPT_【洛克王国：世界】保姆级萌新大百科.txt",
+        "wiki/raw/source_notes/2026-04-21_user_verified_morale_revive_rule.md"
+      ],
+      "a_layer_refs": [
+        "data/runtime/battle_dex.sqlite"
+      ]
+    },
+    {
+      "id": "pages/mechanics/pvp_stat_normalization_and_iv_selection.md",
+      "title": "PvP Stat Normalization And IV Selection",
+      "content_class": "mechanics",
+      "confidence": "provisional",
+      "sources": [
+        "wiki/raw/source_notes/2026-03-25_bilibili_iv_nature_stat_training.md",
+        "wiki/cache/PVP扫盲0419/NoteGPT_一口气让你彻底学会精灵对战！PVP扫盲，新手必看！.txt",
+        "wiki/cache/速度线:词条 0403/NoteGPT_【洛克王国世界】pvp入坑指南硬核知识，全图鉴速度线计算_所有词条解释_配队逻辑.txt"
+      ],
+      "a_layer_refs": [
+        "data/reference/luoke_world_type_database_v2.json",
+        "data/runtime/battle_dex.sqlite"
+      ]
+    },
+    {
+      "id": "pages/mechanics/response_counterplay.md",
+      "title": "Response Counterplay",
+      "content_class": "mechanics",
+      "confidence": "provisional",
+      "sources": [
+        "data/runtime/battle_dex.sqlite",
+        "docs/research/luoke_world_pvp_domain_primer_v2.md",
+        "wiki/pages/mechanics/marks_and_persistence.md"
+      ],
+      "a_layer_refs": [
+        "data/runtime/battle_dex.sqlite",
+        "specs/battle_dex_sqlite_schema_v1.sql",
+        "data/reference/luoke_world_type_database_v2.json"
+      ]
+    },
+    {
+      "id": "pages/mechanics/speed_priority_and_swift.md",
+      "title": "Speed, Priority, And Swift",
+      "content_class": "mechanics",
+      "confidence": "provisional",
+      "sources": [
+        "wiki/raw/source_notes/2026-04-02_bilibili_battle_system_intro_18_types.md",
+        "wiki/raw/source_notes/2026-04-02_bilibili_18_type_mechanism_detailed_extraction.md",
+        "wiki/cache/速度线:词条 0403/NoteGPT_【洛克王国世界】pvp入坑指南硬核知识，全图鉴速度线计算_所有词条解释_配队逻辑.txt",
+        "docs/research/luoke_world_pvp_domain_primer_v2.md"
+      ],
+      "a_layer_refs": [
+        "data/runtime/battle_dex.sqlite",
+        "data/reference/luoke_world_type_database_v2.json"
+      ]
+    },
+    {
+      "id": "pages/mechanics/status_effects_and_persistence.md",
+      "title": "Status Effects And Persistence",
+      "content_class": "mechanics",
+      "confidence": "provisional",
+      "sources": [
+        "wiki/raw/source_notes/2026-04-21_user_reviewed_mechanism_batch_v2.md",
+        "wiki/raw/source_notes/2026-04-02_bilibili_18_type_mechanism_detailed_extraction.md",
+        "wiki/raw/source_notes/2026-04-02_bilibili_battle_system_intro_18_types.md",
+        "wiki/pages/mechanics/burn_timing_and_full_combustion.md",
+        "wiki/pages/mechanics/weather_and_field_effects.md"
+      ],
+      "a_layer_refs": [
+        "data/runtime/battle_dex.sqlite",
+        "data/reference/luoke_world_type_database_v2.json"
+      ]
+    },
+    {
+      "id": "pages/mechanics/transmission_and_skill_slots.md",
+      "title": "Transmission And Skill Slots",
+      "content_class": "mechanics",
+      "confidence": "provisional",
+      "sources": [
+        "wiki/raw/source_notes/2026-04-21_user_reviewed_mechanism_batch_v2.md",
+        "wiki/raw/source_notes/2026-04-02_bilibili_18_type_mechanism_detailed_extraction.md",
+        "wiki/raw/source_notes/2026-04-02_bilibili_battle_system_intro_18_types.md"
+      ],
+      "a_layer_refs": [
+        "data/runtime/battle_dex.sqlite"
+      ]
+    },
+    {
+      "id": "pages/mechanics/type_bloodline_move_boundary.md",
+      "title": "Type, Bloodline, And Move Boundary",
+      "content_class": "mechanics",
+      "confidence": "provisional",
+      "sources": [
+        "wiki/raw/source_notes/2026-03-23_bilibili_basic_pvp_type_bloodline_move_categories.md",
+        "wiki/raw/source_notes/2026-04-02_bilibili_battle_system_intro_18_types.md"
+      ],
+      "a_layer_refs": [
+        "docs/domain_primer.md",
+        "docs/combat_ontology.md",
+        "data/runtime/battle_dex.sqlite",
+        "specs/battle_dex_sqlite_schema_v1.sql"
+      ]
+    },
+    {
+      "id": "pages/mechanics/weather_and_field_effects.md",
+      "title": "Weather And Field Effects",
+      "content_class": "mechanics",
+      "confidence": "provisional",
+      "sources": [
+        "wiki/raw/source_notes/2026-04-04_bilibili_weather_tutorial.md",
+        "wiki/cache/天气速成0404/NoteGPT_《洛克王国：世界》魔法学院新生速成，玩转天气机制！.txt",
+        "wiki/cache/速度线:词条 0403/NoteGPT_【洛克王国世界】pvp入坑指南硬核知识，全图鉴速度线计算_所有词条解释_配队逻辑.txt",
+        "wiki/cache/光合武队0414/NoteGPT_《光合武队怎么玩？一期视频讲清它的底层逻辑》.txt"
+      ],
+      "a_layer_refs": [
+        "data/reference/luoke_world_type_database_v2.json",
+        "data/runtime/battle_dex.sqlite"
+      ]
+    },
+    {
+      "id": "pages/recommendation_taste/early_meta_uncertainty.md",
+      "title": "Early Meta Uncertainty",
+      "content_class": "recommendation_taste",
+      "confidence": "provisional",
+      "sources": [
+        "wiki/raw/cache_inventory_2026-04-20.md",
+        "wiki/raw/source_notes/2026-03-26_mainstream_pvp_archetype_deck.md",
+        "wiki/cache/超长精灵评级0412/NoteGPT_一口气讲明白所有宠物强度？！洛克王国世界pvp排行榜.txt",
+        "wiki/cache/熟悉热门技能特性0417/NoteGPT_洛克王国PVP焚决·上集（缓解精灵培养焦虑，熟悉热门技能特性）.txt"
+      ],
+      "a_layer_refs": [
+        "data/runtime/battle_dex.sqlite"
+      ]
+    },
+    {
+      "id": "pages/roles/role_taxonomy.md",
+      "title": "Role Taxonomy",
+      "content_class": "role_methodology",
+      "confidence": "provisional",
+      "sources": [
+        "wiki/cache/冠军队伍逻辑0308/NoteGPT_冠军配队的底层逻辑！【洛世界PVP教学】.txt",
+        "wiki/raw/source_notes/2026-03-26_mainstream_pvp_archetype_deck.md",
+        "wiki/pages/team_building/core_team_construction.md"
+      ],
+      "a_layer_refs": [
+        "data/runtime/battle_dex.sqlite"
+      ]
+    },
+    {
+      "id": "pages/team_building/core_team_construction.md",
+      "title": "Core Team Construction",
+      "content_class": "team_building",
+      "confidence": "provisional",
+      "sources": [
+        "wiki/raw/source_notes/2026-03-26_mainstream_pvp_archetype_deck.md",
+        "wiki/cache/冠军队伍逻辑0308/NoteGPT_冠军配队的底层逻辑！【洛世界PVP教学】.txt",
+        "wiki/cache/联防先读0327/NoteGPT_从零开始入门洛克王国PVP！用联防和先读来构筑战斗的基础！.txt"
+      ],
+      "a_layer_refs": [
+        "data/runtime/battle_dex.sqlite"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "pages/archetypes/archetype_loops_v1.md",
+      "to": "data/runtime/battle_dex.sqlite",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/archetypes/archetype_loops_v1.md",
+      "to": "wiki/raw/source_notes/2026-03-26_mainstream_pvp_archetype_deck.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/archetypes/archetype_loops_v1.md",
+      "to": "wiki/cache/光合武队0414/NoteGPT_《光合武队怎么玩？一期视频讲清它的底层逻辑》.txt",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/casebank/balance_bone_dragon_role_compression.md",
+      "to": "data/runtime/battle_dex.sqlite",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/casebank/balance_bone_dragon_role_compression.md",
+      "to": "wiki/cache/超长精灵评级0412/NoteGPT_一口气讲明白所有宠物强度？！洛克王国世界pvp排行榜.txt",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/casebank/balance_bone_dragon_role_compression.md",
+      "to": "wiki/pages/team_building/core_team_construction.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/casebank/balance_bone_dragon_role_compression.md",
+      "to": "wiki/pages/roles/role_taxonomy.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/casebank/balance_bone_dragon_role_compression.md",
+      "to": "wiki/pages/mechanics/morale_and_revive.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/casebank/firefox_wingking_balance_team_reconciliation.md",
+      "to": "data/runtime/battle_dex.sqlite",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/casebank/firefox_wingking_balance_team_reconciliation.md",
+      "to": "wiki/raw/source_notes/2026-04-22_firefox_wingking_balance_team_share.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/casebank/firefox_wingking_balance_team_reconciliation.md",
+      "to": "wiki/pages/team_building/core_team_construction.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/casebank/firefox_wingking_balance_team_reconciliation.md",
+      "to": "wiki/pages/roles/role_taxonomy.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/casebank/firefox_wingking_balance_team_reconciliation.md",
+      "to": "wiki/pages/mechanics/speed_priority_and_swift.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/casebank/firefox_wingking_balance_team_reconciliation.md",
+      "to": "wiki/pages/mechanics/transmission_and_skill_slots.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/casebank/firefox_wingking_balance_team_reconciliation.md",
+      "to": "wiki/pages/mechanics/entry_exit_and_replacement_timing.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/casebank/firefox_wingking_balance_team_reconciliation.md",
+      "to": "wiki/pages/mechanics/marks_and_persistence.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/casebank/synthetic_team_review_protocol.md",
+      "to": "data/runtime/battle_dex.sqlite",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/casebank/synthetic_team_review_protocol.md",
+      "to": "specs/battle_wiki_architecture_spec.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/casebank/synthetic_team_review_protocol.md",
+      "to": "wiki/schema/provenance_policy.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/casebank/synthetic_team_review_protocol.md",
+      "to": "wiki/pages/team_building/core_team_construction.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/casebank/synthetic_team_review_protocol.md",
+      "to": "wiki/pages/recommendation_taste/early_meta_uncertainty.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/bug_contribution_fengxian.md",
+      "to": "data/runtime/battle_dex.sqlite",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/bug_contribution_fengxian.md",
+      "to": "wiki/raw/source_notes/2026-04-21_user_reviewed_mechanism_batch_v2.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/bug_contribution_fengxian.md",
+      "to": "wiki/raw/source_notes/2026-04-02_bilibili_18_type_mechanism_detailed_extraction.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/bug_contribution_fengxian.md",
+      "to": "wiki/raw/source_notes/2026-03-26_mainstream_pvp_archetype_deck.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/burn_timing_and_full_combustion.md",
+      "to": "data/runtime/battle_dex.sqlite",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/burn_timing_and_full_combustion.md",
+      "to": "data/reference/luoke_world_type_database_v2.json",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/burn_timing_and_full_combustion.md",
+      "to": "wiki/raw/source_notes/2026-04-21_user_verified_burn_full_combustion_timing.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/burn_timing_and_full_combustion.md",
+      "to": "wiki/raw/source_notes/2026-04-02_bilibili_18_type_mechanism_detailed_extraction.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/burn_timing_and_full_combustion.md",
+      "to": "wiki/raw/source_notes/2026-04-02_bilibili_battle_system_intro_18_types.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/burst_trigger_and_entry_actions.md",
+      "to": "data/runtime/battle_dex.sqlite",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/burst_trigger_and_entry_actions.md",
+      "to": "wiki/raw/source_notes/2026-04-21_user_reviewed_mechanism_batch_v2.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/burst_trigger_and_entry_actions.md",
+      "to": "wiki/raw/source_notes/2026-04-02_bilibili_18_type_mechanism_detailed_extraction.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/burst_trigger_and_entry_actions.md",
+      "to": "wiki/raw/source_notes/2026-03-26_mainstream_pvp_archetype_deck.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/charge_and_release.md",
+      "to": "data/runtime/battle_dex.sqlite",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/charge_and_release.md",
+      "to": "wiki/raw/source_notes/2026-04-21_user_reviewed_mechanism_batch_v2.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/charge_and_release.md",
+      "to": "wiki/raw/source_notes/2026-04-02_bilibili_18_type_mechanism_detailed_extraction.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/charge_and_release.md",
+      "to": "docs/manual_battle_data_supplement_2026-04-14.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/degeneration_and_menghua.md",
+      "to": "data/runtime/battle_dex.sqlite",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/degeneration_and_menghua.md",
+      "to": "wiki/raw/source_notes/2026-04-21_user_reviewed_mechanism_batch_v2.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/degeneration_and_menghua.md",
+      "to": "wiki/raw/source_notes/2026-04-02_bilibili_18_type_mechanism_detailed_extraction.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/degeneration_and_menghua.md",
+      "to": "wiki/raw/source_notes/2026-04-02_bilibili_battle_system_intro_18_types.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/energy_actions_and_focus.md",
+      "to": "data/runtime/battle_dex.sqlite",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/energy_actions_and_focus.md",
+      "to": "wiki/raw/source_notes/2026-04-21_user_reviewed_mechanism_batch_v2.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/energy_actions_and_focus.md",
+      "to": "wiki/raw/source_notes/2026-04-02_bilibili_18_type_mechanism_detailed_extraction.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/energy_actions_and_focus.md",
+      "to": "wiki/raw/source_notes/2026-03-23_bilibili_basic_pvp_type_bloodline_move_categories.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/energy_actions_and_focus.md",
+      "to": "docs/research/luoke_world_pvp_domain_primer_v2.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/entry_exit_and_replacement_timing.md",
+      "to": "data/runtime/battle_dex.sqlite",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/entry_exit_and_replacement_timing.md",
+      "to": "wiki/raw/source_notes/2026-04-21_user_reviewed_mechanism_batch_v2.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/entry_exit_and_replacement_timing.md",
+      "to": "wiki/raw/source_notes/2026-04-02_bilibili_18_type_mechanism_detailed_extraction.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/entry_exit_and_replacement_timing.md",
+      "to": "wiki/pages/mechanics/speed_priority_and_swift.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/entry_exit_and_replacement_timing.md",
+      "to": "wiki/pages/mechanics/burst_trigger_and_entry_actions.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/entry_exit_and_replacement_timing.md",
+      "to": "wiki/pages/mechanics/marks_and_persistence.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/marks_and_persistence.md",
+      "to": "docs/manual_battle_data_supplement_2026-04-14.md",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/marks_and_persistence.md",
+      "to": "data/reference/luoke_world_type_database_v2.json",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/marks_and_persistence.md",
+      "to": "wiki/raw/source_notes/2026-04-07_bilibili_mark_tutorial_screenshot.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/marks_and_persistence.md",
+      "to": "wiki/raw/source_notes/2026-04-02_bilibili_battle_system_intro_18_types.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/marks_and_persistence.md",
+      "to": "wiki/cache/PVP扫盲0419/NoteGPT_一口气让你彻底学会精灵对战！PVP扫盲，新手必看！.txt",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/marks_and_persistence.md",
+      "to": "docs/manual_battle_data_supplement_2026-04-14.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/morale_and_revive.md",
+      "to": "data/runtime/battle_dex.sqlite",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/morale_and_revive.md",
+      "to": "wiki/cache/数值基础0405/NoteGPT_玩懂PVP！洛克王国属性&伤害计算公式！「洛克王国：世界」.txt",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/morale_and_revive.md",
+      "to": "wiki/cache/萌新百科0411/NoteGPT_【洛克王国：世界】保姆级萌新大百科.txt",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/morale_and_revive.md",
+      "to": "wiki/raw/source_notes/2026-04-21_user_verified_morale_revive_rule.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/pvp_stat_normalization_and_iv_selection.md",
+      "to": "data/reference/luoke_world_type_database_v2.json",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/pvp_stat_normalization_and_iv_selection.md",
+      "to": "data/runtime/battle_dex.sqlite",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/pvp_stat_normalization_and_iv_selection.md",
+      "to": "wiki/raw/source_notes/2026-03-25_bilibili_iv_nature_stat_training.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/pvp_stat_normalization_and_iv_selection.md",
+      "to": "wiki/cache/PVP扫盲0419/NoteGPT_一口气让你彻底学会精灵对战！PVP扫盲，新手必看！.txt",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/pvp_stat_normalization_and_iv_selection.md",
+      "to": "wiki/cache/速度线:词条 0403/NoteGPT_【洛克王国世界】pvp入坑指南硬核知识，全图鉴速度线计算_所有词条解释_配队逻辑.txt",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/response_counterplay.md",
+      "to": "data/runtime/battle_dex.sqlite",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/response_counterplay.md",
+      "to": "specs/battle_dex_sqlite_schema_v1.sql",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/response_counterplay.md",
+      "to": "data/reference/luoke_world_type_database_v2.json",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/response_counterplay.md",
+      "to": "data/runtime/battle_dex.sqlite",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/response_counterplay.md",
+      "to": "docs/research/luoke_world_pvp_domain_primer_v2.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/response_counterplay.md",
+      "to": "wiki/pages/mechanics/marks_and_persistence.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/speed_priority_and_swift.md",
+      "to": "data/runtime/battle_dex.sqlite",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/speed_priority_and_swift.md",
+      "to": "data/reference/luoke_world_type_database_v2.json",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/speed_priority_and_swift.md",
+      "to": "wiki/raw/source_notes/2026-04-02_bilibili_battle_system_intro_18_types.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/speed_priority_and_swift.md",
+      "to": "wiki/raw/source_notes/2026-04-02_bilibili_18_type_mechanism_detailed_extraction.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/speed_priority_and_swift.md",
+      "to": "wiki/cache/速度线:词条 0403/NoteGPT_【洛克王国世界】pvp入坑指南硬核知识，全图鉴速度线计算_所有词条解释_配队逻辑.txt",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/speed_priority_and_swift.md",
+      "to": "docs/research/luoke_world_pvp_domain_primer_v2.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/status_effects_and_persistence.md",
+      "to": "data/runtime/battle_dex.sqlite",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/status_effects_and_persistence.md",
+      "to": "data/reference/luoke_world_type_database_v2.json",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/status_effects_and_persistence.md",
+      "to": "wiki/raw/source_notes/2026-04-21_user_reviewed_mechanism_batch_v2.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/status_effects_and_persistence.md",
+      "to": "wiki/raw/source_notes/2026-04-02_bilibili_18_type_mechanism_detailed_extraction.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/status_effects_and_persistence.md",
+      "to": "wiki/raw/source_notes/2026-04-02_bilibili_battle_system_intro_18_types.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/status_effects_and_persistence.md",
+      "to": "wiki/pages/mechanics/burn_timing_and_full_combustion.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/status_effects_and_persistence.md",
+      "to": "wiki/pages/mechanics/weather_and_field_effects.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/transmission_and_skill_slots.md",
+      "to": "data/runtime/battle_dex.sqlite",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/transmission_and_skill_slots.md",
+      "to": "wiki/raw/source_notes/2026-04-21_user_reviewed_mechanism_batch_v2.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/transmission_and_skill_slots.md",
+      "to": "wiki/raw/source_notes/2026-04-02_bilibili_18_type_mechanism_detailed_extraction.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/transmission_and_skill_slots.md",
+      "to": "wiki/raw/source_notes/2026-04-02_bilibili_battle_system_intro_18_types.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/type_bloodline_move_boundary.md",
+      "to": "docs/domain_primer.md",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/type_bloodline_move_boundary.md",
+      "to": "docs/combat_ontology.md",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/type_bloodline_move_boundary.md",
+      "to": "data/runtime/battle_dex.sqlite",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/type_bloodline_move_boundary.md",
+      "to": "specs/battle_dex_sqlite_schema_v1.sql",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/type_bloodline_move_boundary.md",
+      "to": "wiki/raw/source_notes/2026-03-23_bilibili_basic_pvp_type_bloodline_move_categories.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/type_bloodline_move_boundary.md",
+      "to": "wiki/raw/source_notes/2026-04-02_bilibili_battle_system_intro_18_types.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/weather_and_field_effects.md",
+      "to": "data/reference/luoke_world_type_database_v2.json",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/weather_and_field_effects.md",
+      "to": "data/runtime/battle_dex.sqlite",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/mechanics/weather_and_field_effects.md",
+      "to": "wiki/raw/source_notes/2026-04-04_bilibili_weather_tutorial.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/weather_and_field_effects.md",
+      "to": "wiki/cache/天气速成0404/NoteGPT_《洛克王国：世界》魔法学院新生速成，玩转天气机制！.txt",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/weather_and_field_effects.md",
+      "to": "wiki/cache/速度线:词条 0403/NoteGPT_【洛克王国世界】pvp入坑指南硬核知识，全图鉴速度线计算_所有词条解释_配队逻辑.txt",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/mechanics/weather_and_field_effects.md",
+      "to": "wiki/cache/光合武队0414/NoteGPT_《光合武队怎么玩？一期视频讲清它的底层逻辑》.txt",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/recommendation_taste/early_meta_uncertainty.md",
+      "to": "data/runtime/battle_dex.sqlite",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/recommendation_taste/early_meta_uncertainty.md",
+      "to": "wiki/raw/cache_inventory_2026-04-20.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/recommendation_taste/early_meta_uncertainty.md",
+      "to": "wiki/raw/source_notes/2026-03-26_mainstream_pvp_archetype_deck.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/recommendation_taste/early_meta_uncertainty.md",
+      "to": "wiki/cache/超长精灵评级0412/NoteGPT_一口气讲明白所有宠物强度？！洛克王国世界pvp排行榜.txt",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/recommendation_taste/early_meta_uncertainty.md",
+      "to": "wiki/cache/熟悉热门技能特性0417/NoteGPT_洛克王国PVP焚决·上集（缓解精灵培养焦虑，熟悉热门技能特性）.txt",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/roles/role_taxonomy.md",
+      "to": "data/runtime/battle_dex.sqlite",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/roles/role_taxonomy.md",
+      "to": "wiki/cache/冠军队伍逻辑0308/NoteGPT_冠军配队的底层逻辑！【洛世界PVP教学】.txt",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/roles/role_taxonomy.md",
+      "to": "wiki/raw/source_notes/2026-03-26_mainstream_pvp_archetype_deck.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/roles/role_taxonomy.md",
+      "to": "wiki/pages/team_building/core_team_construction.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/team_building/core_team_construction.md",
+      "to": "data/runtime/battle_dex.sqlite",
+      "type": "a_layer_ref"
+    },
+    {
+      "from": "pages/team_building/core_team_construction.md",
+      "to": "wiki/raw/source_notes/2026-03-26_mainstream_pvp_archetype_deck.md",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/team_building/core_team_construction.md",
+      "to": "wiki/cache/冠军队伍逻辑0308/NoteGPT_冠军配队的底层逻辑！【洛世界PVP教学】.txt",
+      "type": "source_ref"
+    },
+    {
+      "from": "pages/team_building/core_team_construction.md",
+      "to": "wiki/cache/联防先读0327/NoteGPT_从零开始入门洛克王国PVP！用联防和先读来构筑战斗的基础！.txt",
+      "type": "source_ref"
+    }
+  ]
+}

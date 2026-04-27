@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 760" fill="none">
+  <title>Roco V1 paper frame</title>
+  <desc>RN-consumable SVG frame. Render with react-native-svg Path over a cream paper fill. Content safe inset: top 34, right 22, bottom 28, left 22.</desc>
+  <path
+    d="M33 12 C25 12 18 17 15 25 C12 33 13 58 13 74 L13 180 L10 190 L14 200 L14 454 L11 463 L15 474 L15 686 C15 719 22 744 49 746 C100 750 285 750 344 747 C364 746 375 734 376 711 L376 582 L372 574 L376 566 L376 340 L380 332 L376 324 L376 54 C376 29 365 17 340 16 C295 15 256 18 222 16 L211 20 L198 16 C147 16 91 14 52 15 L44 20 L33 12 Z"
+    fill="#FFF9EB"
+    stroke="#171717"
+    stroke-width="4"
+    stroke-linejoin="round"
+    stroke-linecap="round"
+  />
+  <path
+    d="M31 17 C25 18 21 22 19 29 C17 39 18 117 18 178 M18 205 L18 456 M19 476 L20 685 C21 714 27 738 51 740"
+    stroke="#3A3427"
+    stroke-width="1.5"
+    stroke-linecap="round"
+    opacity="0.55"
+  />
+  <path
+    d="M56 20 C100 18 150 20 195 20 L208 24 L221 20 C263 22 300 19 340 20 C360 21 370 32 370 55"
+    stroke="#3A3427"
+    stroke-width="1.5"
+    stroke-linecap="round"
+    opacity="0.45"
+  />
+  <path
+    d="M24 705 C23 727 35 739 58 741 C116 745 278 745 342 742 C359 741 369 730 370 711"
+    stroke="#3A3427"
+    stroke-width="1.5"
+    stroke-linecap="round"
+    opacity="0.38"
+  />
+</svg>

@@ -1,0 +1,202 @@
+version: 1
+
+status: deprecated_pre_p1a
+
+superseded_by:
+  - specs/field_alignment_matrix.yaml
+  - docs/wiki_field_discovery_review_2026-04-13.md
+
+warning: >
+  This early draft predates P1a wiki field discovery and contains imported
+  assumptions such as accuracy, PP, and non-game-native move category names.
+  It is not authoritative for P1b schema work. Replace it from the reviewed
+  field alignment matrix instead of patching it in place.
+
+enums:
+  role_tags:
+    - primary_breaker
+    - secondary_breaker
+    - cleaner
+    - bulky_pivot
+    - wall
+    - support
+    - speed_control
+    - hazard_setter
+    - hazard_control
+    - status_spreader
+    - setup_sweeper
+    - revenge_killer
+    - tech_slot
+  archetypes:
+    - stall
+    - balance
+    - bulky_offense
+    - hyper_offense
+    - pivot_offense
+    - anti_meta
+  meta_source_types:
+    - ladder
+    - tournament
+    - curated
+    - synthetic
+
+entities:
+  species:
+    key: species_key
+    fields:
+      species_key: string
+      dex_no: string
+      base_name: string
+      form_name: string
+      page_slug: string
+      primary_type: string
+      secondary_type: string|null
+      base_stats:
+        hp: integer
+        atk: integer
+        def: integer
+        spa: integer
+        spd: integer
+        spe: integer
+      bst: integer
+      abilities: string[]
+      move_ids: string[]
+      derived_features:
+        recovery: boolean
+        hazard_setter: boolean
+        hazard_control: boolean
+        pivot_move: boolean
+        priority_move: boolean
+        setup_move: boolean
+        reliable_status: boolean
+        burst_damage: boolean
+        sustained_damage: boolean
+        anti_setup: boolean
+        speed_control: boolean
+
+  move:
+    key: move_id
+    fields:
+      move_id: string
+      move_name: string
+      move_type: string
+      category: physical|special|status
+      power: integer|null
+      accuracy: integer|null
+      pp: integer|null
+      priority: integer
+      target_mode: string
+      tags: string[]
+      effects:
+        inflict_status: string|null
+        heal_ratio: number|null
+        self_boost: string[]
+        enemy_debuff: string[]
+        pivot: boolean
+        hazard_set: boolean
+        hazard_clear: boolean
+
+  ability:
+    key: ability_id
+    fields:
+      ability_id: string
+      ability_name: string
+      tags: string[]
+      description: string
+      battle_effects: string[]
+
+  team_slot:
+    fields:
+      slot_index: integer
+      species_key: string|null
+      nickname: string|null
+      primary_type: string
+      secondary_type: string|null
+      selected_ability: string|null
+      selected_moves: string[]
+      item: string|null
+
+  team_analysis_request:
+    fields:
+      team_id: string|null
+      slots: team_slot[]
+      goals:
+        preserve_bulk: boolean
+        preserve_speed: boolean
+        prefer_pivot_play: boolean
+        prefer_status_game: boolean
+        avoid_duplicate_weakness: boolean
+      target_archetypes: string[]
+      threat_watchlist: string[]
+      meta_snapshot_id: string|null
+
+  role_score:
+    fields:
+      role_tag: string
+      score: number
+      evidence: string[]
+
+  species_role_report:
+    fields:
+      species_key: string
+      primary_role: string
+      secondary_roles: role_score[]
+      pressure_profile:
+        offense: number
+        bulk: number
+        speed: number
+        utility: number
+        sustain: number
+      evidence: string[]
+
+  team_structure_report:
+    fields:
+      offensive_coverage:
+        attacker_type: string
+        super_effective_targets: string[]
+        resisted_targets: string[]
+      defensive_coverage:
+        defending_type: string
+        weak_slots: integer
+        resist_slots: integer
+        neutral_slots: integer
+      repeated_weaknesses: string[]
+      missing_resistances: string[]
+      overlap_notes: string[]
+
+  archetype_report:
+    fields:
+      archetype_scores:
+        archetype: string
+        score: number
+      tempo_score: number
+      sustain_score: number
+      pivot_score: number
+      setup_score: number
+      anti_setup_score: number
+      notes: string[]
+
+  meta_snapshot:
+    key: meta_snapshot_id
+    fields:
+      meta_snapshot_id: string
+      source_type: string
+      source_name: string
+      collected_at: datetime
+      sample_size: integer
+      top_species:
+        species_key: string
+        usage_rate: number
+        win_rate: number|null
+      top_archetypes:
+        archetype: string
+        usage_rate: number
+      common_cores:
+        members: string[]
+        usage_rate: number
+
+derived_rules:
+  - team structure analysis may run without species_key if type info exists
+  - species role analysis requires species, ability, and move feature data
+  - meta analysis requires at least one meta_snapshot
+  - archetype scoring should be multi-label, not single-label

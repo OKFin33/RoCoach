@@ -1,0 +1,79 @@
+{
+  "viewport": {
+    "width": 399,
+    "height": 710,
+    "source": "Codex in-app browser visible viewport for Web visual references"
+  },
+  "screens": [
+    {
+      "file": "chat_empty.png",
+      "state": "empty chat",
+      "productState": true,
+      "mock": true,
+      "source": "generated RN reference because current Web prototype boots with mock messages"
+    },
+    {
+      "file": "chat_populated.png",
+      "state": "ordinary populated chat",
+      "productState": true,
+      "mock": false,
+      "source": "Web prototype screenshot"
+    },
+    {
+      "file": "chat_analysis_card.png",
+      "state": "long analysis card",
+      "productState": true,
+      "mock": true,
+      "source": "Web prototype screenshot with mock strategy card"
+    },
+    {
+      "file": "chat_thinking.png",
+      "state": "loading/thinking",
+      "productState": true,
+      "mock": false,
+      "source": "Web prototype screenshot captured after sending a prompt"
+    },
+    {
+      "file": "chat_error.png",
+      "state": "error/retry",
+      "productState": true,
+      "mock": true,
+      "source": "generated RN reference until backend error examples are captured"
+    },
+    {
+      "file": "keyboard_opened.png",
+      "state": "keyboard opened",
+      "productState": true,
+      "mock": true,
+      "source": "generated RN reference; platform keyboard is native"
+    },
+    {
+      "file": "message_actions_user.png",
+      "state": "user message action menu",
+      "productState": true,
+      "mock": false,
+      "source": "Web prototype screenshot"
+    },
+    {
+      "file": "message_actions_agent.png",
+      "state": "agent message action menu",
+      "productState": true,
+      "mock": false,
+      "source": "Web prototype screenshot"
+    },
+    {
+      "file": "persona_wheel_open.png",
+      "state": "persona wheel open",
+      "productState": true,
+      "mock": true,
+      "source": "generated overlay reference; implement via RN long-press and absolute positioning"
+    },
+    {
+      "file": "settings_open.png",
+      "state": "settings drawer open",
+      "productState": true,
+      "mock": false,
+      "source": "Web prototype screenshot"
+    }
+  ]
+}

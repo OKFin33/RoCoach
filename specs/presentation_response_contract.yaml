@@ -1,0 +1,109 @@
+version: 2
+
+purpose: >
+  Default user-facing conversational presentation contract. This contract sits
+  above the reasoning/synthesis layer and defines what the product should show
+  first on mobile/public chat surfaces.
+
+applies_to:
+  - mobile default chat surface
+  - future public conversational UI
+  - presentation-layer rendering
+
+input_dependency:
+  - reasoning_synthesis_contract
+
+hard_rules:
+  - `reply` must preserve the meaning of the synthesized judgement
+  - `why` must remain aligned with the synthesized reasoning path
+  - visible warnings must remain visible when the synthesis layer marks a
+    material boundary
+  - evidence/confidence/tool traces may be folded, but must remain inspectable
+  - persona style may affect phrasing, but not facts, confidence tier, evidence
+    attribution, or refusal decisions
+
+fields:
+  presentation_version:
+    type: string
+    required: true
+
+  reply:
+    type: string
+    required: true
+    description: >
+      The default coach-style reply shown by the product.
+
+  why:
+    type: string
+    required: true
+    description: >
+      The compact explanation most users need to understand the answer.
+
+  visible_warnings:
+    type: array
+    required: true
+    items:
+      type: object
+      fields:
+        code:
+          type: string
+          required: true
+        severity:
+          type: string
+          required: true
+          enum: [high, medium, low]
+        message:
+          type: string
+          required: true
+
+  detail_sections:
+    type: array
+    required: true
+    items:
+      type: object
+      fields:
+        section_id:
+          type: string
+          required: true
+        label:
+          type: string
+          required: true
+        default_visibility:
+          type: string
+          required: true
+          enum: [collapsed, expanded]
+        content_kind:
+          type: string
+          required: true
+          enum: [evidence, confidence, tool_trace, analytical_base, followup, raw]
+
+  followup_prompts:
+    type: array
+    required: true
+    items:
+      type: string
+
+  presentation_metadata:
+    type: object
+    required: true
+    fields:
+      persona_id:
+        type: string|null
+        required: false
+      facts_locked:
+        type: boolean
+        required: true
+      fact_policy:
+        type: string
+        required: true
+      source_contract:
+        type: string
+        required: true
+
+required_warning_cases:
+  - partial_team
+  - provisional_only
+  - deterministic_fallback
+  - unsupported_scope
+  - refused_missing_context
+  - refused_missing_species

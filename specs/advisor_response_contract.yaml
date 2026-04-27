@@ -1,0 +1,96 @@
+version: 2
+
+purpose: >
+  Internal typed analytical response contract for the legacy advisor runtime.
+  This is a runtime/CLI-facing contract, not the final default user-facing
+  presentation contract.
+
+applies_to:
+  - advisor.runtime
+  - advisor.conversation_cli
+  - deterministic and pydantic_ai_native runtime paths
+  - advisor.contracts.AdvisorResponse
+
+boundary_note:
+  - AgentResponse is the app/API-facing analytical contract
+  - post-P0 product flow should be analytical contract -> synthesis ->
+    presentation -> persona
+  - raw advisor response fields should not be treated as the final default UI
+
+fields:
+  backend:
+    type: string
+    required: true
+
+  answer_summary:
+    type: string
+    required: true
+
+  tool_results:
+    type: array
+    required: true
+    items:
+      type: object
+      fields:
+        tool_name:
+          type: string
+          required: true
+        status:
+          type: string
+          required: true
+          enum: [ok, degraded, refused, failed]
+        summary:
+          type: string
+          required: true
+        payload:
+          type: object|null
+          required: false
+
+  evidence_summary:
+    type: array
+    required: true
+    items:
+      type: object
+      fields:
+        source_type:
+          type: string
+          required: true
+          enum: [engine, fact, doc, case]
+        source_label:
+          type: string
+          required: true
+        confidence:
+          type: string
+          required: true
+          enum: [confirmed, provisional, low_confidence]
+        content:
+          type: string
+          required: true
+        retrieval_reason:
+          type: string
+          required: true
+
+  confidence_notes:
+    type: array
+    required: true
+    items:
+      type: string
+
+  followup_options:
+    type: array
+    required: true
+    items:
+      type: string
+
+parity_requirements:
+  - deterministic and pydantic_ai_native must emit the same top-level fields
+  - deterministic and pydantic_ai_native must not differ in confidence tier for the same deterministic fact
+  - pydantic_ai_native may vary in wording, but not in approved scope
+  - refusal and downgrade behavior must remain contract-compatible across backends
+
+hard_rules:
+  - answer_summary must not contradict deterministic Engine or SQL facts
+  - evidence_summary may not be empty when tool_results contain an ok or degraded analytical result
+  - semantic interpretation must not be marked confirmed unless backed by later approved deterministic scoring
+  - this contract may feed synthesis/presentation/persona layers, but those
+    layers may not mutate factual payload

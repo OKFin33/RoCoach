@@ -1,0 +1,39 @@
+{
+  "run_id": "2026-04-15Tqueenbee_ability_layer_aligned_dry_run",
+  "started_at": "2026-04-15T03:04:35+00:00",
+  "finished_at": "2026-04-15T03:04:35+00:00",
+  "run_mode": "dry_run",
+  "canonical_artifact_dir": "/Users/okfin3/project/GitHub/OKFin33/Roco/data/wiki_ingestion_runs/2026-04-14Tspecies_full_cached_moves_p1d",
+  "canonical_run_id": "2026-04-14Tspecies_full_cached_moves_p1d",
+  "supplement_path": "/Users/okfin3/project/GitHub/OKFin33/Roco/data/manual_supplements/manual_battle_data_supplement_2026-04-14.yaml",
+  "supplement_format": "yaml",
+  "policy_mode": "policy_b",
+  "output_files": {
+    "resolved_species_forms": "resolved_species_forms.jsonl",
+    "resolved_moves": "resolved_moves.jsonl",
+    "resolved_derived_abilities": "resolved_derived_abilities.jsonl",
+    "excluded_entities": "excluded_entities.jsonl",
+    "review_required_entities": "review_required_entities.jsonl",
+    "supplement_backed_entities": "supplement_backed_entities.jsonl",
+    "unresolved_entities": "unresolved_entities.jsonl",
+    "importer_diff_summary": "importer_diff_summary.md",
+    "importer_run_manifest": "importer_run_manifest.json"
+  },
+  "counts": {
+    "resolved_species_forms": 566,
+    "resolved_moves": 493,
+    "resolved_derived_abilities": 179,
+    "excluded_entities": 23,
+    "review_required_entities": 0,
+    "supplement_backed_entities": 8,
+    "unresolved_entities": 2
+  },
+  "resolution_statuses": [
+    "included",
+    "excluded",
+    "review_required",
+    "supplement_backed",
+    "unresolved"
+  ],
+  "sqlite_mutation": false
+}

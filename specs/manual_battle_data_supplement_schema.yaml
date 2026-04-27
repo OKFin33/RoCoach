@@ -1,0 +1,197 @@
+version: 1
+
+status: accepted_for_policy_b
+
+purpose: >
+  Structured schema for PM-reviewed battle data supplements. This schema exists
+  so the resolver/importer does not depend on parsing free-form markdown.
+
+notes:
+  - this schema supplements wiki-canonical artifacts; it does not replace them
+  - mechanics notes remain outside the raw battle dex schema
+  - the first production consumer is the P1e importer dry-run
+
+top_level_fields:
+  version:
+    type: integer
+    required: true
+  source_policy:
+    type: enum
+    values: [policy_b]
+    required: true
+  source_markdown:
+    type: string
+    required: false
+  generated_at:
+    type: datetime
+    required: false
+  exclusions:
+    type: object
+    required: true
+  species_canonical_overrides:
+    type: array
+    required: true
+  review_rules:
+    type: array
+    required: true
+  manual_moves:
+    type: array
+    required: true
+  move_aliases:
+    type: array
+    required: true
+  ability_text_overrides:
+    type: array
+    required: true
+  mechanics_notes:
+    type: array
+    required: true
+
+exclusions:
+  species_forms:
+    item_fields:
+      display_name:
+        type: string
+        required: true
+      reason_code:
+        type: enum
+        values: [hidden_special_form, unreleased_form]
+        required: true
+      resolution_status:
+        type: enum
+        values: [excluded]
+        required: true
+      notes:
+        type: string
+        required: false
+
+species_canonical_overrides:
+  item_fields:
+    species_id:
+      type: string
+      required: true
+    canonical_display_name:
+      type: string
+      required: true
+    preferred_source_page_id:
+      type: string
+      required: true
+    source_status:
+      type: enum
+      values: [manual_verified_by_pm]
+      required: true
+    normalized_initial_species_name:
+      type: string
+      required: false
+    normalized_evolution_stage:
+      type: string
+      required: false
+    override_ability_name:
+      type: string
+      required: false
+    override_ability_effect_text:
+      type: string
+      required: false
+    notes:
+      type: string_array
+      required: true
+
+review_rules:
+  item_fields:
+    rule_id:
+      type: string
+      required: true
+    entity_type:
+      type: enum
+      values: [species_form]
+      required: true
+    trigger:
+      type: string
+      required: true
+    importer_status:
+      type: enum
+      values: [human-review-before-ingest]
+      required: true
+    notes:
+      type: string
+      required: false
+
+manual_moves:
+  item_fields:
+    move_name:
+      type: string
+      required: true
+    source_status:
+      type: enum
+      values: [manual_verified_by_pm]
+      required: true
+    wiki_status:
+      type: string
+      required: true
+    move_type:
+      type: string
+      required: false
+    category_raw:
+      type: enum
+      values: [状态, 防御, 物攻, 魔攻]
+      required: false
+    energy_cost:
+      type: integer
+      required: false
+    power:
+      type: integer
+      required: false
+    effect_text:
+      type: string
+      required: false
+    notes:
+      type: string_array
+      required: true
+
+move_aliases:
+  item_fields:
+    source_move_name:
+      type: string
+      required: true
+    target_move_name:
+      type: string
+      required: true
+    source_status:
+      type: enum
+      values: [manual_verified_by_pm]
+      required: true
+    notes:
+      type: string_array
+      required: true
+
+ability_text_overrides:
+  item_fields:
+    ability_name:
+      type: string
+      required: true
+    source_status:
+      type: enum
+      values: [manual_verified_by_pm]
+      required: true
+    override_text:
+      type: string
+      required: true
+    notes:
+      type: string_array
+      required: true
+
+mechanics_notes:
+  item_fields:
+    mechanic_name:
+      type: string
+      required: true
+    source_status:
+      type: enum
+      values: [manual_verified_by_pm]
+      required: true
+    notes:
+      type: string_array
+      required: true
+    modeling_guidance:
+      type: string_array
+      required: true

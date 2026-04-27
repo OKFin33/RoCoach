@@ -1,0 +1,53 @@
+{
+  "run_id": "2026-04-14Tfailed_preflight_validation",
+  "started_at": "2026-04-14T01:08:48+00:00",
+  "finished_at": "2026-04-14T01:08:53+00:00",
+  "run_mode": "dry_run",
+  "api_base_url": "http://127.0.0.1:9/api.php",
+  "parser_version": "p1c-001",
+  "schema_version": "battle_dex_schema.v1",
+  "field_alignment_matrix_version": "field_alignment_matrix.v2",
+  "scopes": [
+    "species",
+    "move",
+    "ability_embedded"
+  ],
+  "limits": {
+    "species_detail_pages": 1,
+    "move_detail_pages": 1,
+    "ability_embedded_species_pages": 1
+  },
+  "artifact_files": {
+    "source_pages": "source_pages.jsonl",
+    "raw_template_snapshots": "raw_template_snapshots.jsonl",
+    "species_form_candidates": "species_form_candidates.jsonl",
+    "move_candidates": "move_candidates.jsonl",
+    "derived_ability_candidates": "derived_ability_candidates.jsonl",
+    "species_move_pool_candidates": "species_move_pool_candidates.jsonl",
+    "validation_events": "validation_events.jsonl",
+    "rejected_fields": "rejected_fields.jsonl",
+    "dry_run_diff": "dry_run_diff.json",
+    "summary": "summary.md",
+    "run_manifest": "run_manifest.json"
+  },
+  "counts": {
+    "source_pages": 0,
+    "raw_template_snapshots": 0,
+    "species_form_candidates": 0,
+    "move_candidates": 0,
+    "derived_ability_candidates": 0,
+    "species_move_pool_candidates": 0,
+    "validation_events": 1,
+    "rejected_fields": 0
+  },
+  "validation_summary": {
+    "hard_reject": 1,
+    "warning": 0,
+    "info": 0
+  },
+  "hard_reject_count": 1,
+  "warning_count": 0,
+  "status": "failed",
+  "failure_reason": "API preflight failed: MediaWiki API request failed after 3 attempts: HTTPConnectionPool(host='127.0.0.1', port=9): Max retries exceeded with url: /api.php?action=query&meta=siteinfo&siprop=general&format=json (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=9): Failed to establish a new connection: [Errno 61] Connection refused\"))",
+  "fetch_strategy": "api_preflight"
+}

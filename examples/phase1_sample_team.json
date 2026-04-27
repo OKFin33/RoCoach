@@ -1,0 +1,29 @@
+{
+  "team_name": "phase1_sample",
+  "slots": [
+    {
+      "name": "A",
+      "primary_type": "草"
+    },
+    {
+      "name": "B",
+      "primary_type": "地"
+    },
+    {
+      "name": "C",
+      "primary_type": "龙"
+    },
+    {
+      "name": "D",
+      "primary_type": "翼"
+    },
+    {
+      "name": "E",
+      "primary_type": "火"
+    },
+    {
+      "name": "F",
+      "primary_type": "水"
+    }
+  ]
+}

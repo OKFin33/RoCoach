@@ -1,0 +1,24 @@
+{
+  "run_id": "2026-04-14Tspecies_full_cached_moves_p1d",
+  "baseline_database": null,
+  "added": {
+    "species_form": 580,
+    "move": 491,
+    "derived_ability": 181,
+    "species_move_pool": 22071
+  },
+  "updated": {},
+  "removed": {},
+  "unchanged": {},
+  "conflicts": {
+    "ability_conflicts": [
+      "溶解扩散"
+    ],
+    "unresolved_move_names": [
+      "湿润印记",
+      "溶解液",
+      "龙之舞"
+    ]
+  },
+  "requires_pm_review": true
+}

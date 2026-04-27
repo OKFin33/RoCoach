@@ -1,0 +1,1302 @@
+{
+  "summary": {
+    "sample_count": 32,
+    "detail_sample_counts": {
+      "species": 9,
+      "move": 8,
+      "ability": 9
+    }
+  },
+  "fields": [
+    {
+      "entity_type": "ability",
+      "normalized_label": "特性",
+      "raw_labels": [
+        "特性"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "ability_embedded_species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "惊吓",
+        "茶多酚",
+        "助燃",
+        "振奋虫心",
+        "最好的伙伴"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "ability",
+      "normalized_label": "特性描述",
+      "raw_labels": [
+        "特性描述"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "ability_embedded_species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "能量等于0的精灵，无法对自己造成伤害。",
+        "离场后，更换入场的精灵回复20%生命且免疫寄生。",
+        "使用火系技能后，获得双攻+20%。",
+        "主动击败敌方后，己方队伍获得5次随机奉献。",
+        "造成克制伤害后，获得攻防速+20%，并回复2能量。"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "move",
+      "normalized_label": "威力",
+      "raw_labels": [
+        "威力"
+      ],
+      "occurrence_count": 11,
+      "page_coverage_count": 10,
+      "detail_page_coverage_count": 8,
+      "index_page_coverage_count": 2,
+      "detail_sample_count_for_entity": 8,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "move_detail",
+        "move_index"
+      ],
+      "field_sources": [
+        "smw_ask_projection",
+        "template:技能信息"
+      ],
+      "example_values": [
+        "0",
+        "70",
+        "85",
+        "65",
+        "160"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "move",
+      "normalized_label": "属性",
+      "raw_labels": [
+        "属性"
+      ],
+      "occurrence_count": 11,
+      "page_coverage_count": 10,
+      "detail_page_coverage_count": 8,
+      "index_page_coverage_count": 2,
+      "detail_sample_count_for_entity": 8,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "move_detail",
+        "move_index"
+      ],
+      "field_sources": [
+        "smw_ask_projection",
+        "template:技能信息"
+      ],
+      "example_values": [
+        "草",
+        "幽",
+        "恶",
+        "翼",
+        "冰"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "move",
+      "normalized_label": "技能名称",
+      "raw_labels": [
+        "技能名称"
+      ],
+      "occurrence_count": 11,
+      "page_coverage_count": 10,
+      "detail_page_coverage_count": 8,
+      "index_page_coverage_count": 2,
+      "detail_sample_count_for_entity": 8,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "move_detail",
+        "move_index"
+      ],
+      "field_sources": [
+        "smw_ask_projection",
+        "template:技能信息"
+      ],
+      "example_values": [
+        "孢子",
+        "报复",
+        "暗突袭",
+        "暗箱操作",
+        "暴风眼"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "move",
+      "normalized_label": "技能类别",
+      "raw_labels": [
+        "技能类别"
+      ],
+      "occurrence_count": 11,
+      "page_coverage_count": 10,
+      "detail_page_coverage_count": 8,
+      "index_page_coverage_count": 2,
+      "detail_sample_count_for_entity": 8,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "move_detail",
+        "move_index"
+      ],
+      "field_sources": [
+        "smw_ask_projection",
+        "template:技能信息"
+      ],
+      "example_values": [
+        "状态",
+        "防御",
+        "物攻",
+        "魔攻"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "move",
+      "normalized_label": "效果",
+      "raw_labels": [
+        "效果"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 8,
+      "index_page_coverage_count": 1,
+      "detail_sample_count_for_entity": 8,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "move_detail",
+        "move_index"
+      ],
+      "field_sources": [
+        "smw_ask_projection",
+        "template:技能信息"
+      ],
+      "example_values": [
+        "敌方获得1层寄生。",
+        "减伤70%，应对攻击：敌方失去3能量。",
+        "造成物伤，吸血50%，应对状态：本次技能威力翻倍。",
+        "自己获得双攻和双防-100%，应对防御：改为敌方获得双攻和双防-100%。",
+        "行动时连击数+100%。"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "move",
+      "normalized_label": "耗能",
+      "raw_labels": [
+        "耗能"
+      ],
+      "occurrence_count": 11,
+      "page_coverage_count": 10,
+      "detail_page_coverage_count": 8,
+      "index_page_coverage_count": 2,
+      "detail_sample_count_for_entity": 8,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "move_detail",
+        "move_index"
+      ],
+      "field_sources": [
+        "smw_ask_projection",
+        "template:技能信息"
+      ],
+      "example_values": [
+        "3",
+        "2",
+        "4",
+        "1",
+        "7"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "move",
+      "normalized_label": "技能序号",
+      "raw_labels": [
+        "技能序号"
+      ],
+      "occurrence_count": 3,
+      "page_coverage_count": 2,
+      "detail_page_coverage_count": 0,
+      "index_page_coverage_count": 2,
+      "detail_sample_count_for_entity": 8,
+      "detail_page_coverage_ratio": 0.0,
+      "source_page_types": [
+        "move_index"
+      ],
+      "field_sources": [
+        "smw_ask_projection"
+      ],
+      "example_values": [],
+      "confidence_recommendation": "provisional",
+      "recommendation_notes": "Observed field without enough current policy to promote or forbid."
+    },
+    {
+      "entity_type": "move",
+      "normalized_label": "技能版本",
+      "raw_labels": [
+        "技能版本"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 8,
+      "index_page_coverage_count": 1,
+      "detail_sample_count_for_entity": 8,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "move_detail",
+        "move_index"
+      ],
+      "field_sources": [
+        "smw_ask_projection",
+        "template:技能信息"
+      ],
+      "example_values": [
+        "0.1"
+      ],
+      "confidence_recommendation": "provisional",
+      "recommendation_notes": "Observed as structured data, but semantic mapping or optionality needs review."
+    },
+    {
+      "entity_type": "move",
+      "normalized_label": "描述",
+      "raw_labels": [
+        "描述"
+      ],
+      "occurrence_count": 8,
+      "page_coverage_count": 8,
+      "detail_page_coverage_count": 8,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 8,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "move_detail"
+      ],
+      "field_sources": [
+        "template:技能信息"
+      ],
+      "example_values": [],
+      "confidence_recommendation": "provisional",
+      "recommendation_notes": "Observed as structured data, but semantic mapping or optionality needs review."
+    },
+    {
+      "entity_type": "move",
+      "normalized_label": "筛选项",
+      "raw_labels": [
+        "筛选项"
+      ],
+      "occurrence_count": 2,
+      "page_coverage_count": 2,
+      "detail_page_coverage_count": 0,
+      "index_page_coverage_count": 2,
+      "detail_sample_count_for_entity": 8,
+      "detail_page_coverage_ratio": 0.0,
+      "source_page_types": [
+        "move_index"
+      ],
+      "field_sources": [
+        "filter_template"
+      ],
+      "example_values": [
+        "查看全部, 物攻, 魔攻, 防御, 状态"
+      ],
+      "confidence_recommendation": "provisional",
+      "recommendation_notes": "Index filter metadata; useful for page-structure discovery, not a domain field by itself."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "2属性",
+      "raw_labels": [
+        "2属性"
+      ],
+      "occurrence_count": 12,
+      "page_coverage_count": 12,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 3,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail",
+        "species_index"
+      ],
+      "field_sources": [
+        "smw_ask_projection",
+        "template:精灵信息"
+      ],
+      "example_values": [],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "主属性",
+      "raw_labels": [
+        "主属性"
+      ],
+      "occurrence_count": 12,
+      "page_coverage_count": 12,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 3,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail",
+        "species_index"
+      ],
+      "field_sources": [
+        "smw_ask_projection",
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "幽",
+        "水",
+        "火",
+        "虫",
+        "光"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "可学技能石",
+      "raw_labels": [
+        "可学技能石"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "力量吞噬,吓退,引燃,掠夺,摇篮曲,操控,暗箱操作,流火,激怒,热身,穿膛,精神扰乱,贪婪,黑手",
+        "力量吞噬,吓退,引燃,掠夺,摇篮曲,操控,暗箱操作,栽赃,流火,激怒,热身,穿膛,精神扰乱,贪婪",
+        "力量增效,复写,天洪,水幕冲击,水炮,水环,突袭,蓄水,血气,许愿星,阻断,魔法增效",
+        "乘风,力量吞噬,压扁,复写,扇风,暗突袭,精神扰乱,诋毁,锐利眼神,阻断,风矢,龙之利爪,龙卷风",
+        "伪造账单,偷袭,力量增效,取念,寸拳,当头棒喝,提气,斩断,暗箱操作,毒针,破绽,蛰针,跌落"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "技能",
+      "raw_labels": [
+        "技能"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "防御,鬼火,勾魂,许愿星,取念,幽灵爆发,聒噪,报复,背袭,嘲弄,恐吓,降灵,恶作剧",
+        "水弹,洗礼,防御,落星,泡沫,泡沫幻影,肥皂泡,潮涌,水刃",
+        "猛烈撞击,火苗,力量增效,火焰切割,防御,吹火,晒太阳,怒火,持续高温,火云车,热身,闪燃,山火",
+        "蝙蝠,锐利眼神,飞断,尾后针,防御,网缚,力量吞噬,极限撕裂,以重制重,草虫冲击,虫茧,虫击,等价交换,灾厄",
+        "猛烈撞击,闪光,防御,魔法增效,光球,火焰箭,力量增效,棘突,潮涌,超导,闪光冲击,漫反射,冰爪,热砂,念力膨胀,放晴,过曝,光刃,折射"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "技能解锁等级",
+      "raw_labels": [
+        "技能解锁等级"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "1,1,5,10,11,16,21,27,34,35,39,40,45",
+        "1,1,1,6,9,16,27,32,36",
+        "1,1,6,8,10,12,17,21,29,30,36,42,48",
+        "1,1,1,4,8,13,16,23,28,29,30,33,35,38",
+        "1,1,1,7,9,11,13,16,19,22,27,30,32,34,36,40,42,47,48"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "物攻",
+      "raw_labels": [
+        "物攻"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "40",
+        "30",
+        "26",
+        "84",
+        "117"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "物防",
+      "raw_labels": [
+        "物防"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "78",
+        "83",
+        "75",
+        "56",
+        "74"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "特性",
+      "raw_labels": [
+        "特性"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "惊吓",
+        "茶多酚",
+        "助燃",
+        "振奋虫心",
+        "最好的伙伴"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "特性描述",
+      "raw_labels": [
+        "特性描述"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "能量等于0的精灵，无法对自己造成伤害。",
+        "离场后，更换入场的精灵回复20%生命且免疫寄生。",
+        "使用火系技能后，获得双攻+20%。",
+        "主动击败敌方后，己方队伍获得5次随机奉献。",
+        "造成克制伤害后，获得攻防速+20%，并回复2能量。"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "生命",
+      "raw_labels": [
+        "生命"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "74",
+        "84",
+        "81",
+        "70",
+        "80"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "精灵名称",
+      "raw_labels": [
+        "精灵名称"
+      ],
+      "occurrence_count": 12,
+      "page_coverage_count": 12,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 3,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail",
+        "species_index"
+      ],
+      "field_sources": [
+        "smw_ask_projection",
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "暗影灵面",
+        "果冻",
+        "火花",
+        "矮脚爬爬",
+        "迪莫"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "精灵形态",
+      "raw_labels": [
+        "精灵形态"
+      ],
+      "occurrence_count": 12,
+      "page_coverage_count": 12,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 3,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail",
+        "species_index"
+      ],
+      "field_sources": [
+        "smw_ask_projection",
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "原始形态",
+        "地区形态"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "精灵阶段",
+      "raw_labels": [
+        "精灵阶段"
+      ],
+      "occurrence_count": 12,
+      "page_coverage_count": 12,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 3,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail",
+        "species_index"
+      ],
+      "field_sources": [
+        "smw_ask_projection",
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "Ⅱ阶",
+        "Ⅰ阶",
+        "最终形态"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "血脉技能",
+      "raw_labels": [
+        "血脉技能"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "休息回复,诋毁,升龙咆哮,麻痹,化劲,火焰箭,灵媒,徒长,霜降,假寐,虹光冲击,啮合传递,甜心续航,超维投射,泥浆铠甲,毒孢子,蓄水,羽化加速",
+        "防反,等价交换,升龙咆哮,集中,反击拳,火焰护盾,虚化,蜡质膜,雪替身,掩护,虹光冲击,离子震荡,魅惑,冥想,淤泥表皮,毒沼,水弹枪,羽翼庇护",
+        "星星撞击,恶能量,升龙咆哮,球状闪电,缠丝劲,火焰箭,灵媒,花香,冰爪,噬心,透射,械斗,碰爪,星云漩涡,跺地,毒沼,泡沫,鹰爪",
+        "星星撞击,诋毁,升龙咆哮,球状闪电,缠丝劲,火焰冲锋,幻象,花香,冷风,噬心,透射,离子震荡,魅惑,星云漩涡,扬沙,溃烂触碰,泡沫,鹰爪",
+        "星星撞击,恶能量,升龙咆哮,球状闪电,缠丝劲,火焰冲锋,幻象,花香,冷风,噬心,折线冲击,离子震荡,魅惑,星云漩涡,扬沙,溃烂触碰,泡沫,鹰爪"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "速度",
+      "raw_labels": [
+        "速度"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "92",
+        "96",
+        "78",
+        "80",
+        "45"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "魔攻",
+      "raw_labels": [
+        "魔攻"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "96",
+        "81",
+        "37",
+        "110",
+        "80"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "魔防",
+      "raw_labels": [
+        "魔防"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "108",
+        "88",
+        "78",
+        "43",
+        "59"
+      ],
+      "confidence_recommendation": "confirmed",
+      "recommendation_notes": "Repeated structured field with direct battle-analysis relevance."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "体型",
+      "raw_labels": [
+        "体型"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "0.75~0.86",
+        "0.3~0.36",
+        "0.53~0.71",
+        "0.28~0.44",
+        "0.54~0.78"
+      ],
+      "confidence_recommendation": "forbidden_by_default",
+      "recommendation_notes": "Observed but outside current battle-analysis scope or cosmetic/provenance-only."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "分布地区",
+      "raw_labels": [
+        "分布地区"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "常见于城镇周边",
+        "行踪神秘",
+        "岚语峰西侧 / 乌黑巷 / 叽叽喳喳台地 / 商店街周边 / 奥贝斯坦湖 / 学院驻地 / 岚语峰 / 挽风屏障 / 月牙湖岸 / 月牙镇 / 皇家办事处 / 聆风塔地 / 聆风镇 / 轻风山 / 风眠圣所",
+        "常见于山地",
+        "叽叽喳喳台地"
+      ],
+      "confidence_recommendation": "forbidden_by_default",
+      "recommendation_notes": "Observed but outside current battle-analysis scope or cosmetic/provenance-only."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "图鉴课题",
+      "raw_labels": [
+        "图鉴课题"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "捕捉1只精灵,捕捉1只了不起天分的精灵,使精灵成功进化1次,确认2种不同样子的暗影灵面",
+        "捕捉1只精灵,捕捉1只了不起天分的精灵,使精灵成功进化1次",
+        "捕捉1只精灵,捕捉1只了不起天分的精灵,使迪莫的亲密度等级达到5级,获得「命定勇者」奖牌,使用1次闪光,使用1次光刃",
+        "捕捉1只精灵 使用3/5/7次升龙咆哮 使用3/5绵里藏针 使精灵成功进化1次"
+      ],
+      "confidence_recommendation": "forbidden_by_default",
+      "recommendation_notes": "Observed but outside current battle-analysis scope or cosmetic/provenance-only."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "宠物立绘形态",
+      "raw_labels": [
+        "宠物立绘形态"
+      ],
+      "occurrence_count": 12,
+      "page_coverage_count": 12,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 3,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail",
+        "species_index"
+      ],
+      "field_sources": [
+        "smw_ask_projection",
+        "template:精灵信息"
+      ],
+      "example_values": [],
+      "confidence_recommendation": "forbidden_by_default",
+      "recommendation_notes": "Observed but outside current battle-analysis scope or cosmetic/provenance-only."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "是否有异色",
+      "raw_labels": [
+        "是否有异色"
+      ],
+      "occurrence_count": 12,
+      "page_coverage_count": 12,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 3,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail",
+        "species_index"
+      ],
+      "field_sources": [
+        "smw_ask_projection",
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "否"
+      ],
+      "confidence_recommendation": "forbidden_by_default",
+      "recommendation_notes": "Observed but outside current battle-analysis scope or cosmetic/provenance-only."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "是否有错别字",
+      "raw_labels": [
+        "是否有错别字"
+      ],
+      "occurrence_count": 1,
+      "page_coverage_count": 1,
+      "detail_page_coverage_count": 1,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 0.111,
+      "source_page_types": [
+        "species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [],
+      "confidence_recommendation": "forbidden_by_default",
+      "recommendation_notes": "Observed but outside current battle-analysis scope or cosmetic/provenance-only."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "更新版本",
+      "raw_labels": [
+        "更新版本"
+      ],
+      "occurrence_count": 8,
+      "page_coverage_count": 8,
+      "detail_page_coverage_count": 8,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 0.889,
+      "source_page_types": [
+        "species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "0.6"
+      ],
+      "confidence_recommendation": "forbidden_by_default",
+      "recommendation_notes": "Observed but outside current battle-analysis scope or cosmetic/provenance-only."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "精灵描述",
+      "raw_labels": [
+        "精灵描述"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "被两团冷火环绕着，从头到脚都充满了谜团。进食之后重量也毫不增加，被它面具下的嘴吞下的食物仿佛消失了一样。",
+        "常在空中徘徊，来去几乎无声，靠近它时会明显感觉变冷，像是体表的温度不断地被抽走。它们不进食也不说话，面具上闭着的眼睛图案似乎代表着什么。",
+        "透明而不起眼的精灵，经常在干净的水源被发现。研究发现，果冻精灵可以维护森林、湖泊和山脉的生态平衡，似乎是因为它们能让水变得清澈。",
+        "像一团迸发的小火花，坦诚炙热，生性勇敢无畏。能熟练运用火元素，偶尔有点冒失，是值得信赖的伙伴。",
+        "足较短，翻倒后很难再顺利站起来。野外发现的矮脚爬爬里面十个有八个正在努力翻身。因为可爱的外表而受到许多小洛克的喜爱，但受惊时会咬人，致使王国只能贴出告示，警告大家不要轻易触碰。"
+      ],
+      "confidence_recommendation": "forbidden_by_default",
+      "recommendation_notes": "Observed but outside current battle-analysis scope or cosmetic/provenance-only."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "精灵类型",
+      "raw_labels": [
+        "精灵类型"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "假面精灵",
+        "凝胶精灵",
+        "火元素精灵",
+        "蜘蛛精灵",
+        "永远的伙伴"
+      ],
+      "confidence_recommendation": "forbidden_by_default",
+      "recommendation_notes": "Observed but outside current battle-analysis scope or cosmetic/provenance-only."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "课题技能石",
+      "raw_labels": [
+        "课题技能石"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "-",
+        "光刃,闪光",
+        "龙血"
+      ],
+      "confidence_recommendation": "forbidden_by_default",
+      "recommendation_notes": "Observed but outside current battle-analysis scope or cosmetic/provenance-only."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "进化条件",
+      "raw_labels": [
+        "进化条件"
+      ],
+      "occurrence_count": 8,
+      "page_coverage_count": 8,
+      "detail_page_coverage_count": 8,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 0.889,
+      "source_page_types": [
+        "species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "时间为夜晚进化",
+        "时间为中午进化",
+        "无法进化"
+      ],
+      "confidence_recommendation": "forbidden_by_default",
+      "recommendation_notes": "Observed but outside current battle-analysis scope or cosmetic/provenance-only."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "重量",
+      "raw_labels": [
+        "重量"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "0.12~1.16",
+        "4.35~5.6",
+        "7.6~8.5",
+        "3.3~4.2",
+        "5.5~7"
+      ],
+      "confidence_recommendation": "forbidden_by_default",
+      "recommendation_notes": "Observed but outside current battle-analysis scope or cosmetic/provenance-only."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "地区形态名称",
+      "raw_labels": [
+        "地区形态名称"
+      ],
+      "occurrence_count": 12,
+      "page_coverage_count": 12,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 3,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail",
+        "species_index"
+      ],
+      "field_sources": [
+        "smw_ask_projection",
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "睁眼的样子",
+        "闭眼的样子"
+      ],
+      "confidence_recommendation": "provisional",
+      "recommendation_notes": "Observed as structured data, but semantic mapping or optionality needs review."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "属性",
+      "raw_labels": [
+        "属性"
+      ],
+      "occurrence_count": 3,
+      "page_coverage_count": 3,
+      "detail_page_coverage_count": 0,
+      "index_page_coverage_count": 3,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 0.0,
+      "source_page_types": [
+        "species_index"
+      ],
+      "field_sources": [
+        "smw_ask_projection"
+      ],
+      "example_values": [],
+      "confidence_recommendation": "provisional",
+      "recommendation_notes": "Observed field without enough current policy to promote or forbid."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "序号",
+      "raw_labels": [
+        "序号"
+      ],
+      "occurrence_count": 3,
+      "page_coverage_count": 3,
+      "detail_page_coverage_count": 0,
+      "index_page_coverage_count": 3,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 0.0,
+      "source_page_types": [
+        "species_index"
+      ],
+      "field_sources": [
+        "smw_ask_projection"
+      ],
+      "example_values": [],
+      "confidence_recommendation": "provisional",
+      "recommendation_notes": "Observed field without enough current policy to promote or forbid."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "筛选项",
+      "raw_labels": [
+        "筛选项"
+      ],
+      "occurrence_count": 1,
+      "page_coverage_count": 1,
+      "detail_page_coverage_count": 0,
+      "index_page_coverage_count": 1,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 0.0,
+      "source_page_types": [
+        "species_index"
+      ],
+      "field_sources": [
+        "filter_template"
+      ],
+      "example_values": [
+        "查看全部, Ⅰ阶, Ⅱ阶, 最终形态, 地区形态"
+      ],
+      "confidence_recommendation": "provisional",
+      "recommendation_notes": "Index filter metadata; useful for page-structure discovery, not a domain field by itself."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "精灵初阶名称",
+      "raw_labels": [
+        "精灵初阶名称"
+      ],
+      "occurrence_count": 9,
+      "page_coverage_count": 9,
+      "detail_page_coverage_count": 9,
+      "index_page_coverage_count": 0,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 1.0,
+      "source_page_types": [
+        "species_detail"
+      ],
+      "field_sources": [
+        "template:精灵信息"
+      ],
+      "example_values": [
+        "小灵面",
+        "果冻",
+        "火花",
+        "矮脚爬爬",
+        "迪莫"
+      ],
+      "confidence_recommendation": "provisional",
+      "recommendation_notes": "Observed as structured data, but semantic mapping or optionality needs review."
+    },
+    {
+      "entity_type": "species",
+      "normalized_label": "精灵编号",
+      "raw_labels": [
+        "精灵编号"
+      ],
+      "occurrence_count": 3,
+      "page_coverage_count": 3,
+      "detail_page_coverage_count": 0,
+      "index_page_coverage_count": 3,
+      "detail_sample_count_for_entity": 9,
+      "detail_page_coverage_ratio": 0.0,
+      "source_page_types": [
+        "species_index"
+      ],
+      "field_sources": [
+        "smw_ask_projection"
+      ],
+      "example_values": [],
+      "confidence_recommendation": "provisional",
+      "recommendation_notes": "Observed field without enough current policy to promote or forbid."
+    }
+  ],
+  "negative_assumptions": {
+    "move": [
+      {
+        "field": "accuracy",
+        "recommendation": "forbidden_by_default",
+        "reason": "No sampled `技能信息` template exposed accuracy / 命中 fields."
+      },
+      {
+        "field": "pp",
+        "recommendation": "forbidden_by_default",
+        "reason": "No sampled `技能信息` template exposed PP / usage-count fields."
+      },
+      {
+        "field": "cooldown",
+        "recommendation": "forbidden_by_default",
+        "reason": "No sampled `技能信息` template exposed a stable cooldown field."
+      }
+    ],
+    "ability": [
+      {
+        "field": "numeric_modifier",
+        "recommendation": "forbidden_by_default",
+        "reason": "Numeric modifiers appear only inside raw effect text in this pass, not as a stable structured ability field."
+      }
+    ]
+  }
+}

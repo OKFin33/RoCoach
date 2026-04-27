@@ -1,0 +1,34 @@
+.DS_Store
+
+# Python local environment and caches
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local secrets
+.env
+.env.*
+!.env.example
+
+# Mobile dependencies and generated output
+mobile/node_modules/
+mobile/.expo/
+mobile/dist/
+
+# Figma Make prototype dependencies and generated output
+figma/**/node_modules/
+figma/**/dist/
+
+# Runtime and coverage noise
+.launchpad/
+*.log
+*.tmp
+*.bak
+coverage/
+htmlcov/
+
+# Local source-material staging for Battle Wiki
+wiki/cache/

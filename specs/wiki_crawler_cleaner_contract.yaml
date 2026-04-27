@@ -1,0 +1,301 @@
+version: 1
+
+status: p1c_contract
+
+purpose: >
+  Machine-readable crawler and cleaner output contract for bounded wiki dry-runs.
+  This contract prepares P1d ingestion dry-run and does not authorize direct
+  SQLite mutation.
+
+run_defaults:
+  run_mode: dry_run
+  execution_mode: fetch-clean
+  bounded_by_default: true
+  output_dir_pattern: data/wiki_ingestion_runs/{run_id}
+  parser_version: p1c-001
+  api_base_url: https://wiki.biligame.com/rocom/api.php
+  user_agent: RocoP1cCrawlerCleaner/0.1 (bounded dry-run; no database mutation)
+
+approved_scopes:
+  species:
+    source_category: 分类:精灵
+    detail_template: 精灵信息
+    default_limit: 50
+  move:
+    source_category: 分类:技能
+    detail_template: 技能信息
+    default_limit: 50
+  ability_embedded:
+    source_entity: species
+    source_template: 精灵信息
+    source_fields: [特性, 特性描述]
+    default_limit: 50
+
+forbidden_scopes:
+  - standalone_ability_pages_until_confirmed
+  - cosmetic_species_metadata
+  - community_meta_content
+
+required_artifacts:
+  run_manifest:
+    path: run_manifest.json
+    format: json
+  source_pages:
+    path: source_pages.jsonl
+    format: jsonl
+  raw_template_snapshots:
+    path: raw_template_snapshots.jsonl
+    format: jsonl
+  species_form_candidates:
+    path: species_form_candidates.jsonl
+    format: jsonl
+  move_candidates:
+    path: move_candidates.jsonl
+    format: jsonl
+  derived_ability_candidates:
+    path: derived_ability_candidates.jsonl
+    format: jsonl
+  species_move_pool_candidates:
+    path: species_move_pool_candidates.jsonl
+    format: jsonl
+  validation_events:
+    path: validation_events.jsonl
+    format: jsonl
+  rejected_fields:
+    path: rejected_fields.jsonl
+    format: jsonl
+  dry_run_diff:
+    path: dry_run_diff.json
+    format: json
+  summary:
+    path: summary.md
+    format: markdown
+
+record_contracts:
+  run_manifest:
+    required_fields:
+      - run_id
+      - started_at
+      - finished_at
+      - run_mode
+      - api_base_url
+      - parser_version
+      - schema_version
+      - field_alignment_matrix_version
+      - scopes
+      - limits
+      - artifact_files
+      - counts
+      - validation_summary
+      - hard_reject_count
+      - warning_count
+      - status
+      - failure_reason
+      - fetch_strategy
+    status_values: [completed, completed_with_warnings, failed]
+    fetch_strategy_values: [api_preflight, seed_titles, limited_categorymembers, cached_source_pages]
+
+  source_page:
+    required_fields:
+      - run_id
+      - source_page_id
+      - entity_hint
+      - page_title
+      - page_url
+      - revision_id
+      - revision_timestamp
+      - fetched_at
+      - content_sha256
+      - content_length
+      - parser_version
+      - fetch_status
+    entity_hint_values: [species, move, ability_embedded, unknown]
+    fetch_status_values: [ok, missing, error]
+
+  raw_template_snapshot:
+    required_fields:
+      - run_id
+      - snapshot_id
+      - source_page_id
+      - template_name
+      - raw_fields
+      - field_order
+      - extraction_warnings
+    template_name_values: [精灵信息, 技能信息, unknown]
+
+  species_form_candidate:
+    required_fields:
+      - run_id
+      - species_id
+      - display_name
+      - initial_species_name
+      - form_name
+      - regional_form_name
+      - evolution_stage
+      - primary_type
+      - secondary_type
+      - base_stats
+      - ability_name
+      - ability_effect_text
+      - source_page_id
+      - raw_snapshot_id
+      - confidence
+      - normalization_warnings
+    base_stat_keys: [生命, 物攻, 魔攻, 物防, 魔防, 速度]
+
+  move_candidate:
+    required_fields:
+      - run_id
+      - move_id
+      - move_name
+      - move_type
+      - category_raw
+      - power
+      - energy_cost
+      - effect_text
+      - description_text
+      - source_version
+      - source_page_id
+      - raw_snapshot_id
+      - confidence
+      - normalization_warnings
+    category_raw_values: [状态, 防御, 物攻, 魔攻]
+    forbidden_fields: [accuracy, PP, pp, cooldown]
+
+  derived_ability_candidate:
+    required_fields:
+      - run_id
+      - ability_id
+      - ability_name
+      - effect_text
+      - source_species_ids
+      - source_page_ids
+      - derivation_status
+      - confidence
+      - normalization_warnings
+    derivation_status_values:
+      - single_source
+      - merged_consistent
+      - conflict_review_required
+
+  species_move_pool_candidate:
+    notes:
+      - skill-stone page references are acquisition evidence, not separate move entities
+      - canonical move semantics come from 技能信息 when available
+      - Engine-facing move pools union level_up, skill_stone, and bloodline by default
+      - bloodline mutual-exclusion and acquisition legality are deferred to a later legality layer
+    required_fields:
+      - run_id
+      - species_id
+      - move_name_raw
+      - move_id
+      - access_channel
+      - unlock_level
+      - source_field
+      - source_page_id
+      - raw_snapshot_id
+      - confidence
+      - normalization_warnings
+    access_channel_values: [level_up, skill_stone, bloodline, unknown]
+    source_field_values: [技能, 技能解锁等级, 可学技能石, 血脉技能]
+
+  validation_event:
+    required_fields:
+      - run_id
+      - severity
+      - code
+      - entity_type
+      - record_id
+      - source_page_id
+      - field_name
+      - message
+      - action_taken
+    severity_values: [info, warning, hard_reject]
+
+  rejected_field:
+    required_fields:
+      - run_id
+      - source_page_id
+      - entity_type
+      - source_label
+      - normalized_candidate
+      - reason
+      - policy_basis
+
+  dry_run_diff:
+    required_fields:
+      - run_id
+      - baseline_database
+      - added
+      - updated
+      - removed
+      - unchanged
+      - conflicts
+      - requires_pm_review
+
+validation_codes:
+  warning:
+    - unexpected_source_field
+    - missing_optional_field
+    - missing_ability_text
+    - move_name_unresolved
+    - parallel_list_length_mismatch
+    - ability_description_conflict
+    - empty_description_text
+    - fetch_title_skipped
+  hard_reject:
+    - invalid_type
+    - missing_source_trace
+    - missing_required_template
+    - missing_required_field
+    - invalid_numeric_value
+    - forbidden_imported_field
+    - api_preflight_failed
+    - detail_fetch_failed
+
+normalization_rules:
+  allowed:
+    - trim whitespace
+    - preserve raw source text
+    - generate deterministic IDs
+    - exact-match move names before assigning move_id
+  forbidden:
+    - fuzzy match by default
+    - drop unmatched move names
+    - translate game-native labels into foreign-game terms
+    - emit imported move fields
+
+fetch_resilience:
+  required:
+    - run API preflight before broader fetches
+    - prefer seed titles for bounded dry-runs when available
+    - limit category enumeration to the requested sample size or a small buffer
+    - degrade detail fetch from batch to smaller batch to single-title fetch
+    - emit failed artifacts when required seed fetches fail
+    - do not increase retry pressure after Biligame 567
+  degradation_order:
+    - batch_size_40
+    - batch_size_10
+    - batch_size_1
+    - failed_manifest
+
+execution_modes:
+  fetch-clean:
+    description: fetch source pages and clean them into P1c artifacts
+  clean-only:
+    description: regenerate normalized artifacts from cached source snapshots without network access
+
+p1d_entry_criteria:
+  - all required artifacts exist
+  - all JSON and JSONL artifacts parse successfully
+  - accepted records contain no hard_reject events
+  - unresolved move names are listed
+  - ability conflicts are listed
+  - dry_run_diff is generated
+
+full_crawl_gate:
+  requires:
+    - successful P1d bounded ingestion dry-run
+    - schema migration path reviewed
+    - hard reject rate acceptable
+    - PM approval of crawl scope

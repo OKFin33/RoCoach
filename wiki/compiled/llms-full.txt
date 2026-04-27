@@ -1,0 +1,2473 @@
+# Roco Battle Wiki LLM Context
+
+Built at: 2026-04-24T19:10:52.682995+00:00
+Compiler: battle-wiki-compiler-v0.1
+
+## Runtime Rules
+
+- This is B-layer doctrine, not A-layer fact authority.
+- Exact species, move, ability, type-chart, stat, and formula facts must be checked against A-layer references.
+- Roco is not Pokemon; cross-game analogies cannot import mechanics.
+- Persona/style overlays must not alter default B doctrine.
+- Provisional pages can guide soft reasoning but must preserve uncertainty.
+
+## Reviewed Pages
+- pages/archetypes/archetype_loops_v1.md | archetype_methodology | provisional | Archetype Loops V1
+- pages/casebank/balance_bone_dragon_role_compression.md | casebank | provisional | Balance Bone Dragon Role Compression
+- pages/casebank/firefox_wingking_balance_team_reconciliation.md | casebank | provisional | Fire Fox Wing King Balance Team Reconciliation
+- pages/casebank/synthetic_team_review_protocol.md | casebank | provisional | Synthetic Team Review Protocol
+- pages/mechanics/bug_contribution_fengxian.md | mechanics | provisional | Bug Contribution (奉献)
+- pages/mechanics/burn_timing_and_full_combustion.md | mechanics | provisional | Burn Timing And Full Combustion
+- pages/mechanics/burst_trigger_and_entry_actions.md | mechanics | provisional | Burst Trigger And Entry Actions
+- pages/mechanics/charge_and_release.md | mechanics | provisional | Charge And Release
+- pages/mechanics/degeneration_and_menghua.md | mechanics | provisional | Degeneration And 萌化
+- pages/mechanics/energy_actions_and_focus.md | mechanics | provisional | Energy Actions And Focus
+- pages/mechanics/entry_exit_and_replacement_timing.md | mechanics | provisional | Entry, Exit, And Replacement Timing
+- pages/mechanics/marks_and_persistence.md | mechanics | provisional | Marks And Persistence
+- pages/mechanics/morale_and_revive.md | mechanics | provisional | Morale And Revive
+- pages/mechanics/pvp_stat_normalization_and_iv_selection.md | mechanics | provisional | PvP Stat Normalization And IV Selection
+- pages/mechanics/response_counterplay.md | mechanics | provisional | Response Counterplay
+- pages/mechanics/speed_priority_and_swift.md | mechanics | provisional | Speed, Priority, And Swift
+- pages/mechanics/status_effects_and_persistence.md | mechanics | provisional | Status Effects And Persistence
+- pages/mechanics/transmission_and_skill_slots.md | mechanics | provisional | Transmission And Skill Slots
+- pages/mechanics/type_bloodline_move_boundary.md | mechanics | provisional | Type, Bloodline, And Move Boundary
+- pages/mechanics/weather_and_field_effects.md | mechanics | provisional | Weather And Field Effects
+- pages/recommendation_taste/early_meta_uncertainty.md | recommendation_taste | provisional | Early Meta Uncertainty
+- pages/roles/role_taxonomy.md | role_methodology | provisional | Role Taxonomy
+- pages/team_building/core_team_construction.md | team_building | provisional | Core Team Construction
+
+---
+
+# Archetype Loops V1
+
+Path: pages/archetypes/archetype_loops_v1.md
+Class: archetype_methodology
+Confidence: provisional
+A-layer refs: data/runtime/battle_dex.sqlite
+
+# Archetype Loops V1
+
+## Claim
+
+An archetype is best stored as a loop, not as a tier label.
+
+For first-version reasoning, an archetype loop should specify:
+
+- setup resource
+- conversion action
+- protection need
+- counterplay risk
+- volatility warning
+
+## Strategic Use
+
+Initial loop vocabulary:
+
+| Loop | Generic Meaning | Main Risk |
+|---|---|---|
+| burst condition conversion | prepare a condition, then convert it into a large damage window | dead setup if converter cannot enter |
+| scaling core | protect a central piece until its accumulated value wins | overcommitment to one route |
+| attrition mark | persist pressure through marks/status and convert later | clear, steal, replacement, or insufficient payoff |
+| stored mark burst | stack a delayed mark threat and detonate/convert | trigger timing and mark removal |
+| response pressure | profit from correct category reads | low baseline if reads fail |
+| contribution stacking | bank team-wide/backline contribution for later use | early members may be low-impact alone |
+| energy disruption | deny or tax enemy energy and force weak actions | may lack direct closing power |
+| weather window | create a global timed window and convert quickly | timer can be stalled or replaced |
+
+## Evidence
+
+The 2026-03-26 deck maps seven early archetypes into distinct loops, but is not
+current-meta authority. The 2026-04-14 光合武队 source adds a later example of
+energy exchange and mark-vs-weather evaluation, showing how a team can be
+understood by its resource loop rather than just its named archetype.
+
+## Confidence
+
+`provisional`.
+
+High confidence:
+
+- archetype names should not be treated as strength claims
+- loops are useful for advising and reviewing teams
+- every archetype needs a conversion path
+
+Medium confidence:
+
+- exact current relevance of March archetype labels
+- current matchup spread of each loop
+
+## A-Layer Boundary
+
+This page does not own current teamlists, species rankings, or exact matchup
+facts. Concrete archetype evaluation must retrieve current A-layer facts and
+recent reviewed case material.
+
+## Known Failure Modes
+
+- Treating an archetype name as a recommendation.
+- Copying early teamlists without checking patch and source date.
+- Ignoring counterplay and timer constraints.
+- Treating "control" or "attrition" as a win condition without a closer.
+
+## Draft Review Questions
+
+- Which loops remain stable after more weekly reports?
+- Which loops deserve dedicated pages?
+- Should weather window and mark engine be separate archetype families or
+  tags attached to other archetypes?
+
+---
+
+# Balance Bone Dragon Role Compression
+
+Path: pages/casebank/balance_bone_dragon_role_compression.md
+Class: casebank
+Confidence: provisional
+A-layer refs: data/runtime/battle_dex.sqlite
+
+# Balance Bone Dragon Role Compression
+
+## Case
+
+Question tested during dogfood:
+
+```text
+为什么很多平衡队会带骨龙？
+```
+
+The reviewed answer: 寂灭骨龙 is not mainly a fast carry. In balance teams it
+compresses defensive pivot, resource exchange, and late-game threat into one
+slot.
+
+## A-Layer Checks
+
+Known exact facts to retrieve before answering:
+
+- `寂灭骨龙`: 龙/幽
+- base profile: high physical attack, good HP and physical bulk, low speed
+- trait `不朽`: 力竭3回合后复活
+- Dragon/Ghost defensive profile under the current dual-type rule:
+  resists 普, 草, 水, 火, 电, 翼, 武, 毒, and 虫; is weak to 冰, 龙, 萌,
+  恶, 幽, and 光
+- defense-response access includes options such as `掩护`, `等价交换`,
+  `蜡质膜`, `雪替身`, `火焰护盾`, `淤泥表皮`, `报复`, `无畏之心`,
+  and `吓退`
+- offensive pressure includes physical options such as `坟场搏击`, `吹炎`,
+  `龙之利爪`, and `穿膛`
+
+## Reviewed Interpretation
+
+Balance teams value members that can take a hit, preserve rotation, and still
+threaten punishment. Bone Dragon fits that job because its defensive-response
+pool can convert enemy attacks into damage reduction, energy swing, status,
+forced displacement, or protection for the next entrant.
+
+The Dragon/Ghost type is part of the role, not just flavor. It gives Bone
+Dragon a broad set of practical switch-in lanes for balance teams, especially
+against common neutral pressure that would otherwise force damage trades. The
+same typing also creates clear team-building obligations: teammates must cover
+Ice, Dragon, Cute, Dark, Ghost, and Light pressure rather than assuming Bone
+Dragon can blanket-check everything.
+
+`不朽` adds long-game board value: Bone Dragon can absorb pressure or be traded
+off, then return after the revive condition. This makes it especially relevant
+in games where both sides have already spent health and energy.
+
+Important correction: Bone Dragon is not a free sacrifice. Fainting still
+deducts morale/magic, and if it revives and faints again, morale/magic is
+deducted again. Its value is repeated board presence and tempo/resource
+conversion, not immunity to the PvP loss condition.
+
+## Answer Shape
+
+A good short answer should say:
+
+```text
+平衡队带骨龙，是因为龙/幽给了它很宽的换入面，再叠加大量防御应对技，
+能把联防、资源交换和中后期再入场压力压缩在一个位置。
+不朽让它能回到场上继续制造压力，但死亡仍然扣魔力，复活后再死还会再扣；
+所以它不是免费送死位，而是能把一次阵亡转化成队友无伤入场、骗能量、
+拖节奏和残局压力的资源位。
+```
+
+## Failure Modes
+
+- Saying Bone Dragon is good because it has "three lives" without mentioning
+  morale/magic cost.
+- Ignoring Dragon/Ghost typing and reducing the role to trait text.
+- Treating it as a speed carry despite its low speed.
+- Treating wide resistance coverage as universal safety while ignoring Ice,
+  Dragon, Cute, Dark, Ghost, and Light weaknesses.
+- Ignoring that revive timing may be too slow for fast offense.
+- Recommending it without checking whether the team needs a defensive pivot or
+  already has too many low-tempo members.
+
+## Review Status
+
+Human reviewed as broadly correct on 2026-04-21, with the morale/magic revive
+correction added.
+
+---
+
+# Fire Fox Wing King Balance Team Reconciliation
+
+Path: pages/casebank/firefox_wingking_balance_team_reconciliation.md
+Class: casebank
+Confidence: provisional
+A-layer refs: data/runtime/battle_dex.sqlite
+
+# Fire Fox Wing King Balance Team Reconciliation
+
+## Case
+
+Question family tested in-thread:
+
+```text
+给定队伍:
+尖嘴狐仙 / 圣羽翼王 / 声波缇塔 / 奇丽花 / 岚鸟 / 寂灭骨龙
+
+先做结构分析，再和高分段玩家分享进行比对。
+```
+
+The value of this case is not whether the source's ladder-strength rhetoric is
+literally true. The value is that it lets us compare:
+
+- model-first structural inference
+- against a current-version high-ladder player decomposition of the same team
+
+## A-Layer Checks
+
+Known exact facts to retrieve before reasoning:
+
+- species identities and aliases:
+  - 尖嘴狐仙
+  - 圣羽翼王
+  - 声波缇塔
+  - 奇丽花
+  - 岚鸟
+  - 寂灭骨龙
+- relevant traits:
+  - 火狐 `灵魂灼伤`
+  - 翼王 `飓风`
+  - 岚鸟 `顺风`
+  - 骨龙 `不朽`
+- relevant move-cluster hooks:
+  - 啮合 / transmission-related moves on 缇塔 and 奇丽花
+  - `焚烧烙印` on 火狐
+  - swift/wing pairing on 岚鸟 + 翼王
+
+## Initial Model Reading
+
+The initial model-side reading in-thread correctly identified:
+
+- the team is not pure offense; it is a balance-oriented structure
+- 骨龙 is a resource/pressure slot rather than a simple speed carry
+- 火狐 is not best read as the team's main weather starter
+- 岚鸟 and 翼王 form a linked wing/swift pairing
+- 缇塔 is a midgame damage spike and setup slot
+
+## Source-Guided Corrections
+
+The high-ladder share sharpened several points that the initial model reading
+either underweighted or only half-caught.
+
+### 1. 奇丽花 Is Not Merely A Sustain Battery Here
+
+The share treats 奇丽花 as:
+
+- 核心输出位
+- 核心啮合手
+
+This is a major correction. In this build, 奇丽花 should not be described only
+as a support/economy slot. It is one of the team's real offensive axes.
+
+### 2. The Team Is Better Read As A Template Fusion
+
+The source explicitly frames the team as a fusion of:
+
+- 骨龙平衡队
+- 啮合平衡队
+- 水刃翼王
+
+So the best interpretation is not "clever goodstuff with some synergies." It is
+a mature current-version balance-template fusion.
+
+### 3. 火狐 Is A Core Defensive Pivot, Not Merely A Utility Slot
+
+The source strongly emphasizes:
+
+- pure bulk fire fox
+- slower speed is preferred
+- defensive soak into `高温回火`
+- `焚烧烙印` as critical anti-mark utility
+
+This reinforces the corrected doctrine view that 火狐 is a structural defensive
+pivot and anti-mark stabilizer.
+
+### 4. 双啮合轴 Matters
+
+The source assigns both:
+
+- 声波缇塔
+- 奇丽花
+
+as core 啮合 pieces. This means the team is not running one setup damage axis
+plus five helpers. It is using dual pressure lanes layered onto a balance shell.
+
+## Reconciled Interpretation
+
+A stronger reviewed answer is:
+
+```text
+这队是一支成熟的当前版本平衡模板融合队。
+骨龙和火狐负责联防、状态处理、反强化、清印记与节奏缓冲；
+缇塔和奇丽花形成双啮合输出轴；
+岚鸟和翼王构成迅捷/收割轴。
+所以它不是单核队，也不是简单强宠拼盘，而是多轴平衡压制队。
+```
+
+## What The Model Got Right
+
+- team class: balance-oriented, not pure offense
+- 骨龙 as a resource-exchange / pressure slot
+- 火狐 not as a weather-first slot
+- 翼王 + 岚鸟 as a genuine paired module
+
+## What Needed Correction
+
+- 奇丽花 was initially under-read as too support-heavy
+- the team was initially described as too "goodstuff-like" and not enough as a
+  mature template fusion
+- 火狐's structural importance was initially under-ranked
+
+## Failure Modes
+
+- Reducing 奇丽花 to a sustain battery and missing its role as a real output axis.
+- Describing the team as a random pile of strong units.
+- Treating 火狐 as a side utility slot rather than a core defensive pivot.
+- Explaining 翼王 in isolation and missing the 岚鸟 pairing.
+- Ignoring that current-version team labels such as `水刃翼王` can encode a real
+  build identity rather than just one move mention.
+
+## Review Status
+
+This case is reviewed as a useful reconciliation sample:
+
+- model structural inference was directionally correct
+- source-guided role correction materially improved the answer
+- the resulting pattern is suitable for future casebank retrieval when the
+  system needs examples of "balance template fusion" rather than single-axis
+  archetype reading
+
+---
+
+# Synthetic Team Review Protocol
+
+Path: pages/casebank/synthetic_team_review_protocol.md
+Class: casebank
+Confidence: provisional
+A-layer refs: data/runtime/battle_dex.sqlite
+
+# Synthetic Team Review Protocol
+
+## Claim
+
+Model-inferred team logic can be stored as useful learning material only after
+review. It must never enter the wiki as raw authority.
+
+The correct class is reviewed case material, not A-layer fact.
+
+## Strategic Use
+
+For a weekly report or user-provided team:
+
+1. Extract the team list, source date, and source confidence.
+2. Retrieve A-layer facts: types, stats, moves, energy, traits, known mechanics.
+3. Retrieve B-layer doctrine: roles, loops, marks, weather, response, stat
+   selection, uncertainty policy.
+4. Infer the team logic: win condition, setup, conversion, protection,
+   counterplay, and failure modes.
+5. Review the inference for fact errors and overclaiming.
+6. Store only reviewed conclusions with confidence and source trail.
+
+## Storage Shape
+
+Use a casebank page or raw battle review note with:
+
+```yaml
+source_date: ""
+source_confidence: ""
+team_input: "summary, not full copyrighted dump"
+inferred_loop: ""
+key_roles: []
+a_layer_checks: []
+review_status: "needs_human_review | reviewed"
+confidence: "provisional | low_confidence"
+volatile_until: "next_patch_or_meta_shift"
+```
+
+## Evidence
+
+The architecture spec defines B Wiki as reviewable doctrine and explicitly
+forbids raw LLM output presented as authority. The provenance policy allows
+LLM-generated drafts only after human review.
+
+## Confidence
+
+`provisional`.
+
+High confidence:
+
+- model synthesis must be review-gated
+- synthesized team logic belongs in B/casebank, not A
+- exact facts must be checked against A-layer sources
+
+Medium confidence:
+
+- exact schema for future casebank automation
+
+## A-Layer Boundary
+
+Synthetic case notes cannot create new species, move, trait, weather, mark, or
+damage facts. They may only cite A-layer facts or mark unresolved assumptions.
+
+## Known Failure Modes
+
+- Letting the model write its own hallucination into the library.
+- Storing a teamlist without source date.
+- Storing a conclusion without A-layer checks.
+- Treating one reviewed case as general archetype truth.
+- Mixing persona taste into default doctrine.
+
+## Draft Review Questions
+
+- Should every synthetic case require human approval before compiled export?
+- Should a reviewer score fact accuracy and tactical plausibility separately?
+- What fields should become machine-validated in `chunks.jsonl`?
+
+---
+
+# Bug Contribution (奉献)
+
+Path: pages/mechanics/bug_contribution_fengxian.md
+Class: mechanics
+Confidence: provisional
+A-layer refs: data/runtime/battle_dex.sqlite
+
+# Bug Contribution (奉献)
+
+## Claim
+
+`奉献` is a team-held contribution mechanic, not a mark and not a normal buff.
+
+Current-version reviewed working model:
+
+- contribution belongs to the team rather than to one current on-field spirit
+- it persists across spirits
+- current-version confirmed trigger sources are only `虫群` and `啃咬`
+- current reviewed contribution effects include:
+  - apply 2 layers of poison
+  - gain 10% lifesteal
+  - combo count +1
+  - power +20
+  - energy cost -2
+
+## Strategic Use
+
+For advisor reasoning, `奉献` means early actions can be invested into later
+team payoff rather than only immediate board value.
+
+The advisor should ask:
+
+- who is creating contribution
+- who is cashing it out
+- whether the team can survive long enough to profit from banked contribution
+- whether the user is describing a front-loaded bug team or a back-loaded
+  contribution finisher
+
+## Evidence
+
+The 18-type tutorial describes bug-type play around `奉献` as a hidden
+team/backline contribution rather than a normal mark or ordinary buff.
+
+The current thread adds explicit current-version clarifications:
+
+- `奉献` is team-held
+- it persists across spirits
+- only `虫群` and `啃咬` are currently confirmed trigger sources
+- the current reviewed effect set contains five concrete payoff variants
+
+## Confidence
+
+`provisional`.
+
+High confidence:
+
+- contribution is not a mark
+- contribution belongs to the team, not only to one current spirit
+- current confirmed trigger sources are `虫群` and `啃咬`
+
+Medium confidence:
+
+- exact storage/display behavior in battle UI
+- whether future versions add more trigger sources or more contribution variants
+
+## A-Layer Boundary
+
+This page does not define executable team-contribution storage.
+
+A-layer formalization would likely need fields such as:
+
+- contribution_source
+- contribution_variant
+- contribution_team_scope
+- contribution_persistence
+- contribution_consume_rule
+
+## Known Failure Modes
+
+- describing contribution as if it were a regular self-buff
+- confusing contribution with marks
+- analyzing a contribution team as if every member needs immediate individual
+  payoff
+- assuming unconfirmed trigger sources exist without evidence
+
+---
+
+# Burn Timing And Full Combustion
+
+Path: pages/mechanics/burn_timing_and_full_combustion.md
+Class: mechanics
+Confidence: provisional
+A-layer refs: data/runtime/battle_dex.sqlite, data/reference/luoke_world_type_database_v2.json
+
+# Burn Timing And Full Combustion
+
+## Claim
+
+`灼烧` is a per-target damage-over-time status, not a mark. It creates two
+different timing questions that the advisor must keep separate:
+
+- the normal end-of-round burn resolution
+- extra burn-damage triggers created by specific skills such as `充分燃烧`
+
+`充分燃烧` should be modeled as an extra immediate burn-damage trigger that
+does not itself consume burn stacks. The normal end-of-round burn resolution
+still happens later and that normal round-end resolution does reduce stacks.
+
+Current reviewed thread correction also treats normal burn as:
+
+- `2%` max-HP damage per stack
+- fire-type damage rather than typeless chip
+- subject to type interaction
+- the extra burn trigger from `充分燃烧` should be read under that same
+  fire-damage model
+
+## Strategic Use
+
+For team reasoning, the advisor should ask:
+
+- Is the burn team trying to win through repeated round-end attrition, or
+  through amplified immediate conversion with `充分燃烧`?
+- Does the team have a reliable way to stack burn before spending a turn on
+  `充分燃烧`?
+- Is the target likely to leave before the round-end burn trigger, making an
+  immediate burn trigger more valuable?
+- Does the team contain effects that change burn decay, such as `煤渣草`?
+- Is the current plan relying on immediate lethal damage, or on preserving
+  stacks into later turns?
+
+## Core Timing Model
+
+Current reviewed B-layer model:
+
+1. Burn stacks exist on a specific target.
+2. At normal round end, burn deals `2%` max-HP fire damage per stack.
+3. Type interaction still applies to that round-end burn damage.
+4. After the normal damage step, burn decays stacks.
+5. `充分燃烧` first doubles the target's existing burn stacks.
+6. `充分燃烧` then triggers one extra immediate burn-damage instance.
+7. That immediate trigger is read under the same fire-damage model.
+8. That extra immediate burn-damage instance does not itself reduce burn stacks.
+9. Later in the same round, the normal round-end burn step still occurs.
+10. The normal round-end burn step is the step that applies the usual stack
+   decay.
+
+## Evidence
+
+The current A-layer move text for `充分燃烧` in
+`data/runtime/battle_dex.sqlite` is:
+
+`使敌方身上的灼烧翻倍,并触发1次灼烧伤害。`
+
+This proves the move doubles burn and triggers an additional burn-damage event,
+but the A-layer text alone does not specify whether that extra trigger consumes
+stacks.
+
+The early 18-type tutorial frames fire around `灼烧`, but its numeric and timing
+detail is not stable enough to serve as final authority.
+
+The current thread adds an explicit user confirmation on 2026-04-21:
+
+- normal burn damage is `2%` max HP per stack
+- burn damage is fire-type damage and is affected by type interaction
+- the extra burn trigger from `充分燃烧` follows that same damage model
+- the burn damage triggered by `充分燃烧` is extra and does not reduce stacks
+- the normal end-of-round burn still resolves later
+- that normal end-of-round burn step still reduces stacks
+
+This user confirmation resolves the specific ambiguity that remained after the
+database and public glossary checks.
+
+## Confidence
+
+`provisional`.
+
+High confidence:
+
+- normal burn damage is `2%` max HP per stack
+- burn damage is fire-type damage and thus not typeless
+- type interaction applies to normal burn damage
+- the extra burn trigger from `充分燃烧` follows that same damage model
+- `充分燃烧` doubles existing burn stacks
+- `充分燃烧` triggers an extra immediate burn-damage instance
+- that extra immediate burn-damage instance does not itself consume stacks
+- the normal end-of-round burn still resolves separately
+- the normal end-of-round burn step is the one that applies normal stack decay
+
+Medium confidence:
+
+- interaction ordering against simultaneous poison, freeze, weather, fainting,
+  and revival checks still needs broader timing coverage
+
+## A-Layer Boundary
+
+This page does not define executable battle-engine timing.
+
+A-layer modeling should eventually own:
+
+- canonical burn status definition
+- exact damage formula
+- exact decay formula
+- exact hook order for immediate burn triggers versus round-end burn
+- interactions with traits such as `煤渣草`
+- interactions with leave-field, faint, revive, and other round-end effects
+
+## Known Failure Modes
+
+- Treating the extra burn damage from `充分燃烧` as the same object as the
+  normal round-end burn tick.
+- Assuming `充分燃烧` immediately reduces stacks just because it triggers burn
+  damage.
+- Forgetting that the normal round-end burn still occurs after `充分燃烧` in the
+  same round.
+- Recommending `充分燃烧` as a value play when the target is about to switch and
+  the team has no way to preserve burn pressure.
+- Ignoring `煤渣草` or similar future effects that can rewrite burn decay.
+
+---
+
+# Burst Trigger And Entry Actions
+
+Path: pages/mechanics/burst_trigger_and_entry_actions.md
+Class: mechanics
+Confidence: provisional
+A-layer refs: data/runtime/battle_dex.sqlite
+
+# Burst Trigger And Entry Actions
+
+## Claim
+
+`迸发` is an entry-linked first-action trigger, not a normal permanent buff.
+
+Current-version reviewed working model:
+
+- `迸发` triggers on the first action after entry
+- it is not limited to attack skills
+- current working assumption is that passive replacement entry also counts
+
+The last point remains provisional and should be stated with care.
+
+## Strategic Use
+
+For advisor reasoning, burst mechanics matter because they convert entry timing
+into tempo and payoff.
+
+The advisor should ask:
+
+- can this team repeatedly generate high-value entries
+- does the species want active switch, forced leave/return loops, or defensive
+  cycling to access burst
+- is the burst payoff worth the board cost of leaving and re-entering
+- is the user's plan relying on one burst turn or on repeated burst cycling
+
+## Evidence
+
+The 18-type tutorial names `迸发` as the defining electric-type trigger and
+explains it as an effect that occurs on the first action after entry.
+
+The same source ties burst to leave/return loops and to entry sequencing rather
+than to one specific move category.
+
+The current thread adds a user-reviewed current-version interpretation:
+
+- first-action trigger after entry
+- not limited by move type
+- passive replacement likely also counts, but this remains slightly uncertain
+
+## Confidence
+
+`provisional`.
+
+High confidence:
+
+- burst is an entry-linked first-action trigger
+- burst is not restricted to attack moves only
+- burst is central to electric-type rhythm and leave/return play
+
+Medium confidence:
+
+- whether passive replacement always counts as entry for burst
+- whether any entry subtype is excluded in edge cases
+
+## A-Layer Boundary
+
+This page does not define executable entry-type classification.
+
+A-layer formalization would likely need fields such as:
+
+- burst_trigger_on_entry
+- burst_trigger_on_first_action
+- burst_valid_entry_types
+- burst_consumed_after_first_action
+
+## Known Failure Modes
+
+- describing burst as a generic damage buff
+- assuming burst only works on attack moves
+- assuming all entry types are identical without marking uncertainty
+- recommending burst loops without checking whether the team can safely create
+  repeated entries
+
+---
+
+# Charge And Release
+
+Path: pages/mechanics/charge_and_release.md
+Class: mechanics
+Confidence: provisional
+A-layer refs: data/runtime/battle_dex.sqlite
+
+# Charge And Release
+
+## Claim
+
+`蓄力` is a two-step commitment mechanic.
+
+Current-version reviewed working model:
+
+- first turn: spend the move's energy and enter the charge state
+- next turn: the player must choose that same charge move to release it
+- other carried skills are unavailable while still holding the charge
+- the player may choose `聚能` or switch out to cancel the charge
+- current-version charge-keyword skills all cost `3` energy
+
+Special rewrites already observed:
+
+- `架势` lets the next charge move release directly
+- `嫉妒` on 伊兰亚龙 allows other carried skills during the charge stage and
+  reduces their displayed cost by the energy already spent on the charged move
+
+## Strategic Use
+
+For advisor reasoning, charge is not just delayed damage. It is visible
+commitment with hidden target-move identity and specific cancellation routes.
+
+The advisor should ask:
+
+- is the team built to protect a charge turn
+- does the charge user gain enough payoff to justify surrendering flexibility
+- can the team exploit the fact that the opponent does not know which charge
+  move is being prepared
+- does the plan rely on a rewrite trait such as `嫉妒` or a setup move such as
+  `架势`
+
+## Evidence
+
+The 18-type tutorial describes charge as: prepare now, resolve next turn.
+
+The current thread adds a more exact current-version model:
+
+- charge energy is paid on the first turn
+- the second-turn release does not pay energy again
+- the opponent does not know which specific move is being charged
+- response-to-status attacks do not automatically break charge and do not gain
+  their expected response payoff merely because the target is charging
+- `聚能` and switching can cancel the charge state
+
+The same thread also documents two explicit rewrites:
+
+- `架势`
+- `嫉妒`
+
+## Confidence
+
+`provisional`.
+
+High confidence:
+
+- charge is a two-step mechanic
+- energy is spent on the first step, not again on the release step
+- `聚能` and switching can cancel charge
+- the current-version charge-keyword moves all cost `3`
+
+Medium confidence:
+
+- whether every current/future charge move shares every visibility and
+  cancellation nuance identically
+- exact UI/log wording for the charge state
+
+## A-Layer Boundary
+
+This page does not define executable charge-state code.
+
+A-layer formalization would likely need fields such as:
+
+- is_charge_move
+- charge_cost_paid_on_prepare
+- charge_release_requires_same_move
+- charge_cancel_actions
+- charge_visibility_model
+- trait_or_move_charge_rewrites
+
+## Known Failure Modes
+
+- treating charge as simple delayed damage with no cancellation routes
+- assuming the opponent knows the exact charged move
+- charging ahead with a team that cannot protect the commitment turn
+- treating `架势` and `嫉妒` as universal charge rules instead of explicit
+  rewrites
+
+---
+
+# Degeneration And 萌化
+
+Path: pages/mechanics/degeneration_and_menghua.md
+Class: mechanics
+Confidence: provisional
+A-layer refs: data/runtime/battle_dex.sqlite
+
+# Degeneration And 萌化
+
+## Claim
+
+`萌化` is a debuff-driven regression mechanic, not a percentage stat shrink.
+
+Current-version reviewed working model:
+
+- each layer regresses the spirit by one evolution stage
+- regression continues until the initial form
+- base-form-linked stats and traits revert to the regressed form
+- current HP does not automatically rescale to the new max HP
+- max HP itself changes with the regressed form
+
+## Strategic Use
+
+For advisor reasoning, `萌化` is important because it changes form-linked power
+structure rather than merely applying a generic minus-stat effect.
+
+The advisor should ask:
+
+- does the target lose a key evolved trait after regression
+- does the target's max HP and bulk profile change enough to alter kill ranges
+- is the team using degeneration as hard disruption, or as setup for a later
+  finisher
+
+## Evidence
+
+The 18-type tutorial presents `萌化` as regression / de-evolution and ties it
+to stage rollback rather than a normal buff/debuff arithmetic model.
+
+The current thread adds a sharper current-version interpretation:
+
+- `萌化` is a debuff
+- each layer means one-stage regression
+- regression stops at the initial form
+- the regressed form's base-form-linked stats and traits take over
+- current HP does not automatically rescale along with the max-HP change
+
+## Confidence
+
+`provisional`.
+
+High confidence:
+
+- degeneration is stage-based, not ratio-based
+- it regresses one stage per layer
+- it bottoms out at the initial form
+
+Medium confidence:
+
+- exact combat-log wording for stacked degeneration
+- whether all future/current form-linked properties always revert under the same
+  model
+
+## A-Layer Boundary
+
+This page does not define executable form-rewrite code.
+
+A-layer formalization would likely need fields such as:
+
+- degeneration_layers
+- degeneration_stage_delta
+- degeneration_floor_stage
+- reverted_trait_mode
+- max_hp_recompute
+- current_hp_preserve_mode
+
+## Known Failure Modes
+
+- treating degeneration as a simple percentage debuff
+- assuming current HP is automatically renormalized to the new max HP
+- forgetting that trait identity may change with form rollback
+- recommending degeneration lines without checking whether the target still
+  functions well enough even in a lower form
+
+---
+
+# Energy Actions And Focus
+
+Path: pages/mechanics/energy_actions_and_focus.md
+Class: mechanics
+Confidence: provisional
+A-layer refs: data/runtime/battle_dex.sqlite
+
+# Energy Actions And Focus
+
+## Claim
+
+`聚能` is a baseline resource action, not a normal species-exclusive move.
+
+Current reviewed working model:
+
+- `聚能` restores `5` energy
+- `聚能` is treated as a status action
+- if interrupted, `聚能` fails
+- being responded to is not the same as being interrupted
+
+## Strategic Use
+
+For advisor reasoning, `聚能` matters because it creates one of the clearest
+tempo tradeoffs in the game:
+
+- surrender a turn now
+- recover future action capacity later
+
+The advisor should ask:
+
+- is the team trying to force the opponent into a focus turn
+- can the opponent punish focus with response or interruption
+- is the species energy-starved enough that focus is a realistic line
+
+## Response Versus Interrupt
+
+Current reviewed doctrine must keep these distinct:
+
+- `应对`
+  - conditional extra payoff if the opponent used the expected category
+- `打断`
+  - explicit effect that makes the target action fail
+
+So for `聚能`:
+
+- it may be responded to because it is a status action
+- but it only fails if the opposing move/effect explicitly interrupts it
+
+## Evidence
+
+The 18-type tutorial and the earlier basic battle-system note both describe
+`聚能` as the default energy-recovery action and classify it as status-type.
+
+The current thread adds the more operational clarification:
+
+- restore 5 energy
+- if interrupted, it fails
+- being responded to is not equivalent to being interrupted
+
+## Confidence
+
+`provisional`.
+
+High confidence:
+
+- focus restores 5 energy
+- focus is a status action
+- response and interrupt must not be collapsed
+
+Medium confidence:
+
+- exact ordering against every future interrupt-bearing effect
+- whether any special species/form rewrite changes focus behavior
+
+## A-Layer Boundary
+
+This page does not define executable default-action code.
+
+A-layer formalization would likely need fields such as:
+
+- default_focus_action
+- focus_energy_gain
+- focus_action_category
+- focus_interruptible
+
+## Known Failure Modes
+
+- treating focus as an ordinary equipped move
+- treating every successful response to focus as if focus failed
+- forgetting that focus is one of the main windows for tempo punishment
+
+---
+
+# Entry, Exit, And Replacement Timing
+
+Path: pages/mechanics/entry_exit_and_replacement_timing.md
+Class: mechanics
+Confidence: provisional
+A-layer refs: data/runtime/battle_dex.sqlite
+
+# Entry, Exit, And Replacement Timing
+
+## Claim
+
+`入场`、`离场`、`脱离`、`换人` are not interchangeable words.
+
+Current reviewed doctrine requires at least this distinction:
+
+- active player switch
+- active leave caused by a skill/effect
+- passive replacement after faint
+- forced replacement
+
+Some effects care about the reason for leaving. Some care only that a
+replacement occurred.
+
+## Strategic Use
+
+This timing cluster matters because multiple other mechanisms depend on it:
+
+- `迅捷`
+- `迸发`
+- `降灵印记`
+- `棘刺印记`
+
+For advisor reasoning, ask:
+
+- is the current event a player-chosen switch, a skill-driven leave, or a faint
+  replacement
+- does the mechanism care about "active leave" specifically
+- does it only care that a new spirit entered, regardless of cause
+
+## Current Working Distinction
+
+- `主动换人`
+  - player-operated switch choice
+- `主动离场`
+  - a leave event caused by the player's chosen action or a self-driven effect
+- `脱离`
+  - a leave/replacement event caused by a move/effect rather than ordinary
+    manual switching
+- `被击败替换`
+  - passive replacement after faint
+- `强制离场`
+  - replacement caused by an external effect
+
+Current reviewed thread guidance:
+
+- player-operated switch and active leave are coupled but not identical
+- some effects only care that the opponent changed the fielded spirit,
+  regardless of reason
+
+## Consequence For Other Mechanisms
+
+- `迅捷` and `迸发` must not be explained without clarifying what kind of entry
+  event is involved
+- `降灵印记` is sensitive to active-leave wording
+- `棘刺印记` can punish replacement more broadly and should not be over-narrowed
+  to one leave subtype unless the move text requires that
+
+## Evidence
+
+The 18-type tutorial repeatedly relies on leave/entry distinctions:
+
+- wing/swift material distinguishes active switch entry from passive
+  post-faint replacement
+- ghost material distinguishes active leave
+- electric burst logic depends on what counts as entry and first action after
+  entry
+
+The current thread adds the explicit PM correction that some effects should care
+about any replacement event, not only one named leave subtype.
+
+## Confidence
+
+`provisional`.
+
+High confidence:
+
+- these leave/entry words should not be treated as synonyms
+- several reviewed mechanisms already depend on this distinction
+
+Medium confidence:
+
+- the exact engine classification for every future/current leave subtype
+- which effects observe reason-for-leave versus replacement-as-such in every
+  edge case
+
+## A-Layer Boundary
+
+This page does not define executable event-taxonomy code.
+
+A-layer formalization would likely need fields such as:
+
+- entry_event_type
+- leave_event_type
+- is_active_leave
+- is_faint_replacement
+- is_forced_replacement
+- effect_scope_on_replacement
+
+## Known Failure Modes
+
+- treating all replacement events as the same
+- assuming a mechanism that says active leave also triggers on faint
+- assuming a mechanism that punishes replacement only works on manual switching
+- explaining swift or burst without clarifying the entry subtype
+
+---
+
+# Marks And Persistence
+
+Path: pages/mechanics/marks_and_persistence.md
+Class: mechanics
+Confidence: provisional
+A-layer refs: docs/manual_battle_data_supplement_2026-04-14.md, data/reference/luoke_world_type_database_v2.json
+
+# Marks And Persistence
+
+## Claim
+
+Marks are persistent battle attachments that should be modeled separately from
+ordinary buffs, debuffs, weather, and skill effects.
+
+The advisor should reason about marks as long-horizon pressure or long-horizon
+resource support:
+
+- positive marks create resource or damage windows for the marked side
+- negative marks create persistent pressure that switching alone does not solve
+- mark replacement and mark clearing create a dedicated layer of turn-by-turn
+  counterplay
+
+## Strategic Use
+
+Marks matter because they survive the basic rotation patterns that clear many
+ordinary effects. This makes them one of the main tools for converting early
+setup into later advantage.
+
+For team reasoning, the advisor should ask:
+
+- What mark is this team trying to establish?
+- Is the mark a resource engine, a damage engine, a speed-control tool, or a
+  delayed burst condition?
+- Which member creates the mark reliably?
+- Which member converts the mark into pressure?
+- What happens if the opponent clears, steals, replaces, or ignores the mark?
+- Does the team have enough tempo to spend a turn creating the mark?
+
+## Known Mark Registry
+
+This registry is provisional. It is suitable for B-layer reasoning, but exact
+execution semantics still need A-layer representation before engine use.
+
+| Mark | Likely Sign | Direct Skill In Screenshot | Skill Type / Cost | Primary Effect |
+|---|---|---|---|---|
+| 棘刺印记 | negative | 棘刺 | 普通 / 2 | When the marked fielded spirit leaves, the entering replacement loses 6% HP per layer. |
+| 光合印记 | positive | 光合作用 | 草系 / 4 | At end of round, gain 1 energy per layer. |
+| 蓄势印记 | positive | 蓄势待发 | 地系 / 4 | All attack-skill power +30%; energy cost +1. |
+| 龙噬印记 | positive | 龙威 | 龙系 / 5 | After using a 3-cost skill and dealing damage, gain physical and magical attack +30%. |
+| 中毒印记 | negative | 疫病吐息 | 毒系 / 3 | At end of round, deal poison-type damage equal to 3% HP per layer. |
+| 降灵印记 | negative | 降灵 | 幽系 / 2 | When the marked fielded spirit leaves, the entering replacement loses 1 energy per layer. |
+| 攻击印记 | positive | 主场优势 | 普通 / 3 | All skill power +10%. |
+| 湿润印记 | positive | 打湿 | 水系 / 4 | All skill energy cost -1 per layer. |
+| 减速印记 | negative | 速冻 | 冰系 / 4 | Speed -10 per layer; `速冻` gives 2 layers. |
+| 蓄电印记 | positive | 增压电池 | 电系 / 2 | Attack skills gain 迸发: current power +10. |
+| 风起印记 | positive | 风起 | 翼系 / 4 | When attacking first, current skill power +20%. |
+| 星陨印记 | negative | 冥想 | 幻系 / 4 | When a non-幻系 skill attacks the marked spirit, consume all layers and deal extra 幻系 damage. |
+
+## Starfall Boundary
+
+Do not collapse `冥想` and `星陨印记`.
+
+`冥想` is the direct skill shown in the screenshot. Its skill effect includes:
+
+- damage taken -80%
+- response to attack
+- if the response condition is met, the enemy gains 2 layers of 星陨印记
+
+`星陨印记` is the mark created by that skill. Its mark effect is triggered by a
+non-幻系 skill attacking the marked spirit. The trigger is based on skill type,
+not on the attacker's species type.
+
+The current battle-dex also stores `冥想` as a defense move with the effect text
+`减伤80%,应对攻击:敌方获得2层星陨印记。` This should be parsed as a conditional
+response package, not as an unconditional mark application.
+
+## Evidence
+
+The 2026-04-07 mark screenshot lists 12 marks and direct mark-producing skills,
+including skill type and cost. The user corrected OCR and interpretation in the
+current thread on 2026-04-20.
+
+The 2026-04-19 PvP beginner sweep independently supports several global mark
+claims: marks differ from ordinary buffs/debuffs, marks can be positive or
+negative, one positive and one negative mark can coexist, positive marks can
+replace positive marks, and marks cannot be removed merely by switching.
+
+The manual supplement already confirms `湿润印记` as an effect name rather than
+a canonical move name, confirms its energy-cost reduction, and places mark
+semantics in a later mechanics/Agent layer instead of first-pass raw move schema.
+
+## Confidence
+
+`provisional`.
+
+High confidence:
+
+- mark persistence through switching
+- one positive and one negative mark limit
+- `湿润印记` cost reduction
+- `光合印记` end-of-round energy gain
+- `减速印记` speed reduction per layer
+
+Medium confidence:
+
+- exact scaling for every mark by layer
+- timing of end-of-round effects against weather, poison, burn, freeze, and
+  fainting checks
+- whether all likely-positive and likely-negative signs listed above are final
+  for replacement-limit purposes
+
+## A-Layer Boundary
+
+This page does not define executable mark mechanics.
+
+A future A-layer mark registry should own:
+
+- canonical mark names
+- positive/negative classification
+- layer limit, stacking, replacement, and clear rules
+- exact timing hooks
+- exact damage formulas
+- exact skill-to-mark creation mappings
+- trait/form/leader-effect sources of marks
+- interactions with weather, ordinary buffs/debuffs, and switching
+
+The screenshot's direct skills are not exhaustive. Some species traits or other
+effects may also create marks.
+
+## Known Failure Modes
+
+- Treating a direct mark-producing skill as the only possible source of a mark.
+- Treating `冥想`'s damage reduction and response as the intrinsic effect of
+  星陨印记.
+- Making 星陨印记 depend on the attacker's species type instead of the attacking
+  skill type.
+- Forgetting that 棘刺印记 and 降灵印记 punish replacement after the marked
+  fielded spirit leaves, and that the punishment stacks by layer.
+- Recommending a mark-centered team without checking whether it can protect its
+  mark engine from clear/steal/replacement counterplay.
+- Treating all mark claims as patch-stable in an early-release metagame.
+
+## Draft Review Questions
+
+- Are there exactly 12 current marks, or does the game expose additional marks
+  through traits/forms not shown in the tutorial table?
+- What are the canonical Chinese names for all marks in battle logs?
+- Which skills clear, steal, replace, convert, or protect marks?
+- What is the exact timing order for end-of-round energy, damage, weather, and
+  mark triggers?
+- Should mark logic be represented as a standalone A-layer table or attached to
+  move/effect ontology?
+
+---
+
+# Morale And Revive
+
+Path: pages/mechanics/morale_and_revive.md
+Class: mechanics
+Confidence: provisional
+A-layer refs: data/runtime/battle_dex.sqlite
+
+# Morale And Revive
+
+## Claim
+
+PvP loss pressure is tracked through morale/magic loss when spirits faint.
+Revive effects create additional board presence, but they do not refund or
+cancel morale/magic already lost from fainting.
+
+If a revived spirit faints again, morale/magic is deducted again.
+
+## Strategic Use
+
+When judging revive traits such as `不朽`, separate two forms of value:
+
+- board value: the spirit can return and act again after the revive condition
+- morale/magic cost: every faint still matters for the losing side's PvP loss
+  condition
+
+This prevents overclaiming that a revive spirit is "free to die." It is better
+described as a repeat-entry resource that can create tempo, absorb pressure,
+force enemy energy spend, and reappear in a later state of the game.
+
+For team reasoning, the advisor should ask:
+
+- Did the first faint already cost morale/magic?
+- Can the revive timing realistically matter before the game ends?
+- Does the revived spirit force a second meaningful answer, or merely return
+  as a low-tempo body?
+- Does the team gain enough entry, energy, or setup value from the faint to
+  justify the morale/magic cost?
+
+## Evidence
+
+The beginner PvP sources describe the general rule: when a spirit loses battle
+capacity, the player loses morale/magic, and losing all morale/magic loses the
+battle. User review on 2026-04-21 confirmed the revive edge case: death deducts
+morale/magic; after revival, a later death deducts again.
+
+The A-layer database records traits with explicit morale/magic modifiers, such
+as `诈死` reducing morale/magic loss on faint and `御驾亲征` increasing faint
+cost. This implies morale/magic loss is a first-class PvP resource and should
+not be silently bypassed unless a trait says so.
+
+## Confidence
+
+`provisional`.
+
+High confidence:
+
+- normal fainting deducts morale/magic
+- revive does not refund the earlier deduction
+- a revived spirit fainting again deducts morale/magic again
+
+Medium confidence:
+
+- exact UI naming between morale and magic in all public materials
+- exact ordering of revive timing relative to end-of-turn effects
+
+## A-Layer Boundary
+
+This page does not define executable battle timing. It records the strategic
+rule that revive does not negate faint cost.
+
+Exact trait text and future engine timing belong to:
+
+```text
+data/runtime/battle_dex.sqlite
+```
+
+## Known Failure Modes
+
+- Calling a revive spirit a no-cost sacrifice.
+- Ignoring that repeated deaths can consume repeated morale/magic.
+- Treating revive value as guaranteed without checking turn count and tempo.
+- Assuming a revive trait modifies morale/magic unless its A-layer text says so.
+
+## Draft Review Questions
+
+- What is the exact engine timing of `不朽` revival relative to turn count,
+  switching, and end-of-turn effects?
+- Does a revived spirit return with full health, partial health, or a specific
+  state in all cases?
+- Are there edge cases where a faint is prevented rather than followed by revive?
+
+---
+
+# PvP Stat Normalization And IV Selection
+
+Path: pages/mechanics/pvp_stat_normalization_and_iv_selection.md
+Class: mechanics
+Confidence: provisional
+A-layer refs: data/reference/luoke_world_type_database_v2.json, data/runtime/battle_dex.sqlite
+
+# PvP Stat Normalization And IV Selection
+
+## Claim
+
+PvP stat reasoning should separate three layers:
+
+- A-layer exact calculation: species base stats, IVs, nature, and formula
+- B-layer investment judgment: which stats matter for a role
+- team-level taste: whether a threshold actually changes matchup decisions
+
+The advisor must not assume PvP auto-perfects a spirit. Current source material
+supports that PvP normalizes level/growth-like surfaces, while IVs still matter.
+
+## Strategic Use
+
+When recommending a set or judging a team, ask:
+
+- What is this member's job: damage, utility, defensive pivot, mark engine,
+  weather setter, cleaner, or counterpiece?
+- Which attacking side does its actual skill pool use?
+- Does speed investment cross a meaningful speed line, or is the member still
+  slower than the threats it cares about?
+- Is bulk needed on the physical side, magical side, or both?
+- Does the plan rely on exact turn order, damage thresholds, or survival
+  thresholds?
+
+The common bad recommendation is to select IVs by species base stats alone.
+Roco advice should combine role, base stats, trait, and skill pool.
+
+## Evidence
+
+The current A-layer stat source states that PvP six-dimensional stats depend on
+species base stat, IV, and nature. It also records the formulas, IV range,
+PvP IV multiplier, nature boost/penalty, and same-speed random rule.
+
+The 2026-03-25 IV tutorial explains that IV choice depends on role, base stat,
+and skill pool. It uses examples where a defensive-looking species may still
+want an attacking IV because its relevant counter-skill uses that attacking
+side.
+
+The 2026-04-19 beginner sweep explicitly states that PvP does not fill missing
+IVs, while level/star-like surfaces are automatically normalized.
+
+## Confidence
+
+`provisional`.
+
+High confidence:
+
+- PvP stat formula depends on base stat, IV, and nature.
+- IVs are not automatically perfected in PvP.
+- Nature has a large enough effect to matter in recommendations.
+- Same-speed order is random.
+
+Medium confidence:
+
+- speed-base 120 as a practical investment heuristic
+- which exact growth surfaces are auto-normalized and how they are named in
+  current UI
+
+## A-Layer Boundary
+
+This page does not own executable formulas or current species stat values.
+
+Exact stat calculation and species base stats belong to:
+
+```text
+data/reference/luoke_world_type_database_v2.json
+data/runtime/battle_dex.sqlite
+```
+
+This page only defines how the advisor should use those facts in reasoning.
+
+## Known Failure Modes
+
+- Assuming PvP auto-perfects IVs.
+- Recommending speed investment that does not change relevant turn order.
+- Recommending an attacking IV on the wrong attacking side.
+- Treating a speed heuristic as a hard rule.
+- Forgetting that same-speed outcomes are random.
+- Treating current community threshold advice as patch-stable.
+
+## Draft Review Questions
+
+- Which exact UI surfaces are normalized in PvP: level, star/growth, temporary
+  trial values, or other cultivation surfaces?
+- Should an A-layer stat calculator API expose final PvP values for a chosen IV
+  and nature profile?
+- Which speed-line thresholds should enter B-layer taste after more battle
+  cases are reviewed?
+
+---
+
+# Response Counterplay
+
+Path: pages/mechanics/response_counterplay.md
+Class: mechanics
+Confidence: provisional
+A-layer refs: data/runtime/battle_dex.sqlite, specs/battle_dex_sqlite_schema_v1.sql, data/reference/luoke_world_type_database_v2.json
+
+# Response Counterplay
+
+## Claim
+
+Many Roco skills are conditional packages, not single flat effects. The advisor
+must parse `应对X: Y` as:
+
+```text
+base effect
+response condition: opponent uses X category
+response-success effect: Y
+```
+
+The response-success effect should not be applied when the response condition
+fails.
+
+## Strategic Use
+
+Response clauses are one of the main sources of turn-level skill expression.
+They can convert a defensive turn into resource gain, mark creation, debuff,
+forced switch, damage reflection, cooldown reduction, or setup.
+
+For recommendations, the advisor should distinguish:
+
+- what the move does unconditionally
+- what it is trying to answer
+- what extra payoff happens only on successful response
+- whether the response payoff is worth the energy, cooldown, and tempo cost
+- whether the opponent can avoid the response by choosing another category
+
+## Parsing Rule
+
+For any `effect_text` containing `应对攻击`, `应对状态`, or `应对防御`:
+
+- `应对攻击` triggers only when the opponent uses an attack skill.
+- `应对状态` triggers only when the opponent uses a status skill.
+- `应对防御` triggers only when the opponent uses a defense skill.
+- Text before the response clause remains the base effect unless the effect says
+  `改为`, which may replace the base outcome under the response condition.
+- Text after the response clause is conditional response payoff.
+- `打断` is an additional response payoff, not automatically implied by every
+  response.
+
+## Examples
+
+From the current battle-dex move table, there are many response-bearing moves:
+117 moves contain `应对` in `effect_text`, distributed as 46 defense, 31 physical
+attack, 26 status, and 14 magical attack moves.
+
+Representative patterns:
+
+| Move | Category | Effect Pattern | Advisor Interpretation |
+|---|---|---|---|
+| 冥想 | 防御 | `减伤80%,应对攻击:敌方获得2层星陨印记。` | Base: defense and 80% damage reduction. If the opponent uses an attack skill, response succeeds and the opponent gains 2 layers of 星陨印记. |
+| 壁垒 | 防御 | `减伤90%,应对攻击:防御技能冷却-1。` | Base: high mitigation. Response success reduces defense-skill cooldown. |
+| 报复 | 防御 | `减伤70%,应对攻击:敌方失去3能量。` | Base: mitigation. Response success converts the defended attack into enemy energy loss. |
+| 水刃 | 物攻 | `造成物伤,应对状态:本技能能耗永久-4。` | Base: physical damage. If it catches a status skill, the move gains permanent energy-cost reduction. |
+| 瞬间零度 | 状态 | `本回合敌方使用的技能能耗+3,应对防御:改为全技能能耗+3。` | Base: current enemy skill cost pressure. If it catches defense, the outcome changes into all-skill cost pressure. |
+| 天火 | 状态 | `敌方获得10层灼烧,应对防御:改为获得30层。` | Base: burn stacking. If it catches defense, the burn result is replaced by a stronger burn stack. |
+
+## Evidence
+
+The current SQLite battle-dex stores move fields as raw native game data:
+
+```text
+move_name
+category_raw
+move_type
+energy_cost
+power
+effect_text
+```
+
+A direct database check on 2026-04-20 found 117 moves whose `effect_text`
+contains `应对`.
+
+The domain primer already treats response as a core Roco-native mechanism and
+states that successful response can trigger extra effects while not every
+response necessarily interrupts the opponent.
+
+## Confidence
+
+`provisional`.
+
+High confidence:
+
+- `应对X: Y` should be treated as conditional structure.
+- `冥想` should be read as a defense move with 80% damage reduction and a
+  conditional attack-response payoff that gives 2 layers of 星陨印记.
+- Not every response includes interruption.
+
+Medium confidence:
+
+- exact timing and priority for every response subtype
+- interaction order between response payoff, damage, mark trigger, switching,
+  and fainting
+- whether all `改为` texts can be mechanically parsed by a simple replacement
+  rule
+
+## A-Layer Boundary
+
+This page defines advisor interpretation, not executable battle resolution.
+
+A-layer modeling should eventually split `effect_text` into structured fields:
+
+```text
+base_effects
+response_condition.category
+response_success_effects
+replacement_semantics
+interrupt_flag
+timing_hook
+```
+
+Until then, the advisor may reason over text but must preserve uncertainty for
+edge cases.
+
+## Known Failure Modes
+
+- Applying response-success effects even when the opponent did not use the
+  required category.
+- Treating every response as interruption.
+- Treating base defensive mitigation as if it requires successful response.
+- Treating a response-created mark as the same thing as the response skill's
+  own defensive effect.
+- Ignoring `改为`, where response success may replace the base result rather
+  than simply add to it.
+
+## Draft Review Questions
+
+- Which response effects trigger before damage, after damage, or at end of
+  round?
+- Which response effects interrupt the target skill, and which only add payoff?
+- Should the first structured parser be regex-based for common cases or
+  LLM-assisted with human review for rare texts?
+- Should response parsing live in battle-dex importer, an Agent supplement, or
+  both?
+
+---
+
+# Speed, Priority, And Swift
+
+Path: pages/mechanics/speed_priority_and_swift.md
+Class: mechanics
+Confidence: provisional
+A-layer refs: data/runtime/battle_dex.sqlite, data/reference/luoke_world_type_database_v2.json
+
+# Speed, Priority, And Swift
+
+## Claim
+
+`速度`、`先手`、`迅捷` 不能混成一个概念。
+
+当前 reviewed 结论只允许保守表述为：
+
+- 常规行动顺序应先看先手层级，再看实际速度，最后才可能落到随机或同速处理。
+- `迅捷` 不是“永远先手”的同义词，更像一种与特定入场 / 触发条件绑定的自动释放机制。
+- 含有 `迅捷` 的技能文本，不能在没有 reviewed 页支撑时直接被解释成完整、确定的时序规则。
+
+## Strategic Use
+
+对 advisor 来说，这页的价值不是输出一套伪精确时间轴，而是避免把速度控制、先手层级、迅捷触发混说。
+
+推荐或分析时至少要区分：
+
+- 这是依赖常规速度线取胜，还是依赖先手层级抢行动权
+- 这是主动出手技能，还是与换上场时机绑定的 `迅捷`
+- 如果用户问的是队伍角色，是否只是需要知道它“有入场压制 / 反打节奏价值”，而不是需要你假装知道全部结算细节
+
+## Evidence
+
+当前证据来自三类来源：
+
+- reviewed 过的领域 primer，确认 Roco 存在独立于普通速度比较的机制词，如 `迅捷`
+- raw source notes 与速度线整理材料，反复把 `先手`、`速度`、`迅捷` 分开讨论
+- A 层 battle-dex 中已经有能力 / 技能文本直接出现 `迅捷`
+
+可直接确认的 A 层例子包括：
+
+- 某些特性文本写有 `1号位技能获得迅捷`
+- 某些技能文本直接写有 `迅捷`
+- 某些技能会引用“已释放过的迅捷技能”
+
+这些都足以证明：`迅捷` 是真实机制词，不是语言噪声；但它的完整执行规则仍不能只靠零散文本硬推。
+
+## Confidence
+
+`provisional`。
+
+高置信：
+
+- `先手`、`速度`、`迅捷` 应视为不同层面的机制信号
+- `迅捷` 与普通速度高低不是一回事
+- `迅捷` 相关解释必须显式保留不确定性
+
+中低置信，仍待后续 reviewed：
+
+- `迅捷` 是否严格要求主动换上场才触发
+- 精灵倒下后的被动替换是否触发 `迅捷`
+- 是否存在能量不足时不能触发的约束
+- “一次只自动释放一个迅捷技能”是否已足够被当前材料确认
+- `迅捷` 与敌方行动、应对、防御、打断的精确先后顺序
+
+## A-Layer Boundary
+
+这页定义的是 B 层 advisor doctrine，不是战斗引擎结算器。
+
+如果未来要把 `速度 / 先手 / 迅捷` 做成 A 层可执行字段，应拆成类似：
+
+```text
+priority_tier
+speed_modifier
+swift_trigger
+swift_requires_active_switch
+swift_energy_gate
+swift_limit_per_entry
+timing_uncertainty
+```
+
+在这些字段进入 A 层之前，Agent 只能把 `迅捷` 视作“重要机制信号”，不能把自己的猜测包装成 confirmed rule。
+
+## Known Failure Modes
+
+- 把 `迅捷` 直接说成“绝对先手”
+- 把任何速度提升都说成等于 `先手`
+- 忽略入场条件，默认 `迅捷` 永远生效
+- 在没有 reviewed 证据时，擅自断言死亡替换也会触发 `迅捷`
+- 用跨游戏直觉替代 Roco 自身机制边界
+
+## Draft Review Questions
+
+- `迅捷` 的最小可确认触发条件到底是什么？
+- 死亡替换、主动换人、强制脱离，这三种入场是否共享同一触发逻辑？
+- 能量不足时，`迅捷` 技能是跳过、失败，还是存在特殊结算？
+- 如果同时存在先手层级和 `迅捷`，时序比较应如何落地到 A 层？
+
+---
+
+# Status Effects And Persistence
+
+Path: pages/mechanics/status_effects_and_persistence.md
+Class: mechanics
+Confidence: provisional
+A-layer refs: data/runtime/battle_dex.sqlite, data/reference/luoke_world_type_database_v2.json
+
+# Status Effects And Persistence
+
+## Claim
+
+Ordinary status effects should not be collapsed into one bucket. For advisor
+reasoning, the key distinction is:
+
+- whether the effect is attached to the individual spirit
+- whether it persists through switching
+- whether it is typed damage or untyped chip
+- whether it checks defeat only at round end or on every relevant state change
+
+Current reviewed scope for this page covers:
+
+- `冻结`
+- `中毒`
+- `寄生`
+
+`灼烧` has a dedicated reviewed page because its timing and `充分燃烧`
+interaction already warranted standalone treatment.
+
+## Strategic Use
+
+For recommendations and explanations, the advisor should ask:
+
+- does the status survive switching on the same individual
+- does the opponent have type-based immunity to the ordinary status form
+- is the status meant to pressure over time, force specific switches, or create
+  a hard threshold for immediate defeat
+- is the user actually asking about a status mark variant rather than the
+  ordinary status itself
+
+## Freeze
+
+Current reviewed working model:
+
+- each layer of freeze corresponds to `5%` of max HP as frozen HP pressure
+- every time `frozen_hp` or `current_hp` changes, the game checks the defeat
+  condition again
+- defeat condition: `current_hp <= frozen_hp`
+- ice spirits are immune to freeze
+- switching preserves freeze on the same individual spirit, but the next spirit
+  does not inherit it
+
+This means freeze is an individual persistent state, not a field-wide inherited
+status.
+
+## Poison
+
+Current reviewed working model:
+
+- ordinary poison deals `3%` poison-type damage per stack
+- ordinary poison is distinct from `中毒印记`
+- `中毒印记` also deals `3%` poison-type damage
+- poison-mark damage does not follow the same ordinary poison-immunity logic as
+  standard poison
+
+This distinction matters because many user questions casually say "poison" when
+they really mean either ordinary poison or poison mark pressure.
+
+## Leech / 寄生
+
+Current reviewed working model:
+
+- at round end, `寄生` drains `6%` of the target's max HP
+- the drained amount is healed to the user
+- this is not treated as grass-type damage
+
+For advice, this means grass sustain can remain strategically relevant even when
+type-based damage intuition would otherwise mislead the reader.
+
+## Evidence
+
+The 18-type tutorial and later current-thread review together support:
+
+- freeze as a persistent individual state with a max-HP threshold check
+- poison as an ordinary typed damage-over-time state distinct from poison mark
+- leech as fixed max-HP drain-and-heal rather than a typed grass-damage packet
+
+The current thread adds the cleaner engineering abstraction for freeze:
+
+`whenever frozen_hp or current_hp changes, re-check; if current_hp <= frozen_hp,
+the spirit is exhausted immediately`
+
+## Confidence
+
+`provisional`.
+
+High confidence:
+
+- freeze uses a threshold check rather than only a one-time round-end check
+- poison and poison mark should not be collapsed
+- leech currently drains 6% max HP and heals the user for the same amount
+
+Medium confidence:
+
+- exact ordering between ordinary status damage and every future edge-case
+  mechanic
+- whether any future version introduces exceptions to current poison/freeze
+  handling
+
+## A-Layer Boundary
+
+This page does not define executable battle hooks.
+
+A-layer formalization would likely need fields such as:
+
+- status_kind
+- persists_on_same_individual_switch
+- typed_damage_flag
+- threshold_check_hook
+- immunity_model
+- mark_variant_link
+
+## Known Failure Modes
+
+- treating freeze as if it passes to the next switched-in spirit
+- treating poison and poison mark as identical
+- treating leech as grass-type damage
+- assuming all status effects resolve only at round end
+
+---
+
+# Transmission And Skill Slots
+
+Path: pages/mechanics/transmission_and_skill_slots.md
+Class: mechanics
+Confidence: provisional
+A-layer refs: data/runtime/battle_dex.sqlite
+
+# Transmission And Skill Slots
+
+## Claim
+
+`传动` is a skill-slot movement mechanism, not a normal buff/debuff.
+
+Current-version reviewed working model:
+
+- at round start, a skill carrying `传动X` moves downward by `X` positions
+- skill slots form a 4-slot cycle
+- overflow wraps around, so slot `5` is slot `1`
+- if multiple carried skills have transmission, movement resolves step by step
+  rather than as one simultaneous collapse
+
+## Strategic Use
+
+For advisor reasoning, `传动` means the skill bar itself is part of the battle
+engine.
+
+The advisor should ask:
+
+- which slot does the team need to preserve or rotate into a premium position
+- whether a species wants to move a payoff move into a cheaper/boosted/support
+  position
+- whether multiple transmission effects create a reliable loop or a fragile one
+- whether the user's current explanation depends on exact slot order or only on
+  the general fact that slots are being rotated
+
+## Evidence
+
+The 18-type tutorial treats `传动` as the defining machine-type mechanism and
+describes it through skill-position movement and position-dependent payoff.
+
+The current thread adds a more explicit user-confirmed current-version wording:
+
+`回合开始时，带有“传动X”的技能会向下移动X个位置，该效果可叠加。`
+
+The user also supplied a worked `传动1` multi-skill example that implies:
+
+- cyclic 4-slot wrapping
+- sequential resolution when more than one carried skill has transmission
+
+These points are sufficient for a first reviewed provisional page even though
+the full family of transmission variants is not yet modeled in A-layer fields.
+
+## Confidence
+
+`provisional`.
+
+High confidence:
+
+- transmission moves skills by slot at round start
+- `传动X` means moving downward by `X` positions
+- the effect can stack
+- the slot system is cyclic
+
+Medium confidence:
+
+- the exact generic rule for every future/current transmission variant
+- whether some traits or special skills rewrite the default movement order
+
+## A-Layer Boundary
+
+This page does not define executable slot-order code.
+
+If transmission is formalized into A-layer later, the model should own fields
+such as:
+
+- slot_count
+- transmission_delta
+- transmission_timing
+- multi_transmission_resolution_order
+- trait_rewrite_flags
+
+## Known Failure Modes
+
+- treating transmission as a damage buff instead of slot movement
+- resolving multiple transmission skills as simultaneous when the intended order
+  matters
+- forgetting cyclic wraparound
+- describing a species as slot-independent when its payoff clearly depends on
+  slot rotation
+
+---
+
+# Type, Bloodline, And Move Boundary
+
+Path: pages/mechanics/type_bloodline_move_boundary.md
+Class: mechanics
+Confidence: provisional
+A-layer refs: docs/domain_primer.md, docs/combat_ontology.md, data/runtime/battle_dex.sqlite, specs/battle_dex_sqlite_schema_v1.sql
+
+# Type, Bloodline, And Move Boundary
+
+## Claim
+
+Roco PvP reasoning must keep these concepts separate:
+
+```text
+species type / 系别
+bloodline / 血脉
+move type / 技能属性
+```
+
+The advisor must not collapse them into one generic "attribute" field.
+
+## Strategic Use
+
+This boundary prevents three common reasoning errors:
+
+- treating bloodline as if it changes a species' defensive type profile
+- treating the attacker's species type as the direct source of restraint
+- ignoring that a move or resonance action can pressure a target through a
+  different type channel than the user's species identity suggests
+
+In team advice, this means the advisor should distinguish:
+
+- what the species can safely receive
+- what the species can threaten with selected moves
+- what bloodline-enabled tools or resonance actions may add
+- what the current A-layer facts actually confirm
+
+## Evidence
+
+The 2026-03-23 beginner PvP tutorial states that bloodline is separate from a
+species' own type and should not be read as changing that species into a
+dual-type defensive profile.
+
+The 2026-04-02 battle-system tutorial independently states that defensive type
+is fixed by species `系别`, while bloodline affects available tools and
+`愿力冲击`-style type behavior.
+
+Project domain documents already require avoiding imported Pokemon-like schema
+assumptions and keeping Roco-evidenced fields separate.
+
+## Confidence
+
+`provisional`.
+
+The high-level separation is strongly supported by two early tutorial sources
+and by existing project ontology discipline. Exact implementation details, such
+as bloodline defaults, resonance type derivation, and move access rules, still
+require A-layer validation.
+
+## A-Layer Boundary
+
+This page does not define exact type charts, species types, bloodline access,
+move pools, or resonance rules.
+
+Exact facts must come from:
+
+```text
+data/runtime/battle_dex.sqlite
+data/reference/
+data/manual_supplements/
+specs/battle_dex_sqlite_schema_v1.sql
+```
+
+or future approved battle-dex API/tool contracts.
+
+## Known Failure Modes
+
+- Overstating a bloodline as a defensive type.
+- Recommending a matchup based on species label while ignoring selected move
+  type.
+- Treating early tutorial examples as permanent exact mechanics.
+- Do not import Pokemon dual-type intuition into Roco without Roco evidence.
+- Using `愿力冲击` claims without checking current resonance rules.
+
+## Draft Review Questions
+
+- Is `bloodline does not alter defensive type` confirmed enough for reviewed
+  doctrine?
+- Is `move type against target species type` the correct phrasing for Roco
+  restraint calculation?
+- Which A-layer table or API should expose bloodline, move access, and resonance
+  behavior?
+- Should resonance type derivation live on this page or a dedicated
+  `resonance_magic.md` page?
+
+---
+
+# Weather And Field Effects
+
+Path: pages/mechanics/weather_and_field_effects.md
+Class: mechanics
+Confidence: provisional
+A-layer refs: data/reference/luoke_world_type_database_v2.json, data/runtime/battle_dex.sqlite
+
+# Weather And Field Effects
+
+## Claim
+
+Weather is a global, public, mutually exclusive, time-limited field condition.
+It should be modeled separately from marks, ordinary buffs/debuffs, and species
+traits.
+
+Weather gives teams a timed conversion window:
+
+- rain converts setup into water damage pressure
+- sandstorm converts setup into ground-skill energy compression
+- snow converts setup into freeze pressure and rewards ice-type immunity
+
+## Strategic Use
+
+The advisor should reason about weather as a team window with setup cost,
+duration, and payoff density.
+
+For any weather-centered recommendation, ask:
+
+- Which member starts the weather?
+- How many turns of payoff does the team realistically get after setup?
+- Which skills or species actually convert the weather into damage, energy
+  advantage, or attrition?
+- Can the opponent stall the weather timer, replace the weather, or force the
+  weather starter into bad trades?
+- Is a mark engine better for the same team goal because it has no weather
+  timer, or is weather better because it is harder to clear?
+
+## Known Weather Registry
+
+This registry is provisional and suitable for B-layer reasoning. Exact engine
+semantics belong in A-layer modeling.
+
+| Weather | Status | Known Effect | Common Source Mentioned | Strategic Meaning |
+|---|---|---|---|---|
+| Default / no special weather | default | Baseline state after non-default weather expires. Some transcripts call this `晴天`, but this page does not canonicalize that as a named weather. | natural/default | Neutral baseline. |
+| 雨天 | active weather | Water-skill damage +50%. | 落雨; possible trait/form sources | Timed water burst or pressure window. |
+| 沙暴 | active weather | Ground-skill energy cost reduced; source says 地面系技能能耗减半. No end-of-round chip damage. | 沙咏, cost 7; possible trait/form sources | Timed energy-compression window. |
+| 雪天 / 暴风雪 | active weather | `雪天` and `暴风雪` refer to the same in-game weather mechanism. Each round, fielded spirits gain 2 freeze layers. Each added freeze layer contributes 5% HP worth of frozen pressure, and each freeze increase checks whether the spirit now reaches exhaustion. Ice spirits are immune to freeze. | 冬至 | Timed freeze attrition and ice-type advantage window. |
+
+## Weather Versus Marks
+
+Weather and marks should not be collapsed.
+
+Weather:
+
+- applies to the field
+- is public to both sides
+- is mutually exclusive
+- has a duration, commonly cited as 8 rounds
+- returns to a default / no-special-weather state after duration ends
+- can structure whole-team timing windows
+
+Marks:
+
+- attach to a spirit/side as positive or negative marks
+- persist through switching
+- are constrained by positive/negative mark slots
+- can be cleared, stolen, replaced, or converted by specific tools
+- can create longer-horizon pressure or resource support
+
+This distinction matters in advice. A weather team must justify the setup turn
+and payoff within the weather duration. A mark team must justify mark protection
+and counterplay into clear/steal/replacement.
+
+## Evidence
+
+The 2026-04-04 weather tutorial uses `晴天` wording for the common/default
+state and explicitly lists three active weather types: `雨天`, `沙暴`, and
+`暴风雪`. It states that rain increases water skill power, winter/snow applies
+freeze pressure, sandstorm reduces energy cost, weather has a round limit, and
+battle logs show current weather effects and remaining rounds. This page does
+not canonicalize `晴天` as a named active weather because it may only mean no
+special weather in the transcript.
+
+The 2026-04-03 speed/glossary tutorial independently states that current weather
+types are `雨天`, `沙暴`, and `雪天`; weather is field-wide, public, and one at a
+time; common self-started weather lasts 8 rounds; rain gives water skills 1.5x;
+sandstorm halves ground-skill energy cost; snow applies 2 freeze layers each
+round and ice spirits are immune to freeze.
+
+The 2026-04-14 光合武队 source compares weather to 光合印记 and treats weather as
+harder to clear but time-limited, while 光合印记 has no 8-round limit and rewards
+all actions through end-of-round energy.
+
+The current thread adds a direct user confirmation that `雪天` and `暴风雪`
+should be treated as the same in-game weather mechanism rather than as two
+different weather systems.
+
+## Confidence
+
+`provisional`.
+
+High confidence:
+
+- weather is global/public and distinct from marks
+- only one weather exists at a time
+- rain, sandstorm, and snow/blizzard are the main non-default weather types
+- `雪天` and `暴风雪` are two names for the same in-game weather mechanism
+- weather is time-limited and reverts to a default / no-special-weather state
+  after expiry
+- rain gives water-skill damage +50%
+- sandstorm has no Pokemon-like end-of-round chip damage
+- `沙咏` is the main sandstorm-starting skill and costs 7 energy
+- each freeze layer freezes 5% HP; if current HP is below the frozen HP ratio,
+  the spirit becomes exhausted; ice spirits are immune to freeze
+
+Medium confidence:
+
+- common duration is 8 rounds
+- sandstorm halves ground-skill energy cost
+- snow applies 2 freeze layers each round
+- exact multi-layer step ordering when two freeze layers are added together by
+  one effect
+
+Low confidence:
+
+- whether `晴天` is a canonical weather name or only transcript wording for no
+  special weather
+- exact timing order for snow/freeze application
+- exact weather replacement rules
+
+## A-Layer Boundary
+
+This page does not define executable weather mechanics.
+
+A-layer modeling should own:
+
+- canonical weather names
+- default weather state
+- duration and replacement rules
+- exact stat/damage/energy formulas
+- exact timing hooks
+- weather-starting skills, traits, forms, and leader effects
+- weather interaction with marks, ordinary buffs/debuffs, freeze, and fainting
+
+## Known Failure Modes
+
+- Treating weather as a mark.
+- Treating snow and freeze as the same object.
+- Treating `晴天` as a canonical named weather without explicit A-layer support.
+- Treating non-confirmed starter-skill names from noisy transcripts as
+  canonical. `沙咏` is user-confirmed; other OCR variants are not.
+- Do not import Pokemon sandstorm chip damage into Roco sandstorm.
+- Recommending weather teams without checking payoff density inside the timer.
+- Assuming weather is always better than marks because it is global.
+- Assuming marks are always better than weather because they persist longer.
+
+## Draft Review Questions
+
+- Is `晴天` an actual named weather, or only transcript wording for the default
+  no-special-weather state?
+- Do all weather sources last 8 rounds, or only common skill-started weather?
+- Can weather be overwritten directly by another weather?
+- At what timing does snow/freeze apply relative to end-of-round marks, poison,
+  burn, and fainting?
+
+---
+
+# Early Meta Uncertainty
+
+Path: pages/recommendation_taste/early_meta_uncertainty.md
+Class: recommendation_taste
+Confidence: provisional
+A-layer refs: data/runtime/battle_dex.sqlite
+
+# Early Meta Uncertainty
+
+## Claim
+
+Early-release PvP recommendations must separate stable mechanics taste from
+volatile current-meta claims.
+
+The advisor may use community rankings and weekly team reports to detect
+patterns, but should not present them as durable truth.
+
+## Strategic Use
+
+Default recommendation posture:
+
+- prefer explaining why a team works over claiming it is best
+- label source date and volatility for ratings or weekly reports
+- distinguish mechanic stability from exact species ranking
+- give counterplay and failure modes with any strong recommendation
+- avoid hard claims when the game has recently patched or released new tools
+
+Good answer shape:
+
+```text
+This team appears to be a mark-protection long-game shell. The durable lesson is
+the energy loop and mark protection. The exact member ranking is volatile and
+should be checked against current battle-dex and recent reports.
+```
+
+## Evidence
+
+The first cache inventory includes many early-release sources: March archetype
+deck, April ranking snapshot, current skill/trait videos, and weekly team
+recommendations. These are valuable but patch-sensitive.
+
+The 2026-03-26 archetype deck itself mixes beta history and public-release
+prediction, so it is useful for archetype doctrine but unsafe as current-meta
+authority.
+
+## Confidence
+
+`provisional`.
+
+High confidence:
+
+- early community meta sources are volatile
+- ratings and teamlists require date and confidence labels
+- mechanics interpretation is more stable than exact tier ranking
+
+Medium confidence:
+
+- which specific April claims have already gone stale
+
+## A-Layer Boundary
+
+Current species, move, trait, and exact set viability must be checked through
+A-layer data and recent reviewed sources. B Wiki can store taste and caution,
+not live ranking authority.
+
+## Known Failure Modes
+
+- Recommending a stale tier-list pick as if it were current.
+- Hiding source date.
+- Turning one creator's preference into generic doctrine.
+- Ignoring patch volatility in a game that is still settling.
+- Using model-generated team logic without review.
+
+## Draft Review Questions
+
+- What is the maximum age for a source to drive hard recommendations?
+- Should weekly reports expire automatically unless reviewed?
+- What confidence label should be assigned to model-synthesized team reviews?
+
+---
+
+# Role Taxonomy
+
+Path: pages/roles/role_taxonomy.md
+Class: role_methodology
+Confidence: provisional
+A-layer refs: data/runtime/battle_dex.sqlite
+
+# Role Taxonomy
+
+## Claim
+
+Role is not a species label. Role is a team-contextual job created by selected
+set, trait, speed, bulk, energy profile, mark/weather access, and matchup plan.
+
+The same species may be evaluated differently in different teams.
+
+## Strategic Use
+
+Useful first-pass roles:
+
+- primary damage core: converts setup into KOs or decisive pressure
+- secondary damage core: pressures when the main core is denied
+- support/enabler: creates marks, weather, buffs, energy, or entry windows
+- defensive pivot: absorbs key attacks and preserves team tempo
+- counterpiece: exists to punish a specific common plan
+- disruption piece: attacks energy, switching, marks, speed, or action order
+- cleaner: enters after conditions are prepared to finish the game
+
+The advisor should always state the role and the reason:
+
+```text
+This member is a support/enabler here because it starts the resource engine and
+protects the later cleaner, not because its species is always a support.
+```
+
+## Evidence
+
+Champion-team material describes output, support, and interception/counter
+roles. The archetype deck shows that teams often assign narrow jobs: stored
+mark burst converter, poison pressure protector, response pressure piece,
+energy disruptor, or scaling core support.
+
+## Confidence
+
+`provisional`.
+
+High confidence:
+
+- role is contextual
+- selected move set and team plan matter
+- role labels should not replace A-layer checks
+
+Medium confidence:
+
+- exact role vocabulary
+- whether some community terms should be renamed for Roco-native clarity
+
+## A-Layer Boundary
+
+This page does not decide if a species can perform a role. A-layer data must
+verify stats, speed, move access, trait, typing, and energy costs.
+
+## Known Failure Modes
+
+- Calling a species a role without checking the selected set.
+- Treating a rating list as a role taxonomy.
+- Ignoring whether the team already has the same role covered.
+- Ignoring whether a support action can be safely executed.
+
+## Draft Review Questions
+
+- Which role names should become canonical B vocabulary?
+- Should "counterpiece" be split into defensive counter and tactic counter?
+- Should mark/weather setters be roles or tags attached to broader roles?
+
+---
+
+# Core Team Construction
+
+Path: pages/team_building/core_team_construction.md
+Class: team_building
+Confidence: provisional
+A-layer refs: data/runtime/battle_dex.sqlite
+
+# Core Team Construction
+
+## Claim
+
+A PvP team should be read as a conversion system, not a list of individually
+strong spirits.
+
+The advisor should identify:
+
+- the primary win condition
+- the setup route
+- the protection route
+- the conversion route
+- the fallback route when the main route is denied
+
+## Strategic Use
+
+For each proposed team, ask:
+
+- What does this team spend turns and energy to create?
+- Which member turns that resource into KOs, attrition, or a decisive board
+  state?
+- Which member protects the engine from clear, steal, forced switch, or bad
+  matchup pressure?
+- Which member covers the core's defensive weaknesses?
+- What does the team do if the opponent refuses the intended interaction?
+
+This framing prevents two common mistakes:
+
+- recommending six strong spirits with no shared plan
+- overbuilding around one carry without entry, protection, and fallback logic
+
+## Evidence
+
+The 2026-03-26 archetype deck repeatedly describes teams by loop: burst
+condition conversion, core-first construction, poison/mark attrition, starfall
+stored threat, response-based martial pressure, bug-team contribution stacking,
+and ghost energy pressure.
+
+The champion-team-logic source frames team positions as output, support, and
+interception/counter roles. It emphasizes that team construction starts from a
+core and then patches weaknesses and matchup needs.
+
+The defensive-switching/prediction source provides early material for treating
+switching and coverage as team structure rather than isolated move choice.
+
+## Confidence
+
+`provisional`.
+
+High confidence:
+
+- team reasoning should identify a win condition and support structure
+- role is team-contextual
+- exact species strength should not be inferred from archetype name alone
+
+Medium confidence:
+
+- current role vocabulary from community sources
+- early public-meta archetype relevance after future patches
+
+## A-Layer Boundary
+
+This page does not own exact species, move, ability, or matchup facts. It should
+call A-layer data when judging whether a specific member can actually perform a
+role.
+
+## Known Failure Modes
+
+- Treating early-release archetype ratings as current strength.
+- Ignoring energy cost and setup turn count.
+- Ignoring mark/weather/response counterplay.
+- Assuming a core can enter safely without route support.
+- Recommending a team without explaining its conversion path.
+
+## Draft Review Questions
+
+- Which reviewed team cases best illustrate each conversion pattern?
+- Should future weekly reports be stored as casebank pages or archetype updates?
+- What minimum A-layer facts are required before the advisor may recommend a
+  concrete replacement member?

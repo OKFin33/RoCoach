@@ -1,0 +1,18 @@
+{
+  "run_id": "2026-04-14Tmove_only_probe_m5",
+  "baseline_database": null,
+  "added": {
+    "species_form": 0,
+    "move": 5,
+    "derived_ability": 0,
+    "species_move_pool": 0
+  },
+  "updated": {},
+  "removed": {},
+  "unchanged": {},
+  "conflicts": {
+    "ability_conflicts": [],
+    "unresolved_move_names": []
+  },
+  "requires_pm_review": false
+}

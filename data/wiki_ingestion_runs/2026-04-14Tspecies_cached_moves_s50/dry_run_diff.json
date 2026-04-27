@@ -1,0 +1,20 @@
+{
+  "run_id": "2026-04-14Tspecies_cached_moves_s50",
+  "baseline_database": null,
+  "added": {
+    "species_form": 50,
+    "move": 491,
+    "derived_ability": 24,
+    "species_move_pool": 2059
+  },
+  "updated": {},
+  "removed": {},
+  "unchanged": {},
+  "conflicts": {
+    "ability_conflicts": [],
+    "unresolved_move_names": [
+      "龙之舞"
+    ]
+  },
+  "requires_pm_review": false
+}

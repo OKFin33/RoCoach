@@ -1,0 +1,99 @@
+version: 1
+
+purpose: >
+  Define the contract for upstream persona-source adapters. A source adapter is
+  the component that creates a draft persona doctrine artifact before ingestion.
+
+applies_to:
+  - managed persona distillation
+  - future original persona design flow
+  - upstream persona creation tools
+
+adapter_kinds:
+  - distill_from_existing_subject
+  - design_from_zero
+
+supported_initial_adapters:
+  - nuwa_distillation_adapter
+
+planned_future_adapters:
+  - nexus_original_design_adapter
+
+hard_rules:
+  - source adapters do not write directly into runtime or registry
+  - source adapters must output reviewable artifacts, not only ephemeral prompt
+    text
+  - source adapters may propose persona doctrine, but may not bypass ingestion,
+    safety review, or registry validation
+
+required_source_outputs:
+  artifact_bundle:
+    required: true
+    contents:
+      - distillation_or_design_memo
+      - normalized_persona_doctrine_draft
+      - mapping_or_usage_note
+
+  provenance_metadata:
+    required: true
+    fields:
+      adapter_id:
+        type: string
+        required: true
+      adapter_kind:
+        type: string
+        required: true
+        enum:
+          - distill_from_existing_subject
+          - design_from_zero
+      run_mode:
+        type: string
+        required: true
+        enum:
+          - internal_only
+          - review_candidate
+      source_summary:
+        type: array
+        required: true
+        items:
+          type: string
+
+  doctrine_draft:
+    required: true
+    contract_target:
+      - specs/persona_doctrine_contract.yaml
+
+  mapping_note:
+    required: true
+    minimum_sections:
+      - synthesis_facing_fields
+      - rendering_facing_fields
+      - metadata_only_fields
+      - review_risks
+
+adapter_specific_notes:
+  nuwa_distillation_adapter:
+    expected_inputs:
+      - target_subject
+      - public_source_scope
+    expected_strength:
+      - strong for doctrine distillation when source material exists
+    expected_limit:
+      - not reliable when canon is too fragmented or too sparse
+
+  nexus_original_design_adapter:
+    expected_inputs:
+      - user_brief
+      - desired persona role
+      - style constraints
+      - honesty and safety constraints
+    expected_strength:
+      - strong for original persona creation
+    expected_limit:
+      - requires stronger review against coherence and overfitting to user fantasy
+
+non_goals:
+  - no direct runtime activation
+  - no implicit public-safe approval
+  - no skipping provenance
+

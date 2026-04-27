@@ -1,0 +1,341 @@
+version: 1
+
+status: p1b_minimal_schema
+
+purpose: >
+  Machine-readable minimum schema for the first battle-relevant dex ingestion.
+  This schema is based on P1a wiki field discovery and supersedes the deprecated
+  pre-P1a battle_data_model.yaml draft for dex storage.
+
+source_basis:
+  field_alignment_matrix: specs/field_alignment_matrix.yaml
+  field_discovery_review: docs/wiki_field_discovery_review_2026-04-13.md
+  ontology: docs/combat_ontology.md
+  domain_primer: docs/domain_primer.md
+
+confidence_values:
+  - confirmed
+  - provisional
+
+tables:
+  source_page:
+    primary_key: source_page_id
+    fields:
+      source_page_id:
+        type: string
+        required: true
+      entity_hint:
+        type: enum
+        values: [species, move, ability_embedded, unknown]
+        required: true
+      page_title:
+        type: string
+        required: true
+      page_url:
+        type: string
+        required: true
+      revision_id:
+        type: string
+        required: false
+      fetched_at:
+        type: datetime
+        required: true
+      content_sha256:
+        type: string
+        required: true
+      parser_version:
+        type: string
+        required: true
+
+  raw_template_snapshot:
+    primary_key: snapshot_id
+    fields:
+      snapshot_id:
+        type: string
+        required: true
+      source_page_id:
+        type: string
+        required: true
+        references: source_page.source_page_id
+      template_name:
+        type: enum
+        values: [精灵信息, 技能信息, unknown]
+        required: true
+      raw_fields:
+        type: json_object
+        required: true
+      extraction_warnings:
+        type: string_array
+        required: true
+
+  species_form:
+    primary_key: species_id
+    fields:
+      species_id:
+        type: string
+        required: true
+      display_name:
+        type: string
+        required: true
+        source_field: 精灵名称
+      initial_species_name:
+        type: string
+        required: false
+        source_field: 精灵初阶名称
+      form_name:
+        type: string
+        required: false
+        source_field: 精灵形态
+      regional_form_name:
+        type: string
+        required: false
+        source_field: 地区形态名称
+      evolution_stage:
+        type: string
+        required: false
+        source_field: 精灵阶段
+      primary_type:
+        type: roco_type
+        required: true
+        source_field: 主属性
+      secondary_type:
+        type: roco_type
+        required: false
+        source_field: 2属性
+      base_stats:
+        type: object
+        required: true
+        fields:
+          生命: integer
+          物攻: integer
+          魔攻: integer
+          物防: integer
+          魔防: integer
+          速度: integer
+      ability_name:
+        type: string
+        required: false
+        source_field: 特性
+      ability_effect_text:
+        type: string
+        required: false
+        source_field: 特性描述
+      source_page_id:
+        type: string
+        required: true
+        references: source_page.source_page_id
+      confidence:
+        type: enum
+        values: [confirmed, provisional]
+        required: true
+
+  move:
+    primary_key: move_id
+    notes:
+      - canonical battle move entities are sourced from 技能信息 when available
+      - skill-stone pages such as 技能石/光刃 are acquisition evidence, not separate move entities
+    fields:
+      move_id:
+        type: string
+        required: true
+      move_name:
+        type: string
+        required: true
+        source_field: 技能名称
+      move_type:
+        type: roco_type
+        required: true
+        source_field: 属性
+      category_raw:
+        type: enum
+        values: [状态, 防御, 物攻, 魔攻]
+        required: true
+        source_field: 技能类别
+      power:
+        type: integer
+        required: false
+        source_field: 威力
+      energy_cost:
+        type: integer
+        required: false
+        source_field: 耗能
+      effect_text:
+        type: string
+        required: true
+        source_field: 效果
+      description_text:
+        type: string
+        required: false
+        source_field: 描述
+      source_version:
+        type: string
+        required: false
+        source_field: 技能版本
+      source_page_id:
+        type: string
+        required: true
+        references: source_page.source_page_id
+      confidence:
+        type: enum
+        values: [confirmed, provisional]
+        required: true
+
+  derived_ability:
+    primary_key: ability_id
+    derived_from: species_form
+    fields:
+      ability_id:
+        type: string
+        required: true
+      ability_name:
+        type: string
+        required: true
+        source_field: 特性
+      effect_text:
+        type: string
+        required: true
+        source_field: 特性描述
+      source_species_ids:
+        type: string_array
+        required: true
+        references: species_form.species_id
+      derivation_status:
+        type: enum
+        values: [single_source, merged_consistent, conflict_review_required]
+        required: true
+      confidence:
+        type: enum
+        values: [confirmed, provisional]
+        required: true
+
+  species_move_pool:
+    primary_key:
+      - species_id
+      - move_name_raw
+      - access_channel
+    notes:
+      - access_channel preserves how the species can access a move
+      - skill_stone and bloodline are source channels, not first-pass Engine strategic distinctions
+      - bloodline mutual-exclusion and acquisition legality are deferred to a later legality layer
+    fields:
+      species_id:
+        type: string
+        required: true
+        references: species_form.species_id
+      move_name_raw:
+        type: string
+        required: true
+      move_id:
+        type: string
+        required: false
+        references: move.move_id
+      access_channel:
+        type: enum
+        values: [level_up, skill_stone, bloodline, unknown]
+        required: true
+      unlock_level:
+        type: integer
+        required: false
+      source_field:
+        type: enum
+        values: [技能, 技能解锁等级, 可学技能石, 血脉技能]
+        required: true
+      confidence:
+        type: enum
+        values: [confirmed, provisional]
+        required: true
+
+  mechanic_rule:
+    primary_key: rule_id
+    fields:
+      rule_id:
+        type: string
+        required: true
+      rule_name:
+        type: string
+        required: true
+      status:
+        type: enum
+        values: [confirmed, provisional]
+        required: true
+      applies_to:
+        type: string
+        required: true
+      description:
+        type: string
+        required: true
+      evidence:
+        type: string_array
+        required: true
+
+views:
+  species_available_moves:
+    source_tables:
+      - species_move_pool
+      - move
+    fields:
+      species_id: string
+      move_ids: string_array
+      unresolved_move_names: string_array
+      access_channels_present: string_array
+    rules:
+      - union all move access channels by default
+      - deduplicate matched move IDs for Engine consumption
+      - include level_up, skill_stone, and bloodline unless a later legality layer narrows the set
+      - retain unresolved raw names for review
+
+  species_combat_profile:
+    source_tables:
+      - species_form
+      - species_available_moves
+    fields:
+      species_id: string
+      display_name: string
+      primary_type: roco_type
+      secondary_type: roco_type|null
+      base_stats: object
+      ability_name: string|null
+      ability_effect_text: string|null
+      available_move_ids: string_array
+      unresolved_move_names: string_array
+    rules:
+      - role labels are Engine outputs, not stored dex facts
+
+mechanic_rules_seed:
+  - rule_id: defense_move_reuse_lock
+    rule_name: 防御技能复用限制
+    status: provisional
+    applies_to: move.category_raw == 防御
+    description: >
+      Defense skills appear to have a default reuse-lock / cooldown that prevents
+      consecutive use. At least one ground-type defense skill reportedly reduces
+      damage by 90% and reduces cooldown by 1 when responding to an attack.
+    evidence:
+      - PM gameplay experience captured on 2026-04-14
+      - docs/domain_primer.md
+
+forbidden_raw_fields:
+  move:
+    - accuracy
+    - pp
+    - cooldown
+
+validation:
+  required:
+    - source trace is mandatory for species and move records
+    - roco_type fields must map to the canonical type chart
+    - stat fields must parse as non-negative integers
+    - power and energy_cost must parse as integers when present
+    - category_raw must remain game-native
+    - level-up move names and unlock-level arrays must be length-validated
+  warnings:
+    - ability name appears with conflicting effect text
+    - species references a move name that cannot be matched to a move record
+    - expected template is absent from a detail page
+    - observed source field is absent from field_alignment_matrix
+  hard_rejects:
+    - imported accuracy
+    - imported PP
+    - imported raw cooldown
+    - Pokemon-style move category normalization without explicit mapping
+    - record without source trace

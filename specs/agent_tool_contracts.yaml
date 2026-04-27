@@ -1,0 +1,374 @@
+version: 1
+
+principles:
+  - Agent tools must return structured JSON-like payloads
+  - Deterministic structural scoring stays in Engine tools
+  - Semantic judgement may use LLM-backed tools when deterministic feature extraction is not yet approved
+  - Agent text output must cite tool evidence, not replace it
+  - The conversational advisor is migrating toward `PydanticAI` native runtime, but business tool contracts remain runtime-agnostic
+  - Tool outputs feed an analytical contract first; conversational rendering and persona are downstream presentation concerns
+  - Tools must not embed persona style or assume they are the final user-facing reply surface
+  - Tool outputs are the grounded `A` substrate for post-P0 synthesis; they are not themselves the product's core analysis experience
+  - Approved docs/taxonomy/mechanics material may form a doctrine pack `B`, which informs synthesis but never overrides Engine/SQL truth
+
+mvp_required_tools:
+  - analyze_team_structure
+  - get_species_profile
+  - get_species_available_moves
+  - retrieve_doc_context
+  - analyze_species_semantics
+
+mvp_deferred_tools:
+  - retrieve_case_context
+  - analyze_team_semantics
+  - analyze_species_role
+  - analyze_team_roles
+  - classify_team_archetype
+  - rank_replacements
+  - analyze_meta_risk
+
+tools:
+  analyze_team_structure:
+    purpose: Analyze offensive and defensive structure from type data.
+    input:
+      slots:
+        - slot_index: integer
+          primary_type: string
+          secondary_type: string|null
+      goals:
+        avoid_duplicate_weakness: boolean
+        preserve_bulk: boolean
+        preserve_speed: boolean
+    output:
+      structural_score: number
+      repeated_weaknesses: string[]
+      missing_resistances: string[]
+      offensive_coverage: object[]
+      defensive_coverage: object[]
+      primary_patch_types: string[]
+      conditional_dual_patch_types: string[]
+      evidence: string[]
+
+  generate_team_report:
+    purpose: Generate a grounded Phase 1.5 narrative report from structure analysis plus approved semantic evidence.
+    input:
+      slots:
+        - slot_index: integer
+          primary_type: string
+          secondary_type: string|null
+      backend: deterministic|pydantic_ai
+      model_name: string|null
+    output:
+      backend: string
+      structure_report: object
+      semantic_report: object|null
+      narrative_report:
+        summary: string
+        major_risks: object[]
+        defensive_takeaways: object[]
+        offensive_takeaways: object[]
+        semantic_takeaways: object[]
+        patch_guidance: object
+        evidence_summary: string[]
+        confidence_notes: object[]
+      retrieved_snippets: object[]
+
+  get_species_profile:
+    purpose: Fetch a species profile from the approved SQLite battle dex.
+    input:
+      species_key: string
+    output:
+      species_id: string
+      display_name: string
+      initial_species_name: string|null
+      form_name: string|null
+      regional_form_name: string|null
+      evolution_stage: string|null
+      primary_type: string
+      secondary_type: string|null
+      base_stats: object
+      ability_name: string|null
+      ability_effect_text: string|null
+      confidence: confirmed|provisional
+      canonical_source_layer: string
+      source_page_id: string
+      import_run_id: string
+
+  get_species_available_moves:
+    purpose: Fetch approved move-pool facts for a species from the SQLite battle dex.
+    input:
+      species_key: string
+      limit: integer|null
+    output:
+      moves:
+        - species_id: string
+          move_id: string|null
+          move_name: string
+          move_type: string|null
+          category_raw: string|null
+          access_channel: string
+          unlock_level: integer|null
+          power: integer|null
+          effect_text: string|null
+
+  retrieve_doc_context:
+    purpose: Retrieve bounded approved mechanics, methodology, or doctrine snippets from local docs.
+    input:
+      query: string
+      analysis_type: team|species
+      limit: integer|null
+    output:
+      snippets:
+        - source_path: string
+          topic: string
+          confidence: confirmed|provisional|low_confidence
+          content: string
+          retrieval_reason: string
+          version: string
+
+  analyze_species_semantics:
+    purpose: Produce constrained semantic judgement about a species from approved structured records and mechanics context.
+    input:
+      species_key: string
+      selected_ability: string|null
+      selected_moves: string[]
+      retrieval_scope:
+        include_mechanics_supplement: boolean
+        include_domain_primer: boolean
+      backend: pydantic_ai
+      model_name: string|null
+    output:
+      backend: string
+      species_key: string
+      semantic_roles: string[]
+      tactical_tags: string[]
+      reasoning_summary: string
+      evidence_summary: string[]
+      uncertainty_notes: string[]
+
+  analyze_team_semantics:
+    purpose: Produce constrained semantic judgement about team identity, tactical plan, and role balance from approved evidence.
+    status: deferred_for_mvp
+    input:
+      slots:
+        - slot_index: integer
+          species_key: string|null
+          primary_type: string
+          secondary_type: string|null
+      retrieval_scope:
+        include_mechanics_supplement: boolean
+        include_domain_primer: boolean
+      backend: pydantic_ai
+      model_name: string|null
+    output:
+      backend: string
+      team_identity: string
+      tactical_tags: string[]
+      role_hypotheses: object[]
+      reasoning_summary: string
+      evidence_summary: string[]
+      uncertainty_notes: string[]
+
+  analyze_species_role:
+    purpose: Score a species for team roles from stats, abilities, and move features.
+    status: deferred_for_mvp
+    input:
+      species_key: string
+      selected_ability: string|null
+      selected_moves: string[]
+      mode: default|custom_set
+    output:
+      primary_role: string
+      role_scores:
+        - role_tag: string
+          score: number
+          evidence: string[]
+      pressure_profile:
+        offense: number
+        bulk: number
+        speed: number
+        utility: number
+        sustain: number
+
+  analyze_team_roles:
+    purpose: Determine whether the team has enough role coverage and identify overload or missing jobs.
+    status: deferred_for_mvp
+    input:
+      species_keys: string[]
+      selected_sets: object[]
+    output:
+      role_distribution:
+        role_tag: string
+        count: integer
+        weighted_score: number
+      overloaded_roles: string[]
+      missing_roles: string[]
+      notes: string[]
+
+  classify_team_archetype:
+    purpose: Score the team against known tactical archetypes.
+    status: deferred_for_mvp
+    input:
+      team_id: string|null
+      species_keys: string[]
+      selected_sets: object[]
+    output:
+      archetype_scores:
+        - archetype: string
+          score: number
+      primary_archetype: string
+      tempo_score: number
+      sustain_score: number
+      pivot_score: number
+      explanation_evidence: string[]
+
+  rank_replacements:
+    purpose: Rank candidate replacements under explicit constraints.
+    status: deferred_for_mvp
+    input:
+      current_team: object
+      replace_slot_index: integer
+      candidate_species_keys: string[]
+      hard_constraints: string[]
+      soft_preferences: string[]
+    output:
+      rankings:
+        - species_key: string
+          total_score: number
+          structural_gain: number
+          role_fit: number
+          archetype_fit: number
+          meta_fit: number|null
+          evidence: string[]
+
+  analyze_meta_risk:
+    purpose: Compare a team against the latest known environment snapshot.
+    status: deferred_for_mvp
+    input:
+      team_id: string|null
+      species_keys: string[]
+      meta_snapshot_id: string
+      threat_watchlist: string[]
+    output:
+      risk_summary:
+        uncovered_threats: string[]
+        shaky_matchups: string[]
+        favorable_matchups: string[]
+      counterpressure_targets: string[]
+      evidence: string[]
+
+  retrieve_case_context:
+    purpose: Retrieve approved tactical casebank analogies for team-conditional interpretation.
+    status: deferred_for_mvp
+    input:
+      query: string
+      species_key: string|null
+      archetype: string|null
+      limit: integer|null
+    output:
+      cases:
+        - case_id: string
+          title: string
+          confidence: confirmed|provisional|low_confidence
+          archetype: string|null
+          role_labels: string[]
+          summary: string
+
+  refresh_species_database:
+    purpose: Legacy name for crawling approved sources and preparing dex data with a diff report.
+    status: superseded_by_refresh_battle_dex
+    input:
+      source_name: string
+      crawl_scope: species_index|species_detail|moves|ability_embedded
+      max_pages: integer|null
+      dry_run: boolean
+    output:
+      added_entities: integer
+      updated_entities: integer
+      removed_entities: integer
+      flagged_for_review: string[]
+      diff_report_path: string
+
+  refresh_battle_dex:
+    purpose: Run an approved bounded wiki crawl/clean pass and emit P1c contract artifacts without direct database mutation.
+    input:
+      run_mode: dry_run
+      scopes:
+        - species|move|ability_embedded
+      limits:
+        species_detail_pages: integer|null
+        move_detail_pages: integer|null
+        ability_embedded_species_pages: integer|null
+      output_dir: string
+    output:
+      run_manifest_path: string
+      artifact_paths: string[]
+      hard_reject_count: integer
+      warning_count: integer
+      unresolved_move_names: string[]
+      ability_conflicts: string[]
+      dry_run_diff_path: string
+
+  import_battle_dex_dry_run:
+    purpose: Resolve wiki canonical artifacts and manual supplement inputs into a reviewable P1e importer dry-run without SQLite mutation.
+    input:
+      run_mode: dry_run
+      canonical_artifact_dir: string
+      supplement_path: string
+      supplement_format: yaml|json|markdown_legacy
+      policy_mode: policy_b
+      output_dir: string
+    output:
+      importer_run_manifest_path: string
+      resolved_species_forms_path: string
+      resolved_moves_path: string
+      resolved_derived_abilities_path: string
+      excluded_entities_path: string
+      review_required_entities_path: string
+      supplement_backed_entities_path: string
+      unresolved_entities_path: string
+      importer_diff_summary_path: string
+
+  validate_battle_dex_write_inputs:
+    purpose: Validate that a P1e importer dry-run satisfies P1f SQLite write preconditions.
+    input:
+      importer_run_dir: string
+    output:
+      importer_run_id: string
+      canonical_artifact_dir: string
+      supplement_path: string
+      supplement_format: string
+      counts: object
+      eligible_for_write: boolean
+
+  write_battle_dex_sqlite:
+    purpose: Write a validated P1e importer dry-run into SQLite using the approved P1f schema and transactional merge path.
+    input:
+      importer_run_dir: string
+      db_path: string
+      schema_path: string
+      write_run_id: string|null
+      replace_run: boolean
+    output:
+      db_path: string
+      import_run_id: string
+      source_page_count: integer
+      raw_template_snapshot_count: integer
+      species_form_count: integer
+      move_count: integer
+      derived_ability_count: integer
+      species_move_pool_count: integer
+      import_entity_resolution_count: integer
+      eligibility: object
+
+  build_meta_snapshot:
+    purpose: Aggregate battle logs, tournament data, or curated samples into a normalized meta snapshot.
+    input:
+      source_type: ladder|tournament|curated|synthetic
+      source_paths: string[]
+      snapshot_name: string
+    output:
+      meta_snapshot_id: string
+      sample_size: integer
+      generated_at: string
+      warnings: string[]

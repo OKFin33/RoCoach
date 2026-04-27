@@ -1,0 +1,153 @@
+version: 1
+
+purpose: >
+  Persona doctrine contract for deep persona-integrated advisory reasoning.
+  This contract is inspired by the Nuwa five-layer distillation model and
+  separates reasoning-facing persona doctrine from rendering-facing style.
+
+applies_to:
+  - persona registry entries
+  - synthesis input packing
+  - persona rendering input packing
+  - future persona distillation workflows
+  - future original-persona design workflows
+
+hard_rules:
+  - persona doctrine may shape reasoning style, but may not override Engine /
+    SQL / approved-doc truth
+  - persona doctrine may not suppress refusals or confidence boundaries
+  - expression DNA may change phrasing, but not factual meaning
+  - honesty boundaries are mandatory; persona must declare what it will not fake
+
+fields:
+  persona_id:
+    type: string
+    required: true
+
+  display_name:
+    type: string
+    required: true
+
+  expression_dna:
+    type: object
+    required: true
+    fields:
+      tone:
+        type: string
+        required: true
+      pacing:
+        type: string
+        required: true
+      wording_preferences:
+        type: array
+        required: true
+        items:
+          type: string
+      signature_moves:
+        type: array
+        required: true
+        items:
+          type: string
+      taboo_phrases:
+        type: array
+        required: true
+        items:
+          type: string
+
+  mental_models:
+    type: array
+    required: true
+    items:
+      type: object
+      fields:
+        name:
+          type: string
+          required: true
+        description:
+          type: string
+          required: true
+        use_when:
+          type: array
+          required: true
+          items:
+            type: string
+
+  decision_heuristics:
+    type: array
+    required: true
+    items:
+      type: object
+      fields:
+        rule:
+          type: string
+          required: true
+        rationale:
+          type: string
+          required: true
+        preferred_scope:
+          type: array
+          required: true
+          items:
+            type: string
+
+  anti_patterns:
+    type: array
+    required: true
+    items:
+      type: string
+
+  honesty_boundaries:
+    type: array
+    required: true
+    items:
+      type: object
+      fields:
+        trigger:
+          type: string
+          required: true
+        required_behavior:
+          type: string
+          required: true
+
+  fact_policy:
+    type: string
+    required: true
+    enum:
+      - persona_may_not_alter_facts
+
+  ip_safety_profile:
+    type: object
+    required: true
+    fields:
+      public_safe:
+        type: boolean
+        required: true
+      forbidden_markers:
+        type: array
+        required: true
+        items:
+          type: string
+
+split_usage:
+  synthesis_inputs:
+    - mental_models
+    - decision_heuristics
+    - anti_patterns
+    - honesty_boundaries
+  rendering_inputs:
+    - expression_dna
+    - display_name
+    - ip_safety_profile
+
+non_goals:
+  - not a freeform prompt blob
+  - not an instruction to imitate copyrighted dialogue verbatim
+  - not a replacement for fact grounding or confidence discipline
+
+creation_notes:
+  - this contract is the normalized doctrine artifact expected by downstream
+    ingestion and registry layers
+  - upstream creation methods may differ:
+    - distillation from an existing subject
+    - original design from a user brief
+  - both methods must converge into this same contract before runtime use
