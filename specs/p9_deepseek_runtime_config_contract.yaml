@@ -1,0 +1,294 @@
+contract_id: p9_deepseek_runtime_config_contract
+version: p9.deepseek_runtime_config.v1
+status: qa_and_design_contract
+date: "2026-04-28"
+
+purpose: >-
+  Define the QA and configuration contract for P9 DeepSeek flash/pro and
+  thinking-mode evaluation. P9 must preserve open-source custom single-model
+  configuration while adding one certified DeepSeek v4 reference profile and
+  provider-model diagnostics.
+
+official_reference_basis:
+  first_call:
+    url: https://api-docs.deepseek.com/
+    facts:
+      - OpenAI-compatible base URL is https://api.deepseek.com.
+      - Current V4 model ids include deepseek-v4-flash and deepseek-v4-pro.
+      - thinking can be enabled with thinking.type=enabled and reasoning_effort.
+  pricing_and_models:
+    url: https://api-docs.deepseek.com/quick_start/pricing
+    facts:
+      - deepseek-v4-flash and deepseek-v4-pro both support thinking modes.
+      - both models support JSON Output and Tool Calls.
+      - context length is 1M.
+      - legacy deepseek-chat and deepseek-reasoner map to flash modes and are deprecated path.
+  thinking_mode:
+    url: https://api-docs.deepseek.com/zh-cn/guides/thinking_mode
+    facts:
+      - thinking defaults to enabled.
+      - OpenAI format can pass thinking through extra_body.
+      - thinking mode with tool calls requires reasoning_content preservation/replay.
+      - low/medium reasoning effort map to high; xhigh maps to max.
+  tool_calls:
+    url: https://api-docs.deepseek.com/zh-cn/guides/tool_calls
+    facts:
+      - model returns tool calls; application executes tools and sends results back.
+      - strict mode is beta and requires https://api.deepseek.com/beta plus strict schemas.
+
+product_boundary:
+  open_source_custom_provider: required
+  custom_single_model_is_mainstream: true
+  deepseek_reference_profile: optional_certified_reference_path
+  forced_provider_lock_in: forbidden
+  hosted_key_management: forbidden
+  server_side_provider_key_persistence: forbidden
+  chat_team_chip_visibility: forbidden_in_v1
+
+runtime_settings_extension:
+  provider_mode:
+    type: enum
+    allowed:
+      - custom_single_model
+      - roco_deepseek_v4_reference
+    default: custom_single_model
+    behavior:
+      custom_single_model: user controls provider base URL, model id, and supported reasoning settings; all calls use that one configuration
+      roco_deepseek_v4_reference: Roco controls internal call-role routing for the maintained DeepSeek v4 reference profile
+  thinking_mode:
+    type: enum
+    allowed:
+      - disabled
+      - enabled
+    default_for_custom: disabled
+    default_for_deepseek_reference_profile: decided_after_p9_qa
+    note: >-
+      DeepSeek docs say thinking defaults to enabled. Roco must pass an explicit
+      disabled value when UI thinking mode is off.
+  reasoning_effort:
+    type: enum
+    allowed:
+      - none
+      - high
+      - max
+    default_when_thinking_disabled: none
+    default_when_thinking_enabled: high
+    deep_mode_candidate: max
+  recommended_mode:
+    type: enum
+    allowed:
+      - custom_single_model
+      - roco_deepseek_v4_reference
+    default: custom_single_model
+    note: >-
+      V1 must not expose a fast/balanced/deep preset matrix. DeepSeek v4 is one
+      maintained reference profile; custom single-model is the mainstream
+      open-source path.
+
+request_transport_contract:
+  existing_headers:
+    - X-Roco-Provider-Key
+    - X-Roco-Provider-Base-Url
+    - X-Roco-Model
+    - X-Roco-Runtime-Mode
+  proposed_headers_or_body_fields:
+    reasoning_mode_header:
+      name: X-Roco-Reasoning-Mode
+      allowed_values:
+        - disabled
+        - enabled
+      log_redaction: required
+    reasoning_effort_header:
+      name: X-Roco-Reasoning-Effort
+      allowed_values:
+        - high
+        - max
+      log_redaction: required
+  security_rules:
+    - provider key must never enter request body
+    - provider key must never be logged
+    - provider base URL and model must be redacted from user-visible errors if echoed by provider
+    - Product API health test must not send provider key unless explicitly testing provider
+
+deepseek_reference_profile_candidates:
+  simple_chat:
+    candidate_models:
+      - deepseek-v4-flash
+    candidate_thinking:
+      - disabled
+      - enabled_high
+    allowed_recommendation_if:
+      - direct_basic_chat_passes
+      - no_unfounded_game_claims
+      - latency_is_acceptable
+  grounded_synthesis:
+    candidate_models:
+      - deepseek-v4-flash
+    candidate_thinking:
+      - disabled
+      - enabled_high
+    allowed_recommendation_if:
+      - grounded_scenario_passes
+      - no_reasoning_content_tool_loop_400
+      - no_secret_or_hidden_reasoning_leak
+  complex_strategy_or_arbitration:
+    candidate_models:
+      - deepseek-v4-pro
+    candidate_thinking:
+      - enabled_high
+    allowed_recommendation_if:
+      - strategy_quality_advantage_over_flash_or_pro_disabled
+      - final_answer_grounded
+      - latency_is_acceptable
+  controlled_loop:
+    default_v1: disabled
+    candidate_models:
+      - deepseek-v4-pro
+    candidate_thinking:
+      - enabled_high
+    rejected_or_high_risk:
+      - deepseek-v4-pro_enabled_max_under_current_s9_180s_budget
+    allowed_recommendation_if:
+      - explicitly_enabled_future_intent
+      - final_call_reserved
+      - tool_budget_enforced
+      - latency_within_budget
+
+required_qa_matrix:
+  models:
+    - deepseek-v4-flash
+    - deepseek-v4-pro
+  thinking_modes:
+    - disabled
+    - enabled
+  efforts:
+    disabled: none
+    enabled_flash: high
+    enabled_pro_reference_default: high
+    enabled_pro_max: experimental_latency_risk_only
+  scenarios:
+    S1_direct_provider_basic_chat:
+      pass_requires:
+        - HTTP 200
+        - non_empty_content
+        - no_secret_leak
+    S2_roco_general_agent_chat:
+      pass_requires:
+        - HTTP 200
+        - backend_pydantic_ai_native
+        - status_ok
+        - analysis_type_chat_response
+        - no_command_only_fallback
+        - no_secret_leak
+    S3_roco_species_tool_grounding:
+      pass_requires:
+        - HTTP 200
+        - backend_pydantic_ai_native
+        - status_ok
+        - analysis_type_species_analysis
+        - get_species_profile_tool_result
+        - grounded_species_fact
+        - no_secret_or_path_leak
+    S4_roco_team_context_chat:
+      pass_requires:
+        - HTTP 200
+        - valid_team_context_attachment_sent
+        - no_raw_context_wholesale_echo
+        - no_visible_chat_team_chip
+        - no_secret_or_path_leak
+    S5_negative_diagnostics:
+      pass_requires:
+        - stable_error_code
+        - actionable_user_message
+        - no_secret_or_header_leak
+
+diagnostic_codes:
+  provider_auth_error: invalid_or_unauthorized_provider_key
+  provider_model_not_found: model_id_not_accepted_by_provider
+  provider_parameter_error: unsupported_reasoning_or_tool_parameter
+  provider_tool_loop_error: tool_call_or_reasoning_content_protocol_failure
+  provider_timeout: provider_request_exceeded_timeout
+  provider_network_error: provider_unreachable_or_dns_tls_failure
+  provider_unknown_error: provider_failure_not_yet_classified
+
+acceptance_thresholds:
+  basic_chat_soft_seconds: 20
+  general_chat_soft_seconds: 30
+  grounded_tool_soft_seconds: 90
+  hard_timeout_seconds: 90
+  rule: >-
+    Soft thresholds inform recommendation quality. Hard timeout is a pass/fail
+    boundary unless deliberately extended by a future PM decision.
+
+mobile_ui_contract:
+  settings_actions:
+    - test_product_api
+    - test_model_service
+  product_api_test:
+    purpose: checks Roco backend health and metadata only
+    must_not_send_provider_key: true
+  model_service_test:
+    purpose: checks configured provider/base_url/model/thinking can answer a minimal prompt
+    sends_provider_key: true
+    requires_explicit_user_action: true
+    warning: may consume provider tokens
+  deepseek_preset_ui:
+    modes:
+      - manual
+      - fast
+      - balanced
+      - deep
+    visible_controls:
+      - provider preset
+      - model
+      - thinking toggle
+      - reasoning effort when thinking enabled
+  copy_rules:
+    - do not imply DeepSeek is required
+    - warn model-service tests may consume tokens
+    - distinguish Product API health from provider model health
+
+backend_contract:
+  thinking_mapping:
+    disabled:
+      deepseek_extra_body:
+        thinking:
+          type: disabled
+      reasoning_effort: omitted
+    enabled_high:
+      deepseek_extra_body:
+        thinking:
+          type: enabled
+      reasoning_effort: high
+    enabled_max:
+      deepseek_extra_body:
+        thinking:
+          type: enabled
+      reasoning_effort: max
+  tool_loop_constraint: >-
+    Thinking+tool calls are accepted only if the runtime preserves provider
+    reasoning_content as required by DeepSeek's thinking-mode tool-call protocol
+    or the abstraction layer is verified to do so.
+  strict_mode:
+    default: forbidden
+    optional_probe_only: true
+    beta_base_url: https://api.deepseek.com/beta
+
+artifacts:
+  required:
+    - artifacts/p9/deepseek_matrix_summary.json
+    - artifacts/p9/deepseek_matrix_summary.md
+    - artifacts/p9/redaction_check.txt
+  redaction_required_for:
+    - provider_key
+    - provider_base_url
+    - request_headers
+    - local_db_paths
+    - raw_tool_payloads
+
+implementation_gate:
+  status: blocked_until_qa_contract_accepted
+  next_after_acceptance:
+    - run one-shot P9 live QA matrix
+    - record recommendation
+    - then implement UI/runtime changes from observed provider behavior

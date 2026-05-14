@@ -1,0 +1,87 @@
+audit_id: p10b_chat_contract_integration_audit
+version: p10b.chat_contract_integration.v0
+status: completed_draft
+date: "2026-04-30"
+
+purpose: >-
+  Verify and patch the integrated mobile chat contract after P10/P10a: explicit
+  default persona selector, silent team-context attachment, provider header
+  safety, public-safe presentation rendering, and no false claim that mobile
+  DeepSeek quick setup is already backend reference routing.
+
+findings:
+  - id: p10b_default_persona_selector
+    severity: fixed
+    finding: >-
+      ChatScreen accepted a nullable activePersonaSelector. The normal default
+      path initializes it, but the release contract requires explicit
+      You-know-who selector rather than relying on backend default behavior.
+    fix: >-
+      ChatScreen now sends activePersonaSelector ?? DEFAULT_PERSONA_SELECTOR.
+
+  - id: p10b_team_context_attachment
+    severity: pass
+    finding: >-
+      ChatScreen already sends activeChatContextAttachments(teamContextStore)
+      and does not render the old visible main Chat context chip.
+    fix: none_required
+
+  - id: p10b_provider_key_transport
+    severity: pass
+    finding: >-
+      ProductApiClient sends runtime config only through request headers.
+      Provider key is not placed in request body or URL by ChatScreen.
+    fix: none_required
+
+  - id: p10b_presentation_safety
+    severity: fixed
+    finding: >-
+      resolveVisibleReply previously trusted persona.rendered_answer whenever
+      present. The contract requires public-safe and sanitized persona output.
+    fix: >-
+      resolveVisibleReply now uses persona.rendered_answer only when
+      persona.public_safe and persona.sanitized are both true, then falls back
+      to presentation.reply and answer.
+
+  - id: p10b_deepseek_reference_claim
+    severity: fixed
+    finding: >-
+      P10a mobile copy called the DeepSeek Settings entry a reference profile,
+      but the backend does not yet implement call-role reference routing.
+    fix: >-
+      Mobile now calls it deepseek_v4_quick_setup and describes it as a
+      convenience configuration path over the existing concrete model header
+      contract.
+
+verified_contracts:
+  persona:
+    default_selector_sent:
+      kind: built_in
+      persona_id: you_know_who
+  team_context:
+    active_context_attached: true
+    visible_main_chat_chip: false
+  presentation:
+    persona_rendered_answer_requires_public_safe_and_sanitized: true
+    raw_and_tool_trace_detail_sections_filtered_by_public_kind_set: true
+  runtime:
+    provider_key_in_body: false
+    provider_key_in_url: false
+    provider_key_header_path_preserved: true
+  deepseek_mobile_settings:
+    current_mode: deepseek_v4_quick_setup
+    backend_reference_routing_active: false
+
+changed_files:
+  - mobile/src/screens/ChatScreen.tsx
+  - mobile/src/roco/rocoPresentation.ts
+  - mobile/src/runtime/runtimeSettings.ts
+  - mobile/src/components/roco/SettingsDrawer.tsx
+  - mobile/README.md
+
+verification:
+  mobile_typecheck: passed
+  command: "cd mobile && npm run typecheck"
+  backend_tests: not_run_no_backend_code_changed
+
+next_recommended_action: accept_or_dispatch_p10c_release_smoke_qa

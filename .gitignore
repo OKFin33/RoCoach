@@ -18,12 +18,17 @@ mobile/node_modules/
 mobile/.expo/
 mobile/dist/
 
+# Desktop dependencies and generated output
+desktop/node_modules/
+desktop/dist/
+
 # Figma Make prototype dependencies and generated output
 figma/**/node_modules/
 figma/**/dist/
 
 # Runtime and coverage noise
 .launchpad/
+.runtime/
 *.log
 *.tmp
 *.bak
@@ -32,3 +37,27 @@ htmlcov/
 
 # Local source-material staging for Battle Wiki
 wiki/cache/
+
+# Claude Code temporary workspace
+tmpforcc/
+
+# Internal dev docs (not for public release)
+specs/current_work.md
+
+# Experiment artifacts and ablation data (not for public release)
+artifacts/
+
+# Desktop Electron build artifacts (not for public release)
+desktop/
+
+# Local AI assistant configuration
+.claude/
+
+# Internal dispatch artifacts
+.launchpad_dispatch_legacy_*/
+
+# Design reference materials (not for public release)
+前期文件/
+
+# Local database files
+*.sqlite

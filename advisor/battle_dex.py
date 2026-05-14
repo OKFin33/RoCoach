@@ -76,6 +76,55 @@ def ensure_battle_dex_sqlite(
     return db_path
 
 
+def _strip_form_suffix(name: str | None) -> str:
+    if not name:
+        return ""
+    full_width_index = name.find("（")
+    half_width_index = name.find("(")
+    indexes = [index for index in (full_width_index, half_width_index) if index >= 0]
+    if not indexes:
+        return name.strip()
+    return name[: min(indexes)].strip()
+
+
+def _species_search_names(hit: SpeciesSearchHit) -> tuple[str, str]:
+    return hit.display_name.strip(), _strip_form_suffix(hit.initial_species_name)
+
+
+def _species_search_matches(hit: SpeciesSearchHit, needle: str) -> bool:
+    display_name, initial_base_name = _species_search_names(hit)
+    return (
+        hit.species_id == needle
+        or display_name == needle
+        or initial_base_name == needle
+        or display_name.startswith(needle)
+        or initial_base_name.startswith(needle)
+        or needle in display_name
+        or needle in initial_base_name
+    )
+
+
+def _species_search_rank(hit: SpeciesSearchHit, needle: str) -> tuple[int, int, str, str]:
+    display_name, initial_base_name = _species_search_names(hit)
+    if hit.species_id == needle:
+        rank = 0
+    elif display_name == needle:
+        rank = 1
+    elif initial_base_name == needle and display_name != needle:
+        rank = 2
+    elif display_name.startswith(needle):
+        rank = 3
+    elif initial_base_name.startswith(needle):
+        rank = 4
+    else:
+        rank = 5
+    return rank, len(display_name), display_name, hit.species_id
+
+
+def _species_row_is_team_builder_eligible(row: sqlite3.Row) -> bool:
+    return bool(row["ability_name"]) and int(row["available_move_count"] or 0) > 0
+
+
 class BattleDexRepository:
     def __init__(self, db_path: Path | str) -> None:
         self.db_path = Path(db_path)
@@ -90,18 +139,39 @@ class BattleDexRepository:
     def __exit__(self, exc_type: object, exc: object, tb: object) -> None:
         self.close()
 
-    def search_species(self, query: str, *, limit: int = 5) -> list[SpeciesSearchHit]:
+    def search_species(
+        self,
+        query: str,
+        *,
+        limit: int = 5,
+        team_builder_eligible_only: bool = False,
+    ) -> list[SpeciesSearchHit]:
         needle = query.strip()
         if not needle:
             return []
 
         rows = self._fetchall(
             """
-            SELECT species_id, display_name, initial_species_name, primary_type, secondary_type
+            SELECT
+              species_id,
+              display_name,
+              initial_species_name,
+              form_name,
+              regional_form_name,
+              primary_type,
+              secondary_type,
+              ability_name,
+              (
+                SELECT COUNT(*)
+                FROM species_available_moves AS sam
+                WHERE sam.species_id = species_form.species_id
+              ) AS available_move_count
             FROM species_form
             WHERE species_id = ?
                OR display_name = ?
                OR initial_species_name = ?
+               OR display_name LIKE ?
+               OR initial_species_name LIKE ?
                OR display_name LIKE ?
                OR initial_species_name LIKE ?
             ORDER BY
@@ -109,7 +179,9 @@ class BattleDexRepository:
                 WHEN species_id = ? THEN 0
                 WHEN display_name = ? THEN 1
                 WHEN initial_species_name = ? AND display_name != ? THEN 2
-                ELSE 3
+                WHEN display_name LIKE ? THEN 3
+                WHEN initial_species_name LIKE ? THEN 4
+                ELSE 5
               END,
               LENGTH(display_name),
               display_name
@@ -119,16 +191,48 @@ class BattleDexRepository:
                 needle,
                 needle,
                 needle,
+                f"{needle}%",
+                f"{needle}%",
                 f"%{needle}%",
                 f"%{needle}%",
                 needle,
                 needle,
                 needle,
                 needle,
-                limit,
+                f"{needle}%",
+                f"{needle}%",
+                max(limit * 8, 80),
             ),
         )
-        return [SpeciesSearchHit.model_validate(dict(row)) for row in rows]
+        hits: list[SpeciesSearchHit] = []
+        for row in rows:
+            if team_builder_eligible_only and not _species_row_is_team_builder_eligible(row):
+                continue
+            hit = SpeciesSearchHit.model_validate(dict(row))
+            if _species_search_matches(hit, needle):
+                hits.append(hit)
+        hits.sort(key=lambda hit: _species_search_rank(hit, needle))
+
+        # Exact-name searches must preserve form variants for disambiguation.
+        if any(_species_search_rank(hit, needle)[0] <= 2 for hit in hits):
+            return hits[:limit]
+
+        # Broad searches should not let one multi-form species fill the whole list.
+        unique_first: list[SpeciesSearchHit] = []
+        overflow_forms: list[SpeciesSearchHit] = []
+        seen_display_names: set[str] = set()
+        for hit in hits:
+            if hit.display_name in seen_display_names:
+                overflow_forms.append(hit)
+                continue
+            seen_display_names.add(hit.display_name)
+            unique_first.append(hit)
+            if len(unique_first) >= limit:
+                break
+
+        if len(unique_first) < limit:
+            unique_first.extend(overflow_forms[: limit - len(unique_first)])
+        return unique_first[:limit]
 
     def get_species_profile(self, query: str) -> SpeciesDexRecord | None:
         row = self._fetchone(

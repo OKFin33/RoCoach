@@ -5,6 +5,8 @@ export const ROCO_RUNTIME_HEADERS = {
   providerBaseUrl: "X-Roco-Provider-Base-Url",
   model: "X-Roco-Model",
   runtimeMode: "X-Roco-Runtime-Mode",
+  reasoningMode: "X-Roco-Reasoning-Mode",
+  reasoningEffort: "X-Roco-Reasoning-Effort",
 } as const;
 
 const NON_SECRET_SETTINGS_KEY = "roco.runtime.non_secret.v1";
@@ -12,6 +14,9 @@ const PROVIDER_KEY_SECRET_KEY = "roco.runtime.provider_key.v1";
 
 export type RuntimeExecutionMode = "deterministic" | "native";
 export type RuntimeTransportMode = "local" | "cloud";
+export type RuntimeModelProfile = "custom_single_model" | "deepseek_v4_quick_setup";
+export type RuntimeThinkingMode = "disabled" | "enabled";
+export type RuntimeReasoningEffort = "none" | "high" | "max";
 
 export type RuntimeSettings = {
   apiBaseUrl: string;
@@ -19,6 +24,9 @@ export type RuntimeSettings = {
   model: string;
   runtimeMode: RuntimeExecutionMode;
   transportMode: RuntimeTransportMode;
+  modelProfile: RuntimeModelProfile;
+  thinkingMode: RuntimeThinkingMode;
+  reasoningEffort: RuntimeReasoningEffort;
   allowUnsafeLanHttp: boolean;
   providerKey: string;
 };
@@ -45,6 +53,9 @@ export const DEFAULT_RUNTIME_SETTINGS: RuntimeSettings = {
   model: "",
   runtimeMode: "deterministic",
   transportMode: "local",
+  modelProfile: "custom_single_model",
+  thinkingMode: "disabled",
+  reasoningEffort: "none",
   allowUnsafeLanHttp: false,
   providerKey: "",
 };
@@ -55,18 +66,19 @@ export async function loadRuntimeSettings(): Promise<RuntimeSettingsLoadResult> 
     return {
       settings: { ...DEFAULT_RUNTIME_SETTINGS },
       secureStoreAvailable,
-      warning: "Secure storage is unavailable. Native runtime keys are treated as not configured.",
+      warning: "Secure storage is unavailable. Provider keys are treated as not configured.",
     };
   }
 
   const nonSecretJson = await SecureStore.getItemAsync(NON_SECRET_SETTINGS_KEY);
   const providerKey = (await SecureStore.getItemAsync(PROVIDER_KEY_SECRET_KEY)) ?? "";
+  const settings = normalizeRuntimeSettings({
+    ...DEFAULT_RUNTIME_SETTINGS,
+    ...parseNonSecretSettings(nonSecretJson),
+    providerKey,
+  });
   return {
-    settings: {
-      ...DEFAULT_RUNTIME_SETTINGS,
-      ...parseNonSecretSettings(nonSecretJson),
-      providerKey,
-    },
+    settings,
     secureStoreAvailable,
     warning: null,
   };
@@ -104,7 +116,7 @@ export function buildNativeRuntimeHeaders(
   if (options.secureStoreAvailable === false) {
     return {
       ok: false,
-      error: "Secure storage is unavailable. Native runtime key is treated as not configured.",
+      error: "Secure storage is unavailable. Provider key is treated as not configured.",
     };
   }
 
@@ -114,7 +126,7 @@ export function buildNativeRuntimeHeaders(
   if (!providerKey || !providerBaseUrl || !model) {
     return {
       ok: false,
-      error: "Native runtime needs provider key, provider base URL, and model before sending.",
+      error: "Provider key, provider base URL, and model are required before using your configured model service.",
     };
   }
 
@@ -135,6 +147,10 @@ export function buildNativeRuntimeHeaders(
       [ROCO_RUNTIME_HEADERS.providerBaseUrl]: providerBaseUrl,
       [ROCO_RUNTIME_HEADERS.model]: model,
       [ROCO_RUNTIME_HEADERS.runtimeMode]: "native",
+      [ROCO_RUNTIME_HEADERS.reasoningMode]: settings.thinkingMode,
+      ...(settings.thinkingMode === "enabled" && settings.reasoningEffort !== "none"
+        ? { [ROCO_RUNTIME_HEADERS.reasoningEffort]: settings.reasoningEffort }
+        : {}),
     },
   };
 }
@@ -181,15 +197,41 @@ export function validateProviderBaseUrl(providerBaseUrl: string): string | null 
 }
 
 export function normalizeRuntimeSettings(settings: RuntimeSettings): RuntimeSettings {
+  const providerBaseUrl = settings.providerBaseUrl.trim();
+  const model = settings.model.trim();
+  const providerKey = settings.providerKey.trim();
+  const runtimeMode = hasCompleteProviderConfig({
+    providerBaseUrl,
+    model,
+    providerKey,
+  })
+    ? "native"
+    : "deterministic";
+
   return {
     apiBaseUrl: settings.apiBaseUrl.trim() || DEFAULT_RUNTIME_SETTINGS.apiBaseUrl,
-    providerBaseUrl: settings.providerBaseUrl.trim(),
-    model: settings.model.trim(),
-    runtimeMode: settings.runtimeMode,
+    providerBaseUrl,
+    model,
+    runtimeMode,
     transportMode: settings.transportMode,
+    modelProfile: settings.modelProfile,
+    thinkingMode: settings.thinkingMode,
+    reasoningEffort: settings.thinkingMode === "enabled" ? settings.reasoningEffort : "none",
     allowUnsafeLanHttp: settings.allowUnsafeLanHttp,
-    providerKey: settings.providerKey.trim(),
+    providerKey,
   };
+}
+
+function hasCompleteProviderConfig(settings: {
+  providerBaseUrl: string;
+  model: string;
+  providerKey: string;
+}): boolean {
+  return (
+    settings.providerKey.trim().length > 0 &&
+    settings.providerBaseUrl.trim().length > 0 &&
+    settings.model.trim().length > 0
+  );
 }
 
 function parseNonSecretSettings(value: string | null): Partial<NonSecretRuntimeSettings> {
@@ -197,18 +239,44 @@ function parseNonSecretSettings(value: string | null): Partial<NonSecretRuntimeS
     return {};
   }
   try {
-    const parsed = JSON.parse(value) as Partial<NonSecretRuntimeSettings>;
+    const parsed = JSON.parse(value) as Partial<NonSecretRuntimeSettings> & Record<string, unknown>;
     return {
       apiBaseUrl: typeof parsed.apiBaseUrl === "string" ? parsed.apiBaseUrl : undefined,
       providerBaseUrl: typeof parsed.providerBaseUrl === "string" ? parsed.providerBaseUrl : undefined,
       model: typeof parsed.model === "string" ? parsed.model : undefined,
       runtimeMode: parsed.runtimeMode === "native" ? "native" : "deterministic",
       transportMode: parsed.transportMode === "cloud" ? "cloud" : "local",
+      modelProfile: parseModelProfile(parsed),
+      thinkingMode: parsed.thinkingMode === "enabled" ? "enabled" : "disabled",
+      reasoningEffort: parseReasoningEffort(parsed.reasoningEffort),
       allowUnsafeLanHttp: parsed.allowUnsafeLanHttp === true,
     };
   } catch {
     return {};
   }
+}
+
+function parseModelProfile(value: Partial<NonSecretRuntimeSettings> & Record<string, unknown>): RuntimeModelProfile {
+  const rawModelProfile: unknown = value["modelProfile"];
+  if (rawModelProfile === "deepseek_v4_quick_setup" || rawModelProfile === "roco_deepseek_v4_reference") {
+    return "deepseek_v4_quick_setup";
+  }
+  if (rawModelProfile === "custom_single_model") {
+    return "custom_single_model";
+  }
+
+  // Backward-compatible migration from the removed P9 preset matrix.
+  if (value.providerPreset === "deepseek") {
+    return "deepseek_v4_quick_setup";
+  }
+  if (value.recommendedMode === "fast" || value.recommendedMode === "balanced" || value.recommendedMode === "deep") {
+    return "deepseek_v4_quick_setup";
+  }
+  return "custom_single_model";
+}
+
+function parseReasoningEffort(value: unknown): RuntimeReasoningEffort {
+  return value === "high" || value === "max" ? value : "none";
 }
 
 function isLoopbackHostname(hostname: string): boolean {

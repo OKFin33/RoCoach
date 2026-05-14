@@ -1,0 +1,18 @@
+adapter_id: nuwa_distillation_adapter
+adapter_kind: distill_from_existing_subject
+run_mode: internal_only
+target_subject: you_know_who
+stage_label: P1d Persona Source Adapter
+public_source_scope:
+  - reviewed_internal_distillation_artifacts
+  - sanitized_minimal_public_surface_abstraction
+source_summary:
+  - checked-in Enzo internal distillation memo
+  - checked-in Enzo internal persona doctrine draft
+  - checked-in Enzo internal mapping note
+  - minimal public-safe abstraction to You know who
+source_material_refs:
+  - docs/personas/enzo_internal_distillation_memo.md
+  - docs/personas/enzo_internal_persona_doctrine.yaml
+  - docs/personas/enzo_internal_mapping_note.md
+  - specs/enzo_integration_review.md

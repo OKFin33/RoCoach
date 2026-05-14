@@ -1,0 +1,148 @@
+rubric_id: p9c_strategy_eval_rubric
+version: p9c.strategy_eval.v0
+status: draft_for_pm_review
+date: "2026-04-29"
+
+purpose: >-
+  Define the blind scoring rubric for P9c strategy model-policy evaluation.
+  Scores should judge Roco strategy usefulness under grounded facts, not model
+  prestige or answer length.
+
+score_scale:
+  min: 1
+  max: 5
+  anchors:
+    1: "Bad: misleading, hallucinated, or unusable."
+    2: "Weak: partially relevant but shallow, unsafe, or missing key constraints."
+    3: "Acceptable: mostly grounded and usable, but generic or incomplete."
+    4: "Good: grounded, strategic, actionable, with meaningful tradeoffs."
+    5: "Excellent: strongly grounded, insightful, prioritized, risk-aware, and concise."
+
+dimensions:
+  grounding_fidelity:
+    weight: 0.22
+    question: "Does the answer faithfully use the provided Roco facts and avoid inventing facts?"
+    score_1: "Invents species/move/mechanic/meta facts or contradicts provided grounding."
+    score_3: "Uses key facts but misses some grounding or overstates a provisional claim."
+    score_5: "Uses the important facts precisely and marks uncertainty correctly."
+    hard_fail_if:
+      - invents_unavailable_species_or_move_as_confirmed
+      - claims_live_meta_or_casebank_evidence_without_source
+      - contradicts_selected_team_context
+
+  strategic_depth:
+    weight: 0.18
+    question: "Does the answer show real tactical reasoning rather than generic advice?"
+    score_1: "Generic coaching language with no Roco-specific reasoning."
+    score_3: "Some useful reasoning but limited tradeoffs or prioritization."
+    score_5: "Clear tactical logic, cause-effect reasoning, and matchup/team implications."
+
+  actionability:
+    weight: 0.16
+    question: "Can the user act on the answer?"
+    score_1: "No concrete next step."
+    score_3: "Some suggestions but not prioritized."
+    score_5: "Clear priorities, concrete adjustments, and next-step guidance."
+
+  risk_awareness:
+    weight: 0.14
+    question: "Does the answer surface limitations, tradeoffs, and missing data?"
+    score_1: "Overconfident or ignores obvious limitations."
+    score_3: "Mentions some uncertainty but not tied to decisions."
+    score_5: "Explicit risks and uncertainty directly shape the recommendation."
+
+  constraint_following:
+    weight: 0.12
+    question: "Does the answer follow the user request and Roco policy constraints?"
+    score_1: "Ignores the requested task or violates product/safety constraints."
+    score_3: "Mostly follows task but drifts or over-explains."
+    score_5: "Directly answers the task within scope and constraints."
+
+  concision_and_structure:
+    weight: 0.08
+    question: "Is the answer easy to read and not bloated?"
+    score_1: "Rambling, redundant, or hard to parse."
+    score_3: "Readable but could be tighter."
+    score_5: "Compact, structured, and high signal."
+
+  persona_fit:
+    weight: 0.05
+    question: "Does the answer fit the intended Roco coach/persona tone without sacrificing facts?"
+    score_1: "Wrong tone or roleplay overwhelms content."
+    score_3: "Neutral but acceptable."
+    score_5: "Distinctive tone that improves readability without distorting facts."
+
+  refusal_or_clarify_quality:
+    weight: 0.05
+    question: "When information is insufficient, does the answer ask or refuse correctly?"
+    score_1: "Guesses when it should clarify/refuse."
+    score_3: "Mentions missing information but still partly guesses."
+    score_5: "Asks one useful clarifying question or refuses with a supported alternative."
+
+hard_fail_rules:
+  hallucinated_fact:
+    effect: "cap_total_score_at_2"
+    examples:
+      - "Claims a move is available to a species when the fact pack says otherwise."
+      - "Cites live meta, win rate, or official changes without data."
+  secret_or_internal_leak:
+    effect: "score_zero_and_security_failure"
+    examples:
+      - "Mentions provider key, base URL, runtime headers, local file paths, raw tool payloads."
+  unsupported_certainty:
+    effect: "cap_total_score_at_3"
+    examples:
+      - "Says 'best/strongest' when no meta/casebank exists."
+  wrong_game_domain:
+    effect: "cap_total_score_at_2"
+    examples:
+      - "Uses Pokémon/宝可梦 framing instead of 洛克王国世界/精灵 framing."
+
+derived_metrics:
+  weighted_quality_score:
+    formula: "sum(dimension_score * dimension_weight)"
+    range: "1..5"
+  hallucination_flag:
+    values:
+      - true
+      - false
+  release_acceptable:
+    rule: >-
+      weighted_quality_score >= 3.7 and no hard_fail_rules triggered.
+  strong_candidate:
+    rule: >-
+      weighted_quality_score >= 4.1 and no hard_fail_rules triggered.
+  recommendation_candidate:
+    rule: >-
+      strong_candidate and either latency/cost is acceptable or quality gain is
+      >= 0.4 over the cheaper accepted baseline.
+
+post_reveal_metrics:
+  latency_seconds:
+    collected: true
+    hidden_during_blind_scoring: true
+  token_usage:
+    collected_if_provider_reports_it: true
+    hidden_during_blind_scoring: true
+  config_id:
+    hidden_during_blind_scoring: true
+  cost_class:
+    values:
+      - low
+      - medium
+      - high
+    hidden_during_blind_scoring: true
+
+review_process:
+  blind_first:
+    - score all anonymized answers by scenario
+    - lock scores before revealing config
+  reveal_second:
+    - attach latency/cost/config
+    - compute per-scene winner
+    - compare quality delta against cost/latency
+  final_decision:
+    - choose default config per call scene
+    - choose upgrade candidate only when quality delta justifies it
+    - keep pro/on experimental unless it wins decisively on complex strategy
+

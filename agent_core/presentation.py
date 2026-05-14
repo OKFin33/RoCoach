@@ -60,9 +60,11 @@ def _render_reply(judgement: str, status: AgentResponseStatus) -> str:
     if status == AgentResponseStatus.REFUSED:
         return text
     if text.startswith("硬结论："):
-        return "答复：" + text.removeprefix("硬结论：").lstrip()
+        return text.removeprefix("硬结论：").lstrip()
     if text.startswith("暂定判断："):
-        return "答复（暂定）：" + text.removeprefix("暂定判断：").lstrip()
+        return text.removeprefix("暂定判断：").lstrip()
+    if text.startswith("判断："):
+        return text.removeprefix("判断：").lstrip()
     return text
 
 
@@ -82,7 +84,7 @@ def _warning_line(warnings: list[SynthesisWarning]) -> str:
     messages = [warning.message.strip() for warning in warnings if warning.message.strip()]
     if not messages:
         return ""
-    return "边界提示：" + "；".join(messages)
+    return "注意：" + "；".join(messages)
 
 
 def _build_detail_sections(presentation_input: PresentationInput) -> list[DetailSection]:

@@ -161,20 +161,20 @@ def _compose_judgement(
 
     intro = "硬结论"
     if _has_provisional_only_warning(warnings):
-        intro = "暂定判断"
+        intro = "判断"
 
     if substrate.analysis_type == AnalysisType.TEAM_ANALYSIS:
-        tail = "先收束真实瓶颈，不要把装饰性选项当成解法。"
+        tail = "我会先按当前队伍信息给出能落地的判断。"
     elif substrate.analysis_type == AnalysisType.SPECIES_ANALYSIS:
-        tail = "角色判断要围绕主职能收束，不要把边角能力抬成主定位。"
+        tail = ""
     elif substrate.analysis_type == AnalysisType.UNSUPPORTED:
-        tail = "这仍然只能保持拒绝或说明边界，不能改写成正常建议。"
+        tail = "这件事现在还不能给出可靠结论。"
     else:
-        tail = "结论必须保持 grounded，不要把解释伪装成新事实。"
+        tail = ""
 
     if core:
-        return f"{intro}：{core}。{tail}"
-    return f"{intro}。{tail}"
+        return f"{intro}：{core}。{tail}".rstrip("。") + "。"
+    return f"{intro}。{tail}".rstrip("。") + "。"
 
 
 def _compose_why_summary(
@@ -183,18 +183,16 @@ def _compose_why_summary(
     warnings: list[SynthesisWarning],
 ) -> str:
     parts = [
-        "基于已锁定的工具证据、置信边界和 follow-up 约束做压缩判断。",
+        "我先看了当前问题、已提供的队伍信息和可用资料，只保留能直接支撑判断的部分。",
     ]
-    if doctrine_pack.mental_models:
-        parts.append(f"当前 doctrine 侧重 {doctrine_pack.mental_models[0].name}。")
     if warnings:
-        parts.append("已保留显式风险边界与拒绝边界。")
+        parts.append("信息还不完整，所以结论会保留必要的限制。")
     if substrate.status == AgentResponseStatus.REFUSED:
-        parts.append("拒绝结果保持原样，不会被改写成正常推荐。")
+        parts.append("缺少关键条件时，我不会硬给建议。")
     elif any(_confidence_is(note.confidence, "provisional") for note in substrate.confidence_notes):
-        parts.append("其中部分判断仍是 provisional，因此不提升为确定性事实。")
+        parts.append("部分判断只能作为初步方向，不能当成最终结论。")
     else:
-        parts.append("结论只做 framing，不改写 grounded facts。")
+        parts.append("结论会直接围绕可用信息展开。")
     return " ".join(parts)
 
 
@@ -205,7 +203,7 @@ def _derive_warnings(substrate: AnalyticalSubstrate) -> list[SynthesisWarning]:
             SynthesisWarning(
                 code="partial_team",
                 severity=SynthesisWarningSeverity.MEDIUM,
-                message="Partial team context remains visible; the judgment only covers the supplied slots.",
+                message="目前只看到了部分队伍槽位，判断只覆盖已填写的成员。",
             )
         )
     if _looks_provisional_only(substrate):
@@ -213,7 +211,7 @@ def _derive_warnings(substrate: AnalyticalSubstrate) -> list[SynthesisWarning]:
             SynthesisWarning(
                 code="provisional_only",
                 severity=SynthesisWarningSeverity.MEDIUM,
-                message="Only provisional interpretation is available from the current substrate.",
+                message="按当前信息先给可执行判断。",
             )
         )
     if _looks_deterministic_fallback(substrate):
@@ -221,7 +219,7 @@ def _derive_warnings(substrate: AnalyticalSubstrate) -> list[SynthesisWarning]:
             SynthesisWarning(
                 code="deterministic_fallback",
                 severity=SynthesisWarningSeverity.LOW,
-                message="Synthesis is operating on a deterministic fallback substrate.",
+                message="当前只能按已知规则做保守判断。",
             )
         )
     if _looks_unsupported_scope(substrate):
@@ -229,7 +227,7 @@ def _derive_warnings(substrate: AnalyticalSubstrate) -> list[SynthesisWarning]:
             SynthesisWarning(
                 code="unsupported_scope",
                 severity=SynthesisWarningSeverity.HIGH,
-                message="The requested scope remains unsupported by the current product boundary.",
+                message="这个问题现在还不能可靠回答。",
             )
         )
     if _looks_refused_missing_context(substrate):
@@ -237,7 +235,7 @@ def _derive_warnings(substrate: AnalyticalSubstrate) -> list[SynthesisWarning]:
             SynthesisWarning(
                 code="refused_missing_context",
                 severity=SynthesisWarningSeverity.HIGH,
-                message="The refusal is driven by missing context required for a grounded answer.",
+                message="缺少关键上下文，暂时不能给出可靠判断。",
             )
         )
     if _looks_refused_missing_species(substrate):
@@ -245,7 +243,7 @@ def _derive_warnings(substrate: AnalyticalSubstrate) -> list[SynthesisWarning]:
             SynthesisWarning(
                 code="refused_missing_species",
                 severity=SynthesisWarningSeverity.HIGH,
-                message="The refusal is driven by missing species grounding.",
+                message="缺少精灵信息，暂时不能给出可靠判断。",
             )
         )
     return warnings

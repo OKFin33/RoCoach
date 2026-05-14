@@ -24,10 +24,12 @@ type ChatSurfaceProps = {
   messages: ChatMessage[];
   thinking: boolean;
   error?: ChatError | null;
+  activePersonaUiId: RocoPersonaUiId;
   activePersonaSelector?: PersonaSelector | null;
   onSend: (text: string) => void;
   onRetry: (messageId?: string) => void;
-  onPersonaSelect: (selector: PersonaSelector) => void;
+  onPersonaSelect: (uiId: RocoPersonaUiId, selector: PersonaSelector) => void;
+  onAddPersonaPress: () => void;
 };
 ```
 
@@ -54,6 +56,14 @@ Agent avatar:
 
 - anchored to the spoken bubble
 - not anchored to a card rendered below the bubble
+- Agent row order: avatar first, bubble second
+- Agent avatar size: `34`
+
+User avatar:
+
+- user row order: bubble first, avatar second
+- avatar stays on the right edge of the user row
+- User avatar size: `30`
 
 Text:
 
@@ -71,6 +81,12 @@ Agent bubble:
 - cream fill
 - black outline
 - left tail
+
+Analysis card:
+
+- rendered below the Agent spoken row
+- left offset equals avatar lane: `42`
+- never replaces the Agent spoken bubble
 
 ## PromptComposer
 

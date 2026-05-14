@@ -1,0 +1,412 @@
+schema_id: p10h_casebank_seed_schema
+version: draft.v2
+status: draft_contract_expert_demonstration_pivot
+date: "2026-05-01"
+purpose: >-
+  Define the normalized casebank seed format for P10h D-layer Expert
+  Demonstration Case Memory. The primary use is source-faithful expert
+  demonstration retrieval, not heuristic-first Coach Policy distillation. This
+  schema is not a runtime API contract.
+
+common_enums:
+  confidence_tier:
+    - confirmed
+    - provisional
+    - low_confidence
+  review_status:
+    - draft
+    - pm_reviewed
+    - pm_fidelity_reviewed
+    - needs_source_recheck
+    - domain_reviewed
+    - rejected
+    - rejected_distorted_source
+    - rejected_low_signal
+    - superseded
+  eval_split:
+    - train
+    - eval
+    - holdout
+  task_type:
+    - team_structure
+    - species_role
+    - move_selection
+    - replacement_ranking
+    - speed_control
+    - matchup_response
+    - general_chat
+  source_kind:
+    - unreviewed_community_transcript
+    - expert_video_transcript
+    - expert_video_cleaned_note
+    - pm_reviewed_case
+    - reviewed_community_note
+    - reviewed_wiki_page
+    - synthetic_dogfood_case
+    - user_verified_rule
+  demonstration_status:
+    - candidate
+    - gold
+    - negative_example
+    - rejected
+  evidence_trace_type:
+    - source_stated
+    - source_implied
+    - agent_inferred_from_source
+    - a_layer_fact
+  promotion_quality_dimension:
+    - source_fidelity
+    - factual_grounding
+    - reasoning_completeness
+    - transferability
+    - boundary_quality
+
+team_case:
+  required_fields:
+    - case_id
+    - title
+    - task_types
+    - source_kind
+    - source_refs
+    - review_status
+    - confidence
+    - eval_split
+    - team_slots
+    - labels
+    - expert_demonstration
+    - evidence_requirements
+    - failure_modes
+  fields:
+    case_id:
+      type: string
+      pattern: "^dc_[a-z0-9_]+$"
+    title:
+      type: string
+    task_types:
+      type: list
+      items: task_type
+      min_items: 1
+    source_kind:
+      type: source_kind
+    source_refs:
+      type: list
+      items: string_file_path_or_url
+      min_items: 1
+    review_status:
+      type: review_status
+    reviewed_by:
+      type: string_or_null
+    reviewed_at:
+      type: iso_date_or_null
+    demonstration_status:
+      type: demonstration_status
+      default: candidate
+    confidence:
+      type: confidence_tier
+    eval_split:
+      type: eval_split
+    patch_or_version_context:
+      type: string_or_null
+    team_slots:
+      type: list
+      min_items: 1
+      max_items: 6
+      item_shape:
+        slot_index: integer_1_to_6
+        species_id: string_or_null
+        display_name: string
+        selected_ability: string_or_null
+        selected_moves: list_of_strings_max_4
+        nature_label: string_or_null
+        individual_value_bonuses: list_of_stat_value_pairs_max_3
+        role_labels: list_of_strings
+        role_confidence: confidence_tier
+        notes: string_or_null
+    labels:
+      primary_archetype: string_or_null
+      secondary_archetypes: list_of_strings
+      win_condition: string_or_null
+      setup_route: string_or_null
+      protection_route: string_or_null
+      conversion_route: string_or_null
+      fallback_route: string_or_null
+      primary_bottleneck: string_or_null
+      secondary_bottlenecks: list_of_strings
+      missing_information: list_of_strings
+      recommendation_outcome: string_or_null
+      evidence_changed_recommendation: list_of_strings
+    evidence_requirements:
+      must_check_a_layer:
+        type: list
+        examples:
+          - species_identity
+          - type_profile
+          - base_stats
+          - fixed_ability
+          - selected_moves
+          - move_access
+      must_check_b_layer:
+        type: list
+        examples:
+          - role_taxonomy
+          - core_team_construction
+          - speed_priority_and_swift
+          - marks_and_persistence
+    accepted_interpretation:
+      type: string_or_null
+      rule: >-
+        Backward-compatibility field from the pre-D-layer casebank shape.
+        New Expert Demonstration cases should put the source-faithful conclusion
+        in `expert_demonstration.expert_conclusion`. This field may summarize
+        older reviewed interpretations but must not duplicate or override the
+        D-layer conclusion.
+    answer_shape:
+      type: string_or_null
+      rule: Product-facing answer example, not a required exact phrase.
+    failure_modes:
+      type: list
+      items: string
+      min_items: 1
+    expert_demonstration:
+      type: object
+      rule: >-
+        Source-faithful expert judgement moment. This is the D-layer runtime
+        candidate payload after PM fidelity review. It should preserve how the
+        expert judged a concrete situation, not convert the case into a generic
+        rule.
+      fields:
+        source_span:
+          type: string_or_null
+          examples:
+            - cleaned_source:poison_vs_starfall_0430:36-43
+            - timestamp:08:31-09:12
+        fidelity_review_question:
+          type: string
+          default: Did the extraction preserve what the expert meant?
+        user_question_equivalent:
+          type: string_or_null
+        situation_summary:
+          type: string
+        observed_evidence:
+          type: list
+          item_shape:
+            evidence_type: evidence_trace_type
+            text: string
+            source_span: string_or_null
+        expert_reasoning_summary:
+          type: list
+          item_shape:
+            step_type:
+              enum:
+                - source_stated
+                - source_implied
+                - agent_inferred_from_source
+            text: string
+            source_span: string
+          rule: >-
+            Concise source-faithful rationale. Do not ask the runtime model to
+            reveal hidden chain-of-thought; this is a reviewed demonstration
+            summary extracted from source material.
+        expert_conclusion:
+          type: string
+        caveats:
+          type: list_of_strings
+        negative_or_failure_branches:
+          type: list
+          item_shape:
+            branch: string
+            why_it_fails_or_downgrades: string
+        answer_shape:
+          type: string_or_null
+          rule: Product-facing style example, not an exact phrase requirement.
+        retrieval_tags:
+          type: object
+          fields:
+            resource_or_mechanic: list_of_strings
+            risk_or_boundary: list_of_strings
+            archetypes: list_of_strings
+            matchup_tags: list_of_strings
+            tactical_actions: list_of_strings
+            bottleneck_tags:
+              type: list_of_strings
+              rule: >-
+                Backward-compatible alias for risk_or_boundary or
+                resource_or_mechanic tags from older casebank drafts. New
+                D-layer cases should prefer the controlled vocabulary groups
+                defined in `specs/p10h_d_layer_retrieval_contract.yaml`.
+            canonical_species: list_of_strings
+            canonical_moves: list_of_strings
+        tag_quality_notes:
+          type: list_of_strings
+          rule: >-
+            Review notes for missing, uncertain, or vocabulary-incompatible
+            retrieval tags. Tag quality is a probe-stage retrieval gate, not
+            decorative metadata.
+        quality_scores:
+          type: object_or_null
+          fields:
+            source_fidelity: integer_1_to_5
+            factual_grounding: integer_1_to_5
+            reasoning_completeness: integer_1_to_5
+            transferability: integer_1_to_5
+            boundary_quality: integer_1_to_5
+          rule: >-
+            Ranking aid for PM review. Reasoning completeness cannot compensate
+            for failed source fidelity or factual grounding.
+    counterexample_refs:
+      type: list
+      items: string
+    notes:
+      type: string_or_null
+
+species_set_example:
+  required_fields:
+    - set_id
+    - species_id
+    - display_name
+    - source_refs
+    - review_status
+    - confidence
+    - eval_split
+    - selected_or_assumed_set
+    - labels
+    - expert_demonstration
+    - evidence_requirements
+    - failure_modes
+  fields:
+    set_id:
+      type: string
+      pattern: "^ss_[a-z0-9_]+$"
+    species_id:
+      type: string
+    display_name:
+      type: string
+    source_refs:
+      type: list
+      items: string_file_path_or_url
+      min_items: 1
+    review_status:
+      type: review_status
+    reviewed_by:
+      type: string_or_null
+    reviewed_at:
+      type: iso_date_or_null
+    demonstration_status:
+      type: demonstration_status
+      default: candidate
+    confidence:
+      type: confidence_tier
+    eval_split:
+      type: eval_split
+    selected_or_assumed_set:
+      ability: string_or_null
+      moves: list_of_strings_max_4
+      nature_label: string_or_null
+      individual_value_bonuses: list_of_stat_value_pairs_max_3
+      team_context_ref: string_or_null
+    labels:
+      role_labels: list_of_strings
+      tactical_tags: list_of_strings
+      primary_job: string_or_null
+      secondary_jobs: list_of_strings
+      role_confidence: confidence_tier
+      missing_information: list_of_strings
+    expert_demonstration:
+      type: object_or_null
+      rule: >-
+        Optional when a species-set record is only descriptive. Required before
+        the record can be promoted as a D-layer gold demonstration.
+      fields:
+        source_span: string_or_null
+        user_question_equivalent: string_or_null
+        situation_summary: string
+        observed_evidence:
+          type: list
+          item_shape:
+            evidence_type: evidence_trace_type
+            text: string
+            source_span: string_or_null
+        expert_reasoning_summary:
+          type: list
+          item_shape:
+            step_type:
+              enum:
+                - source_stated
+                - source_implied
+                - agent_inferred_from_source
+            text: string
+            source_span: string
+        expert_conclusion: string
+        caveats: list_of_strings
+        negative_or_failure_branches: list
+        retrieval_tags:
+          type: object
+          fields:
+            resource_or_mechanic: list_of_strings
+            risk_or_boundary: list_of_strings
+            archetypes: list_of_strings
+            matchup_tags: list_of_strings
+            tactical_actions: list_of_strings
+            canonical_species: list_of_strings
+            canonical_moves: list_of_strings
+        tag_quality_notes:
+          type: list_of_strings
+        quality_scores:
+          type: object_or_null
+          fields:
+            source_fidelity: integer_1_to_5
+            factual_grounding: integer_1_to_5
+            reasoning_completeness: integer_1_to_5
+            transferability: integer_1_to_5
+            boundary_quality: integer_1_to_5
+    evidence_requirements:
+      must_check_a_layer:
+        type: list
+        examples:
+          - type_profile
+          - base_stats
+          - fixed_ability
+          - selected_moves
+          - move_categories
+          - energy_costs
+      must_check_b_layer:
+        type: list
+        examples:
+          - role_taxonomy
+          - pvp_stat_normalization_and_iv_selection
+          - speed_priority_and_swift
+    accepted_interpretation:
+      type: string_or_null
+      rule: >-
+        Backward-compatibility field from the pre-D-layer species-set shape.
+        New Expert Demonstration records should use
+        `expert_demonstration.expert_conclusion`.
+    answer_shape:
+      type: string_or_null
+    failure_modes:
+      type: list
+      min_items: 1
+    counterexample_refs:
+      type: list
+    notes:
+      type: string_or_null
+
+validation_rules:
+  - every source_ref must be explicit and reviewable
+  - every case must have confidence and review_status
+  - unreviewed_community_transcript cases must remain review_status=draft and confidence=low_confidence until human review
+  - expert_video_transcript cases cannot become gold without source_span and pm_fidelity_reviewed status
+  - gold demonstrations cannot contain unresolved canonical names or names ending in _ASR
+  - train/eval/holdout split must be assigned before blind eval
+  - role labels are not global species facts
+  - case interpretations cannot override A-layer facts
+  - D-layer demonstrations are analogies and cannot override A-layer facts
+  - low_confidence cases cannot seed runtime retrieval unless explicitly marked as negative examples
+  - candidate heuristics derived from cases are retrieval tags or audit summaries, not runtime tactical rules
+  - gold promotion prioritizes source_fidelity and factual_grounding before reasoning_completeness
+  - agent_inferred_from_source reasoning steps must cite a source span and remain reviewable
+  - coverage targets are by reasoning pattern, not equal counts across all subtypes
+  - gold demonstrations must use controlled retrieval tags defined by the D-layer retrieval contract
+  - coarse_family and case_type may live as top-level extraction/review fields and do not need to be duplicated inside retrieval_tags
+  - retrieval_tags must support resource_or_mechanic and risk_or_boundary groups for contract alignment
+  - missing obvious tags must be recorded as tag_quality_notes and fixed before retrieval probe acceptance

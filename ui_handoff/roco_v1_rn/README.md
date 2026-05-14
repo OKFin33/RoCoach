@@ -40,6 +40,7 @@ ui_handoff/roco_v1_rn/
       user_default.svg
   specs/
     rn_implementation_spec.md
+    prototype_parity_addendum.md
     layout.md
     interactions.md
     components.md
@@ -126,10 +127,11 @@ For RN implementation, use this order:
 
 1. `specs/rn_implementation_spec.md` for build scope and acceptance criteria.
 2. `contracts/roco_v1_ui_contract.ts` for typed UI/data boundaries.
-3. `specs/visual_parity.md` for exact visual replication rules.
-4. `tokens.json` for colors, spacing, radius, stroke, type, and motion values.
-5. `specs/layout.md`, `specs/components.md`, and `specs/interactions.md` for structure and state behavior.
-6. `specs/data_mapping.md` for backend mapping.
-7. `screens/*.png` only as visual references.
+3. `specs/prototype_parity_addendum.md` for exact prototype-to-RN asset and interaction parity rules.
+4. `specs/visual_parity.md` for visual replication rules.
+5. `tokens.json` for colors, spacing, radius, stroke, type, and motion values.
+6. `specs/layout.md`, `specs/components.md`, and `specs/interactions.md` for structure and state behavior.
+7. `specs/data_mapping.md` for backend mapping.
+8. `screens/*.png` only as visual references.
 
 Do not implement by reverse-engineering the Web prototype CSS.

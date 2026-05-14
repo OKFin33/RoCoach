@@ -12,15 +12,19 @@ UI state:
 
 - Show a radial wheel around the avatar anchor.
 - Dim outside content with transparent backdrop only if needed for tap target clarity.
+- Open with the prototype pop-out motion: backdrop fade, halo scale-in, and
+  staggered spring medallions from the avatar center.
 - Tap outside dismisses.
 - Selecting an available persona closes the wheel and updates the active Agent avatar.
 
 Options:
 
 - `You know who`
+  - public-safe outward codename for the Enzo-derived distilled persona layer
   - built-in default black-clad Agent
   - UI option id: `you_know_who`
-  - backend selector: `{ "kind": "built_in", "persona_id": "obsidian_tactical_coach" }`
+  - backend selector: `{ "kind": "built_in", "persona_id": "you_know_who" }`
+  - do not expose Enzo/恩佐 or official-character positioning
 - `默认AI助手`
   - direct/default LLM assistant
   - UI option id: `ai_assistant`
@@ -40,7 +44,7 @@ Data action:
 
 - store active `persona_selector` in chat UI state
 - include it in `/chat` request when selected
-- V1 initial state visually selects `You know who`; send `obsidian_tactical_coach` for that state unless backend default is explicitly verified to match
+- V1 initial state visually selects `You know who`; send `you_know_who` for that state unless backend default is explicitly verified to match
 - only omit `persona_selector` for a true unselected/API-default state that is not visually showing the black-cloaked persona
 - map UI option ids to backend `persona_id` through the table in `data_mapping.md`; do not send UI-only ids directly
 
@@ -59,7 +63,7 @@ Trigger:
 
 Drawer:
 
-- width: `min(screenWidth * 0.82, 340)`
+- width: `screenWidth * 0.88`, matching the accepted Web prototype rail width
 - opens from right
 - backdrop: `tokens.color.backdrop`
 - handle remains attached to drawer left edge when open
@@ -80,7 +84,7 @@ API key rule:
 - UI copy must state local device secure storage, not session-only memory.
 - Key is user-managed and is sent only to the Product API as request headers for native runtime mode.
 - Key must not be shown in chat messages, logs, Agent presentation, tool traces, or persona metadata.
-- `transportMode` is internal storage only and must not appear as local/cloud product language.
+- `transportMode` is storage/runtime plumbing only. Do not include it in the visible UI model, do not offer a local/cloud selector, and preserve the existing stored value unchanged when settings are saved.
 
 Exit conditions:
 

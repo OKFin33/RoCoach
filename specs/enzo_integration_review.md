@@ -32,6 +32,16 @@ Meaning:
 - accepted as the reference sample for shaping `P1a` synthesis and later
   persona-registry rules
 
+2026-04-27 clarification:
+
+- A public-safe distilled persona may be derived from this internal Enzo sample
+  and inserted into the persona system.
+- The public-facing label for that distilled persona is `You know who`.
+- The backend runtime id for that distilled persona is `you_know_who`.
+- This does not approve public use of Enzo/恩佐 as a character name, official
+  identity, lore claim, dialogue imitation, art reference, or authorization
+  claim.
+
 ## Retain / Abstract / Sanitize / Forbid
 
 ### Retain

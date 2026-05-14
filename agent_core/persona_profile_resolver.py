@@ -28,7 +28,7 @@ class PersonaProfileResolver:
         self,
         materialization: PersonaProjectionProfileMaterialization | None = None,
         *,
-        allowed_scope: PersonaRuntimeActivationScope = PersonaRuntimeActivationScope.PUBLIC_SAFE_RELEASE,
+        allowed_scope: PersonaRuntimeActivationScope = PersonaRuntimeActivationScope.INTERNAL_ONLY_RUNTIME,
     ) -> None:
         self.allowed_scope = allowed_scope
         self._profiles_by_identity: dict[tuple[str, str, int], MaterializedPersonaProfileArtifact] = {}
@@ -99,7 +99,10 @@ def _materialized_profile_blocked_reason(
     artifact: MaterializedPersonaProfileArtifact,
     allowed_scope: PersonaRuntimeActivationScope,
 ) -> str | None:
-    if artifact.activation_scope != allowed_scope:
+    if (
+        allowed_scope == PersonaRuntimeActivationScope.PUBLIC_SAFE_RELEASE
+        and artifact.activation_scope != PersonaRuntimeActivationScope.PUBLIC_SAFE_RELEASE
+    ):
         return "materialized_profile_scope_incompatible"
     policy = artifact.policy_profile
     if not artifact.synthesis_profile.facts_locked or artifact.synthesis_profile.fact_policy != FACT_POLICY:
@@ -119,6 +122,7 @@ def _profile_from_materialized(artifact: MaterializedPersonaProfileArtifact) -> 
         persona_id=artifact.persona_id,
         display_name=artifact.rendering_profile.display_name,
         expression_dna=artifact.rendering_profile.expression_dna,
+        rendering_flavor_rules=list(artifact.rendering_profile.rendering_flavor_rules),
         mental_models=list(artifact.synthesis_profile.mental_models),
         decision_heuristics=list(artifact.synthesis_profile.decision_heuristics),
         anti_patterns=list(artifact.synthesis_profile.anti_patterns),

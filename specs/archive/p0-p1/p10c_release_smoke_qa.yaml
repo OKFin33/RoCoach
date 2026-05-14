@@ -1,0 +1,66 @@
+qa_id: p10c_release_smoke_qa
+version: p10c.release_smoke.v0
+status: completed_draft
+date: "2026-04-30"
+
+purpose: >-
+  Run the first V1 release smoke after integrating P7 real Agent chat, P8 team
+  context, and P9/P10 runtime policy. This smoke intentionally avoids paid live
+  provider calls unless explicitly approved by PM.
+
+results:
+  backend_full_unittest:
+    status: passed
+    command: ".venv/bin/python -m unittest discover -s tests"
+    result: "Ran 218 tests in 5.608s; OK"
+    warnings:
+      - "DeprecationWarning: PydanticAI OpenAIModel renamed to OpenAIChatModel."
+      - "ResourceWarning: unclosed asyncio event loop observed in test output."
+
+  mobile_typecheck:
+    status: passed
+    command: "cd mobile && npm run typecheck"
+
+  static_security_scan:
+    status: passed_with_notes
+    checks:
+      - "No visible 队伍上下文 string found under mobile/src or mobile/README.md."
+      - "Chat request body types do not include provider key/base URL/model fields."
+      - "Provider key references are confined to runtime settings/header construction and API metadata types."
+      - "raw/tool_trace remain type-level content kinds; mobile rendering filters public section kinds."
+
+  ios_simulator_smoke:
+    status: not_run
+    reason: "No booted iOS simulator detected by xcrun simctl list devices booted."
+
+  android_smoke:
+    status: not_run
+    reason: "P10c automated pass did not start Android emulator/device."
+
+  live_provider_smoke:
+    status: not_run
+    reason: "Token-consuming provider calls require explicit PM approval."
+
+release_blockers:
+  - id: p10c_simulator_manual_smoke_missing
+    severity: medium
+    description: >-
+      Automated backend/mobile checks pass, but simulator interaction proof was
+      not collected in this run.
+  - id: p10c_live_provider_smoke_missing
+    severity: medium
+    description: >-
+      No paid live provider request was sent after P10 integration. Prior P7b
+      live provider QA remains available, but P10 integrated mobile settings
+      changes have not been live-provider smoked.
+
+accepted_residuals_if_pm_accepts:
+  - "Android simulator/device QA remains open."
+  - "Slow DeepSeek pro calls still need progress/loading UX."
+  - "PydanticAI raw provider round control remains a known executor-layer gap."
+  - "roco_deepseek_v4_reference backend call-role routing is not implemented; mobile only provides deepseek_v4_quick_setup."
+
+artifacts:
+  - artifacts/p10c_release_smoke_qa/release_smoke_summary.md
+
+next_recommended_action: accept_or_dispatch_p10d_simulator_and_optional_live_smoke

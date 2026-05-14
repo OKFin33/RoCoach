@@ -1,0 +1,76 @@
+qa_id: p10d_simulator_and_optional_live_smoke
+version: p10d.simulator_live_smoke.v0
+status: completed_draft
+date: "2026-04-30"
+
+purpose: >-
+  Execute the simulator smoke and the PM-approved token-consuming live provider
+  smoke that were intentionally not run in P10c.
+
+pm_approval:
+  live_provider_smoke_approved: true
+  approval_text: "dispatch, approve_live_smoke"
+
+simulator_smoke:
+  status: passed_with_runtime_config_note
+  device: "iPhone 17 iOS 26.4"
+  app_launch: passed
+  chat_shell_render: passed
+  input_and_send_interaction: passed
+  backend_retry_interaction: passed_controlled_runtime_failure
+  limitations:
+    - "Expo development overlay gear is visible in screenshots."
+    - "Simulator Settings did not contain provider key/model configuration."
+    - "The simulator interaction did not prove a simulator-side live model success path."
+  artifacts:
+    - artifacts/p10d_simulator_and_live_smoke/ios_simulator_home.png
+    - artifacts/p10d_simulator_and_live_smoke/ios_simulator_chat_error_smoke.png
+    - artifacts/p10d_simulator_and_live_smoke/ios_simulator_backend_retry_response.png
+    - artifacts/p10d_simulator_and_live_smoke/simulator_smoke_summary.md
+
+live_provider_smoke:
+  status: passed_with_meta_prompt_note
+  token_consuming_calls_executed: true
+  secret_redaction: pass
+  scenarios:
+    - id: custom_single_model_model_diagnostic
+      status: passed
+      model: deepseek-v4-pro
+      elapsed_seconds: 2.499
+      note: "Model diagnostic returned ok."
+    - id: deepseek_quick_setup_chat_with_team_context
+      status: passed_but_not_counted_as_llm_proof
+      model: deepseek-v4-flash
+      elapsed_seconds: 0.02
+      note: >-
+        Response used local tool/team-context path quickly; it is useful for
+        integration safety but not proof of an external LLM chat call.
+    - id: deepseek_quick_setup_general_agent_chat
+      status: expected_refusal_for_meta_prompt
+      model: deepseek-v4-flash
+      elapsed_seconds: 3.14
+      note: >-
+        Prompt asked whether the smoke test succeeded, a meta/diagnostic query
+        outside normal product scope. Runtime refused/unsupported it safely.
+    - id: deepseek_quick_setup_realistic_agent_chat
+      status: passed
+      model: deepseek-v4-flash
+      elapsed_seconds: 3.786
+      note: "Realistic user prompt returned ok chat_response through pydantic_ai_native."
+  artifacts:
+    - artifacts/p10d_simulator_and_live_smoke/live_smoke_summary.json
+    - artifacts/p10d_simulator_and_live_smoke/live_smoke_summary.md
+
+release_interpretation:
+  automated_backend_mobile: inherited_pass_from_p10c
+  simulator_shell_interaction: passed_with_notes
+  live_provider_basic_path: passed_with_notes
+  full_release_ready: false
+  remaining_blockers:
+    - "Android simulator/device QA remains open."
+    - "Simulator has not been configured with provider key/model for an on-device live success path."
+    - "Expo dev overlay screenshots are not production-release screenshots."
+    - "Slow-call loading/progress UX remains unresolved."
+    - "True roco_deepseek_v4_reference backend call-role routing remains future work."
+
+next_recommended_action: accept_or_replan_release_blocker_closure

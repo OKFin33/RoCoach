@@ -3,7 +3,10 @@ import type {
   ChatResponse,
   HealthResponse,
   MetadataResponse,
+  ModelDiagnosticRequest,
+  ModelDiagnosticResponse,
   SpeciesProfileResponse,
+  SpeciesMovesResponse,
   SpeciesSearchResponse,
   TeamAnalyzeRequest,
   AgentResponse,
@@ -44,6 +47,17 @@ export class ProductApiClient {
     });
   }
 
+  modelDiagnostic(
+    request: ModelDiagnosticRequest,
+    headers: Record<string, string> = {},
+  ): Promise<ModelDiagnosticResponse> {
+    return this.request<ModelDiagnosticResponse>("/runtime/model-diagnostic", {
+      method: "POST",
+      headers,
+      body: JSON.stringify(request),
+    });
+  }
+
   analyzeTeam(request: TeamAnalyzeRequest): Promise<AgentResponse> {
     return this.request<AgentResponse>("/team/analyze", {
       method: "POST",
@@ -58,6 +72,13 @@ export class ProductApiClient {
 
   speciesProfile(speciesId: string): Promise<SpeciesProfileResponse> {
     return this.request<SpeciesProfileResponse>(`/species/${encodeURIComponent(speciesId)}`);
+  }
+
+  speciesMoves(speciesId: string, limit = 200): Promise<SpeciesMovesResponse> {
+    const params = new URLSearchParams({ limit: String(limit) });
+    return this.request<SpeciesMovesResponse>(
+      `/species/${encodeURIComponent(speciesId)}/moves?${params.toString()}`,
+    );
   }
 
   private async request<T>(path: string, init: RequestInit = {}): Promise<T> {

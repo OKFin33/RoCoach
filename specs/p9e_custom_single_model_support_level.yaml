@@ -1,0 +1,97 @@
+support_contract_id: p9e_custom_single_model_support_level
+version: p9e.custom_single_model_support.v0
+status: draft
+date: "2026-04-30"
+
+purpose: >-
+  Define what Roco supports when an open-source user supplies one custom
+  OpenAI-compatible model configuration and expects all calls to use it.
+
+mode:
+  id: custom_single_model
+  user_visible: true
+  expected_default_for_open_source_users: true
+  model_routing: disabled
+  all_calls_use_same_config: true
+
+user_supplied_fields:
+  required:
+    - api_key
+    - provider_base_url
+    - model_id
+  optional:
+    - reasoning_mode
+    - reasoning_effort
+    - provider_compatibility_notes
+
+roco_guarantees:
+  security:
+    - api_key_must_not_be_logged
+    - api_key_must_not_be_persisted_server_side
+    - provider_error_messages_must_be_redacted_before_user_display
+  runtime_safety:
+    - terminal_response_phase_required
+    - bounded_llm_request_budget
+    - bounded_tool_call_budget
+    - bounded_timeout
+    - usage_limit_exhaustion_returns_controlled_failure
+    - empty_answer_is_not_acceptable
+  privacy_and_trace:
+    - raw_tool_trace_hidden_from_mobile_ui
+    - hidden_reasoning_hidden_from_mobile_ui
+    - public_artifacts_must_pass_redaction
+  grounding:
+    - confirmed_roco_facts_must_come_from_local_sqlite_engine_docs_or_validated_context
+    - llm_must_not_be_treated_as_source_of_record_for_game_facts
+
+roco_non_guarantees:
+  - answer_quality_for_arbitrary_models
+  - provider_latency
+  - provider_availability
+  - provider_specific_reasoning_protocol_support
+  - tool_call_quality_for_models_not_tested_by_roco
+  - controlled_loop_release_readiness
+  - matching_the_roco_deepseek_reference_profile_quality
+
+compatibility_levels:
+  certified_reference:
+    meaning: Roco has run targeted QA and may recommend this profile.
+    current_profiles:
+      - roco_deepseek_v4_reference_draft
+  compatible_best_effort:
+    meaning: >-
+      The provider appears OpenAI-compatible enough for basic chat/tool calls,
+      but Roco has not certified quality or latency.
+    applies_to: custom_single_model
+  unsupported:
+    meaning: The provider/model fails required request shape or violates safety boundaries.
+    examples:
+      - no_chat_completions_or_supported_adapter
+      - secrets_echoed_in_errors_without_redaction_possible
+      - tool_call_protocol_incompatible_with_runtime
+
+ui_copy_requirements:
+  custom_single_model:
+    must_say:
+      - "使用你填写的模型完成所有调用。"
+      - "Roco 会保护密钥并限制调用预算，但不保证任意模型的回答质量。"
+      - "如果模型不支持工具调用或推理参数，部分 Agent 能力可能降级。"
+    must_not_say:
+      - "已认证"
+      - "最佳配置"
+      - "等同 Roco 推荐配置"
+
+qa_requirements:
+  production_guard_tests:
+    - advisor_api_tests_pass
+    - usage_limit_exhaustion_returns_terminal_response
+    - request_scoped_native_runtime_does_not_persist_provider_key
+  optional_provider_smoke:
+    - direct_basic_chat
+    - roco_general_chat
+    - one_grounded_species_or_team_tool_call
+
+release_boundary:
+  v1_allowed: true
+  v1_loop_default: disabled
+  v1_advanced_per_role_model_routing: forbidden

@@ -1,0 +1,219 @@
+schema_id: p10h_coach_policy_heuristic_schema
+version: draft.v2
+status: deprecated_for_runtime_mainline
+date: "2026-05-01"
+purpose: >-
+  Define legacy candidate heuristic and compiled Coach Policy slice formats for
+  P10h. After the Expert Demonstration Casebank pivot, these artifacts are not
+  the runtime mainline. They may be used as retrieval tags, audit summaries,
+  source review notes, or future thin protocol inputs. They are not persona
+  doctrine and must not become a large tactical rulebook.
+
+runtime_policy_after_pivot:
+  default_runtime_use: prohibited
+  allowed_uses:
+    - retrieval_tag
+    - evidence_audit_summary
+    - source_review_note
+    - thin_protocol_candidate
+  prohibited_uses:
+    - direct_tactical_rule_injection
+    - large_compiled_policy_slice_as_default_prompt
+    - overriding_A_layer_facts
+    - replacing_D_layer_gold_case_retrieval
+
+common_enums:
+  confidence_tier:
+    - confirmed
+    - provisional
+    - low_confidence
+  review_status:
+    - candidate
+    - accepted
+    - accepted_with_revision
+    - rejected
+    - superseded
+  task_type:
+    - team_structure
+    - species_role
+    - move_selection
+    - replacement_ranking
+    - speed_control
+    - matchup_response
+    - general_chat
+  heuristic_kind:
+    - diagnosis
+    - evidence_requirement
+    - downgrade_rule
+    - refusal_rule
+    - recommendation_rule
+    - ordering_rule
+    - negative_guard
+    - analogy_rule
+
+candidate_heuristic:
+  required_fields:
+    - heuristic_id
+    - task_types
+    - kind
+    - statement
+    - rationale
+    - confidence
+    - review_status
+    - supporting_evidence_refs
+    - failure_modes
+    - runtime_slice_targets
+  fields:
+    heuristic_id:
+      type: string
+      pattern: "^ch_[a-z0-9_]+$"
+    task_types:
+      type: list
+      items: task_type
+      min_items: 1
+    kind:
+      type: heuristic_kind
+    statement:
+      type: string
+      rule: >-
+        Compact tactical rule. It should be usable as methodology, not as a
+        one-off answer.
+    rationale:
+      type: string
+      rule: Why this rule helps tactical judgement.
+    confidence:
+      type: confidence_tier
+    review_status:
+      type: review_status
+    reviewed_by:
+      type: string_or_null
+    reviewed_at:
+      type: iso_date_or_null
+    supporting_evidence_refs:
+      type: list
+      min_items: 1
+      item_shape:
+        ref_id: string
+        ref_type:
+          enum:
+            - team_case
+            - species_set_example
+            - wiki_page
+            - sql_fact
+            - source_note
+        path_or_id: string
+        support_summary: string
+    counterexample_refs:
+      type: list
+      item_shape:
+        ref_id: string
+        path_or_id: string
+        counterexample_summary: string
+      allow_empty_with_marker: none_reviewed_yet
+    required_a_layer_checks:
+      type: list
+      examples:
+        - species_identity
+        - type_profile
+        - base_stats
+        - fixed_ability
+        - selected_moves
+        - move_access
+        - energy_cost
+        - speed_stat
+    required_b_layer_checks:
+      type: list
+      examples:
+        - role_taxonomy
+        - core_team_construction
+        - speed_priority_and_swift
+        - pvp_stat_normalization_and_iv_selection
+        - early_meta_uncertainty
+    applies_when:
+      type: list
+      items: string
+    does_not_apply_when:
+      type: list
+      items: string
+    downgrade_conditions:
+      type: list
+      items: string
+    refusal_conditions:
+      type: list
+      items: string
+    output_guidance:
+      type: string
+      rule: >-
+        Guidance for final answer shape. Must not request hidden chain-of-thought
+        disclosure.
+    failure_modes:
+      type: list
+      min_items: 1
+    runtime_slice_targets:
+      type: list
+      items: task_type
+    notes:
+      type: string_or_null
+
+compiled_policy_slice:
+  status_after_pivot: legacy_optional_thin_protocol_only
+  required_fields:
+    - slice_id
+    - version
+    - task_type
+    - included_heuristics
+    - required_evidence
+    - allowed_conclusions
+    - downgrade_rules
+    - refusal_rules
+    - output_policy
+  fields:
+    slice_id:
+      type: string
+      pattern: "^coach_policy\\.[a-z_]+\\.v[0-9]+$"
+    version:
+      type: string
+    task_type:
+      type: task_type
+    included_heuristics:
+      type: list
+      items: heuristic_id
+      min_items: 1
+    required_evidence:
+      type: list
+      items: string
+    allowed_conclusions:
+      type: list
+      items: string
+    downgrade_rules:
+      type: list
+      items: string
+    refusal_rules:
+      type: list
+      items: string
+    output_policy:
+      type: string
+      rule: >-
+        User-facing guidance. It may say what to summarize, but must not expose
+        internal chain-of-thought or software metadata.
+    forbidden_expansions:
+      type: list
+      default:
+        - generic RPG cultivation advice without explicit user request and grounded data
+        - current meta prevalence as fact without reviewed source
+        - exact best build without accepted set evidence
+        - persona preference changing tactical recommendation
+    source_manifest:
+      type: list
+      items: supporting_evidence_ref
+
+validation_rules:
+  - accepted heuristics must cite at least one reviewed case or approved B-layer page
+  - accepted heuristics must have human review metadata
+  - heuristic confidence cannot exceed the strongest supporting evidence tier unless explicitly justified
+  - low_confidence heuristics cannot enter runtime retrieval or thin protocol
+  - policy slices are legacy after the P10h pivot and must not be treated as the default runtime target
+  - any future thin protocol must be route-specific and compact
+  - policy slices may guide reasoning but must not override tool/SQL facts
+  - policy slices must not ask the model to reveal hidden chain-of-thought
+  - tactical knowledge should be represented primarily as D-layer expert demonstrations, not heuristic statements

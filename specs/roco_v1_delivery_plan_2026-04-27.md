@@ -9,12 +9,22 @@ The next delivery order is:
 1. P4g Runtime Release Readiness Summary
 2. P5 Mobile UI Prototype Migration and Visual Parity Rework
 3. P6 Residual Runtime Security QA
+4. P7 Real Agent Chat Core
+5. P8 Team Builder Structured Context MVP
 
 This order is deliberate. The runtime path has enough software-level coverage to
 stop blocking product shape work, but it still needs a concise readiness verdict
 before the project pivots back to UI. UI migration should then create the user
 experience that makes the product feel real. Additional security QA remains a
 release gate, not the next product-shaping blocker.
+
+Update, 2026-04-27:
+
+- P7 is now `Real Agent Chat Core`.
+- P8 is now `Team Builder Structured Context MVP`.
+- P8 was previously drafted as P7, but PM clarified that real Agent chat is the
+  core feature and must precede team-builder work.
+- P6 remains a release/security gate. P7/P8 are product-capability tracks.
 
 ## P4g Runtime Release Readiness Summary
 
@@ -123,6 +133,59 @@ Candidate checks:
 - dependency policy for remaining moderate Expo transitive advisories
 
 P6 should not block P5 unless P4g discovers a new software-level blocker.
+
+## P7 Real Agent Chat Core
+
+Goal: make `/chat` behave like a real Agent loop for natural-language prompts,
+not just a rule-router backed command shell.
+
+Inputs:
+
+- `specs/p7_real_agent_chat_core.md`
+- accepted P4 request-scoped native runtime work
+- current `/chat` mobile/backend integration
+- current persona and presentation contracts
+
+P7 should:
+
+- introduce an LLM-backed planner/router for native runtime
+- keep deterministic routing as offline/safety fallback
+- decide when to call A-layer data, B-layer doctrine, deterministic team tools,
+  or ask clarifying questions
+- preserve public-safe persona rendering and fact-lock boundaries
+- keep provider keys request-scoped and redacted
+
+P7 must not:
+
+- expose tools as product navigation
+- render raw tool traces in mobile UI
+- invent game facts without approved data/tool grounding
+- implement Team Builder UI
+
+## P8 Team Builder Structured Context MVP
+
+Goal: reduce repeated manual team entry by letting the user configure one
+structured team context from A-layer database lookups, then attach it to Chat.
+
+Inputs:
+
+- `specs/p8_team_builder_structured_context_mvp.md`
+- P7 Real Agent Chat Core
+- existing species search/profile endpoints
+
+P8 should:
+
+- use Settings -> `队伍设置` as the reserved entry
+- keep Chat as the only analysis output surface
+- attach structured team context to `/chat`
+- mark unknown moves/tuning as user-supplied or unresolved
+
+P8 must not:
+
+- revive legacy `TeamEditorScreen`
+- create a standalone Team Analyze/Dex/Calculator product page
+- let mobile read SQLite directly
+- block P7 Agent Chat work
 
 ## Current Product Rule
 

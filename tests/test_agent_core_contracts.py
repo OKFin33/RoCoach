@@ -81,6 +81,8 @@ class AgentCoreContractTests(unittest.TestCase):
                 "schema_version",
                 "status",
                 "backend",
+                "runtime_path",
+                "continuity_persisted",
                 "analysis_type",
                 "answer",
                 "tool_results",
@@ -93,6 +95,8 @@ class AgentCoreContractTests(unittest.TestCase):
             },
         )
         self.assertEqual(payload["schema_version"], "agent_response.v1")
+        self.assertEqual(payload["runtime_path"], "deterministic_degraded_fallback")
+        self.assertTrue(payload["continuity_persisted"])
         self.assertEqual(payload["status"], "ok")
         self.assertEqual(payload["analysis_type"], "team_analysis")
         self.assertEqual(payload["answer"], "当前队伍结构分为 0.800。")

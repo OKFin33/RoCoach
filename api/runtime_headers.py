@@ -12,10 +12,14 @@ HEADER_PROVIDER_KEY = "X-Roco-Provider-Key"
 HEADER_PROVIDER_BASE_URL = "X-Roco-Provider-Base-Url"
 HEADER_MODEL = "X-Roco-Model"
 HEADER_RUNTIME_MODE = "X-Roco-Runtime-Mode"
+HEADER_REASONING_MODE = "X-Roco-Reasoning-Mode"
+HEADER_REASONING_EFFORT = "X-Roco-Reasoning-Effort"
 
 SENSITIVE_RUNTIME_HEADER_NAMES = frozenset(
     {
         HEADER_PROVIDER_KEY.casefold(),
+        HEADER_REASONING_MODE.casefold(),
+        HEADER_REASONING_EFFORT.casefold(),
         "authorization",
         "roco_openai_api_key",
     }
@@ -45,6 +49,8 @@ def request_runtime_config_from_headers(
     provider_base_url: str | None,
     model: str | None,
     runtime_mode: str | None,
+    reasoning_mode: str | None = None,
+    reasoning_effort: str | None = None,
 ) -> RequestRuntimeConfig:
     has_provider_header = any(_present(value) for value in (provider_key, provider_base_url, model))
     mode = _parse_runtime_mode(runtime_mode)
@@ -69,6 +75,8 @@ def request_runtime_config_from_headers(
             model_name=model or "",
             base_url=provider_base_url or "",
             api_key=provider_key or "",
+            reasoning_mode=_parse_reasoning_mode(reasoning_mode) or "disabled",
+            reasoning_effort=_parse_reasoning_effort(reasoning_effort),
         )
     except ValidationError:
         return RequestRuntimeConfig(mode=mode, setup_error="invalid_native_runtime_config")
@@ -92,6 +100,8 @@ def redact_runtime_text(
         HEADER_PROVIDER_BASE_URL,
         HEADER_MODEL,
         HEADER_RUNTIME_MODE,
+        HEADER_REASONING_MODE,
+        HEADER_REASONING_EFFORT,
         "ROCO_OPENAI_API_KEY",
         "Authorization",
     ):
@@ -107,6 +117,24 @@ def _parse_runtime_mode(value: str | None) -> RequestRuntimeMode | None:
         return RequestRuntimeMode.NATIVE
     if normalized == "auto":
         return RequestRuntimeMode.AUTO
+    return None
+
+
+def _parse_reasoning_mode(value: str | None) -> str | None:
+    normalized = (value or "").strip().casefold()
+    if normalized in {"", "disabled", "off", "none"}:
+        return "disabled"
+    if normalized in {"enabled", "on"}:
+        return "enabled"
+    return None
+
+
+def _parse_reasoning_effort(value: str | None) -> str | None:
+    normalized = (value or "").strip().casefold()
+    if normalized in {"", "none"}:
+        return None
+    if normalized in {"high", "max"}:
+        return normalized
     return None
 
 

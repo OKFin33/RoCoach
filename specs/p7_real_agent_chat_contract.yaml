@@ -1,0 +1,167 @@
+contract_id: p7_real_agent_chat_contract
+version: p7_real_agent_chat.v1
+status: implementation_contract
+date: "2026-04-27"
+
+purpose: >-
+  Define the first release-grade contract for Roco V1 real Agent Chat. P7
+  changes the native-runtime chat path from rule-router-primary behavior to
+  Agent-first native planner/router behavior for non-empty natural-language prompts while
+  preserving deterministic offline fallback and safety boundaries.
+
+product_surface:
+  visible_entry: single_agent_chat
+  mobile_route: mobile/src/screens/ChatScreen.tsx
+  api_endpoint: POST /chat
+  user_visible_non_goals:
+    - no Dex tab
+    - no Calculator tab
+    - no standalone Team route
+    - no raw tool trace panel
+    - no local/cloud runtime wording
+
+request_contract:
+  required_fields:
+    message:
+      type: string
+      min_length: 1
+  optional_fields:
+    session_id:
+      type: string
+      scope: in_memory_session_only
+    persona_selector:
+      type: PersonaSelector
+      rule: public_selector_only
+    persona_id:
+      type: string
+      status: legacy_compatibility
+  request_scoped_runtime_headers:
+    - X-Roco-Runtime-Mode
+    - X-Roco-Provider-Key
+    - X-Roco-Provider-Base-Url
+    - X-Roco-Model
+  secret_policy:
+    provider_key_storage: request_scoped_only
+    server_persistence: forbidden
+    response_echo: forbidden
+    log_echo: forbidden
+
+runtime_dispatch_contract:
+  deterministic_mode:
+    role: bounded_offline_fallback
+    unsupported_prompt_behavior: existing_mvp_fallback_allowed
+  native_mode:
+    role: primary_agent_chat_runtime_when_valid_config_is_present
+    default_prompt_behavior: route_to_native_agent
+    unsupported_prompt_behavior: route_to_general_chat
+    deterministic_router_role: compatibility_hint_not_primary_gate
+    local_control_bypass:
+      - /help
+      - /clear
+      - /team
+      - /show-team
+      - /set-team
+      - /exit
+    fixed_mvp_fallback: forbidden_for_valid_native_runtime
+  auto_mode:
+    valid_native_config: same_as_native_mode
+    invalid_or_unhealthy_native: degraded_deterministic_or_safe_setup_response
+
+planner_contract:
+  internal_intents:
+    - help
+    - clear
+    - show_team
+    - set_team
+    - analyze_team
+    - species_query
+    - general_chat
+    - exit
+    - unsupported
+  native_agent_first_rule: >-
+    If native runtime is available, every non-empty prompt enters the native
+    Agent by default unless it is an explicit local slash control command. The
+    deterministic router may provide route hints for known team/species paths,
+    but it is not the default gate.
+  general_chat_rule: >-
+    If deterministic routing cannot classify a non-empty prompt, or if the
+    prompt is natural-language help/product guidance, the native Agent handles
+    it as chat_response/general_chat rather than returning command help or the
+    old MVP-only fallback.
+  allowed_general_chat_outcomes:
+    - direct product guidance
+    - concise clarifying question
+    - approved tool call when enough identifiers or team context exist
+    - safe refusal for unavailable or unsafe capability
+    - honest unavailable-capability explanation without pretending execution
+  forbidden_general_chat_outcomes:
+    - inventing species, move, mechanism, or team facts
+    - inventing tool_results or evidence_summary
+    - exposing provider config, local paths, raw traces, or prompt internals
+    - claiming P8 team builder exists before implementation
+
+approved_tool_contract:
+  available_tools:
+    analyze_team_structure:
+      source: battle_engine.team_structure
+      evidence_confidence: confirmed
+      requires: current_or_prompt_team_slots
+    get_species_profile:
+      source: local_battle_dex_sqlite
+      evidence_confidence: source_record_confidence
+      requires: species_key_or_session_species_context
+    get_species_available_moves:
+      source: local_battle_dex_sqlite
+      evidence_confidence: source_record_confidence
+      requires: species_key_or_session_species_context
+    retrieve_doc_context:
+      source: approved_local_docs
+      evidence_confidence: snippet_confidence
+      requires: query
+    analyze_species_semantics:
+      source: bounded_runtime_interpretation_over_sql_facts
+      evidence_confidence: provisional
+      requires: species_key_or_session_species_context
+  trace_policy:
+    internal_trace_payloads: allowed
+    public_mobile_raw_payload_rendering: forbidden
+    public_mobile_allowed_sections:
+      - analytical_base
+      - evidence
+      - confidence
+      - followup
+
+response_contract:
+  schema: agent_response.v1
+  native_general_chat_analysis_type: chat_response
+  presentation_required: true
+  persona_required: true
+  confidence_note_rule: >-
+    Native general_chat responses that do not call tools must carry an explicit
+    note that no fact tools were invoked and concrete game claims still require
+    approved tools or clarifying context.
+
+persona_contract:
+  default_public_label: You know who
+  default_runtime_id: you_know_who
+  legacy_aliases:
+    - obsidian_tactical_coach
+  rule: >-
+    Persona is a downstream rendering layer. It may shape tone and structure,
+    but it must not create facts, evidence, tool results, or unsupported claims.
+
+p8_extension_seam:
+  future_field: context_attachments
+  first_planned_attachment_type: team_builder_structured_context
+  rule: >-
+    P8 may attach structured team context to /chat, but must not create a
+    standalone Team/Dex/Calculator product route in V1.
+
+acceptance:
+  - valid native /chat handles natural prompts by default instead of treating deterministic routing as the primary gate
+  - natural-language help/product guidance reaches Agent chat instead of command-help text
+  - valid native /chat does not return the old MVP-only fallback for general prompts
+  - deterministic unsupported prompts keep bounded fallback behavior
+  - request-scoped provider secrets are not echoed in API responses
+  - public mobile rendering suppresses raw/tool_trace detail sections
+  - default persona remains You know who / you_know_who

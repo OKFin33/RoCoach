@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 760" fill="none">
   <title>Roco V1 paper frame</title>
-  <desc>RN-consumable SVG frame. Render with react-native-svg Path over a cream paper fill. Content safe inset: top 34, right 22, bottom 28, left 22.</desc>
+  <desc>Reference/fallback SVG only. P0 RN implementation must use assets/paper/paper_shell.png because the raster shell is the accepted high-fidelity paper treatment.</desc>
   <path
     d="M33 12 C25 12 18 17 15 25 C12 33 13 58 13 74 L13 180 L10 190 L14 200 L14 454 L11 463 L15 474 L15 686 C15 719 22 744 49 746 C100 750 285 750 344 747 C364 746 375 734 376 711 L376 582 L372 574 L376 566 L376 340 L380 332 L376 324 L376 54 C376 29 365 17 340 16 C295 15 256 18 222 16 L211 20 L198 16 C147 16 91 14 52 15 L44 20 L33 12 Z"
     fill="#FFF9EB"

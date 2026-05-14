@@ -6,6 +6,12 @@ from urllib.parse import urlparse
 from pydantic import BaseModel, ValidationError, field_validator
 
 
+REASONING_MODE_DISABLED = "disabled"
+REASONING_MODE_ENABLED = "enabled"
+REASONING_EFFORT_HIGH = "high"
+REASONING_EFFORT_MAX = "max"
+
+
 DEFAULT_ENV_PATH = Path.home() / ".config" / "roco-advisor" / "env"
 
 
@@ -13,6 +19,8 @@ class RocoNativeModelConfig(BaseModel):
     model_name: str
     base_url: str
     api_key: str
+    reasoning_mode: str = REASONING_MODE_DISABLED
+    reasoning_effort: str | None = None
 
     @field_validator("model_name", "base_url", "api_key")
     @classmethod
@@ -46,6 +54,24 @@ class RocoNativeModelConfig(BaseModel):
         if value.lower() in placeholders:
             raise ValueError("api_key placeholder is not valid runtime config")
         return value
+
+    @field_validator("reasoning_mode")
+    @classmethod
+    def _validate_reasoning_mode(cls, value: str) -> str:
+        normalized = value.strip().casefold()
+        if normalized not in {REASONING_MODE_DISABLED, REASONING_MODE_ENABLED}:
+            raise ValueError("reasoning_mode must be disabled or enabled")
+        return normalized
+
+    @field_validator("reasoning_effort")
+    @classmethod
+    def _validate_reasoning_effort(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        normalized = value.strip().casefold()
+        if normalized not in {REASONING_EFFORT_HIGH, REASONING_EFFORT_MAX}:
+            raise ValueError("reasoning_effort must be high or max")
+        return normalized
 
 
 def load_env_file(path: Path) -> dict[str, str]:

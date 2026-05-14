@@ -1,0 +1,439 @@
+contract_id: p9c_agent_call_policy_contract
+version: p9c.agent_call_policy.v0
+status: discussion_contract
+date: "2026-04-29"
+
+purpose: >-
+  Define the V1 Agent call policy before further provider recommendation or
+  runtime-loop work. The policy separates fixed workflow calls from adaptive
+  loops. V1 defaults to 0-2 LLM calls per user /chat message and forbids
+  free-form loops unless a future intent explicitly enables them.
+
+product_boundary:
+  user_visible_entry: single_chat_box
+  public_api_entry: POST /chat
+  internal_only: true
+  not_user_visible:
+    - intent names
+    - route ids
+    - model routing decisions
+    - tool traces
+    - deterministic/native runtime labels
+
+framework_position:
+  current_runtime_layer: PydanticAI native runtime plus deterministic local code
+  recommendation: >-
+    Keep PydanticAI as the typed LLM/tool execution layer for V1. Add a Roco
+    Call Policy orchestrator above it rather than migrating immediately to
+    LangGraph or another graph runtime.
+  rationale:
+    - V1 tasks mostly fit fixed workflows with 0-2 LLM calls.
+    - Call/loop policy is product architecture and cannot be delegated to an SDK.
+    - LangGraph-style durable graphs may become useful later for long-running
+      iterative team optimization, but current scope does not require it.
+
+default_model_policy:
+  primary_user_mode: custom_single_model
+  certified_reference_profile_candidate: roco_deepseek_v4_reference
+  user_facing_preset_matrix: forbidden_in_v1
+  custom_single_model_behavior: >-
+    User-selected provider/base URL/model/reasoning settings are applied to all
+    LLM calls. Roco guarantees runtime safety boundaries, not model quality or
+    per-provider loop behavior.
+  reference_profile_behavior: >-
+    Roco may internally route DeepSeek v4 flash/pro and thinking settings by
+    call role after P9 evaluation. This is one maintained reference profile, not
+    a fast/balanced/deep preset matrix.
+  default_provider_candidate: user_configured_openai_compatible
+  deepseek_reference_models:
+    - deepseek-v4-flash
+    - deepseek-v4-pro
+  historical_evidence_only:
+    flash_thinking_high: >-
+      Tested in P9c and not recommended as reference default because it had
+      hard fails despite winning one simple role scenario.
+    pro_thinking_disabled: >-
+      Tested in P9c and useful for critique evidence, but not a safe reference
+      default because it had hard fails elsewhere.
+    pro_thinking_max: >-
+      Tested in P9d for loop/long-context evidence. It is not recommended for
+      V1 loop default under the current latency budget.
+
+call_levels:
+  L0_template_guard:
+    llm_calls: 0
+    description: Template, guardrail, clarification, refusal, or diagnostic path.
+  L1_simple_generation:
+    llm_calls: 1
+    description: Single LLM response with no factual game claim unless grounded by prompt-safe static copy.
+  L2_grounded_synthesis:
+    llm_calls: 1
+    description: Deterministic/local grounding first, then one LLM synthesis over compact facts.
+  L3_generate_then_critic:
+    llm_calls: 2
+    description: Deterministic/local grounding first, then candidate generation and separate critique/ranking.
+  L4_controlled_loop:
+    llm_calls: "1+N"
+    description: Adaptive model-driven tool loop. Disabled in V1 by default.
+
+terminal_response_policy:
+  invariant: >-
+    Every /chat execution must reserve a terminal response phase owned by the
+    Roco runtime, not by the model. A workflow may spend calls on grounding,
+    tool use, generation, or critique only if it still has a deterministic path
+    to produce a user-visible answer.
+  applies_to:
+    - fixed_workflow
+    - multi_call_workflow
+    - tool_call_workflow
+    - controlled_loop
+  phase_types:
+    deterministic_terminal:
+      description: >-
+        L0/static/help/refusal/data-missing paths may return without an extra
+        LLM call when no synthesis is needed.
+      tools_enabled: false
+    llm_terminal:
+      description: >-
+        Any workflow that requires final language synthesis after grounding,
+        critique, or tool observation must reserve the last LLM call for the
+        final user-visible answer.
+      tools_enabled: false
+      required_when:
+        - prior_tool_observation_exists
+        - prior_internal_generation_or_critique_exists
+        - final_answer_requires_natural_language_synthesis
+  hard_requirements:
+    - "The runtime owns call budget; the model must not decide whether budget remains."
+    - "If final synthesis requires an LLM, the final LLM call must run with tools disabled."
+    - "A tool-calling workflow must not exhaust the call budget on tool requests."
+    - "If only terminal budget remains and the model asks for tools, block tools and force synthesis from the evidence ledger."
+    - "If no terminal response can be produced, return a controlled data-missing or execution-budget failure rather than an empty answer."
+  implication_for_call_counts: >-
+    llm_calls.max includes the terminal synthesis call. For example, an L3
+    two-call workflow is not 'two analysis calls plus a reply'; it is one
+    internal/generation call plus one terminal response call, unless the first
+    call already directly produces the final answer.
+
+global_rules:
+  - "Unknown intent must route to clarify or unsupported; never to loop."
+  - "Grounding is data preparation, not a final user experience by itself."
+  - "Confirmed Roco facts must come from SQLite, deterministic engine, approved docs, or validated context attachments."
+  - "LLM output may synthesize, rank, explain, and ask clarifying questions, but must not invent facts or tool results."
+  - "Known species/team routes should pre-ground obvious A-layer data before synthesis."
+  - "Each user /chat message should use at most 2 LLM calls in V1 unless a future loop-enabled intent is explicitly accepted."
+  - "Every execution must end in a terminal response phase; final LLM synthesis, when needed, must reserve the last call with tools disabled."
+  - "If required grounding fails, ask a concise clarifying question or return an unsupported/data-missing response."
+
+intents:
+  simple_chat:
+    user_examples:
+      - "你能帮我做什么？"
+      - "我现在该怎么用你来优化队伍？"
+    call_level: L1_simple_generation
+    grounding_required: false
+    allowed_tools: []
+    llm_calls:
+      min: 1
+      max: 1
+    model_policy: flash_off
+    loop: forbidden
+    fallback:
+      - reroute_to_more_specific_intent_if_species_team_move_or_mechanic_is_detected
+      - otherwise_answer_as_product_guidance
+    output_requirements:
+      - no_claim_of_completed_analysis_without_grounding
+      - no_fake_tool_or_evidence_claims
+
+  settings_help:
+    user_examples:
+      - "怎么配置 API？"
+      - "模型服务测试是什么意思？"
+    call_level: L0_template_guard
+    grounding_required: false
+    allowed_tools:
+      - product_api_health
+      - model_service_diagnostic
+    llm_calls:
+      min: 0
+      max: 1
+    model_policy: no_business_provider_required
+    loop: forbidden
+    fallback:
+      - use_static_help_copy
+    output_requirements:
+      - distinguish_product_api_health_from_model_service_test
+      - warn_model_service_test_may_consume_tokens
+      - never_request_user_to_paste_api_key_into_chat
+
+  species_query:
+    user_examples:
+      - "豆丁鱼是什么定位？"
+      - "豆丁鱼适合干什么？"
+    call_level: L2_grounded_synthesis
+    grounding_required: true
+    grounding_plan:
+      - resolve_species_from_sqlite
+      - fetch_species_profile
+      - fetch_species_available_moves
+      - fetch_ability_detail_when_available
+      - fetch_relevant_mechanics_docs
+    allowed_tools:
+      - get_species_profile
+      - get_species_available_moves
+      - get_ability_detail
+      - retrieve_doc_context
+      - analyze_species_semantics
+    llm_calls:
+      min: 1
+      max: 1
+    model_policy: flash_off_default
+    loop: forbidden
+    clarify_when:
+      - species_name_missing
+      - species_name_ambiguous_across_forms
+      - species_not_found
+    output_requirements:
+      - mention_resolved_species_display_name
+      - mention_type_and_ability_when_known
+      - distinguish_confirmed_facts_from_provisional_role_judgement
+      - include_confidence_note_for_provisional_positioning
+
+  move_query:
+    user_examples:
+      - "潮涌这个技能怎么样？"
+      - "豆丁鱼能不能学先发制人？"
+    call_level: L2_grounded_synthesis
+    grounding_required: true
+    grounding_plan:
+      - resolve_move_from_sqlite
+      - if_species_present_fetch_species_move_pool
+      - fetch_relevant_mechanics_docs
+    allowed_tools:
+      - get_move_detail
+      - get_species_available_moves
+      - retrieve_doc_context
+    llm_calls:
+      min: 1
+      max: 1
+    model_policy: flash_off_default
+    loop: forbidden
+    clarify_when:
+      - move_name_missing
+      - move_name_ambiguous
+      - move_not_found
+    output_requirements:
+      - distinguish_move_fact_from_tactical_suggestion
+      - if_species_context_present_state_whether_move_is_available_to_species
+
+  mechanic_query:
+    user_examples:
+      - "先手机制怎么理解？"
+      - "蓄力和印记有什么关系？"
+    call_level: L2_grounded_synthesis
+    grounding_required: true
+    grounding_plan:
+      - retrieve_approved_mechanics_docs
+      - inspect_related_species_or_moves_only_if_named
+    allowed_tools:
+      - retrieve_doc_context
+      - get_species_profile
+      - get_move_detail
+    llm_calls:
+      min: 1
+      max: 1
+    model_policy: flash_off_default
+    loop: forbidden
+    clarify_when:
+      - mechanism_term_unknown
+      - reviewed_docs_missing
+    output_requirements:
+      - do_not_present_unreviewed_mechanics_as_confirmed
+      - cite_doc_grounding_in_confidence_notes
+
+  team_context_analysis:
+    user_examples:
+      - "这套队伍先手够用吗？"
+      - "这队联防有洞吗？"
+    call_level: L2_grounded_synthesis
+    grounding_required: true
+    grounding_plan:
+      - read_active_team_context_attachment
+      - validate_species_and_moves_against_sqlite
+      - enrich_slots_with_profile_ability_moves_base_stats
+      - run_team_structure_analyzer
+      - retrieve_relevant_mechanics_docs
+    allowed_tools:
+      - analyze_team_structure
+      - get_species_profile
+      - get_species_available_moves
+      - retrieve_doc_context
+    llm_calls:
+      min: 1
+      max: 1
+    model_policy: flash_off_default
+    loop: forbidden
+    clarify_when:
+      - no_active_team_context
+      - team_context_empty
+      - referenced_slot_missing
+    output_requirements:
+      - mention_team_slot_count
+      - mention_selected_species_names_when_relevant
+      - mark_partial_team_when_less_than_6_slots
+      - distinguish_engine_confirmed_structure_from_strategy_hypothesis
+
+  team_build_advice:
+    user_examples:
+      - "围绕豆丁鱼组一队"
+      - "我想打快攻，豆丁鱼怎么搭队友？"
+    call_level: L2_grounded_synthesis
+    grounding_required: true
+    grounding_plan:
+      - resolve_core_species
+      - read_active_team_context_when_available
+      - fetch_core_species_profile_moves_ability
+      - run_team_structure_if_team_exists
+      - retrieve_relevant_mechanics_docs
+    allowed_tools:
+      - get_species_profile
+      - get_species_available_moves
+      - analyze_team_structure
+      - retrieve_doc_context
+    llm_calls:
+      min: 1
+      max: 2
+    model_policy: flash_off_default_with_pro_off_candidate
+    loop: forbidden_in_v1
+    clarify_when:
+      - no_core_species_or_team_goal
+      - desired_style_missing_for_open_ended_build
+    output_requirements:
+      - provide_directional_recommendations_not_fake_specific_unavailable_facts
+      - surface_missing_data_or_candidate_pool_limitations
+      - avoid_claiming_complete_team_search_if_no_search_was_run
+
+  team_revision:
+    user_examples:
+      - "把 3 号位换掉怎么改？"
+      - "豆丁鱼这套配招要不要换？"
+    call_level: L2_grounded_synthesis
+    grounding_required: true
+    grounding_plan:
+      - read_active_team_context
+      - resolve_referenced_slot_or_species
+      - fetch_relevant_species_and_moves
+      - run_team_structure_before_and_after_if_candidate_is_explicit
+    allowed_tools:
+      - analyze_team_structure
+      - get_species_profile
+      - get_species_available_moves
+      - retrieve_doc_context
+    llm_calls:
+      min: 1
+      max: 2
+    model_policy: flash_off_default_with_pro_off_candidate
+    loop: forbidden_in_v1
+    clarify_when:
+      - referenced_slot_or_species_missing
+      - replacement_goal_missing
+    output_requirements:
+      - state_tradeoffs
+      - do_not_claim_after_state_analysis_without_candidate
+
+  complex_strategy:
+    user_examples:
+      - "给我三套优化方案并排序"
+      - "围绕豆丁鱼做一个快攻和一个平衡方案，对比风险"
+    call_level: L3_generate_then_critic
+    grounding_required: true
+    grounding_plan:
+      - gather_all_named_species_team_moves_and_mechanics
+      - run_team_structure_when_team_exists
+      - build_compact_fact_pack
+    allowed_tools:
+      - get_species_profile
+      - get_species_available_moves
+      - analyze_team_structure
+      - retrieve_doc_context
+    llm_calls:
+      min: 1
+      max: 2
+    model_policy: pro_off_or_flash_thinking_high_candidate_after_qa
+    loop: forbidden_by_default
+    clarify_when:
+      - optimization_objective_missing
+      - constraints_too_open
+    output_requirements:
+      - candidate_options
+      - ranked_recommendation
+      - explicit_risks
+      - missing_information
+
+  clarify:
+    user_examples:
+      - "这套能打吗？"
+      - "帮我优化一下"
+    call_level: L0_template_guard
+    grounding_required: false
+    allowed_tools: []
+    llm_calls:
+      min: 0
+      max: 0
+    model_policy: none
+    loop: forbidden
+    output_requirements:
+      - ask_one_most_important_question
+      - suggest_team_settings_when_team_context_is_missing
+
+  unsupported_live_meta:
+    user_examples:
+      - "明天会不会削弱豆丁鱼？"
+      - "当前环境热门是什么？"
+    call_level: L0_template_guard
+    grounding_required: false
+    allowed_tools: []
+    llm_calls:
+      min: 0
+      max: 0
+    model_policy: none
+    loop: forbidden
+    output_requirements:
+      - state_no_live_or_future_meta_feed
+      - offer_supported_alternative
+
+  debug_or_diagnostic:
+    user_examples:
+      - "模型连不上怎么办？"
+      - "为什么 API 测试失败？"
+    call_level: L0_template_guard
+    grounding_required: false
+    allowed_tools:
+      - product_api_health
+      - model_service_diagnostic
+    llm_calls:
+      min: 0
+      max: 1
+    model_policy: no_business_provider_required
+    loop: forbidden
+    output_requirements:
+      - no_secret_echo
+      - diagnostic_code_when_available
+      - next_action_one_step
+
+unknown_intent_policy:
+  action: clarify_or_unsupported
+  llm_calls_max: 0
+  loop: forbidden
+  rationale: >-
+    Looping unknown intent lets the Agent explore without task boundaries.
+    Unknown intent must be narrowed before tools or model-routing decisions.
+
+implementation_notes:
+  current_runtime_intents_are_coarser_than_this_contract: true
+  expected_followup_work:
+    - map_current_Intent_HELP_to_settings_help_or_simple_chat_by_prompt
+    - split_ANALYZE_TEAM_into_team_context_analysis_team_build_advice_team_revision_when_needed
+    - add_move_query_and_mechanic_query_detection
+    - add compact fact pack builder for L2/L3 synthesis calls
+    - add output validators per intent

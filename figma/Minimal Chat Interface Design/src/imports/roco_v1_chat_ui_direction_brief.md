@@ -1,5 +1,11 @@
 # Roco V1 Chat UI Direction Brief
 
+Supersession note, 2026-04-27:
+
+For Expo RN implementation, `ui_handoff/roco_v1_rn/` is the current source of
+truth. The visible default persona is `You know who`, and the backend runtime id
+is `you_know_who`; `obsidian_tactical_coach` is legacy alias only.
+
 One-line context for downstream UI work:
 
 > Roco V1 is a single-Agent Chat product, not a multi-tool app. The main screen is only the chat stream and prompt input; Team, Species, Calculator, and Dex are internal Agent tools, not user entry points. Persona switches through a long-press radial wheel on the Agent avatar; Settings opens from a right-edge left swipe. Mobile currently has a minimum functional skeleton, and the next step is final visual style and UI language. The UI only outputs public `persona_selector` and must not use internal encoded selectors.
@@ -431,7 +437,7 @@ Built-in:
 ```json
 {
   "kind": "built_in",
-  "persona_id": "obsidian_tactical_coach"
+  "persona_id": "you_know_who"
 }
 ```
 

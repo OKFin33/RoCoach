@@ -1,5 +1,10 @@
 # Roco V1 Chat UI Direction Brief
 
+Supersession note, 2026-04-27:
+
+- This is the original visual/interaction brief. For Expo RN implementation, `ui_handoff/roco_v1_rn/` is the current source of truth.
+- Later product decisions override this brief where they differ: no visible local/cloud control, API key storage uses the mobile SecureStore path, and the visual default `You know who` maps to backend `you_know_who` rather than omitting `persona_selector`. `You know who` is the public-safe outward codename for the Enzo-derived distilled persona layer; public UI must not expose Enzo/恩佐 or official-character positioning.
+
 One-line context for downstream UI work:
 
 > Roco V1 is a single-Agent Chat product, not a multi-tool app. The main screen is only the chat stream and prompt input; Team, Species, Calculator, and Dex are internal Agent tools, not user entry points. Persona switches through a long-press radial wheel on the Agent avatar; Settings opens from a right-edge left swipe. Mobile currently has a minimum functional skeleton, and the next step is final visual style and UI language. The UI only outputs public `persona_selector` and must not use internal encoded selectors.
@@ -304,8 +309,17 @@ When a managed persona has no custom avatar:
 Default:
 
 - Label: `Default`
-- Meaning: API default
+- Meaning: only a true API-default/unselected state
 - Request behavior: omit `persona_selector`
+
+V1 visual default:
+
+- Label: `You know who`
+- Meaning: black-cloaked tactical Agent
+- Request behavior: send `{ "kind": "built_in", "persona_id": "you_know_who" }`
+- Boundary: public-safe codename for the Enzo-derived distilled persona layer;
+  do not expose Enzo/恩佐, official lore, official dialogue, official art, or
+  authorization language.
 
 Active:
 
@@ -363,13 +377,14 @@ Required controls:
 - Provider selector
 - Model selector/input
 - Endpoint input
-- Local/cloud mode switch
+
+Do not expose local/cloud mode in V1 UI.
 
 Security copy hierarchy:
 
-- Primary warning near key field: `Your API key is user-managed and local to this session.`
+- Primary warning near key field: `Your API key is user-managed and stored on this device.`
 - Secondary warning: `Do not screenshot, upload, or paste keys into chats.`
-- Technical note: `Current scaffold is in-memory unless secure persistence is implemented.`
+- Technical note: `Roco stores the key through the mobile SecureStore path and sends it only with model requests.`
 
 This warning should be visible but not panic-styled. Use orange/yellow info treatment, not red error styling.
 
@@ -431,7 +446,7 @@ Built-in:
 ```json
 {
   "kind": "built_in",
-  "persona_id": "obsidian_tactical_coach"
+  "persona_id": "you_know_who"
 }
 ```
 
@@ -444,7 +459,8 @@ Default:
 Contract rules:
 
 - If no persona is selected, do not send `persona_selector`.
-- If `Default` is selected, do not send `persona_selector`.
+- If a true API-default/unselected state is selected, do not send `persona_selector`.
+- If the visible default is `You know who`, send `{ "kind": "built_in", "persona_id": "you_know_who" }`.
 - Do not construct, parse, display, or store internal encoded selectors.
 - Do not expose raw `persona_id` editing in production UI.
 - Map typed persona option records to the public `persona_selector`.
@@ -631,13 +647,13 @@ Must implement for V1:
 - Prompt composer.
 - User and Agent bubbles.
 - Agent avatar long-press radial wheel.
-- Default persona sends no selector.
+- Visual default `You know who` sends `{ "kind": "built_in", "persona_id": "you_know_who" }`; only a true API-default/unselected state omits `persona_selector`.
 - Explicit persona sends public `persona_selector`.
 - Effective persona/fallback display from `response.persona`.
 - Right-edge Settings drawer.
 - API key mask/reveal/clear in drawer.
-- Provider/model/endpoint/local-cloud controls in drawer.
-- Security warning that keys are user-managed and currently scaffold-level/in-memory unless secure persistence is implemented.
+- Provider/model/endpoint controls in drawer; do not expose local/cloud mode in V1 UI.
+- Security warning that keys are user-managed and stored through the current mobile SecureStore path.
 - Internal tool results as inline chat artifacts only.
 
 Polish after V1:

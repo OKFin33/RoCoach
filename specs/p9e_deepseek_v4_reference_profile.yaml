@@ -1,0 +1,169 @@
+profile_id: roco_deepseek_v4_reference
+version: p9e.deepseek_v4_reference.v0
+status: draft
+date: "2026-04-30"
+
+purpose: >-
+  Define the single Roco-maintained DeepSeek v4 reference profile. This is not
+  a user-facing preset matrix. It is an internally routed profile for users who
+  choose the Roco DeepSeek v4 reference path instead of custom single-model.
+
+certification_basis:
+  p9c_minimal_blind_eval:
+    artifact_dir: artifacts/p9c_strategy_eval
+    result_summary:
+      - pro_on_highest_avg_quality_zero_hard_fails
+      - flash_off_strongest_default_candidate_but_has_s4_hard_fail
+      - flash_on_not_recommended_due_to_hard_fails
+      - pro_off_useful_for_critique_but_not_safe_default
+    key_numbers:
+      pro_on_avg_score: 4.114
+      flash_off_avg_score: 3.687
+      pro_off_avg_score: 3.399
+      flash_on_avg_score: 3.204
+  p9d_reasoning_effort_loop_eval:
+    artifact_dir: artifacts/p9d_reasoning_effort_loop_eval
+    result_summary:
+      - s10_long_context_passed_for_pro_high_and_pro_max_after_terminal_reservation
+      - s9_targeted_v2_finalized_for_pro_high_and_pro_max
+      - pro_max_loop_exceeded_180s_s9_latency_budget
+      - production_native_runtime_has_usage_limit_terminal_guard
+
+support_level:
+  label: certified_reference_draft
+  guarantee_scope:
+    - request_shape_known_for_deepseek_v4_flash_and_pro
+    - thinking_tool_history_replay_validated_in_s10
+    - terminal_response_and_tool_budget_guards_required
+    - secret_and_hidden_reasoning_redaction_required
+  non_guarantees:
+    - live_meta_accuracy
+    - arbitrary_provider_compatibility
+    - loop_release_readiness
+    - pixel_or_ui_behavior
+
+call_role_routing:
+  simple_chat:
+    call_level: L1_simple_generation
+    recommended_config:
+      model: deepseek-v4-flash
+      thinking: disabled
+      reasoning_effort: none
+    rationale: >-
+      Flash thinking-on won S1 narrowly, but flash_on had two hard fails in the
+      minimal set. For release default, low-risk and low-token behavior matters
+      more than small simple-role gains.
+    max_llm_calls: 1
+    tools: disabled_by_default
+
+  honesty_or_data_limited_response:
+    call_level: L0_or_L1_guarded_response
+    recommended_config:
+      model: deepseek-v4-flash
+      thinking: disabled
+      reasoning_effort: none
+    rationale: >-
+      P9c S8 was won by flash_off. Honesty-boundary routes should avoid costly
+      deep reasoning that may add unsupported specifics.
+    max_llm_calls: 0_or_1
+    tools: disabled_unless_required_for_diagnostic
+
+  grounded_species_or_team_synthesis:
+    call_level: L2_grounded_synthesis
+    recommended_config:
+      model: deepseek-v4-flash
+      thinking: disabled
+      reasoning_effort: none
+    escalation_candidate:
+      model: deepseek-v4-pro
+      thinking: enabled
+      reasoning_effort: high
+    escalation_allowed_when:
+      - user_explicitly_requests_deeper_strategy
+      - deterministic_grounding_exists
+      - latency_budget_allows
+    rationale: >-
+      V1 grounded synthesis should first rely on local data quality and runtime
+      guards. Pro thinking is reserved for hard strategy, not routine lookups.
+    max_llm_calls: 1
+    terminal_response_required: true
+
+  complex_strategy_generation:
+    call_level: L3_generate_then_terminal
+    recommended_config:
+      model: deepseek-v4-pro
+      thinking: enabled
+      reasoning_effort: high
+    default_llm_calls: 1
+    max_llm_calls: 2
+    two_call_mode_allowed_only_when:
+      - prompt_requests_multiple_candidate_plans_or_comparison
+      - deterministic_grounding_packet_is_available
+      - terminal_call_budget_is_reserved
+      - latency_budget_allows
+    rejected_default_configs:
+      - deepseek-v4-pro_enabled_max_due_to_latency
+      - deepseek-v4-flash_enabled_high_due_to_hard_fails
+    rationale: >-
+      P9c shows pro_on is the strongest quality path for strategy, but P9d
+      shows max effort can be latency-heavy. Use pro high as the reference
+      strategy setting unless a later eval proves max is worth the cost.
+    terminal_response_required: true
+    final_call_tools: disabled
+
+  critique_or_arbitration:
+    call_level: L3_critic_or_final_arbitration
+    recommended_config:
+      model: deepseek-v4-pro
+      thinking: enabled
+      reasoning_effort: high
+    alternative_observed:
+      model: deepseek-v4-pro
+      thinking: disabled
+      reasoning_effort: none
+      note: pro_off won P9c S6 but had hard fails elsewhere, so it is not the reference default.
+    max_llm_calls: 1
+    terminal_response_required: true
+
+  controlled_loop:
+    call_level: L4_controlled_loop
+    v1_default: disabled
+    experimental_config_if_enabled:
+      model: deepseek-v4-pro
+      thinking: enabled
+      reasoning_effort: high
+    explicitly_not_recommended:
+      model: deepseek-v4-pro
+      thinking: enabled
+      reasoning_effort: max
+      reason: exceeded_current_s9_180s_latency_budget
+    hard_requirements:
+      - final_call_reserved
+      - tools_disabled_for_final_call
+      - over_budget_tool_requests_refused_as_tool_observations
+      - loop_timeout_marks_failure_even_if_final_answer_exists
+    max_llm_calls: 4
+    max_tool_calls: 8
+    timeout_seconds: 180
+
+user_visible_copy_boundary:
+  allowed_summary: >-
+    Roco can use a maintained DeepSeek v4 reference profile, where Roco chooses
+    suitable DeepSeek v4 flash/pro calls internally based on task type.
+  forbidden_copy:
+    - fast_balanced_deep_preset_matrix
+    - guaranteed_best_model_claim
+    - claim_that_custom_providers_are_certified
+    - expose_internal_intent_or_route_names
+
+implementation_notes:
+  - custom_single_model remains the mainstream open-source path.
+  - reference routing should be internal; ordinary V1 users should not configure per-role models.
+  - final response model selection must follow this profile only in roco_deepseek_v4_reference mode.
+  - custom_single_model mode must not silently switch models.
+
+open_items_before_acceptance:
+  - rerun_or_accept_targeted_s9_s10_evidence_for_p9e
+  - decide_whether_complex_strategy_uses_one_or_two_llm_calls_in_v1
+  - translate_profile_into_mobile_settings_copy
+  - add implementation mapping if reference profile is exposed in UI

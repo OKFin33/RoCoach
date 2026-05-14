@@ -1,0 +1,46 @@
+qa_id: p10f_chat_reply_simplification
+version: p10f.chat_reply_simplification.v0
+status: completed
+date: "2026-04-30"
+
+trigger: >-
+  PM observed that the simulator reply was not human-readable and that analysis
+  cards/detail sections should be removed for now.
+
+problem_statement:
+  - "Main chat rendered backend evidence/confidence/detail material as product UI."
+  - "The visible reply used internal boundary phrases such as partial-team and grounded policy language."
+  - "The analysis card duplicated internal telemetry and made the chat feel non-human."
+
+changes:
+  - path: mobile/src/roco/rocoPresentation.ts
+    summary: >-
+      Added a mobile chat-bubble compaction layer that strips internal prefixes
+      and doctrine tails, and converts partial-team boundary text into a short
+      user-facing reply.
+  - path: mobile/src/roco/rocoPresentation.ts
+    summary: >-
+      `buildAnalysisCardModel` now intentionally returns null for V1.
+  - path: mobile/src/screens/ChatScreen.tsx
+    summary: >-
+      Chat messages no longer attach analysis_card models.
+  - path: mobile/src/components/roco/MessageBubble.tsx
+    summary: >-
+      Agent bubbles no longer import or render AnalysisCard.
+
+non_goals:
+  - "Delete backend presentation/detail-section contracts."
+  - "Remove AnalysisCard source files permanently."
+  - "Implement the final persona writing style."
+  - "Solve all backend synthesis tone issues."
+
+acceptance:
+  - "Mobile typecheck passes."
+  - "V1 mobile chat does not render analysis cards."
+  - "Runtime failure setup guidance remains visible."
+  - "Partial-team backend text is compacted before entering the chat bubble."
+
+remaining_risks:
+  - "Backend synthesis still produces internal-flavored text; mobile only masks the worst UX for V1."
+  - "Final persona tone needs a dedicated writing-style pass."
+  - "Analysis card can be reintroduced only after a public UI artifact contract is designed."

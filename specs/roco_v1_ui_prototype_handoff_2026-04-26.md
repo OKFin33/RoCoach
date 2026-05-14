@@ -14,6 +14,16 @@ ui_handoff/roco_v1_rn/
 
 This Web/Figma Make handoff is now a visual reference and decision record, not the implementation source of truth.
 
+Supersession note:
+
+- For Expo RN implementation, `ui_handoff/roco_v1_rn/` overrides this document where contracts differ.
+- The current V1 visual default is `You know who`, which maps to backend `you_know_who`.
+- `You know who` is the public-safe outward codename for the Enzo-derived
+  distilled persona layer. Public UI must not claim this is Enzo/恩佐 or use
+  official-character positioning, official lore, official dialogue, or official
+  art.
+- API key persistence follows the mobile SecureStore runtime path; the older Web prototype simulated key entry only.
+
 ## Where To View
 
 Prototype directory:
@@ -133,7 +143,7 @@ Prototype personas:
 - `默认AI助手`: direct/default LLM assistant
 - `添加人格`: placeholder entry to a future persona creation page
 
-The UI must output only public persona selectors:
+The UI must output only public persona selectors. UI labels/option ids are mapped before request dispatch:
 
 ```json
 {
@@ -142,7 +152,15 @@ The UI must output only public persona selectors:
 }
 ```
 
-or, later:
+Current V1 mapping:
+
+```text
+You know who -> { "kind": "built_in", "persona_id": "you_know_who" }
+默认AI助手 -> { "kind": "built_in", "persona_id": "lattice_support_coach" }
+添加人格 -> no selector; reserved seam
+```
+
+Managed persona later:
 
 ```json
 {
@@ -166,7 +184,7 @@ Current settings include:
 - provider
 - model
 - endpoint
-- explicit safety copy that the API key is user-managed and currently session-local/in-memory
+- explicit safety copy that the API key is user-managed and stored on-device through the current SecureStore path
 
 Removed from settings:
 
@@ -286,7 +304,7 @@ Avoid:
 - adding visible Team/Species/Calculator/Dex entry points
 - exposing tool names as navigation
 - exposing artifact paths, env vars, internal selectors, resolver/materialization terminology
-- assuming API keys are securely persisted
+- assuming API key guarantees beyond the current mobile SecureStore path
 - assuming local model execution exists on mobile
 
 ## Suggested Main-Thread Prompt

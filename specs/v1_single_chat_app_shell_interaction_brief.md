@@ -83,7 +83,11 @@ Interaction:
 
 Required wheel entries:
 
-- Default Enzo: represented by a black-clad Agent avatar.
+- Default `You know who`: represented by a black-clad Agent avatar.
+- Persona boundary: `You know who` is the public-safe outward codename for the
+  Enzo-derived distilled persona layer. It must not expose Enzo/恩佐,
+  official-character positioning, official lore, official dialogue, or official
+  art.
 - Add persona: represented by a translucent avatar with a plus mark.
 - Newly added persona: defaults to a first-letter avatar until edited later.
 
@@ -92,7 +96,7 @@ Data output:
 - Built-in persona entries output the public `persona_selector` object:
 
   ```json
-  { "kind": "built_in", "persona_id": "obsidian_tactical_coach" }
+  { "kind": "built_in", "persona_id": "you_know_who" }
   ```
 
 - Managed persona entries output the public `persona_selector` object:
@@ -192,7 +196,10 @@ The UI outputs P2 public selector objects only:
 - Built-in: `kind`, `persona_id`.
 - Managed: `kind`, `persona_id`, `version`, `revision`.
 
-Default mode sends no selector and preserves backend default behavior.
+The visual V1 default is `You know who`, so it sends
+`{ "kind": "built_in", "persona_id": "you_know_who" }`. Only a true
+API-default/unselected state sends no selector, and that state must not present
+itself visually as `You know who`.
 
 Version/revision should not be exposed in normal persona selection UI if a
 catalog entry already has exact reviewed identity metadata. They may appear only

@@ -6,13 +6,39 @@ Define the near-term retrieval architecture for the advisor.
 
 This project should use `hybrid local RAG`, not a monolithic vector platform.
 
+Architectural placement:
+
+- RoCoach is an Agentic runtime with planner, grounding/tool, reasoning/synthesis,
+  validation, continuity, and presentation loops.
+- Runtime depth should be:
+  `plan -> ground -> validate packet -> maybe retrieve more / ask clarification
+  -> synthesize -> grade trace / answer`.
+- Retrieval is an implementation capability inside the grounding/tool loop.
+- Retrieval is not a standalone product path and not a user-visible answer
+  module.
+- Retrieved facts, docs, and cases are evidence inputs to Agent synthesis.
+- Normal user answers must be produced by the Agent terminal synthesis path, not
+  by a retrieval module concatenating snippets.
+
 ## Retrieval Principle
 
 Different knowledge classes require different retrieval methods.
 
 The system should not force one retrieval mechanism onto all data.
 
-## Retrieval Branches
+The system should also not force retrieval to own the answer. Retrieval owns
+evidence selection; the Agent loop owns interpretation and final response.
+
+Retrieval must also be packet-aware. If retrieved evidence is insufficient for
+the planned answer, the runtime should either perform a bounded retrieve-more
+iteration or ask a concise clarification before synthesis.
+
+Retrieval must also be claim-aware. The grounding packet handed to synthesis
+must map each grounded claim to evidence ids, or mark that claim as provisional
+or unsupported. A retrieval hit without a claim-support map is not enough to
+authorize a user-visible tactical answer.
+
+## Retrieval Capabilities Inside The Agent Loop
 
 ### 1. Structured Retrieval
 
@@ -67,6 +93,13 @@ Phase B implementation:
 
 ### 3. Case Retrieval
 
+Status:
+
+- Future/conditional for V1.
+- Not required for P12 acceptance.
+- Use only when an explicit casebank/D-layer artifact is enabled and the packet
+  carries matching case evidence.
+
 Primary source:
 
 - tactical casebank
@@ -114,12 +147,22 @@ Examples:
 
 Every retrieved item should carry:
 
+- `evidence_id`
 - `source_type`
 - `source_path` or `entity_ref`
 - `topic`
 - `confidence_tier`
 - `version`
 - `retrieval_reason`
+- `content_digest`
+
+Every grounded claim passed to synthesis should carry:
+
+- `claim_id`
+- `claim_text_digest`
+- `supporting_evidence_ids`
+- `support_level`: `confirmed`, `provisional`, or `unsupported`
+- `provisional_reason` when not confirmed
 
 Case retrieval should additionally carry:
 
@@ -141,6 +184,9 @@ Rules:
 - mechanics second
 - cases third
 - no block should override a higher-trust block
+- no block renders normal chat copy directly
+- assembled context returns to Agent synthesis as grounding material
+- assembled context must pass packet validation before terminal synthesis
 
 Maximum context budget should stay intentionally small.
 
@@ -173,10 +219,12 @@ Therefore current state is:
 
 - `RAG-ready substrate`
 - `Phase A curated local retrieval`
+- `retrieval-as-grounding-tool`
 
 not:
 
 - complete RAG runtime
+- independent retrieval answer runtime
 
 ## Current Implementation Snapshot
 
@@ -248,9 +296,19 @@ Retrieval evaluation must separately check:
 
 - factual correctness
 - snippet relevance
-- case relevance
+- case relevance only when case retrieval is enabled
 - context sufficiency
 - unsupported-claim leakage
+
+Minimum V1 fixture:
+
+- fixed query or query sequence
+- expected structured facts
+- expected doc topics or snippet ids
+- expected evidence ids in the grounding packet
+- no required case evidence unless case retrieval is explicitly enabled
+- forbidden unsupported claims
+- packet sufficiency decision: synthesize, retrieve more, clarify, or degrade
 
 ## Non-Goals
 

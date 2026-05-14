@@ -11,14 +11,27 @@ This spec is the first implementation target. It replaces Web prototype guessing
 Use these as source of truth:
 
 1. `ui_handoff/roco_v1_rn/contracts/roco_v1_ui_contract.ts`
-2. `ui_handoff/roco_v1_rn/specs/visual_parity.md`
-3. `ui_handoff/roco_v1_rn/tokens.json`
-4. `ui_handoff/roco_v1_rn/specs/layout.md`
-5. `ui_handoff/roco_v1_rn/specs/components.md`
-6. `ui_handoff/roco_v1_rn/specs/interactions.md`
-7. `ui_handoff/roco_v1_rn/specs/data_mapping.md`
+2. `ui_handoff/roco_v1_rn/specs/prototype_parity_addendum.md`
+3. `ui_handoff/roco_v1_rn/specs/visual_parity.md`
+4. `ui_handoff/roco_v1_rn/tokens.json`
+5. `ui_handoff/roco_v1_rn/specs/layout.md`
+6. `ui_handoff/roco_v1_rn/specs/components.md`
+7. `ui_handoff/roco_v1_rn/specs/interactions.md`
+8. `ui_handoff/roco_v1_rn/specs/data_mapping.md`
 
 Do not reverse-engineer `figma/Minimal Chat Interface Design` CSS.
+
+## Contract Constants
+
+Implementation should copy/adapt these exports from `contracts/roco_v1_ui_contract.ts` into production code instead of retyping magic numbers:
+
+- `ROCO_V1_ASSETS`: canonical paper and avatar asset paths.
+- `ROCO_V1_COPY`: canonical visible copy for composer, empty state, security warning, and retry.
+- `ROCO_V1_PARITY`: numeric parity constants for paper, message rows, composer, empty state, persona wheel, settings drawer, message action menu, and analysis card shell.
+- `RocoPersonaWheelState`, `RocoDrawerState`, `RocoMessageActionMenuState`: interaction state shapes.
+- `computePaperContentInset`, `personaWheelOffsets`, `computeMessageActionMenuPosition`: parity formulas for the three layout areas most likely to drift.
+
+Do not invent alternate dimensions for bubble rows, drawer handle, persona wheel offsets, message action menu placement, or composer controls unless a later UI review explicitly changes the prototype parity target.
 
 ## Required Dependencies
 
@@ -90,6 +103,18 @@ Must not implement:
 - internal encoded persona selector usage
 - fake phone status bar or online chip
 
+Scope clarification:
+
+- `Team/Species/Calculator/Dex entrances` means standalone tool tabs, tool pages,
+  or direct Team Analyze/Dex workflows exposed as product navigation.
+- An authorized `队伍设置` entry inside Settings is allowed as a roster/context
+  configuration surface. It may later host a graphical local-species database
+  picker for selecting a user's team, moves, and individual tuning.
+- That `队伍设置` surface must not call `/team/analyze`, wire to legacy
+  `TeamEditorScreen`, or produce independent analysis outside Chat in V1. Agent
+  analysis still happens through the single Chat flow using the saved team
+  context when that contract exists.
+
 ## Persona Contract
 
 Use UI ids for visual state only:
@@ -101,7 +126,7 @@ type RocoPersonaUiId = "you_know_who" | "ai_assistant" | "add_persona";
 Send backend selectors:
 
 ```ts
-you_know_who -> { kind: "built_in", persona_id: "obsidian_tactical_coach" }
+you_know_who -> { kind: "built_in", persona_id: "you_know_who" }
 ai_assistant -> { kind: "built_in", persona_id: "lattice_support_coach" }
 add_persona -> no selector; reserved seam
 ```
@@ -109,10 +134,16 @@ add_persona -> no selector; reserved seam
 V1 default:
 
 - The UI visually defaults to `You know who`.
+- `You know who` is the public-safe outward codename for the Enzo-derived
+  distilled persona layer.
+- It comes from the internal Enzo doctrine sample after abstraction and IP
+  sanitization. Public UI must not claim this is Enzo/恩佐, an official
+  character, official lore, official dialogue, or official art.
 - Therefore the initial UI state must set:
   - `active_persona_ui_id = "you_know_who"`
-  - `active_persona_selector = { kind: "built_in", persona_id: "obsidian_tactical_coach" }`
-- Do not omit `persona_selector` while visually showing the black-cloaked persona unless backend default is explicitly verified to be `obsidian_tactical_coach`.
+  - `active_persona_selector = { kind: "built_in", persona_id: "you_know_who" }`
+- `obsidian_tactical_coach` is a legacy compatibility alias only.
+- Do not omit `persona_selector` while visually showing the black-cloaked persona unless backend default is explicitly verified to be `you_know_who`.
 - A true API-default/unselected state may omit `persona_selector`, but it must not visually present itself as `You know who`.
 
 ## Response Rendering Contract
@@ -151,7 +182,7 @@ V1 decision:
 - on submit:
   1. locally replace latest user message text
   2. remove later visible Agent messages
-  3. send rewritten text to `/chat` with same `session_id`
+  3. send rewritten text to `/chat` with same `session_id` and current `persona_selector`
   4. render returned Agent response
 
 Limit:
@@ -184,7 +215,7 @@ Settings drawer fields should map to existing runtime settings:
 - model -> `model`
 - runtime mode -> `runtimeMode`, if exposed
 - unsafe LAN HTTP dev override -> `allowUnsafeLanHttp`, if exposed
-- transport mode -> internal storage only; do not render local/cloud as a visible V1 user setting
+- `transportMode` -> do not map into the visible UI model. Preserve the existing stored value unchanged when saving settings, and do not render local/cloud as a visible V1 user setting.
 
 UI copy must say local secure storage. It must not say session-local unless product changes persistence.
 
@@ -226,16 +257,23 @@ Implementation is acceptable when:
 
 - `npx tsc --noEmit` passes in `mobile/`
 - app runs in Expo on iOS or Android simulator
+- production code uses the contract constants or exact equivalent values from `ROCO_V1_PARITY`
 - chat screen has no custom header
 - paper shell uses approved raster asset and fills the app surface without falling back to low-fidelity SVG recreation
 - composer is inside paper
+- user and Agent message rows match the specified avatar/bubble order, lane offsets, bubble tails, and `88%` max width
+- composer matches the specified input pill and `44 x 44` send button treatment
 - persona wheel opens on long-press avatar and outside tap closes it
+- persona wheel uses the specified radius and angles from `ROCO_V1_PARITY.personaWheel`
 - settings drawer handle moves with drawer
+- settings drawer uses the specified `0.88` width ratio and `22 x 58` connected handle
+- message action menu uses the specified action order, placement formula, and delete confirmation state
 - copy uses system clipboard
 - rewrite latest user message follows V1 local replacement contract
 - regenerate is disabled/greyed unless backend support exists
 - API key copy matches SecureStore behavior
-- no Team/Species/Calculator/Dex visible entrances
-- no UI sends `you_know_who` or `ai_assistant` as backend persona ids
-- default visible persona sends `obsidian_tactical_coach` unless backend default is verified to match
+- no standalone Team/Species/Calculator/Dex visible entrances; Settings may
+  contain the authorized `队伍设置` roster/context configuration placeholder
+- default visible persona sends `you_know_who` unless backend default is verified to match
+- no UI sends `ai_assistant` or `add_persona` as backend persona ids
 - AnalysisCard uses generic public-safe presentation mapping only

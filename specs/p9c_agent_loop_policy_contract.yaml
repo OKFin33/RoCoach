@@ -1,0 +1,168 @@
+contract_id: p9c_agent_loop_policy_contract
+version: p9c.agent_loop_policy.v0
+status: discussion_contract
+date: "2026-04-29"
+
+purpose: >-
+  Define Roco's loop policy separately from call policy. Looping is not a
+  fallback for unknown intent. It is a privileged, explicitly enabled execution
+  mode for future adaptive-search intents only.
+
+default:
+  enabled: false
+  v1_user_chat_default: disabled
+  unknown_intent: forbidden
+  rationale: >-
+    Most V1 Roco tasks fit fixed workflows with 0-2 LLM calls. Unbounded or
+    loosely bounded ReAct-style loops are slower, harder to test, and higher
+    risk for hallucinated game facts.
+
+definitions:
+  call_policy: >-
+    A fixed workflow: classify intent, ground required data, run 0-2 LLM calls,
+    validate output, return.
+  loop_policy: >-
+    Adaptive model-driven search: the model observes intermediate tool results
+    and decides whether to call additional tools before final output.
+
+hard_rules:
+  - "Loop is never used for unknown intent."
+  - "Loop is never used as a retry for bad routing."
+  - "Loop must have an accepted intent-specific policy before runtime enablement."
+  - "Loop must have max rounds, max LLM calls, max tool calls, timeout, and token budget."
+  - "Loop max LLM calls must include a reserved terminal synthesis call."
+  - "When only terminal synthesis budget remains, tools must be disabled and the model must answer from the evidence ledger."
+  - "A loop that exhausts tool/LLM budget without terminal response is a runtime failure, not an acceptable empty answer."
+  - "Loop must forbid repeated same tool with identical arguments unless a policy explicitly allows it."
+  - "Loop must preserve provider-specific protocol requirements such as DeepSeek reasoning_content replay before thinking mode is enabled."
+  - "Loop output must pass the same evidence/fact validation as fixed call workflows."
+
+terminal_response_policy:
+  inherited_from: p9c_agent_call_policy_contract.terminal_response_policy
+  loop_specific_requirement: >-
+    The final loop phase is always a response phase, never another exploration
+    phase. The runtime must close tool access, pass a compact evidence ledger,
+    and request a final answer with stop reason.
+  allowed_terminal_outcomes:
+    - final_answer
+    - controlled_data_missing_answer
+    - execution_budget_failure_message
+  forbidden_terminal_outcomes:
+    - empty_answer
+    - raw_tool_trace
+    - hidden_reasoning_dump
+    - further_tool_request_when_terminal_budget_remains
+
+current_v1_loop_status:
+  enabled_intents: []
+  disabled_intents:
+    - simple_chat
+    - settings_help
+    - species_query
+    - move_query
+    - mechanic_query
+    - team_context_analysis
+    - team_build_advice
+    - team_revision
+    - complex_strategy
+    - clarify
+    - unsupported_live_meta
+    - debug_or_diagnostic
+
+experimental_future_candidates:
+  auto_team_build_search:
+    description: >-
+      Search candidate species or team slots iteratively against type coverage,
+      speed, role, and user constraints.
+    preconditions:
+      - candidate_species_index_exists
+      - scoring_or_pruning_function_exists
+      - loop_eval_dataset_exists
+    allowed_tools_candidate:
+      - search_species
+      - get_species_profile
+      - get_species_available_moves
+      - analyze_team_structure
+    draft_limits:
+      max_rounds: 4
+      max_llm_calls: 4
+      max_tool_calls: 12
+      hard_timeout_seconds: 120
+      terminal_llm_calls_reserved: 1
+    stop_conditions:
+      - enough_candidates_ranked
+      - no_improvement_after_two_iterations
+      - budget_exhausted
+      - user_constraints_insufficient
+
+  iterative_team_optimization:
+    description: >-
+      Repeatedly propose one team change, analyze the new structure, and stop
+      when improvement plateaus or constraints are met.
+    preconditions:
+      - active_team_context_has_at_least_four_slots
+      - candidate_replacement_pool_exists
+      - before_after_analyzer_contract_exists
+    allowed_tools_candidate:
+      - analyze_team_structure
+      - get_species_profile
+      - get_species_available_moves
+    draft_limits:
+      max_rounds: 3
+      max_llm_calls: 3
+      max_tool_calls: 10
+      hard_timeout_seconds: 120
+      terminal_llm_calls_reserved: 1
+    stop_conditions:
+      - structural_score_improved_and_no_major_new_gap
+      - no_candidate_improves_score
+      - user_goal_requires_manual_choice
+
+  persona_creation_pipeline:
+    description: >-
+      Future Nuwa-style persona creation workflow that may iteratively ask the
+      user questions, generate files, validate them, and insert a managed
+      persona into the system.
+    preconditions:
+      - explicit_user_consent_for_token_cost
+      - file_contract_for_persona_artifacts
+      - validation_and_admission_pipeline
+    allowed_tools_candidate:
+      - persona_artifact_writer
+      - persona_validator
+      - persona_registry_admission
+    draft_limits:
+      max_rounds: 6
+      max_llm_calls: 6
+      max_tool_calls: 12
+      hard_timeout_seconds: 180
+      terminal_llm_calls_reserved: 1
+    stop_conditions:
+      - valid_artifact_bundle_created
+      - validation_fails_twice
+      - user_declines_next_step
+
+loop_runtime_requirements_before_enablement:
+  protocol:
+    - preserve_tool_call_messages
+    - preserve_provider_reasoning_content_when_required
+    - support replay-safe message history
+  observability:
+    - structured_trace_internal_only
+    - per_round_tool_args_redacted
+    - per_round_budget_tracking
+  validation:
+    - no_secret_leak
+    - no_raw_trace_mobile_rendering
+    - evidence_refs_required_for_confirmed_claims
+    - no_unverified_species_or_move_facts
+  qa:
+    - deterministic_unit_tests
+    - fake_model_loop_tests
+    - live_provider_smoke_tests
+    - timeout_and_repeated_tool_tests
+
+recommended_near_term_decision:
+  keep_loop_disabled: true
+  implement_call_policy_first: true
+  next_contract_dependency: p9c_agent_call_policy_contract

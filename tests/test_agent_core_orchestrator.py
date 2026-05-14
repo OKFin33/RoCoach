@@ -81,7 +81,7 @@ class AgentCoreOrchestratorTests(unittest.TestCase):
         response = orchestrator.handle_message("分析这队联防")
 
         self.assertEqual(adapter.messages, ["分析这队联防"])
-        self.assertEqual(response.answer, "答复：grounded answer。先收束真实瓶颈，不要把装饰性选项当成解法。")
+        self.assertEqual(response.answer, "grounded answer。我会先按当前队伍信息给出能落地的判断。")
         self.assertEqual(response.evidence[0].content, "engine evidence")
         self.assertEqual(response.confidence_notes[0].confidence, ConfidenceTier.CONFIRMED)
         self.assertEqual(response.status, AgentResponseStatus.OK)
@@ -92,7 +92,7 @@ class AgentCoreOrchestratorTests(unittest.TestCase):
         self.assertEqual(response.presentation.reply, response.answer)
         self.assertEqual(
             response.synthesis.synthesized_judgement,
-            "硬结论：grounded answer。先收束真实瓶颈，不要把装饰性选项当成解法。",
+            "硬结论：grounded answer。我会先按当前队伍信息给出能落地的判断。",
         )
         self.assertEqual(response.presentation.why, response.synthesis.why_summary)
         self.assertIsNone(response.presentation.presentation_metadata.persona_id)
@@ -126,7 +126,7 @@ class AgentCoreOrchestratorTests(unittest.TestCase):
         self.assertEqual(adapter.messages, ["分析这队联防"])
         self.assertEqual(mocked_synthesis.call_count, 1)
         self.assertEqual(mocked_presentation.call_count, 1)
-        self.assertEqual(boundary.received_answers, ["答复：grounded answer。先收束真实瓶颈，不要把装饰性选项当成解法。"])
+        self.assertEqual(boundary.received_answers, ["grounded answer。我会先按当前队伍信息给出能落地的判断。"])
         self.assertEqual(response.answer, boundary.received_answers[0])
         self.assertIn(response.answer, response.persona.rendered_answer or "")
 
@@ -203,7 +203,7 @@ class AgentCoreOrchestratorTests(unittest.TestCase):
             ),
         )
 
-        self.assertEqual(response.answer, "答复：grounded answer。先收束真实瓶颈，不要把装饰性选项当成解法。")
+        self.assertEqual(response.answer, "grounded answer。我会先按当前队伍信息给出能落地的判断。")
         self.assertEqual(response.evidence[0].content, "engine evidence")
         self.assertEqual(response.confidence_notes[0].note, "confirmed by engine")
         self.assertEqual(response.status, AgentResponseStatus.OK)
@@ -230,7 +230,7 @@ class AgentCoreOrchestratorTests(unittest.TestCase):
             ),
         )
 
-        self.assertEqual(response.answer, "答复：grounded answer。先收束真实瓶颈，不要把装饰性选项当成解法。")
+        self.assertEqual(response.answer, "grounded answer。我会先按当前队伍信息给出能落地的判断。")
         self.assertEqual(response.status, AgentResponseStatus.OK)
         self.assertIsNotNone(response.persona)
         assert response.persona is not None
@@ -310,13 +310,13 @@ class _SpyPersonaBoundary:
 def _fake_synthesis_result(_input) -> SynthesisResult:
     return SynthesisResult(
         synthesis_version="p1a_synthesis.v1",
-        synthesized_judgement="硬结论：grounded answer。先收束真实瓶颈，不要把装饰性选项当成解法。",
-        why_summary="基于 grounded evidence 的压缩判断。",
+        synthesized_judgement="硬结论：grounded answer。我会先按当前队伍信息给出能落地的判断。",
+        why_summary="我先看了当前问题、已提供的队伍信息和可用资料，只保留能直接支撑判断的部分。",
         surfaced_warnings=[
             SynthesisWarning(
                 code="provisional_only",
                 severity=SynthesisWarningSeverity.MEDIUM,
-                message="Only provisional interpretation is available.",
+                message="当前信息只够做初步判断。",
             )
         ],
         followup_directions=["继续问：补洞方向是什么"],

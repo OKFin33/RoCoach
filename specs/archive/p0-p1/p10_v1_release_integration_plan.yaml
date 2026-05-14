@@ -1,0 +1,230 @@
+plan_id: p10_v1_release_integration_plan
+version: p10.v1_release_integration.v0
+status: accepted
+date: "2026-04-30"
+
+purpose: >-
+  Integrate the accepted P7 real Agent chat path, P8 database-grounded team
+  context builder, and P9 runtime/model policy into one V1 release path. This
+  plan is a release-integration contract, not another feature expansion.
+
+accepted_inputs:
+  p7_real_agent_chat:
+    accepted_truth: .launchpad/accepted_truth/p7_real_agent_chat_core_completed.yaml
+    required_facts:
+      - non_empty_natural_language_prompts_enter_agent_first_native_chat_when_runtime_is_valid
+      - chat_response_is_a_supported_analysis_type
+      - deterministic_router_is_no_longer_the_primary_gate_for_normal_chat
+  p7b_live_provider_qa:
+    accepted_truth: .launchpad/accepted_truth/p7b_real_agent_chat_live_provider_qa_completed.yaml
+    required_facts:
+      - deepseek_v4_pro_live_provider_path_passed_direct_chat_text_tool_and_prompted_output_qa
+      - request_scoped_deepseek_timeout_is_bounded
+      - provider_secrets_were_not_observed_in_live_qa_artifacts
+  p8_team_context:
+    accepted_truth: .launchpad/accepted_truth/p8_team_builder_structured_context_mvp_completed.yaml
+    required_facts:
+      - mobile_builds_team_context_from_backend_selected_species_and_moves
+      - chat_accepts_team_context_v1_attachments
+      - backend_validates_species_ids_move_ids_slots_moves_and_iv_bonus_values
+      - mobile_persists_team_context_in_non_secret_local_storage
+  p8b_simulator_qa:
+    accepted_truth: .launchpad/accepted_truth/p8b_team_builder_simulator_qa_completed.yaml
+    required_facts:
+      - ios_simulator_team_builder_flow_passed
+      - latest_ui_correction_requires_no_visible_active_team_chip_on_main_chat
+      - hp_label_is_life
+  p9_runtime_policy:
+    accepted_truth: .launchpad/accepted_truth/p9e_runtime_policy_closure_completed.yaml
+    required_facts:
+      - mainstream_open_source_mode_is_custom_single_model
+      - roco_deepseek_v4_reference_is_one_maintained_reference_profile
+      - no_fast_balanced_deep_user_preset_matrix_in_v1
+      - controlled_loop_disabled_by_default
+      - terminal_response_phase_and_budget_guards_are_runtime_invariants
+
+v1_release_contract:
+  product_surface:
+    primary_surface: single_agent_chat
+    visible_entries:
+      - chat
+      - settings_drawer
+      - settings_team_context_builder
+      - settings_api_runtime_configuration
+      - persona_wheel
+    forbidden_primary_entries:
+      - dex_tab
+      - calculator_tab
+      - raw_team_analyzer_tab
+      - evidence_debug_panel
+      - backend_tool_console
+    note: >-
+      Team builder is allowed only as a settings/context configuration surface.
+      The user still consumes the product through Agent chat.
+
+  chat_request_contract:
+    mobile_must_send_when_available:
+      - session_id
+      - message
+      - persona_selector
+      - context_attachments
+      - request_scoped_provider_headers
+      - reasoning_headers_for_custom_single_model_when_user_enabled
+    persona_default:
+      selector:
+        kind: built_in
+        persona_id: you_know_who
+      rule: >-
+        V1 default visual persona is You know who. Mobile should send the
+        explicit selector instead of relying on backend implicit default.
+    team_context:
+      attachment_type: team_context.v1
+      source: settings_team_context_builder
+      user_visible_main_chat_chip: forbidden
+      rule: >-
+        Active valid team context is attached silently to relevant chat
+        requests. Main chat must not show the old "队伍上下文 · 1/6 · ..." chip.
+
+  runtime_model_policy:
+    default_user_mode:
+      id: custom_single_model
+      user_visible: true
+      behavior: >-
+        All LLM calls use the user's selected provider base URL, API key,
+        model id, and supported reasoning settings. Roco guarantees safety
+        controls, not arbitrary provider quality.
+    optional_reference_mode:
+      id: roco_deepseek_v4_reference
+      user_visible: true
+      behavior: >-
+        Roco may internally route by call role using the maintained DeepSeek v4
+        reference profile. This is not a fast/balanced/deep preset matrix and
+        not a general advanced-routing UI.
+    forbidden_ui_copy:
+      - fast_balanced_deep_preset_matrix
+      - guaranteed_best_model_claim
+      - custom_provider_certified_quality_claim
+      - local_cloud_transport_language
+    settings_alignment_required:
+      - Replace residual "recommended mode" copy with custom single-model vs Roco DeepSeek reference wording.
+      - Keep runtimeMode and transportMode internal.
+      - Do not expose per-role model routing to ordinary V1 users.
+
+  backend_agent_runtime:
+    required_invariants:
+      - native_agent_first_for_valid_chat
+      - terminal_response_phase_required
+      - bounded_llm_request_budget
+      - bounded_tool_budget
+      - bounded_provider_timeout
+      - controlled_failure_instead_of_empty_final_answer
+      - provider_secret_redaction
+      - hidden_reasoning_not_user_visible
+      - raw_tool_trace_not_user_visible
+    accepted_current_limitation: >-
+      Production native runtime has usage-limit terminal guards but still uses
+      PydanticAI for internal provider rounds. Hard raw-provider final-call
+      control remains a future executor-layer improvement.
+
+  presentation_contract:
+    mobile_allowed_sources:
+      - presentation.reply
+      - presentation.why
+      - presentation.detail_sections_when_public_safe
+      - response.persona
+    mobile_forbidden_sources:
+      - raw_tool_results_payload
+      - raw_tool_trace
+      - hidden_reasoning
+      - provider_headers
+      - local_db_paths
+      - raw_sql
+    rule: >-
+      Generic analysis cards are allowed only for sanitized public-safe
+      presentation artifacts. Raw/tool_trace content must remain suppressed.
+
+implementation_slices:
+  p10a_mobile_settings_policy_alignment:
+    objective: >-
+      Align mobile Settings copy/state with P9e: custom single-model as the
+      mainstream path plus one Roco DeepSeek v4 reference profile. Remove
+      residual recommended-mode/preset wording.
+    expected_files:
+      - mobile/App.tsx
+      - mobile/src/runtime/runtimeSettings.ts
+      - mobile/src/components/roco/SettingsDrawer.tsx
+      - mobile/README.md
+    acceptance:
+      - no_user_visible_fast_balanced_deep_or_local_cloud_copy
+      - custom_single_model_headers_still_work
+      - roco_deepseek_reference_is_a_single_optional_mode_not_a_matrix
+      - mobile_typecheck_passes
+
+  p10b_chat_contract_integration_audit:
+    objective: >-
+      Audit and patch ChatScreen/ProductApiClient wiring so P7/P8/P9 are all
+      active at once: Agent chat, persona selector, team context attachment,
+      provider headers, public-safe presentation rendering.
+    expected_files:
+      - mobile/src/screens/ChatScreen.tsx
+      - mobile/src/api/client.ts
+      - mobile/src/api/types.ts
+      - mobile/src/roco/rocoPresentation.ts
+      - mobile/src/roco/rocoPersona.ts
+    acceptance:
+      - explicit_you_know_who_selector_is_sent_by_default
+      - valid_active_team_context_attachment_is_sent_without_visible_main_chat_chip
+      - provider_key_never_enters_body_or_url
+      - raw_tool_trace_sections_are_suppressed
+      - mobile_typecheck_passes
+
+  p10c_release_smoke_qa:
+    objective: >-
+      Run one end-to-end V1 release smoke against the integrated path.
+      This is not a broad model benchmark.
+    qa_matrix:
+      backend:
+        - full_python_unittest_discovery
+        - targeted_chat_with_team_context_validation
+        - targeted_runtime_budget_terminal_guard
+      mobile:
+        - npm_run_typecheck
+        - ios_simulator_settings_save_reload_smoke
+        - ios_simulator_chat_sends_persona_and_team_context_smoke
+      live_provider:
+        mode: explicit_pm_approved_paid_smoke_only
+        minimum:
+          - one_custom_single_model_chat_request
+          - one_roco_deepseek_reference_chat_request_if_mode_is_exposed
+      security:
+        - provider_key_not_logged
+        - provider_key_blocked_over_non_https_non_loopback_product_api
+        - no_hidden_reasoning_or_raw_tool_trace_in_ui
+    acceptance:
+      - release_smoke_artifact_created
+      - blockers_listed_with_owner_or_accepted_residual
+
+known_release_risks:
+  - id: android_securestore_and_simulator_qa_open
+    severity: medium
+    note: Android manual QA remains open from earlier runtime/security work.
+  - id: no_streaming_or_progress_for_slow_native_calls
+    severity: medium
+    note: DeepSeek pro species grounding has been observed at 86.539s.
+  - id: pydanticai_internal_round_control_gap
+    severity: medium
+    note: Usage guards exist, but raw final-call control is not fully owned.
+  - id: mobile_readme_paper_asset_path_drift
+    severity: low
+    note: README references mobile/assets/paper/paper_shell.png while current assets appear to be root-level mobile/assets raster files.
+  - id: no_full_p9d_rerun_after_s9_timeout_semantics_fix
+    severity: low
+    note: Targeted S9/S10 evidence is accepted for P9e; full rerun remains optional.
+
+dispatch_result:
+  status: accepted
+  accepted_truth: .launchpad/accepted_truth/p10_v1_release_integration_plan_completed.yaml
+  next_recommended_action: review_or_dispatch_p10a_result
+  reason: >-
+    P10 defines the integration seams and release QA gates. PM dispatch accepted
+    the plan and advanced execution to P10a mobile settings policy alignment.

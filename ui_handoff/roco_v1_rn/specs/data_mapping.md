@@ -119,7 +119,7 @@ Production rule:
 
 ## Persona Selector
 
-When no persona is selected:
+True API-default/unselected state only:
 
 ```ts
 persona_selector: undefined
@@ -128,8 +128,13 @@ persona_selector: undefined
 V1 visual default exception:
 
 - The UI default selected persona is `You know who`.
+- `You know who` is the public-safe outward codename for the Enzo-derived
+  distilled persona layer.
+- It comes from the internal Enzo doctrine sample after abstraction and IP
+  sanitization. Public UI must not claim this is Enzo/恩佐, an official
+  character, official lore, official dialogue, or official art.
 - Therefore initial chat state should not be treated as "no persona selected".
-- Initial state should use the built-in selector for `obsidian_tactical_coach` unless backend default is explicitly verified to match it.
+- Initial state should use the built-in selector for `you_know_who` unless backend default is explicitly verified to match it.
 - Only omit `persona_selector` for a true API-default/unselected state that does not visually show the black-cloaked persona.
 
 Built-in:
@@ -137,9 +142,21 @@ Built-in:
 ```json
 {
   "kind": "built_in",
+  "persona_id": "you_know_who"
+}
+```
+
+Legacy selector alias:
+
+```json
+{
+  "kind": "built_in",
   "persona_id": "obsidian_tactical_coach"
 }
 ```
+
+The legacy alias should be accepted for compatibility but should not be emitted
+by new mobile UI.
 
 Default AI assistant:
 
@@ -171,13 +188,15 @@ Use this mapping:
 
 | UI label | UI option id | Backend `persona_selector` |
 | --- | --- | --- |
-| `You know who` | `you_know_who` | `{ "kind": "built_in", "persona_id": "obsidian_tactical_coach" }` |
+| `You know who` | `you_know_who` | `{ "kind": "built_in", "persona_id": "you_know_who" }` |
 | `默认AI助手` | `ai_assistant` | `{ "kind": "built_in", "persona_id": "lattice_support_coach" }` |
 | `添加人格` | `add_persona` | no selector; opens reserved persona creation seam |
 
 Rules:
 
-- Never send UI-only ids such as `you_know_who` or `ai_assistant` to the backend.
+- `you_know_who` is intentionally both the UI option id and backend runtime id
+  for the default distilled persona.
+- Never send UI-only ids such as `ai_assistant` or `add_persona` to the backend.
 - Store UI id locally only for visual selection state.
 - Store/send backend selector separately.
 - If backend built-in ids change, update this table and the mobile mapping function together.

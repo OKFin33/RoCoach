@@ -22,7 +22,14 @@ from agent_core.contracts import (
     SynthesisWarningSeverity,
     VisibleWarning,
 )
-from agent_core.persona import DEFAULT_PERSONA_DISPLAY_NAME, DEFAULT_PERSONA_ID, FACT_POLICY, PersonaBoundary
+from agent_core.persona import (
+    DEFAULT_PERSONA_DISPLAY_NAME,
+    DEFAULT_PERSONA_ID,
+    FACT_POLICY,
+    PERSONA_LLM_CONTEXT_CONTRACT,
+    PersonaBoundary,
+    build_persona_llm_context,
+)
 from agent_core.persona_activation_projection import build_persona_activation_registry_projection
 from agent_core.persona_artifact_ingestion import ingest_persona_source_bundle
 from agent_core.persona_profile_config import (
@@ -90,7 +97,10 @@ class PersonaProfileResolverTests(unittest.TestCase):
             internal_materialization = _build_internal_materialization(Path(tmpdir))
             profile = internal_materialization.profiles[0]
             selector = make_managed_persona_selector(profile.persona_id, profile.version, profile.revision)
-            public_resolver = PersonaProfileResolver(internal_materialization)
+            public_resolver = PersonaProfileResolver(
+                internal_materialization,
+                allowed_scope=PersonaRuntimeActivationScope.PUBLIC_SAFE_RELEASE,
+            )
             internal_resolver = PersonaProfileResolver(
                 internal_materialization,
                 allowed_scope=PersonaRuntimeActivationScope.INTERNAL_ONLY_RUNTIME,
@@ -155,6 +165,56 @@ class PersonaProfileResolverTests(unittest.TestCase):
             self.assertFalse(rendered.persona.sanitized)
             self.assertIn(response.answer, rendered.persona.rendered_answer or "")
             self.assertNotEqual(rendered.persona.display_name, DEFAULT_PERSONA_DISPLAY_NAME)
+
+    def test_rendering_flavor_rules_are_rendering_only_and_do_not_change_answer(self) -> None:
+        response = _sample_response_with_grass_context()
+        boundary = PersonaBoundary(persona_resolver=PersonaProfileResolver())
+
+        rendered = boundary.attach_metadata(response, PersonaEnvelope(persona_id=DEFAULT_PERSONA_ID))
+
+        self.assertEqual(rendered.answer, response.answer)
+        self.assertIsNotNone(rendered.persona)
+        assert rendered.persona is not None
+        self.assertIn("grass_type_hostility", rendered.persona.rendering_flavor_rule_ids)
+        self.assertIn("草系我不会替它说好话", rendered.persona.rendered_answer or "")
+
+    def test_materialized_profiles_preserve_rendering_flavor_rules(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            materialization = _build_public_safe_materialization(Path(tmpdir))
+            profile = materialization.profiles[0]
+            selector = make_managed_persona_selector(profile.persona_id, profile.version, profile.revision)
+            boundary = PersonaBoundary(persona_resolver=PersonaProfileResolver(materialization))
+            response = _sample_response_with_grass_context()
+
+            rendered = boundary.attach_metadata(response, PersonaEnvelope(persona_id=selector))
+
+            self.assertEqual(rendered.answer, response.answer)
+            self.assertIsNotNone(rendered.persona)
+            assert rendered.persona is not None
+            self.assertIn("grass_type_hostility", rendered.persona.rendering_flavor_rule_ids)
+            self.assertIn("草系我不会替它说好话", rendered.persona.rendered_answer or "")
+
+    def test_materialized_persona_builds_compressed_llm_context_without_raw_forbidden_markers(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            materialization = _build_public_safe_materialization(Path(tmpdir))
+            profile = materialization.profiles[0]
+            selector = make_managed_persona_selector(profile.persona_id, profile.version, profile.revision)
+
+            context = build_persona_llm_context(
+                PersonaEnvelope(persona_id=selector),
+                persona_resolver=PersonaProfileResolver(materialization),
+            )
+
+            self.assertIsNotNone(context)
+            assert context is not None
+            self.assertIn(PERSONA_LLM_CONTEXT_CONTRACT, context)
+            self.assertIn("Selected persona codename: Public Safe Runtime Persona", context)
+            self.assertIn("Mental models:", context)
+            self.assertIn("Decision heuristics:", context)
+            self.assertIn("Hard rule: persona controls wording", context)
+            self.assertNotIn("Enzo", context)
+            self.assertNotIn("恩佐", context)
+            self.assertNotIn("洛克王国世界", context)
 
     def test_persona_boundary_sanitizes_bad_managed_selector_without_changing_answer(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -256,6 +316,15 @@ def _write_public_safe_record(ledger_path: Path, output_root: Path):
     doctrine["persona_id"] = "public_safe_runtime_persona"
     doctrine["display_name"] = "Public Safe Runtime Persona"
     doctrine["ip_safety_profile"] = {"public_safe": True, "forbidden_markers": []}
+    doctrine["rendering_flavor_rules"] = [
+        {
+            "id": "grass_type_hostility",
+            "trigger_terms": ["草系", "草属性", "草"],
+            "allowed_effects": ["add_mild_disdain_in_wording"],
+            "forbidden_effects": ["change_score", "change_recommendation"],
+            "style_hint": "涉及草系时可以带轻微敌意，但必须明确不影响客观判断。",
+        }
+    ]
     bundle.doctrine_draft.path.write_text(yaml.safe_dump(doctrine, allow_unicode=True), encoding="utf-8")
     ingestion_result = ingest_persona_source_bundle(bundle, approve_public_safe=True)
     candidate = build_persona_registry_candidate(ingestion_result)
@@ -303,6 +372,26 @@ def _sample_response() -> AgentResponse:
         synthesis=None,
         presentation=presentation,
         persona=None,
+    )
+
+
+def _sample_response_with_grass_context() -> AgentResponse:
+    response = _sample_response()
+    presentation = response.presentation
+    assert presentation is not None
+    updated_presentation = presentation.model_copy(
+        update={
+            "reply": "草系精灵可以进队，但只能按它的抗性和技能价值判断。",
+            "why": "草属性上下文触发的是语气规则，不是评分规则。",
+        },
+        deep=True,
+    )
+    return response.model_copy(
+        update={
+            "answer": updated_presentation.reply,
+            "presentation": updated_presentation,
+        },
+        deep=True,
     )
 
 

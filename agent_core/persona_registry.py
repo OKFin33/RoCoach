@@ -7,12 +7,14 @@ from agent_core.contracts import (
     PersonaIPSafetyProfile,
     PersonaMentalModel,
     PersonaProfile,
+    PersonaRenderingFlavorRule,
 )
 
 
 FACT_POLICY = "persona_may_not_alter_facts"
-DEFAULT_PERSONA_ID = "obsidian_tactical_coach"
-DEFAULT_PERSONA_DISPLAY_NAME = "黑曜战术官"
+DEFAULT_PERSONA_ID = "you_know_who"
+DEFAULT_PERSONA_LEGACY_ID = "obsidian_tactical_coach"
+DEFAULT_PERSONA_DISPLAY_NAME = "You know who"
 DEFAULT_PERSONA_STYLE = "cold_precise_high_pressure_tactical"
 ALTERNATE_PERSONA_ID = "lattice_support_coach"
 ALTERNATE_PERSONA_DISPLAY_NAME = "晶格教练"
@@ -53,6 +55,20 @@ def builtin_persona_registry() -> dict[str, PersonaProfile]:
                 signature_moves=["先给硬边界", "再收束最关键矛盾"],
                 taboo_phrases=["官方授权", "角色还原", "剧情台词"],
             ),
+            rendering_flavor_rules=[
+                PersonaRenderingFlavorRule(
+                    id="grass_type_hostility",
+                    trigger_terms=["草系", "草属性", "草"],
+                    allowed_effects=["add_mild_disdain_in_wording"],
+                    forbidden_effects=[
+                        "change_score",
+                        "change_recommendation",
+                        "hide_strengths",
+                        "exaggerate_weaknesses",
+                    ],
+                    style_hint="涉及草系时可以带轻微敌意，但必须明确不影响客观判断。",
+                )
+            ],
             mental_models=[
                 PersonaMentalModel(
                     name="constraint_first",
@@ -129,6 +145,8 @@ def resolve_builtin_persona(persona_id: str | None) -> tuple[PersonaProfile, boo
     registry = builtin_persona_registry()
     if requested is None or _contains_forbidden_marker(requested):
         return registry[DEFAULT_PERSONA_ID], requested not in {None, DEFAULT_PERSONA_ID}
+    if requested == DEFAULT_PERSONA_LEGACY_ID:
+        requested = DEFAULT_PERSONA_ID
     profile = registry.get(requested)
     if profile is None or not profile.ip_safety_profile.public_safe:
         return registry[DEFAULT_PERSONA_ID], requested != DEFAULT_PERSONA_ID

@@ -81,6 +81,9 @@ class TeamSlot:
     secondary_type: str | None = None
     selected_ability: str | None = None
     selected_moves: tuple[str, ...] = ()
+    nature_label: str | None = None
+    individual_value_bonuses: tuple[dict[str, int | str], ...] = ()
+    base_stats: dict[str, int] | None = None
     item: str | None = None
     nickname: str | None = None
 

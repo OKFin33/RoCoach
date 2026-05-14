@@ -5,6 +5,7 @@ from advisor.runtime import AdvisorAgent
 from agent_core.contracts import (
     AgentResponse,
     AgentResponseStatus,
+    AgentRuntimePath,
     AnalyticalSubstrate,
     AgentToolResult,
     AnalysisType,
@@ -19,6 +20,12 @@ from reporting.contracts import ConfidenceTier
 class AdvisorRuntimeAdapter:
     def __init__(self, advisor_agent: AdvisorAgent) -> None:
         self.advisor_agent = advisor_agent
+
+    def set_team_context_slots(self, slots: list[dict[str, object]]) -> None:
+        self.advisor_agent.set_team_context_slots(slots)
+
+    def set_persona_llm_context(self, context: str | None) -> None:
+        self.advisor_agent.set_persona_llm_context(context)
 
     def handle_message(self, message: str) -> AgentResponse:
         return agent_response_from_advisor(self.advisor_agent.handle_message(message))
@@ -60,6 +67,8 @@ def agent_response_from_advisor(
     return AgentResponse(
         status=substrate.status,
         backend=substrate.backend,
+        runtime_path=AgentRuntimePath(response.runtime_path),
+        continuity_persisted=response.continuity_persisted,
         analysis_type=_coerce_analysis_type(analysis_type) or substrate.analysis_type,
         answer=substrate.answer_summary,
         tool_results=substrate.tool_results,
@@ -189,6 +198,8 @@ def _infer_analysis_type(response: AdvisorResponse) -> AnalysisType:
         return AnalysisType.RUNTIME_FAILURE
     if _looks_like_refusal(answer):
         return AnalysisType.UNSUPPORTED
+    if response.backend == "pydantic_ai_native":
+        return AnalysisType.CHAT_RESPONSE
     if not response.tool_results:
         return AnalysisType.SESSION_COMMAND
     return AnalysisType.UNKNOWN

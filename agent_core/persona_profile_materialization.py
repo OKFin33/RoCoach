@@ -85,6 +85,7 @@ def _materialize_entry(entry: PersonaActivationProjectionEntry) -> MaterializedP
         rendering_profile=MaterializedPersonaRenderingProfile(
             display_name=profile.display_name,
             expression_dna=profile.expression_dna,
+            rendering_flavor_rules=list(profile.rendering_flavor_rules),
         ),
         policy_profile=MaterializedPersonaPolicyProfile(
             public_safe=entry.public_safe,

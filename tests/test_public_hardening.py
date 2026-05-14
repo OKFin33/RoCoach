@@ -11,9 +11,12 @@ from advisor.config import load_native_model_config
 from advisor.conversation_cli import resolve_backend_config
 from api.main import (
     ROCO_MANAGED_PERSONA_MATERIALIZATION_PATH_ENV,
+    ROCO_MANAGED_PERSONA_SCOPE_ENV,
     create_app,
     managed_persona_materialization_path_from_env,
+    managed_persona_scope_from_env,
 )
+from agent_core.contracts import PersonaRuntimeActivationScope
 from api.release import API_VERSION, RATE_LIMIT_MODE, RELEASE_STAGE, SERVICE_NAME, UNOFFICIAL_NOTICE
 from api.services.advisor_service import AdvisorService
 from tools.import_battle_dex_sqlite import write_sqlite
@@ -111,6 +114,28 @@ class PublicHardeningTests(unittest.TestCase):
             "replace-with-materialized-profile-path",
         )
         self.assertIsNone(managed_persona_materialization_path_from_env(env_values))
+        self.assertEqual(
+            env_values[ROCO_MANAGED_PERSONA_SCOPE_ENV],
+            PersonaRuntimeActivationScope.INTERNAL_ONLY_RUNTIME,
+        )
+        self.assertEqual(
+            managed_persona_scope_from_env(env_values),
+            PersonaRuntimeActivationScope.INTERNAL_ONLY_RUNTIME,
+        )
+
+    def test_managed_persona_scope_env_defaults_to_internal_and_supports_public_gate(self) -> None:
+        self.assertEqual(
+            managed_persona_scope_from_env({}),
+            PersonaRuntimeActivationScope.INTERNAL_ONLY_RUNTIME,
+        )
+        self.assertEqual(
+            managed_persona_scope_from_env({ROCO_MANAGED_PERSONA_SCOPE_ENV: "public_safe_release"}),
+            PersonaRuntimeActivationScope.PUBLIC_SAFE_RELEASE,
+        )
+        self.assertEqual(
+            managed_persona_scope_from_env({ROCO_MANAGED_PERSONA_SCOPE_ENV: "garbage"}),
+            PersonaRuntimeActivationScope.INTERNAL_ONLY_RUNTIME,
+        )
 
 
 def argparse_namespace(**kwargs: object):

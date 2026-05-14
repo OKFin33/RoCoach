@@ -1,0 +1,60 @@
+qa_id: p10g_user_facing_answer_boundary
+version: p10g.user_facing_answer_boundary.v0
+status: completed
+date: "2026-04-30"
+
+trigger: >-
+  PM clarified that users should consume only the analysis process and result.
+  Software permission/runtime metadata, backend labels, evidence ids, confidence
+  tiers, tool traces, product-boundary labels, and doctrine/grounding jargon
+  must not appear in the main V1 chat reply.
+
+user_visible_policy:
+  allowed:
+    - "What Roco looked at in product language."
+    - "The practical reasoning path."
+    - "The result or recommendation."
+    - "Human-readable uncertainty when needed."
+  forbidden:
+    - "backend/runtime/route/provider implementation labels"
+    - "grounded/doctrine/confidence/provisional/internal policy jargon"
+    - "evidence ids and raw source labels"
+    - "tool traces"
+    - "product boundary / unsupported scope implementation wording"
+    - "analysis cards mounted from detail_sections"
+
+changes:
+  - path: agent_core/synthesis.py
+    summary: >-
+      Rewrote visible synthesis judgement, why summaries, and warnings into
+      product-language Chinese instead of software-policy language.
+  - path: agent_core/presentation.py
+    summary: >-
+      Removed `答复：` wrapper and changed visible warning prefix from internal
+      boundary language to user-facing `注意：`.
+  - path: agent_core/persona.py
+    summary: >-
+      Simplified persona rendering so default public persona returns the answer
+      directly, while the alternate support persona keeps light style variation
+      without adding evidence/confidence/followup sections.
+  - path: mobile/src/roco/rocoPresentation.ts
+    summary: >-
+      Added a final mobile-side software-metadata scrubber for legacy or stale
+      replies and kept analysis-card output disabled for V1.
+  - path: tests/test_agent_core_orchestrator.py
+    summary: "Updated tests to protect user-facing answer language instead of old internal wording."
+  - path: tests/test_api.py
+    summary: "Updated API serialization assertions for the new visible-answer boundary."
+
+verification:
+  - command: "cd mobile && npm run typecheck"
+    result: "passed"
+  - command: ".venv/bin/python -m unittest tests.test_agent_core_contracts tests.test_agent_core_orchestrator tests.test_api"
+    result: "passed: Ran 66 tests; OK"
+  - command: ".venv/bin/python -m unittest discover -s tests"
+    result: "passed: Ran 218 tests; OK"
+
+remaining_risks:
+  - "Final persona voice still needs a dedicated writing-style design pass."
+  - "Analysis cards remain disabled until a public UI artifact contract exists."
+  - "Live simulator should be reloaded to visually confirm the new wording on-device."

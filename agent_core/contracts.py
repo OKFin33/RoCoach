@@ -16,7 +16,14 @@ class AgentResponseStatus(StrEnum):
     FAILED = "failed"
 
 
+class AgentRuntimePath(StrEnum):
+    NATIVE_LLM_TERMINAL = "native_llm_terminal"
+    DETERMINISTIC_DEGRADED_FALLBACK = "deterministic_degraded_fallback"
+    STATIC_CONTROL_RESPONSE = "static_control_response"
+
+
 class AnalysisType(StrEnum):
+    CHAT_RESPONSE = "chat_response"
     TEAM_ANALYSIS = "team_analysis"
     SPECIES_ANALYSIS = "species_analysis"
     SESSION_COMMAND = "session_command"
@@ -150,6 +157,14 @@ class ExpressionDNA(BaseModel):
     taboo_phrases: list[str]
 
 
+class PersonaRenderingFlavorRule(BaseModel):
+    id: str
+    trigger_terms: list[str] = Field(default_factory=list)
+    allowed_effects: list[str] = Field(default_factory=list)
+    forbidden_effects: list[str] = Field(default_factory=list)
+    style_hint: str
+
+
 class PersonaMentalModel(BaseModel):
     name: str
     description: str
@@ -176,6 +191,7 @@ class PersonaProfile(BaseModel):
     persona_id: str
     display_name: str
     expression_dna: ExpressionDNA
+    rendering_flavor_rules: list[PersonaRenderingFlavorRule] = Field(default_factory=list)
     mental_models: list[PersonaMentalModel]
     decision_heuristics: list[PersonaDecisionHeuristic]
     anti_patterns: list[str]
@@ -450,6 +466,7 @@ class MaterializedPersonaSynthesisProfile(BaseModel):
 class MaterializedPersonaRenderingProfile(BaseModel):
     display_name: str
     expression_dna: ExpressionDNA
+    rendering_flavor_rules: list[PersonaRenderingFlavorRule] = Field(default_factory=list)
 
 
 class MaterializedPersonaPolicyProfile(BaseModel):
@@ -566,6 +583,7 @@ class PersonaEnvelope(BaseModel):
     display_name: str | None = None
     display_style: str | None = None
     rendered_answer: str | None = None
+    rendering_flavor_rule_ids: list[str] = Field(default_factory=list)
     facts_locked: bool = True
     fact_policy: str = "persona_may_not_alter_facts"
     public_safe: bool = True
@@ -579,6 +597,8 @@ class AgentResponse(BaseModel):
     schema_version: str = "agent_response.v1"
     status: AgentResponseStatus
     backend: str
+    runtime_path: AgentRuntimePath = AgentRuntimePath.DETERMINISTIC_DEGRADED_FALLBACK
+    continuity_persisted: bool = True
     analysis_type: AnalysisType
     answer: str
     tool_results: list[AgentToolResult]

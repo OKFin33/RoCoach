@@ -1,0 +1,74 @@
+qa_id: p10e_runtime_config_ux_repair_and_simulator_live_smoke
+version: p10e.runtime_config_ux_repair.v0
+status: completed_with_notes
+date: "2026-04-30"
+
+purpose: >-
+  Close the simulator-side confusion observed after P10d: the backend Agent chat
+  live path works with request-scoped provider config, but the simulator can
+  still render a generic model failure when provider settings are missing or
+  stale. This slice improves the runtime failure UX and attempts an on-device
+  live model success smoke.
+
+problem_statement:
+  user_observed: "Simulator only says 模型使用失败."
+  interpretation: >-
+    This does not prove Agent chat is absent. P10d proved a live backend Agent
+    chat path with DeepSeek quick setup, but the simulator did not have complete
+    provider settings, so the app could only show a controlled runtime failure.
+  product_risk: >-
+    A generic runtime failure makes a configured-vs-unconfigured device look
+    indistinguishable from a missing Agent implementation.
+
+code_changes:
+  - path: mobile/src/roco/rocoPresentation.ts
+    change: >-
+      Runtime failures and failed responses now render a setup/test-model
+      instruction instead of a normal analysis-card summary.
+  - path: mobile/src/components/roco/SettingsDrawer.tsx
+    change: >-
+      Model diagnostic result now includes backend diagnostic_code and message
+      so Settings can explain why provider setup failed.
+
+simulator_live_smoke:
+  status: passed_with_notes
+  requirements:
+    - "Start local backend."
+    - "Launch iOS Expo app."
+    - "Configure Product API base URL, provider API key, provider base URL, and model in Settings without printing secrets."
+    - "Run Settings model diagnostic."
+    - "Send a normal user chat prompt and verify a non-runtime-failure assistant reply."
+  secret_policy:
+    - "Provider key must not be printed to terminal output."
+    - "Provider key must not be written to artifacts."
+    - "Screenshots must not expose a full provider key."
+  observed_results:
+    - "Before replacing the stale simulator key, Settings returned Model: failed · invalid_or_unauthorized_provider_key."
+    - "After replacing the simulator SecureStore key with the PM-approved local env key, Settings returned Model: ok · ok."
+    - "A normal chat prompt reached /chat and returned a non-runtime-failure assistant response."
+    - "Backend logs showed POST /runtime/model-diagnostic 200 OK and POST /chat 200 OK."
+  artifacts:
+    - artifacts/p10e_runtime_config_ux_repair/ios_model_diagnostic_ok.png
+    - artifacts/p10e_runtime_config_ux_repair/ios_chat_live_success.png
+    - artifacts/p10e_runtime_config_ux_repair/simulator_live_smoke_summary.md
+
+acceptance:
+  required:
+    - "mobile typecheck passes after UX repair."
+    - "LaunchPad/logs record that P10d simulator limitation was not hidden."
+  success_path:
+    - "Simulator Settings diagnostic returns ok."
+    - "Simulator chat returns a non-runtime-failure Agent reply."
+  acceptable_blocked_path:
+    - "If simulator UI automation cannot configure secrets safely, record exact blocker and preserve backend live-smoke evidence from P10d."
+
+release_interpretation:
+  result: >-
+    Simulator live success path is validated for local-dev prototype, while
+    Android QA, production screenshot/build evidence, slow-call progress UX, and
+    true DeepSeek reference routing remain release blockers.
+  remaining_blockers:
+    - "Android simulator/device QA remains open."
+    - "Expo development overlay screenshots are not production-release screenshots."
+    - "Slow-call loading/progress UX remains unresolved."
+    - "True roco_deepseek_v4_reference backend call-role routing remains future work."

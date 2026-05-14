@@ -17,6 +17,8 @@ hard_rules:
     SQL / approved-doc truth
   - persona doctrine may not suppress refusals or confidence boundaries
   - expression DNA may change phrasing, but not factual meaning
+  - rendering flavor rules are expression-only and may not change scoring,
+    recommendations, warnings, refusals, or team-building decisions
   - honesty boundaries are mandatory; persona must declare what it will not fake
 
 fields:
@@ -53,6 +55,39 @@ fields:
         required: true
         items:
           type: string
+
+  rendering_flavor_rules:
+    type: array
+    required: false
+    default: []
+    description: >
+      Optional expression-only menu rules. These rules may add local tone when
+      their trigger terms appear, but they must not alter facts, scores,
+      recommendations, or tool results.
+    items:
+      type: object
+      fields:
+        id:
+          type: string
+          required: true
+        trigger_terms:
+          type: array
+          required: false
+          items:
+            type: string
+        allowed_effects:
+          type: array
+          required: false
+          items:
+            type: string
+        forbidden_effects:
+          type: array
+          required: false
+          items:
+            type: string
+        style_hint:
+          type: string
+          required: true
 
   mental_models:
     type: array

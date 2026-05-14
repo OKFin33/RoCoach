@@ -1,0 +1,204 @@
+contract_id: p8_team_builder_structured_context_contract
+version: p8_team_context.v1
+status: implementation_contract
+date: "2026-04-28"
+
+purpose: >-
+  Define the release-grade contract for P8 Team Builder Structured Context MVP:
+  a database-backed search/select team builder that stores one active local team
+  context and attaches it to normal Agent Chat.
+
+product_surface:
+  visible_entry: settings_team_context
+  primary_output_surface: single_agent_chat
+  standalone_product_routes_forbidden:
+    - dex
+    - calculator
+    - team_analyze_page
+    - simulator
+  ux_model: database_picker
+  picker_rule: >-
+    Search text filters backend database results. Structured fields are produced
+    only by selecting returned database objects. Free text is allowed only in
+    notes and is never promoted to confirmed battle facts.
+
+storage_contract:
+  mobile_storage: local_non_secret_storage
+  secure_store_for_team_context: forbidden
+  first_release_behavior: one_active_team
+  forward_compatibility: team_id_required_for_future_multi_team_switching
+  store_shape:
+    schema_version: team_context_store.v1
+    active_team_id: string_or_null
+    teams: list_of_team_context_attachment
+
+team_context_attachment:
+  kind: team_context
+  schema_version: team_context.v1
+  source: team_builder
+  active: true
+  team_id:
+    type: string
+    required: true
+    purpose: future_multi_team_switching
+  slots:
+    type: list
+    min_items: 0
+    max_items: 6
+
+slot_contract:
+  slot_index:
+    type: integer
+    range: [1, 6]
+    uniqueness: unique_within_team
+  species:
+    required_fields:
+      - species_id
+      - display_name
+      - primary_type
+    optional_fields:
+      - secondary_type
+    rule: must_resolve_from_backend_species_search_or_profile
+    free_text_species: forbidden
+  fixed_ability:
+    rule: copied_from_species_profile
+    user_selectable: false
+    optional_when_profile_missing_ability: true
+  nature:
+    required_for_selected_species: true
+    fields:
+      label: string_or_null
+      plus_stat: stat_key_or_null
+      minus_stat: stat_key_or_null
+    neutral_nature_rule: represent_explicitly_if_supported
+  individual_value_bonuses:
+    min_items: 0
+    max_items: 3
+    stat_uniqueness: unique_within_slot
+    value_rule: >-
+      Integer in [7, 10]. Grounded in
+      data/reference/luoke_world_type_database_v2.json stat_formula.iv_rules.initial_range.
+  selected_moves:
+    min_items: 0
+    max_items: 4
+    rule: must_be_selected_from_species_available_moves
+    free_text_moves: forbidden
+    unresolved_moves: forbidden
+  notes:
+    type: string_or_null
+    confidence: user_note_unverified
+    fact_promotion: forbidden
+
+stat_keys:
+  - hp
+  - atk
+  - defense
+  - spa
+  - spd
+  - spe
+
+api_contract:
+  existing_endpoints:
+    species_search:
+      method: GET
+      path: /species/search
+      query:
+        q: string_min_length_1
+        limit: integer_1_to_20
+    species_profile:
+      method: GET
+      path: /species/{species_id}
+  required_new_endpoints:
+    species_moves:
+      method: GET
+      path: /species/{species_id}/moves
+      response: species_available_moves_response
+      source: local_battle_dex_sqlite
+      error_modes:
+        - battle_dex_unavailable
+        - species_not_found
+    optional_new_endpoints:
+      move_detail:
+        method: GET
+        path: /moves/{move_id}
+        response: move_detail_response
+        required_only_if_mobile_needs_detail_screen: true
+  chat_request_extension:
+    endpoint: POST /chat
+    added_field: context_attachments
+    max_attachments: 1_for_p8
+    allowed_attachment_kinds:
+      - team_context
+    validation_location: backend_api_boundary
+    message_concat_fallback: forbidden_for_p8_release
+
+agent_integration:
+  behavior:
+    - valid active team context updates session current_team substrate
+    - team questions use active team context instead of asking for manual re-entry
+    - deterministic team structure analysis uses selected species type fields
+    - native Agent receives compact structured context for selected species, fixed ability, selected moves, nature, and individual bonuses
+    - notes are marked as unverified user notes
+  confidence_rules:
+    species_identity: confirmed_when_backend_profile_resolves
+    species_type: confirmed_when_backend_profile_resolves
+    fixed_ability: confirmed_or_profile_confidence_from_backend
+    selected_moves: confirmed_available_for_species_when_backend_available_moves_contains_move_id
+    nature: user_selected_structured_preference
+    individual_value_bonuses: user_selected_structured_preference
+    notes: unverified_user_context
+
+security_contract:
+  mobile_sqlite_access: forbidden
+  raw_sql_from_client: forbidden
+  arbitrary_db_field_selection: forbidden
+  local_db_path_in_api_response: forbidden
+  provider_secret_interaction: none
+  team_context_wholesale_logging: forbidden
+  raw_tool_trace_public_rendering: forbidden
+
+mobile_contract:
+  required_modules:
+    - mobile/src/roco/teamContext.ts
+    - mobile/src/components/roco/TeamContextBuilder.tsx
+  integration_points:
+    - Settings drawer team context entry
+    - Chat request construction attaches active non-empty team context
+    - Chat sends active team context silently without rendering a main-screen active-team chip
+  forbidden:
+    - direct SQLite reads
+    - SecureStore team persistence
+    - standalone Dex tab
+    - standalone Team tab
+    - free-text species or move creation
+
+backend_acceptance:
+  - /species/{species_id}/moves returns backend available moves without exposing local paths
+  - /chat accepts valid team_context attachment
+  - /chat rejects nonexistent species_id in team_context
+  - /chat rejects selected move_id not available for the selected species
+  - /chat rejects duplicate slot_index
+  - /chat rejects more than six slots
+  - /chat rejects more than four selected moves per slot
+  - /chat rejects more than three individual value bonuses per slot
+  - /chat does not echo provider secrets, runtime headers, or local database paths
+
+mobile_acceptance:
+  - user can search/filter species and select a backend result into a slot
+  - user can search/filter selected species moves and select up to four backend moves
+  - user cannot save free-text species or free-text moves as structured data
+  - user can set one nature per selected species
+  - user can set zero to three individual-value bonus stats per selected species
+  - active team context persists locally across app restart
+  - Chat sends active team context through context_attachments
+  - Chat main screen does not show an active team chip in V1
+  - mobile typecheck passes
+
+non_goals:
+  - graphical dex grid
+  - official sprites or IP assets
+  - battle simulator
+  - calculator UI
+  - casebank retrieval expansion
+  - hosted team sync
+  - multi-team management UI in first release

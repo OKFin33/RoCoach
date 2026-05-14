@@ -1,0 +1,191 @@
+contract_id: p10h_d_layer_retrieval_contract
+version: draft.v1
+date: "2026-05-01"
+status: draft_contract
+purpose: >-
+  Define the first executable retrieval contract for P10h D-layer Expert
+  Demonstration Case Memory. This contract covers probe-scale retrieval only.
+  It is not a runtime API contract and does not authorize prompt/runtime
+  integration by itself.
+
+scope:
+  layer: D
+  asset: Expert Demonstration Case Memory
+  runtime_authority: analogy_only
+  scale_assumption: 8_to_50_pm_reviewed_gold_cases
+  primary_risk: >-
+    Retrieval quality depends more on tag quality and canonical entity
+    consistency than on the lexical retrieval algorithm at this scale.
+
+canonical_storage:
+  root: data/expert_demonstrations
+  candidates_dir: data/expert_demonstrations/candidates
+  gold_dir: data/expert_demonstrations/gold
+  index_dir: data/expert_demonstrations/index
+  review_dir: data/expert_demonstrations/review
+  rejected_dir: data/expert_demonstrations/rejected
+  runtime_readable_dirs:
+    - data/expert_demonstrations/gold
+    - data/expert_demonstrations/index
+  runtime_forbidden_dirs:
+    - data/expert_demonstrations/candidates
+    - data/expert_demonstrations/review
+    - data/expert_demonstrations/rejected
+
+required_index_outputs:
+  - path: data/expert_demonstrations/index/index.json
+    description: compiled searchable gold-case records
+  - path: data/expert_demonstrations/index/index_manifest.yaml
+    description: build metadata, source counts, hash/version, and quality gates
+  - path: data/expert_demonstrations/index/tag_vocabulary.yaml
+    description: controlled tag vocabulary plus aliases and deprecated tags
+  - path: data/expert_demonstrations/index/retrieval_probe_queries.yaml
+    description: PM-authored obvious-match probe queries and expected case ids
+  - path: artifacts/p10h_retrieval_probe/tag_quality_report.md
+    description: sparse/inconsistent tag audit
+  - path: artifacts/p10h_retrieval_probe/recall_smoke_report.md
+    description: top-k recall smoke results and failure triage
+
+gold_case_eligibility:
+  must:
+    - review_status is pm_fidelity_reviewed or stronger
+    - demonstration_status is gold
+    - source_span is present
+    - source_fidelity passes PM review
+    - canonical species and move names have no unresolved _ASR values
+    - retrieval_tags are present and vocabulary-compatible
+  must_not:
+    - include raw unreviewed transcript dumps
+    - include candidate-only or low-confidence material
+    - override A-layer facts
+    - expose internal case ids in user-facing answer text
+
+tag_vocabulary:
+  required_groups:
+    - coarse_family
+    - case_type
+    - canonical_species
+    - canonical_moves
+    - archetype
+    - matchup
+    - tactical_action
+    - resource_or_mechanic
+    - risk_or_boundary
+  rules:
+    - Tags must be stable across sources.
+    - Prefer one accepted tag plus aliases over multiple synonyms.
+    - Deprecated tags must map to replacement tags or be rejected.
+    - Fine case_type is useful for review but must not be the first runtime
+      filter while the case pool is small.
+    - Missing obvious tags are retrieval defects, not harmless metadata gaps.
+  minimum_per_gold_case:
+    - one coarse_family
+    - one case_type
+    - at least one canonical_species when the case mentions a concrete species
+    - at least one tactical_action unless the case is pure meta_context
+    - at least one archetype or matchup tag when the case is team/matchup based
+    - risk_or_boundary tags when the source includes caveats or failure branches
+
+retrieval_algorithm_probe_v1:
+  description: >-
+    Lightweight retrieval for the probe and V1 case scale. Do not add embeddings
+    until tag quality has been validated and lexical recall failures remain.
+  candidate_filter_order:
+    - keep only gold cases
+    - match coarse_family if query route is known
+    - prefer canonical species/move overlap if query provides entities
+    - prefer archetype/matchup overlap
+    - prefer tactical_action/resource/risk overlap
+    - apply lexical scoring over situation, user_question_equivalent,
+      expert_conclusion, answer_shape, and tag aliases
+  lexical_scoring:
+    allowed:
+      - BM25
+      - simple token overlap with field weights
+    deferred:
+      - embedding retrieval
+      - LLM reranking
+      - DSPy-style prompt optimization
+  top_k:
+    default: 3
+    max_prompt_injected_cases: 3
+  threshold_policy:
+    no_match_behavior: skip_d_layer
+    low_similarity_behavior: diagnostics_only_do_not_inject
+    conflict_behavior: include_separate_analogies_with_branch_conditions
+
+probe_recall_gate:
+  first_gate:
+    name: pm_obvious_match_5_question_smoke
+    owner: PM plus execution agent
+    requirement: >-
+      PM writes five user-like questions where the expected matching gold case
+      is known before retrieval is run.
+    pass_condition:
+      top_3_expected_case_hits: ">=4/5"
+    failure_triage_order:
+      - tag vocabulary defect
+      - canonical entity/name-resolution defect
+      - query wording missing required surface clues
+      - source case not actually transferable
+      - lexical scoring defect
+    rule: >-
+      Do not switch to embeddings or LLM reranking until tag and canonical
+      entity defects have been fixed or explicitly ruled out.
+  second_gate:
+    name: per_case_user_question_equivalent_recall
+    requirement: >-
+      Use at least one query derived from each probe gold case's
+      user_question_equivalent.
+    pass_condition:
+      top_3_source_case_recall: ">=80%"
+    blocked_if:
+      - any high-priority construction pattern has no retrievable case
+      - any high-priority in-battle pattern has no retrievable case
+      - failures are not triaged
+
+prompt_injection_boundary:
+  hidden_prompt_can_include:
+    - compact situation summary
+    - source-grounded evidence summary
+    - expert reasoning summary
+    - expert conclusion
+    - caveats and failure branches
+    - compact source-fidelity/factual-grounding signal for weighting
+  hidden_prompt_must_not_include:
+    - raw transcript dump
+    - unreviewed candidate material
+    - provider secrets
+    - internal review notes not relevant to reasoning
+  user_visible_must_not_include:
+    - internal case ids
+    - review_status
+    - quality scores
+    - source bookkeeping
+    - "'D-layer' or retrieval implementation labels"
+
+fallback_policy:
+  no_relevant_case:
+    behavior: answer_without_d_layer
+    allowed_context:
+      - A-layer facts
+      - B-layer mechanics snippets
+      - C-layer uncertainty policy
+      - persona expression
+    user_visible_text: do_not_mention_missing_casebank
+  conflicting_cases:
+    behavior: preserve_branches
+    user_visible_text: >-
+      Similar expert examples point to different lines depending on concrete
+      conditions; explain those conditions without exposing source bookkeeping.
+  stale_or_patch_mismatch:
+    behavior: downweight_or_skip_case
+    requirement: record in retrieval diagnostics
+
+acceptance:
+  - tag_vocabulary.yaml exists and maps aliases/deprecated tags
+  - every probe gold case passes minimum_per_gold_case tag requirements
+  - five PM-authored obvious-match probe queries exist before recall execution
+  - first_gate passes or failures are triaged and assigned fixes
+  - second_gate passes before runtime integration
+  - no runtime code consumes D-layer cases before both gates pass

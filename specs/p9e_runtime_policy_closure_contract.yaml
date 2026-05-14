@@ -1,0 +1,169 @@
+contract_id: p9e_runtime_policy_closure_contract
+version: p9e.runtime_policy_closure.v0
+status: accepted
+date: "2026-04-30"
+
+purpose: >-
+  Close P9 by separating generic open-source custom-model guarantees from one
+  certified DeepSeek v4 reference routing profile. Roco must not create a
+  confusing preset matrix for users. It should provide a safe single-model
+  custom path plus one maintained reference profile.
+
+product_position:
+  primary_user_mode: custom_single_model
+  certified_reference_profile: roco_deepseek_v4_reference
+  ordinary_user_advanced_routing_ui: forbidden_in_v1
+  rationale: >-
+    Most open-source users will bring their own OpenAI-compatible provider,
+    base URL, API key, and model id. Roco can guarantee runtime safety for that
+    path, but cannot certify every provider/model quality or loop behavior.
+
+mode_contracts:
+  custom_single_model:
+    user_visible: true
+    expected_to_be_mainstream: true
+    user_controls:
+      - provider_base_url
+      - api_key
+      - model_id
+      - reasoning_mode_when_provider_supports_it
+      - reasoning_effort_when_provider_supports_it
+    runtime_behavior:
+      - all_llm_calls_use_the_same_user_selected_model_config
+      - no_internal_model_routing
+      - no_claim_that_quality_is_certified
+    roco_guarantees:
+      - api_key_not_logged
+      - api_key_not_persisted_server_side
+      - terminal_response_phase_required
+      - bounded_request_and_tool_budget
+      - bounded_timeout
+      - raw_tool_trace_hidden_from_ui
+      - hidden_reasoning_hidden_from_ui
+      - controlled_failure_instead_of_empty_answer
+    roco_non_guarantees:
+      - model_quality
+      - provider_latency
+      - provider_tool_call_correctness
+      - provider_reasoning_protocol_compatibility_beyond_openai_compatible_best_effort
+      - loop_quality
+
+  roco_deepseek_v4_reference:
+    user_visible: true
+    expected_to_be_reference_path: true
+    user_controls:
+      - api_key
+      - optional_base_url_override_for_proxy_or_compatible_gateway
+    roco_controls:
+      - model_by_call_role
+      - thinking_mode_by_call_role
+      - reasoning_effort_by_call_role
+      - loop_enablement
+    certification_scope:
+      provider_family: deepseek
+      models:
+        - deepseek-v4-flash
+        - deepseek-v4-pro
+      docs_basis:
+        - https://api-docs.deepseek.com/zh-cn/guides/thinking_mode
+        - https://api-docs.deepseek.com/zh-cn/guides/tool_calls
+      qa_required_before_recommendation:
+        - provider_basic_compatibility
+        - no_secret_leak
+        - no_hidden_reasoning_leak
+        - terminal_response_phase
+        - tool_budget_enforced
+        - long_context_tool_history_replay
+        - latency_budget_by_call_role
+        - blind_or_reviewed_quality_score
+
+call_role_policy_candidates:
+  simple_chat:
+    call_level: L1_simple_generation
+    candidate_reference_config: flash_high_or_flash_disabled
+    decision_basis_required:
+      - p9c_minimal_quality
+      - latency
+      - no_unfounded_game_claims
+  grounded_synthesis:
+    call_level: L2_grounded_synthesis
+    candidate_reference_config: flash_high_or_flash_disabled
+    decision_basis_required:
+      - grounded_fact_use
+      - hallucination_rate
+      - latency
+  complex_strategy:
+    call_level: L3_generate_then_terminal
+    candidate_reference_config: pro_high
+    decision_basis_required:
+      - strategy_quality_score
+      - final_answer_grounding
+      - latency_budget
+  critique_or_arbitration:
+    call_level: L3_critic_or_final_arbitration
+    candidate_reference_config: pro_high
+    decision_basis_required:
+      - risk_detection
+      - unsupported_claim_detection
+      - score_delta_vs_pro_disabled
+  controlled_loop:
+    call_level: L4_controlled_loop
+    default_v1: disabled
+    candidate_reference_config: pro_high_loop_only_if_explicitly_enabled
+    rejected_or_high_risk:
+      - pro_max_loop_due_to_latency_under_current_s9_budget
+    decision_basis_required:
+      - final_call_reserved
+      - no_empty_answer
+      - no_tool_budget_escape
+      - latency_within_budget
+
+runtime_invariants:
+  inherited_from:
+    - p9c_agent_call_policy_contract.terminal_response_policy
+    - p9c_agent_loop_policy_contract.terminal_response_policy
+  must_hold_for_both_modes:
+    - terminal_response_phase_required
+    - final_llm_synthesis_when_needed_must_have_reserved_budget
+    - raw_tool_trace_not_user_visible
+    - hidden_reasoning_not_user_visible
+    - provider_secrets_redacted
+    - controlled_failure_instead_of_empty_answer
+
+acceptance_criteria:
+  docs:
+    - this_contract_exists
+    - p9e_deepseek_v4_reference_profile_exists
+    - p9e_custom_single_model_support_level_exists
+    - p9_deepseek_runtime_config_contract_is_updated_away_from_multi_preset_matrix
+    - launchpad_surface_names_p9e_as_active_slice
+  implementation:
+    - production_native_runtime_has_usage_limit_guard
+    - p9d_s9_executor_refuses_over_budget_tool_requests_and_forces_final
+    - p9d_s10_executor_reserves_final_response
+  qa:
+    - advisor_api_tests_pass
+    - s9_targeted_smoke_records_terminal_response_result
+    - s10_live_result_remains_available
+  decision_output:
+    - one_deepseek_v4_reference_profile_draft
+    - custom_single_model_support_level_definition
+    - no_fast_balanced_deep_user_preset_matrix_for_v1
+
+open_decisions:
+  - accept_flash_disabled_as_simple_and_grounded_reference_default_or_run_more_eval
+  - whether_complex_strategy_uses_one_pro_high_call_or_two_call_generate_then_terminal
+  - whether_loop_stays_disabled_until_after_v1_release
+  - whether_to_rerun_full_p9d_after_s9_timeout_semantics_fix
+
+dispatch_result:
+  status: accepted
+  produced:
+    - specs/p9e_deepseek_v4_reference_profile.yaml
+    - specs/p9e_custom_single_model_support_level.yaml
+  current_recommendation:
+    custom_single_model: mainstream_open_source_mode
+    deepseek_reference: one_certified_reference_profile_draft
+    loop_v1: disabled_by_default
+    pro_max_loop: not_recommended_under_current_180s_budget
+  accepted_truth: .launchpad/accepted_truth/p9e_runtime_policy_closure_completed.yaml

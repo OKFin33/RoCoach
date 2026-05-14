@@ -39,7 +39,7 @@ def load_persona_projection_profile_materialization(
 def build_persona_profile_resolver_from_materialization_path(
     materialization_path: Path,
     *,
-    allowed_scope: PersonaRuntimeActivationScope = PersonaRuntimeActivationScope.PUBLIC_SAFE_RELEASE,
+    allowed_scope: PersonaRuntimeActivationScope = PersonaRuntimeActivationScope.INTERNAL_ONLY_RUNTIME,
 ) -> PersonaProfileResolver:
     materialization = load_persona_projection_profile_materialization(materialization_path)
     return PersonaProfileResolver(materialization, allowed_scope=allowed_scope)

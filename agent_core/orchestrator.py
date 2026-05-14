@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from agent_core.contracts import AgentResponse, DoctrinePack, PersonaEnvelope
-from agent_core.persona import PersonaBoundary
+from agent_core.persona import PersonaBoundary, build_persona_llm_context
 from agent_core.presentation import build_presentation_input, run_presentation
 from agent_core.synthesis import (
     analytical_substrate_from_response,
@@ -32,11 +32,21 @@ class AgentOrchestrator:
         message: str,
         *,
         persona: PersonaEnvelope | None = None,
+        team_context_slots: list[dict[str, object]] | None = None,
     ) -> AgentResponse:
         safety_decision = self.safety_guard.evaluate(message)
         if not safety_decision.allowed:
             response = refusal_response_from_decision(safety_decision)
         else:
+            if team_context_slots is not None and hasattr(self.runtime_adapter, "set_team_context_slots"):
+                self.runtime_adapter.set_team_context_slots(team_context_slots)
+            if hasattr(self.runtime_adapter, "set_persona_llm_context"):
+                self.runtime_adapter.set_persona_llm_context(
+                    build_persona_llm_context(
+                        persona,
+                        persona_resolver=self.persona_boundary.persona_resolver,
+                    )
+                )
             response = self.runtime_adapter.handle_message(message)
 
         synthesis_input = build_synthesis_input(

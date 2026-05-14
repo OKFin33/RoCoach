@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from advisor.battle_dex import DEFAULT_RUNTIME_DB
-from agent_core.contracts import AgentResponse, PersonaEnvelope
+from agent_core.contracts import AgentResponse, PersonaEnvelope, PersonaRuntimeActivationScope
 from agent_core.persona import persona_request_from_selector
 from agent_core.persona_profile_resolver import make_managed_persona_selector
 from api.contracts import (
@@ -16,9 +16,14 @@ from api.contracts import (
     ChatResponse,
     HealthResponse,
     MetadataResponse,
+    ModelDiagnosticRequest,
+    ModelDiagnosticResponse,
     PersonaSelector,
     PersonaSelectorKind,
+    SessionClearRequest,
+    SessionClearResponse,
     SpeciesProfileResponse,
+    SpeciesMovesResponse,
     SpeciesSearchResponse,
     TeamAnalyzeRequest,
 )
@@ -38,6 +43,8 @@ from api.runtime_headers import (
     HEADER_MODEL,
     HEADER_PROVIDER_BASE_URL,
     HEADER_PROVIDER_KEY,
+    HEADER_REASONING_EFFORT,
+    HEADER_REASONING_MODE,
     HEADER_RUNTIME_MODE,
     request_runtime_config_from_headers,
 )
@@ -45,6 +52,7 @@ from api.services.advisor_service import AdvisorService
 
 
 ROCO_MANAGED_PERSONA_MATERIALIZATION_PATH_ENV = "ROCO_MANAGED_PERSONA_MATERIALIZATION_PATH"
+ROCO_MANAGED_PERSONA_SCOPE_ENV = "ROCO_MANAGED_PERSONA_SCOPE"
 _MANAGED_PERSONA_PATH_PLACEHOLDERS = {
     "",
     "unset",
@@ -61,17 +69,24 @@ def create_app(
     bootstrap: bool = True,
     default_backend: str = "deterministic",
     managed_persona_materialization_path: Path | None = None,
+    managed_persona_scope: PersonaRuntimeActivationScope | None = None,
 ) -> FastAPI:
     resolved_materialization_path = (
         managed_persona_materialization_path
         if managed_persona_materialization_path is not None
         else managed_persona_materialization_path_from_env()
     )
+    resolved_managed_persona_scope = (
+        managed_persona_scope
+        if managed_persona_scope is not None
+        else managed_persona_scope_from_env()
+    )
     service = advisor_service or AdvisorService.from_db_path(
         db_path=db_path or DEFAULT_RUNTIME_DB,
         bootstrap=bootstrap,
         default_backend=default_backend,
         managed_persona_materialization_path=resolved_materialization_path,
+        managed_persona_scope=resolved_managed_persona_scope,
     )
     app = FastAPI(title="Roco Advisor API", version=API_VERSION)
     app.state.advisor_service = service
@@ -130,6 +145,8 @@ def create_app(
                 "team_analysis",
                 "species_search",
                 "species_profile",
+                "species_moves",
+                "team_context_attachments",
                 "persona_v1_built_in_registry",
                 "managed_persona_public_selector_v1",
                 "release_hardening_p0f",
@@ -147,20 +164,74 @@ def create_app(
         provider_base_url: str | None = Header(default=None, alias=HEADER_PROVIDER_BASE_URL),
         model: str | None = Header(default=None, alias=HEADER_MODEL),
         runtime_mode: str | None = Header(default=None, alias=HEADER_RUNTIME_MODE),
+        reasoning_mode: str | None = Header(default=None, alias=HEADER_REASONING_MODE),
+        reasoning_effort: str | None = Header(default=None, alias=HEADER_REASONING_EFFORT),
         service: AdvisorService = Depends(get_advisor_service),
     ) -> ChatResponse:
-        session_id, response = service.chat(
+        session_id, response, session_event = service.chat(
             message=request.message,
             session_id=request.session_id,
             persona=_persona_from_selector(request.persona_id, request.persona_selector),
+            context_attachments=request.context_attachments,
             runtime_config=request_runtime_config_from_headers(
                 provider_key=provider_key,
                 provider_base_url=provider_base_url,
                 model=model,
                 runtime_mode=runtime_mode,
+                reasoning_mode=reasoning_mode,
+                reasoning_effort=reasoning_effort,
             ),
         )
-        return ChatResponse(session_id=session_id, response=response)
+        return ChatResponse(
+            session_id=session_id,
+            response=response,
+            session_event=session_event.to_payload(),
+        )
+
+    @app.post(
+        "/session/clear",
+        response_model=SessionClearResponse,
+        dependencies=[Depends(rate_limit_placeholder)],
+    )
+    def session_clear(
+        request: SessionClearRequest | None = None,
+        service: AdvisorService = Depends(get_advisor_service),
+    ) -> SessionClearResponse:
+        session_id, session_event = service.clear_session(
+            reason=(request.reason if request is not None else "user_clear"),
+        )
+        return SessionClearResponse(
+            session_id=session_id,
+            session_event=session_event.to_payload(),
+        )
+
+    @app.post(
+        "/runtime/model-diagnostic",
+        response_model=ModelDiagnosticResponse,
+        dependencies=[Depends(rate_limit_placeholder)],
+    )
+    def model_diagnostic(
+        request: ModelDiagnosticRequest,
+        provider_key: str | None = Header(default=None, alias=HEADER_PROVIDER_KEY),
+        provider_base_url: str | None = Header(default=None, alias=HEADER_PROVIDER_BASE_URL),
+        model: str | None = Header(default=None, alias=HEADER_MODEL),
+        runtime_mode: str | None = Header(default=None, alias=HEADER_RUNTIME_MODE),
+        reasoning_mode: str | None = Header(default=None, alias=HEADER_REASONING_MODE),
+        reasoning_effort: str | None = Header(default=None, alias=HEADER_REASONING_EFFORT),
+        service: AdvisorService = Depends(get_advisor_service),
+    ) -> ModelDiagnosticResponse:
+        payload = service.diagnose_model_service(
+            runtime_config=request_runtime_config_from_headers(
+                provider_key=provider_key,
+                provider_base_url=provider_base_url,
+                model=model,
+                runtime_mode=runtime_mode,
+                reasoning_mode=reasoning_mode,
+                reasoning_effort=reasoning_effort,
+            ),
+            prompt=request.prompt,
+        )
+        return ModelDiagnosticResponse(**payload)
 
     @app.post(
         "/team/analyze",
@@ -189,12 +260,13 @@ def create_app(
     @app.get("/species/search", response_model=SpeciesSearchResponse)
     def species_search(
         q: str = Query(min_length=1),
-        limit: int = Query(default=10, ge=1, le=20),
+        limit: int = Query(default=10, ge=1, le=50),
+        usage: str = Query(default="default", pattern="^(default|team_builder)$"),
         service: AdvisorService = Depends(get_advisor_service),
     ) -> SpeciesSearchResponse:
         return SpeciesSearchResponse(
             query=q,
-            results=service.search_species(query=q, limit=limit),
+            results=service.search_species(query=q, limit=limit, usage=usage),
         )
 
     @app.get("/species/{species_id}", response_model=SpeciesProfileResponse)
@@ -203,6 +275,15 @@ def create_app(
         service: AdvisorService = Depends(get_advisor_service),
     ) -> SpeciesProfileResponse:
         return SpeciesProfileResponse(profile=service.get_species_profile(species_id=species_id))
+
+    @app.get("/species/{species_id}/moves", response_model=SpeciesMovesResponse)
+    def species_moves(
+        species_id: str,
+        limit: int | None = Query(default=None, ge=1, le=200),
+        service: AdvisorService = Depends(get_advisor_service),
+    ) -> SpeciesMovesResponse:
+        payload = service.get_species_moves(species_id=species_id, limit=limit)
+        return SpeciesMovesResponse(**payload)
 
     return app
 
@@ -237,6 +318,19 @@ def managed_persona_materialization_path_from_env(
     if value.casefold() in _MANAGED_PERSONA_PATH_PLACEHOLDERS:
         return None
     return Path(value).expanduser()
+
+
+def managed_persona_scope_from_env(
+    environ: dict[str, str] | None = None,
+) -> PersonaRuntimeActivationScope:
+    source = os.environ if environ is None else environ
+    raw_value = source.get(ROCO_MANAGED_PERSONA_SCOPE_ENV)
+    if raw_value is None or not raw_value.strip():
+        return PersonaRuntimeActivationScope.INTERNAL_ONLY_RUNTIME
+    try:
+        return PersonaRuntimeActivationScope(raw_value.strip())
+    except ValueError:
+        return PersonaRuntimeActivationScope.INTERNAL_ONLY_RUNTIME
 
 
 app = create_app()

@@ -26,9 +26,12 @@ For built-in personas:
 ```json
 {
   "kind": "built_in",
-  "persona_id": "obsidian_tactical_coach"
+  "persona_id": "you_know_who"
 }
 ```
+
+`you_know_who` is the current public-safe default built-in persona id.
+`obsidian_tactical_coach` is a legacy alias retained for compatibility.
 
 Backward compatibility:
 

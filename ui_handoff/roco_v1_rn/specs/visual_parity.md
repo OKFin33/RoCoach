@@ -220,7 +220,8 @@ Tail:
 
 - RN can implement via a small rotated `View` or SVG triangle.
 - Tail color matches bubble fill.
-- Tail sits near bottom-left, visually connected to bubble.
+- Tail sits on the left side near bottom `9`, width `11`, height `12`, visually connected to bubble.
+- Tail uses left/bottom ink strokes, matching the Web prototype.
 
 Text:
 
@@ -278,6 +279,15 @@ userAvatar: {
   height: 30,
 }
 ```
+
+User row order is bubble first, avatar second. The avatar remains on the right side of the row.
+
+User tail:
+
+- right side near bottom `9`
+- width `11`, height `12`
+- fill matches `tokens.color.userBubbleBottom`
+- uses right/bottom ink strokes
 
 ## Inline Rewrite State
 
@@ -423,28 +433,29 @@ Style:
 composerWrap: {
   flexDirection: "row",
   alignItems: "flex-end",
-  gap: 8,
-  paddingHorizontal: 2,
-  paddingTop: 8,
+  gap: 9,
+  paddingHorizontal: 14,
+  paddingTop: 0,
+  paddingBottom: 7,
 }
 
 composerInputBox: {
   flex: 1,
-  minHeight: 48,
-  maxHeight: 108,
-  borderRadius: 24,
-  borderWidth: 2.6,
+  minHeight: 44,
+  maxHeight: 116,
+  borderRadius: 22,
+  borderWidth: 2.5,
   borderColor: tokens.color.ink,
-  backgroundColor: "#FFFDF3",
-  paddingHorizontal: 18,
-  paddingVertical: 12,
+  backgroundColor: "#FFF8E8",
+  paddingHorizontal: 14,
+  paddingVertical: 8,
 }
 
 sendButton: {
-  width: 48,
-  height: 48,
+  width: 44,
+  height: 44,
   borderRadius: 999,
-  borderWidth: 2.6,
+  borderWidth: 2.5,
   borderColor: tokens.color.ink,
   alignItems: "center",
   justifyContent: "center",
@@ -454,15 +465,25 @@ sendButton: {
 Enabled send:
 
 ```ts
-backgroundColor: "#D2B640"
+backgroundColor: tokens.color.ink
+iconColor: tokens.color.shellYellow
+shadow: "0 3px 0 rgba(17,17,17,0.35)"
 ```
 
 Disabled send:
 
 ```ts
-backgroundColor: "#D8D0BE"
-opacity: 0.72
+backgroundColor: "rgba(23,23,23,0.25)"
+iconColor: tokens.color.settingsPanel
+shadow: "none"
 ```
+
+TextInput:
+
+- font size `15`
+- line height `22`
+- max text area height `100`
+- Enter-to-send is Web-only convenience. RN should send from the send button unless product explicitly enables keyboard send.
 
 ## Message Action Menu
 
@@ -471,6 +492,16 @@ Placement:
 - absolute overlay above the long-pressed bubble
 - clamp inside paper/screen bounds
 - do not cover the selected bubble if avoidable
+- backdrop is `rgba(17,17,17,0.08)`
+
+Position:
+
+```ts
+const menuX = role === "user" ? bubbleRightInRoot - 192 : bubbleLeftInRoot;
+const menuY = bubbleTopInRoot - 48;
+const left = clamp(12, menuX, rootWidth - 212);
+const top = clamp(20, menuY, rootHeight - 66);
+```
 
 Style:
 
@@ -484,6 +515,10 @@ messageActionMenu: {
   padding: 6,
   flexDirection: "row",
   gap: 4,
+  shadowColor: "#111111",
+  shadowOpacity: 0.22,
+  shadowRadius: 18,
+  shadowOffset: { width: 0, height: 18 },
 }
 ```
 
@@ -497,13 +532,22 @@ actionButton: {
   alignItems: "center",
   justifyContent: "center",
   paddingHorizontal: 8,
+  gap: 5,
 }
 ```
+
+Text:
+
+- font size `12.5`
+- font weight `800`
+- danger color `tokens.color.danger`
+- danger background `rgba(184,58,75,0.12)`
 
 Delete confirmation:
 
 - same menu location
 - replace actions with `确认删除` and `取消`
+- `确认删除` min width `78`
 
 ## Persona Wheel
 
@@ -531,14 +575,29 @@ backgroundColor: tokens.color.shellYellow
 Radial offsets from anchor center:
 
 ```ts
-[
-  { id: "you_know_who", dx: 0, dy: 0 },
-  { id: "ai_assistant", dx: 66, dy: -18 },
-  { id: "add", dx: 58, dy: 58 }
-]
+const RADIUS = 86;
+const POSITIONS = [
+  { id: "you_know_who", angle: -42 },
+  { id: "ai_assistant", angle: 8 },
+  { id: "add_persona", angle: 58 },
+];
+
+const dx = Math.cos(angle * Math.PI / 180) * RADIUS;
+const dy = Math.sin(angle * Math.PI / 180) * RADIUS;
 ```
 
 If the anchor is close to the screen edge, flip offsets inward so items remain visible.
+
+Open motion:
+
+- backdrop opacity fades from `0` to prototype dim amount in `180ms`
+- anchor halo scales from `0.82` to `1` and fades in over `160ms`
+- every option starts visually at the long-pressed avatar center with
+  `scale=0`, `opacity=0`
+- options spring to their radial positions with stiffness `380`, damping `26`
+- options are staggered by `50ms`
+- do not replace this with a static overlay; the pop-out motion is part of the
+  wheel affordance
 
 Labels:
 
@@ -554,24 +613,32 @@ Closed:
 
 Open:
 
-- drawer width: `min(screenWidth * 0.82, 340)`
+- drawer width: `screenWidth * 0.88`, matching the accepted Web prototype rail width
 - handle remains attached to drawer left edge
 
 Handle:
 
 ```ts
 drawerHandle: {
-  width: 34,
-  height: 86,
-  borderTopLeftRadius: 18,
-  borderBottomLeftRadius: 18,
-  borderWidth: 2.6,
+  width: 22,
+  height: 58,
+  borderTopLeftRadius: 12,
+  borderBottomLeftRadius: 12,
+  borderWidth: 3,
+  borderRightWidth: 0,
   borderColor: tokens.color.ink,
   backgroundColor: tokens.color.shellYellowDeep,
   alignItems: "center",
   justifyContent: "center",
+  gap: 4,
 }
 ```
+
+Handle grip:
+
+- three vertical dots
+- each dot is `4 x 4`
+- dot fill `tokens.color.ink`
 
 Panel:
 

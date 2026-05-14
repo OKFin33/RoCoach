@@ -499,6 +499,15 @@ Status:
 
 ### P0d. Persona V1 + IP Guard
 
+Update, 2026-04-27:
+
+- current V1 runtime id: `you_know_who`
+- current public label: `You know who`
+- source boundary: Enzo-derived distilled persona layer after abstraction and
+  IP sanitization
+- legacy alias only: `obsidian_tactical_coach` / `黑曜战术官`
+- public UI must not expose Enzo/恩佐 or official-character positioning
+
 Goal:
 
 - provide an original default character posture for public release.

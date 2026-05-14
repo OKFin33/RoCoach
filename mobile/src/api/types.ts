@@ -1,6 +1,7 @@
 export type AgentResponseStatus = "ok" | "degraded" | "refused" | "failed";
 
 export type AnalysisType =
+  | "chat_response"
   | "team_analysis"
   | "species_analysis"
   | "session_command"
@@ -166,16 +167,43 @@ export type MetadataResponse = {
   features: string[];
 };
 
+export type ModelDiagnosticRequest = {
+  prompt?: string;
+};
+
+export type ModelDiagnosticResponse = {
+  status: "ok" | "failed";
+  diagnostic_code: string;
+  message: string;
+  provider_family_hint: string;
+};
+
 export type ChatRequest = {
   message: string;
   session_id?: string | null;
   persona_selector?: PersonaSelector | null;
   persona_id?: string | null;
+  context_attachments?: TeamContextAttachment[];
 };
 
 export type ChatResponse = {
   session_id: string;
   response: AgentResponse;
+  session_event?: SessionEvent | null;
+};
+
+export type SessionEvent = {
+  type: "started" | "continued" | "reconciled" | "cleared" | "rolled_over";
+  reason: string;
+  message: string;
+  user_action?: string | null;
+  diagnostic: {
+    agent_context?: string;
+    visible_messages?: "unchanged" | "mark_stale" | "clear" | string;
+    archive?: string;
+    support_code?: string;
+    [key: string]: unknown;
+  };
 };
 
 export type TeamSlotInput = {
@@ -193,6 +221,8 @@ export type SpeciesSearchItem = {
   species_id: string;
   display_name: string;
   initial_species_name?: string | null;
+  form_name?: string | null;
+  regional_form_name?: string | null;
   primary_type: string;
   secondary_type?: string | null;
 };
@@ -204,4 +234,69 @@ export type SpeciesSearchResponse = {
 
 export type SpeciesProfileResponse = {
   profile: Record<string, unknown>;
+};
+
+export type SpeciesMoveRecord = {
+  species_id: string;
+  move_id?: string | null;
+  move_name: string;
+  move_type?: string | null;
+  category_raw?: string | null;
+  access_channel: string;
+  unlock_level?: number | null;
+  power?: number | null;
+  effect_text?: string | null;
+};
+
+export type SpeciesMovesResponse = {
+  species_id: string;
+  moves: SpeciesMoveRecord[];
+};
+
+export type TeamStatKey = "hp" | "atk" | "defense" | "spa" | "spd" | "spe";
+
+export type TeamAbilitySnapshot = {
+  ability_name: string;
+  effect_text?: string | null;
+};
+
+export type TeamMoveSelection = {
+  move_id: string;
+  move_name: string;
+  access_channel?: string | null;
+  move_type?: string | null;
+  category_raw?: string | null;
+};
+
+export type TeamNature = {
+  label?: string | null;
+  plus_stat?: TeamStatKey | null;
+  minus_stat?: TeamStatKey | null;
+};
+
+export type TeamIndividualValueBonus = {
+  stat: TeamStatKey;
+  value: number;
+};
+
+export type TeamContextSlot = {
+  slot_index: number;
+  species_id: string;
+  display_name: string;
+  primary_type: string;
+  secondary_type?: string | null;
+  fixed_ability?: TeamAbilitySnapshot | null;
+  selected_moves: TeamMoveSelection[];
+  nature: TeamNature;
+  individual_value_bonuses: TeamIndividualValueBonus[];
+  notes?: string | null;
+};
+
+export type TeamContextAttachment = {
+  kind: "team_context";
+  schema_version: "team_context.v1";
+  source: "team_builder";
+  team_id: string;
+  active: true;
+  slots: TeamContextSlot[];
 };
