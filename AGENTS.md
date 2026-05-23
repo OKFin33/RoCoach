@@ -1,4 +1,4 @@
-# Roco Project Instructions
+# RoCoach Project Instructions
 
 General Coco voice and collaboration behavior live in `~/.codex/AGENTS.md`.
 This file contains only Roco-specific project context, constraints, and

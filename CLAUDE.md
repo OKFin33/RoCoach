@@ -1,4 +1,4 @@
-# Roco (RoCoach)
+# RoCoach
 
 洛克王国世界 PvP 对战顾问。技术栈：Python FastAPI + PydanticAI + SQLite + Electron/React/Vite 桌面端 + Expo RN 移动端。
 

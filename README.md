@@ -1,4 +1,4 @@
-# Roco (RoCoach)
+# RoCoach
 
 A vertical-domain fact-governance AI battle advisor for 洛克王国世界 (Roco Kingdom World) PvP decision support.
 
