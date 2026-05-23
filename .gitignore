@@ -49,6 +49,9 @@ docs/specs/current_work.md
 artifacts/
 
 # Local AI assistant configuration
+AGENTS.md
+CLAUDE.md
+.codex/
 .claude/
 .agent/
 
