@@ -1,0 +1,69 @@
+schema_version: p14.dataset_pipeline_dashboard.v0
+batch_id: phase50_s2_overlay_reblock_and_post_s2_expansion_2026-05-23
+generated_at: '2026-05-23T22:40:49.412712+08:00'
+runtime_allowed: false
+validation_status: p14_validator_focused_tests_hash_checks_passed
+validator_note: 'P14 strict validator passed; focused tests passed: test_p14_knowledge_graph_validate,
+  test_p14_s2_a_layer_overlay_snapshot, test_p14_phase50_s2_overlay_reblock, transcript_ab_refine,
+  transcript_quality, video_evidence_foundation, p14_source_queue_expand, p14_volume_ingest_batch.
+  Runtime DB hash unchanged; snapshot hash self-check passed.'
+source_count: 11
+source_ids:
+- kgsrc_bili_bv16v9hbpenj
+- kgsrc_bili_bv1dkoxbyezc
+- kgsrc_bili_bv1kd5s6lecy
+- kgsrc_bili_bv1r796brefs
+- kgsrc_bili_bv1upgt64ees
+- kgsrc_bili_bv1cygb67eyu
+- kgsrc_bili_bv15ygq6beu8
+- kgsrc_bili_bv1fely6pe7g
+- kgsrc_bili_bv1upgi6jenf
+- kgsrc_bili_bv1q9lb6xeyv
+- kgsrc_bili_bv1nwgb6uezi
+source_epoch_counts:
+  post_s2_candidate: 6
+  pre_s2_source: 4
+  s2_boundary_source: 1
+source_segment_count: 2519
+repair_required_segment_count: 0
+candidate_item_count: 84
+candidate_item_counts_by_type:
+  mechanism_dependency_signal: 29
+  relation_candidate: 20
+  species_set_candidate_from_source_inventory: 35
+blocked_item_count: 84
+review_candidate_count: 0
+blocker_counts:
+  cross_source_consolidation_required: 35
+  incomplete_move_slots: 35
+  mechanism_rule_not_reviewed: 33
+  pm_review_required: 84
+  pre_s2_historical_evidence_requires_post_s2_confirmation_or_pm_review: 20
+  s2_a_layer_overlay_referenced_pm_review_gold_gate_required: 8
+  single_evidence_window: 29
+  source_inventory_not_reviewed: 35
+  source_phrase_only: 20
+phase50_reblock_summary:
+  phase48_historical_item_count: 20
+  phase49_old_s2_reference_surface_blocker_count: 5
+  phase49_new_s2_overlay_referenced_gate_count: 5
+  expansion_s2_overlay_referenced_gate_count: 3
+  runtime_allowed: false
+clustering_summary:
+  explicit_clustering_report: artifacts/knowledge_ops/dataset_pipeline_runs/phase50_s2_overlay_reblock_and_post_s2_expansion_2026-05-23/clustering_report.yaml
+  decision_counts:
+    same_family_or_insufficient_split_evidence: 47
+    alter_variant_observations: 4
+    split_blocked: 1
+    separate_set: 0
+    family_review_candidate: 0
+  runtime_allowed: false
+expansion_summary:
+  source_ids:
+  - kgsrc_bili_bv1q9lb6xeyv
+  - kgsrc_bili_bv1nwgb6uezi
+  source_count: 2
+  source_policy: P1/P2 current-season PvP source expansion; failed source-boundary
+    candidates are recorded in queue audit, not forced into evidence.
+pm_attention_required: true
+stop_reasons: []

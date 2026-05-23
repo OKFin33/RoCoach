@@ -1,0 +1,81 @@
+schema_version: p14.phase52_recluster_gate_dashboard.v0
+batch_id: phase52_post_s2_recluster_gate_2026-05-23
+generated_at: '2026-05-23T23:31:20.828269+08:00'
+runtime_allowed: false
+promotion_status: candidate_only_recluster_gate_no_runtime_no_gold_no_reviewed_graph
+validation_status: p14_validator_focused_tests_hash_checks_passed
+validator_note: 'P14 strict validator passed; focused tests passed: test_p14_knowledge_graph_validate,
+  test_p14_s2_a_layer_overlay_snapshot, test_p14_phase50_s2_overlay_reblock, test_p14_recluster_split_blockers,
+  test_p14_set_inventory_consolidator, p14_source_queue_expand, p14_volume_batch_plan,
+  p14_volume_ingest_batch, transcript_ab_refine, transcript_quality, video_evidence_foundation.
+  Runtime DB hash unchanged; snapshot hash self-check passed.'
+inputs:
+  phase51_gate_report: artifacts/knowledge_ops/dataset_pipeline_runs/phase51_post_s2_high_signal_volume_gate_2026-05-23/gate_report.yaml
+  phase51_consolidation: artifacts/knowledge_ops/set_inventory_consolidation/phase51_post_s2_high_signal_volume_ingest_2026-05-23_consolidation.yaml
+  recluster_audit: artifacts/knowledge_ops/recluster/phase52_post_s2_recluster_after_phase51_2026-05-23.yaml
+metrics:
+  phase51_requested_source_count: 21
+  phase51_processed_source_count: 20
+  phase51_complete_4_moves_count: 1
+  phase51_partial_2_3_moves_count: 11
+  split_blocked_count: 47
+  focused_species_count: 15
+  recluster_candidate_proposal_count: 34
+  pm_recluster_candidate_count: 0
+  algorithmic_family_review_candidate_count: 38
+  pm_required_recluster_candidate_count: 0
+  split_blocker_queue_count: 24
+  next_source_p1_count: 7
+  next_source_p2_count: 8
+  s2_overlay_gated_count_from_phase51: 53
+  unresolved_mechanism_rule_blocker_count_from_phase51: 31
+  a_layer_boundary_unresolved_count: 0
+  a_layer_boundary_s2_overlay_referenced_count: 27
+  gold_accepted_item_paths_count: 0
+  pm_attention_required_count: 0
+clustering_summary:
+  explicit_clustering_report: artifacts/knowledge_ops/dataset_pipeline_runs/phase52_post_s2_recluster_gate_2026-05-23/clustering_report.yaml
+  decision_counts:
+    same_family_or_insufficient_split_evidence: 193
+    alter_variant_observations: 1319
+    split_blocked: 47
+    split_hypothesis_decision: 43
+    separate_set: 0
+    family_review_candidate: 38
+    algorithmic_family_review_candidate: 38
+    pm_required_review_candidate: 0
+  recluster_gate_status_counts:
+    candidate_cluster_needs_axis_resolution: 2
+    needs_more_focused_full_core_sources: 5
+    needs_more_full_core_sources: 15
+    previously_deferred_core: 2
+    already_reviewed_core: 2
+    blocked_by_reviewed_core_overlap: 8
+  runtime_allowed: false
+candidate_blocker_counts_from_phase51:
+  mechanism_rule_not_reviewed: 31
+  pm_review_required: 316
+  role_needs_review: 266
+  selected_moves_missing: 249
+  single_evidence_window: 302
+  source_phrase_only: 14
+quality_gates:
+  phase51_volume_gate_processed_min_met: true
+  explicit_clustering_report_present: true
+  split_blocker_queue_present: true
+  next_source_priority_list_present: true
+  a_layer_overlay_boundary_ok: true
+  no_pm_ready_auto_promotion_candidates: true
+  runtime_allowed: false
+  gold_accepted: false
+  reviewed_graph_materialized: false
+next_action:
+  action: continue_post_s2_high_signal_volume_lane_with_focused_discovery_mix
+  reason: Phase52 found no PM-ready split promotion; the bottleneck is focused source
+    diversity plus role/build-axis evidence.
+  pm_attention_required: false
+hard_invariants:
+  may_write_runtime_db: false
+  may_auto_accept_gold: false
+  may_materialize_reviewed_graph_cards: false
+  requires_pm_review_before_gold_or_runtime: true

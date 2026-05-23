@@ -1,0 +1,51 @@
+schema_version: p14.snapshot_manifest.v0
+snapshot_id: phase52_post_s2_recluster_gate_2026-05-23
+created_at: '2026-05-23T23:31:20.923525+08:00'
+runtime_allowed: false
+promotion_status: candidate_only_phase52_recluster_gate_snapshot
+artifacts:
+- path: artifacts/knowledge_ops/dataset_pipeline_runs/phase52_post_s2_recluster_gate_2026-05-23/clustering_report.yaml
+  sha256: b7e01d443610b760415b7f04ef8aa033c1ee8cb576500e8f73ac7b49d204aa02
+  bytes: 34954
+- path: artifacts/knowledge_ops/dataset_pipeline_runs/phase52_post_s2_recluster_gate_2026-05-23/recluster_report.yaml
+  sha256: d2c1d854718c6210299b959254a440d85d9c625461f99b85f266283146ea12dc
+  bytes: 42195
+- path: artifacts/knowledge_ops/dataset_pipeline_runs/phase52_post_s2_recluster_gate_2026-05-23/split_blocker_queue.yaml
+  sha256: 00ffff80da2ef659701a4588e391419eb3def08830839d908634abea199d7a3e
+  bytes: 10893
+- path: artifacts/knowledge_ops/dataset_pipeline_runs/phase52_post_s2_recluster_gate_2026-05-23/next_source_priority_list.yaml
+  sha256: 0ae60e7c2bc08371dd4684c29de892e2a43ee9955af38401edb836a62265e639
+  bytes: 12173
+- path: artifacts/knowledge_ops/dataset_pipeline_runs/phase52_post_s2_recluster_gate_2026-05-23/a_layer_boundary_check.yaml
+  sha256: 766b82e70155d8134ea1bd3c24b2d4b7bfebcd89a52920af949e039c7aa65b32
+  bytes: 40170
+- path: artifacts/knowledge_ops/dataset_pipeline_runs/phase52_post_s2_recluster_gate_2026-05-23/dashboard.yaml
+  sha256: de285557ad3d6a18418fac394c9a411510e1b8d870b4f21e0940d3f744180e2b
+  bytes: 3643
+- path: data/knowledge_graph/v0/eval/quality_dashboard_phase52_post_s2_recluster_gate_2026-05-23.yaml
+  sha256: de285557ad3d6a18418fac394c9a411510e1b8d870b4f21e0940d3f744180e2b
+  bytes: 3643
+- path: artifacts/knowledge_ops/dataset_pipeline_runs/phase52_post_s2_recluster_gate_2026-05-23/pm_review_packet.md
+  sha256: 79ba00a537ef9c6a904aac09782b9e9858041741ece0847d4593e1107312a21a
+  bytes: 4231
+- path: artifacts/knowledge_ops/dataset_pipeline_runs/phase52_post_s2_recluster_gate_2026-05-23/validation_evidence.yaml
+  sha256: c7b42de812bc23f443165777612c70673b4c5a1fc7e026c97ad492df29db9c1d
+  bytes: 2028
+- path: artifacts/knowledge_ops/dataset_pipeline_runs/phase52_post_s2_recluster_gate_2026-05-23/provenance_manifest.yaml
+  sha256: c83bd1b92eb8ad2327068c2925ac5f01574d72f654e8ffa9aa96ca9186d880a2
+  bytes: 3614
+- path: artifacts/knowledge_ops/dataset_pipeline_runs/phase51_post_s2_high_signal_volume_gate_2026-05-23/gate_report.yaml
+  sha256: 17a2dd15d30973f047344c86befae0a0addc8189a78127e01f97944f7cc66ff9
+  bytes: 3439
+- path: data/knowledge_graph/v0/eval/quality_dashboard_phase51_post_s2_high_signal_volume_gate_2026-05-23.yaml
+  sha256: 17a2dd15d30973f047344c86befae0a0addc8189a78127e01f97944f7cc66ff9
+  bytes: 3439
+- path: artifacts/knowledge_ops/set_inventory_consolidation/phase51_post_s2_high_signal_volume_ingest_2026-05-23_consolidation.yaml
+  sha256: d48348912d775fe34baa7ef38ba934e27168c2ac405a1b40ee8a63717d3563aa
+  bytes: 2949915
+- path: artifacts/knowledge_ops/recluster/phase52_post_s2_recluster_after_phase51_2026-05-23.yaml
+  sha256: d2c1d854718c6210299b959254a440d85d9c625461f99b85f266283146ea12dc
+  bytes: 42195
+- path: data/knowledge_graph/v0/eval/gold_set_v0_manifest.yaml
+  sha256: c9496462b878684b38e8fa7534608951b022705519521f61dfc543969452920c
+  bytes: 1320

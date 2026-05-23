@@ -72,3 +72,31 @@ packets:
       - S1 Battle Dex is frozen as a byte-identical copy under data/runtime/snapshots/s1_2026-05-20.
       - S2 overlay is candidate-only and must not overwrite data/runtime/battle_dex.sqlite.
       - 水刃 is represented as response-state attached-effect energy reduction -4 to -3, not a base energy_cost change.
+  - packet_id: phase50_s2_overlay_reblock_and_post_s2_expansion_2026-05-23
+    packet_path: artifacts/knowledge_ops/dataset_pipeline_runs/phase50_s2_overlay_reblock_and_post_s2_expansion_2026-05-23/pm_review_packet.md
+    candidate_path: artifacts/knowledge_ops/dataset_pipeline_runs/phase50_s2_overlay_reblock_and_post_s2_expansion_2026-05-23/candidate_kg_items.yaml
+    status: pm_reviewed_candidate_only_decisions_recorded
+    decisions:
+      - decision_id: phase50_accept_blocker_migration_semantics
+        decision: accepted
+        scope: blocker_migration_semantics
+        detail: Phase50 OLD S2 reference-surface blocker to NEW S2 overlay-referenced gate migration is accepted.
+      - decision_id: phase50_accept_phase48_pre_s2_historical_only
+        decision: accepted
+        scope: phase48_epoch_boundary
+        detail: Phase48 is retained only as pre-S2 historical evidence, not current post-S2 truth.
+      - decision_id: phase50_queue_gold_negative_candidates
+        decision: queue_for_gold_review_not_accepted
+        scope: gold_negative_candidates
+        candidate_path: artifacts/knowledge_ops/gold_candidates/phase50_gold_negative_candidates_2026-05-23.yaml
+        review_packet: artifacts/knowledge_ops/review_packets/phase50_gold_negative_candidates_review_2026-05-23.md
+        detail: Two Gold negative candidates enter the later Gold review queue but are not accepted Gold.
+      - decision_id: phase50_continue_post_s2_high_signal_volume_lane_after_clustering_report
+        decision: accepted_after_clustering_report
+        scope: volume_lane_continuation
+        detail: Post-S2 high-signal volume lane may continue after explicit clustering_report artifact exists.
+    runtime_allowed: false
+    notes:
+      - PM accepted candidate-only semantics; this is not reviewed graph, Gold acceptance, or runtime promotion.
+      - Gold accepted_item_paths remains unchanged.
+      - Explicit clustering report is required before continuing post-S2 high-signal volume lane.

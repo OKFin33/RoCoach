@@ -1,0 +1,90 @@
+schema_version: p14.phase51_volume_batch_gate.v0
+batch_id: phase51_post_s2_high_signal_volume_gate_2026-05-23
+generated_at: '2026-05-23T23:10:26.381464+08:00'
+runtime_allowed: false
+promotion_status: candidate_only_volume_gate_no_runtime_no_gold_no_reviewed_graph
+source_policy:
+  post_s2_min_published_at: '2026-05-21'
+  source_boundary: PvP/team/set/relation sources only
+  target_batch_range:
+    min: 20
+    max: 30
+  processed_source_floor: 20
+inputs:
+  volume_plan: artifacts/knowledge_ops/volume_batches/phase51_post_s2_high_signal_volume_plan_2026-05-23.yaml
+  volume_ingest_audit: artifacts/knowledge_ops/audits/phase51_post_s2_high_signal_volume_ingest_2026-05-23.yaml
+  consolidation: artifacts/knowledge_ops/set_inventory_consolidation/phase51_post_s2_high_signal_volume_ingest_2026-05-23_consolidation.yaml
+  autorun_dashboard: artifacts/knowledge_ops/autorun/phase51_post_s2_high_signal_volume_ingest_2026-05-23_autorun_dashboard.yaml
+metrics:
+  requested_source_count: 21
+  processed_source_count: 20
+  blocked_source_count: 1
+  effective_set_dossier_count: 32
+  complete_4_moves_count: 1
+  partial_2_3_moves_count: 11
+  newly_multi_source_species_count: 8
+  newly_multi_source_species:
+    化蝶: 2
+    寂灭骨龙: 2
+    尖嘴狐仙: 2
+    恶魔狼: 2
+    水灵: 2
+    海豹船长: 3
+    火神: 2
+    雪影娃娃: 3
+  emerging_count: 36
+  split_blocked_count: 47
+  needs_more_source_count: 44
+  review_candidate_count: 18
+  family_review_candidate_count: 38
+  s2_overlay_gated_count: 53
+  set_candidate_count: 302
+  relation_candidate_count: 14
+  quarantined_candidate_count: 302
+  candidate_blocker_counts:
+    mechanism_rule_not_reviewed: 31
+    pm_review_required: 316
+    role_needs_review: 266
+    selected_moves_missing: 249
+    single_evidence_window: 302
+    source_phrase_only: 14
+  pm_attention_required_count: 0
+  control_gate_pm_attention_required_count: 0
+  promotion_pm_attention_required_count: 0
+  a_layer_boundary_unresolved_count: 0
+  a_layer_boundary_s2_overlay_referenced_count: 23
+quality_gates:
+  post_s2_high_signal_queued_count: 21
+  post_s2_high_signal_processed_min_met: true
+  source_evidence_preserved_for_processed_sources: true
+  a_layer_overlay_boundary_ok: true
+  no_pm_required_review_items: true
+  runtime_allowed: false
+  gold_accepted: false
+  reviewed_graph_materialized: false
+blocked_sources:
+- source_id: kgsrc_bili_bv1drl465eaq
+  status: transcript_blocked
+  reason: no_usable_chinese_subtitle_or_asr_text
+  run_dir: artifacts/knowledge_ops/source_probe/kgsrc_bili_bv1drl465eaq
+  runtime_allowed: false
+pm_required_review_items:
+  count: 0
+  control_gate_count: 0
+  promotion_gate_count: 0
+  dashboard_path: artifacts/knowledge_ops/review_packets/phase51_post_s2_high_signal_volume_ingest_2026-05-23_autorun_dashboard_autorun_dashboard.md
+next_candidate_only_set_graph_expansion_plan:
+  plan_path: artifacts/knowledge_ops/volume_batches/phase51_post_s2_high_signal_volume_plan_2026-05-23.yaml
+  selected_source_count: 21
+  completed_selected_source_count: 21
+  remaining_selected_source_count: 0
+  next_action:
+    action: continue_volume_lane_and_queue_split_blockers
+    reason: split blockers exist, but no new PM decision is required yet
+    pm_attention_required: false
+  runtime_allowed: false
+hard_invariants:
+  may_write_runtime_db: false
+  may_auto_accept_gold: false
+  may_materialize_reviewed_graph_cards: false
+  requires_pm_review_before_gold_or_runtime: true

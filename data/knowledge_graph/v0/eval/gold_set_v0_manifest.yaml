@@ -17,9 +17,12 @@ accepted_item_paths: []
 pending_review_packets:
   - artifacts/knowledge_ops/review_packets/phase47f_gold_set_v0_seed_review_2026-05-21.md
   - artifacts/knowledge_ops/review_packets/phase47f_gold_negative_candidates_review_2026-05-21.md
+  - artifacts/knowledge_ops/review_packets/phase50_gold_negative_candidates_review_2026-05-23.md
 candidate_sources:
   - artifacts/knowledge_ops/gold_candidates/phase47f_gold_set_v0_seed_candidates_2026-05-21.yaml
   - artifacts/knowledge_ops/gold_candidates/phase47f_gold_negative_candidates_2026-05-21.yaml
+  - artifacts/knowledge_ops/gold_candidates/phase50_gold_negative_candidates_2026-05-23.yaml
 notes:
   - Gold acceptance is for eval/calibration only.
   - Gold acceptance does not imply runtime promotion or graph materialization.
+  - Phase50 Gold negative candidates are queued for review only; they are not accepted Gold.
