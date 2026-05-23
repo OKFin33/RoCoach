@@ -1,0 +1,77 @@
+id: "species_set/声波缇塔/mid_speed_spike_2026-s1"
+canonical_species_id: "species_96476169946feb30"
+canonical_species_name: "声波缇塔"
+source_aliases:
+  - "声波提塔"
+moves:
+  - "传感器"
+  - "地刺"
+  - "缠丝劲"
+  - "啮合传递"
+nature: "速度↑魔攻↓"
+individual_value_bonuses:
+  speed: 31
+  atk: 31
+  hp: 31
+ability: "向心力"
+stat_profile:
+  speed: 237
+speed_tier: 237
+role_labels:
+  - "speed_control"
+  - "wallbreaker"
+team_context:
+  common_partners:
+    - "species_set/食尘短绒/spike_pivot_2026-s1"
+    - "species_set/棋绮后/max_speed_reap_2026-s1"
+  archetype_tags:
+    - "光合武队"
+meta_snapshot: "2026-s1"
+graph_origin: "human"
+source_refs:
+  - source_type: "community_video"
+    source_ref: "B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析"
+    claim: "声波提塔（声波缇塔）中速输出，联防补位，打节奏压制，技能为传感器/地刺/缠丝劲/结合传递"
+    date: "2026-05-14"
+    reviewer: "pm"
+    review_date: ""
+    notes: "OCR原料，名称'声波提塔'已校正为'声波缇塔'，技能'结合传递'已校正为'啮合传递'"
+confidence: "observed"
+review_status: "unreviewed"
+notes: "中速输出 + 地刺联防补位。加速性格速度237，为全队中高速输出点。传感器+缠丝劲增加打击面"
+
+related_to:
+  - target_species_set_id: "species_set/棋绮后/max_speed_reap_2026-s1"
+    edge_type: "synergy"
+    description: "中速输出打节奏压制 + 地刺补联防，在棋绮后启动前维持场面均势"
+    reasoning_quality: "partial_chain"
+    conditions:
+      - "在光合武队体系内"
+    confidence: "observed"
+    evidence_refs:
+      - source_type: "community_video"
+        source_ref: "B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析"
+        claim: "中速输出，联防补位，打节奏压制"
+        reasoning_available: true
+        reasoning_summary: "声波缇塔的速度优势可以在棋绮后慢启动期间维持节奏"
+        date: "2026-05-14"
+    tags:
+      - "光合武队"
+      - "节奏压制"
+
+  - target_species_set_id: "species_set/食尘短绒/spike_pivot_2026-s1"
+    edge_type: "synergy"
+    description: "双地刺联防搭档，声波缇塔提供速度压制 + 食尘短绒提供耐久联防"
+    reasoning_quality: "partial_chain"
+    conditions:
+      - "在光合武队体系内"
+    confidence: "observed"
+    evidence_refs:
+      - source_type: "community_video"
+        source_ref: "B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析"
+        claim: "地刺，联防补位"
+        reasoning_available: false
+        date: "2026-05-14"
+    tags:
+      - "光合武队"
+      - "双地刺联防"

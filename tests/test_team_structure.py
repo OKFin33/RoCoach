@@ -4,8 +4,8 @@ import unittest
 from pathlib import Path
 import json
 
-from battle_engine.contracts import TeamSlot
-from battle_engine.team_structure import TeamStructureAnalyzer
+from engine.contracts import TeamSlot
+from engine.team_structure import TeamStructureAnalyzer
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -77,7 +77,7 @@ class TeamStructureAnalyzerTests(unittest.TestCase):
             [
                 sys.executable,
                 "-m",
-                "battle_engine.phase1_cli",
+                "engine.phase1_cli",
                 "--slot",
                 "A,草",
                 "--slot",
@@ -106,7 +106,7 @@ class TeamStructureAnalyzerTests(unittest.TestCase):
             [
                 sys.executable,
                 "-m",
-                "battle_engine.phase1_cli",
+                "engine.phase1_cli",
                 "--input-file",
                 str(EXAMPLE_TEAM),
                 "--format",
@@ -128,7 +128,7 @@ class TeamStructureAnalyzerTests(unittest.TestCase):
             [
                 sys.executable,
                 "-m",
-                "battle_engine.phase1_cli",
+                "engine.phase1_cli",
                 "--input-file",
                 str(EXAMPLE_TEAM),
             ],

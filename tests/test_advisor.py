@@ -23,7 +23,7 @@ from advisor.contracts import (
     ToolStatus,
 )
 from advisor.conversation_cli import resolve_backend_config
-from battle_engine.team_structure import TeamStructureAnalyzer
+from engine.team_structure import TeamStructureAnalyzer
 from advisor.runtime import (
     AgentExecutionTrace,
     AdvisorAgent,
@@ -51,7 +51,7 @@ except ModuleNotFoundError:
 
 ROOT = Path(__file__).resolve().parent.parent
 IMPORTER_RUN_DIR = ROOT / "data" / "importer_runs" / "2026-04-14Tpolicy_b_importer_dry_run"
-SCHEMA_PATH = ROOT / "specs" / "battle_dex_sqlite_schema_v1.sql"
+SCHEMA_PATH = ROOT / "docs" / "specs" / "battle_dex_sqlite_schema_v1.sql"
 
 
 class AdvisorTests(unittest.TestCase):
@@ -417,7 +417,7 @@ class AdvisorTests(unittest.TestCase):
             RouteDecision(Intent.GENERAL_CHAT, ()),
             AdvisorSessionState(),
         )
-        runtime_source = (ROOT / "advisor" / "runtime.py").read_text(encoding="utf-8")
+        runtime_source = (ROOT / "src" / "advisor" / "runtime.py").read_text(encoding="utf-8")
 
         self.assertNotIn("洛克王国世界", instructions)
         self.assertNotIn("Roco is 洛克王国世界", runtime_source)
@@ -625,7 +625,7 @@ class AdvisorTests(unittest.TestCase):
         )
 
     def test_native_prompt_does_not_define_roco_as_public_self_identity(self) -> None:
-        source = (ROOT / "advisor" / "runtime.py").read_text(encoding="utf-8")
+        source = (ROOT / "src" / "advisor" / "runtime.py").read_text(encoding="utf-8")
 
         self.assertNotIn("You are the Roco conversational advisor", source)
         self.assertIn("Answer through the selected public persona", source)
@@ -1122,7 +1122,7 @@ class AdvisorTests(unittest.TestCase):
         self.assertEqual(response.backend, "pydantic_ai_native")
         self.assertTrue(any(tool.tool_name == "analyze_team_structure" for tool in response.tool_results))
         self.assertTrue(any(tool.tool_name == "analyze_team_semantics_guard" for tool in response.tool_results))
-        self.assertTrue(any(item.source_label == "battle_engine.team_structure" for item in response.evidence_summary))
+        self.assertTrue(any(item.source_label == "engine.team_structure" for item in response.evidence_summary))
         self.assertTrue(any("unknown-quality team" in note for note in response.confidence_notes))
         self.assertTrue(any("confirmed" in note.lower() for note in response.confidence_notes))
         self.assertTrue(any("双属性" in note for note in response.confidence_notes))

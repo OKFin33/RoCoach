@@ -1,0 +1,55 @@
+schema_version: p14.s2_official_balance_source_manifest.v0
+id: s2_2026-05-20_official_balance_source_manifest_v0
+created_at: '2026-05-23T00:00:00+08:00'
+runtime_allowed: false
+promotion_status: source_evidence_only
+source:
+  source_type: official_roco_patch_note
+  article_title: S2赛季平衡性调整说明
+  news_id: '18788872'
+  article_page_url: https://rocom.qq.com/web202507/sub/detail.html?newsid=18788872
+  source_api_url: https://apps.game.qq.com/wmp/v3.1/public/searchNews.php?p0=467&source=web_pc&id=18788872
+  discovered_from_article_url: https://rocom.qq.com/web202507/sub/detail.html?newsid=18788208
+  created_at_source: '2026-05-20 18:28:19'
+  indexed_at_source: '2026-05-21 08:00:00'
+  publisher: 洛克王国：世界官方网站
+  capture_method: official_searchNews_endpoint_fetch
+local_preservation:
+  root: data/knowledge_graph/v0/patch_deltas/s2_2026-05-20_official_balance_sources
+  raw_api_response_ref: data/knowledge_graph/v0/patch_deltas/s2_2026-05-20_official_balance_sources/official_article_18788872_api_response.js
+  html_content_ref: data/knowledge_graph/v0/patch_deltas/s2_2026-05-20_official_balance_sources/official_article_18788872_content.html
+  text_content_ref: data/knowledge_graph/v0/patch_deltas/s2_2026-05-20_official_balance_sources/official_article_18788872_text.md
+  image_refs:
+  - id: s2_balance_official_img_001
+    url: https://img.itop.qq.com/images/920ad8e2eb4fe9dcf42b54e74fce315015517a6d.png
+    repo_path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-20_official_balance_sources/s2_balance_official_img_001.png
+    sha256: 4914d3e966376a8f751f807eef3ab291e4c8117e4527b397724dc0f6747fd75b
+    visible_scope: article_header_image
+coverage:
+  starts_from: S2赛季平衡性调整说明
+  contains_structured_text: true
+  covers_existing_species_stat_deltas: true
+  covers_existing_species_ability_deltas: true
+  covers_move_pool_additions: true
+  covers_move_effect_deltas: true
+  covers_wording_only_description_deltas: true
+  excludes_new_s2_species_base_records: true
+files:
+- path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-20_official_balance_sources/official_article_18788872_api_response.js
+  sha256: 10c8671e31d7ef8906d6417fb1f8be3c861bedc60740ecf3fc13ad83628a55dc
+  bytes: 23025
+- path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-20_official_balance_sources/official_article_18788872_content.html
+  sha256: 8adf519457a7c22c24069d0a231c082f609369c3c00ddf1777307b2bd7d30fad
+  bytes: 13353
+- path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-20_official_balance_sources/official_article_18788872_text.md
+  sha256: 6ab9e5b36380ecb27c17879a24d58ca5b9d8b40613f0dd15dbd32ce6d7e10ca0
+  bytes: 11678
+- path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-20_official_balance_sources/s2_balance_official_img_001.png
+  sha256: 4914d3e966376a8f751f807eef3ab291e4c8117e4527b397724dc0f6747fd75b
+  bytes: 131140
+use_policy:
+  may_upgrade_patch_delta_source_reliability: true
+  may_overwrite_a_layer_db: false
+  may_enter_runtime_answers_directly: false
+  requires_reconciliation_before_candidate_use: true
+  requires_pm_or_validator_gate_before_promotion: true

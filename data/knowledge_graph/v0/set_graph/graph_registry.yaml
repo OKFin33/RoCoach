@@ -1,0 +1,38 @@
+meta_snapshot: "2026-s1"
+last_updated: "2026-05-18"
+
+species_sets:
+  - id: "species_set/针叶巡林/photosynthesis_lead_2026-s1"
+    graph_origin: "human"
+    review_status: "unreviewed"
+    case_migration_status: null
+
+  - id: "species_set/食尘短绒/spike_pivot_2026-s1"
+    graph_origin: "human"
+    review_status: "unreviewed"
+    case_migration_status: null
+
+  - id: "species_set/芋香巨角蛛/low_cost_poison_pivot_2026-s1"
+    graph_origin: "human"
+    review_status: "unreviewed"
+    case_migration_status: null
+
+  - id: "species_set/声波缇塔/mid_speed_spike_2026-s1"
+    graph_origin: "human"
+    review_status: "unreviewed"
+    case_migration_status: null
+
+  - id: "species_set/布克棱岩/pressure_tank_2026-s1"
+    graph_origin: "human"
+    review_status: "unreviewed"
+    case_migration_status: null
+
+  - id: "species_set/棋绮后/max_speed_reap_2026-s1"
+    graph_origin: "human"
+    review_status: "unreviewed"
+    case_migration_status: null
+
+  - id: "species_set/圣羽翼王/waterblade_physical_2026-s1"
+    graph_origin: "human"
+    review_status: "reviewed"
+    case_migration_status: null

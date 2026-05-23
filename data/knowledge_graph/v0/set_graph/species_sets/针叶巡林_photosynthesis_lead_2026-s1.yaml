@@ -1,0 +1,78 @@
+id: "species_set/针叶巡林/photosynthesis_lead_2026-s1"
+canonical_species_id: "species_722e30d91c925c4e"
+canonical_species_name: "针叶巡林"
+source_aliases: []
+moves:
+  - "防御"
+  - "光合作用"
+  - "藤绞"
+  - "截拳"
+nature: "物攻↑魔攻↓"
+individual_value_bonuses:
+  speed: 31
+  atk: 31
+  defense: 31
+  spd: 31
+ability: "野性感官"
+stat_profile:
+  speed: 246
+speed_tier: 246
+role_labels:
+  - "hazard_setter"
+  - "pivot"
+team_context:
+  common_partners:
+    - "species_set/食尘短绒/spike_pivot_2026-s1"
+    - "species_set/棋绮后/max_speed_reap_2026-s1"
+  archetype_tags:
+    - "光合武队"
+meta_snapshot: "2026-s1"
+graph_origin: "human"
+source_refs:
+  - source_type: "community_video"
+    source_ref: "B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析"
+    claim: "针叶巡林首发挂光合印记，前排压制，技能配置为防御/光合作用/藤绞/截拳"
+    date: "2026-05-14"
+    reviewer: "pm"
+    review_date: ""
+    notes: "OCR原料，名称已校正。2026-05-16机制校正: 光合印记来源锁定为技能光合作用，当前阵容内稳定加印记者为针叶巡林"
+confidence: "observed"
+review_status: "unreviewed"
+notes: "首发位。通过光合作用建立全队光合印记资源窗口（光合印记回合末回1能），不是单独给棋绮后的叠层；前排压制。野性感官特性提供应对后先手+1"
+
+related_to:
+  - target_species_set_id: "species_set/棋绮后/max_speed_reap_2026-s1"
+    edge_type: "synergy"
+    description: "首发用光合作用启动全队光合印记/能量窗口 + 前排压制，为棋绮后等后续输出创造安全启动和收割环境"
+    reasoning_quality: "partial_chain"
+    conditions:
+      - "在光合武队体系内"
+    confidence: "observed"
+    evidence_refs:
+      - source_type: "community_video"
+        source_ref: "B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析"
+        claim: "利用光合印记建立低费技能循环，先服务全队能量续航，再为棋绮后输出创造环境"
+        reasoning_available: true
+        reasoning_summary: "针叶巡林是稳定光合印记来源；印记按全队资源窗口理解，后续通过地刺/联防拖回合放大回能收益，最终给棋绮后等输出创造收割机会"
+        date: "2026-05-14"
+    tags:
+      - "光合武队"
+      - "印记体系"
+
+  - target_species_set_id: "species_set/食尘短绒/spike_pivot_2026-s1"
+    edge_type: "synergy"
+    description: "针叶巡林首发用光合作用挂光合资源窗口 → 食尘短绒接棒联防 + 地刺拖回合，保护队伍能量收益"
+    reasoning_quality: "partial_chain"
+    conditions:
+      - "在光合武队体系内"
+    confidence: "observed"
+    evidence_refs:
+      - source_type: "community_video"
+        source_ref: "B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析"
+        claim: "利用地刺拖回合，通过地刺、偷回合等机制保护光合资源窗口与联防"
+        reasoning_available: true
+        reasoning_summary: "针叶巡林首发启动光合印记后，由食尘短绒接替联防，地刺持续消耗并保护回能窗口"
+        date: "2026-05-14"
+    tags:
+      - "光合武队"
+      - "首发联防链"

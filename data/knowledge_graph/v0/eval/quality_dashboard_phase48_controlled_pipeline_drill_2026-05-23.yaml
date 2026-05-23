@@ -1,0 +1,82 @@
+schema_version: p14.dataset_pipeline_dashboard.v0
+batch_id: phase48_controlled_pipeline_drill_2026-05-23
+generated_at: '2026-05-23T15:17:50.458894+08:00'
+runtime_allowed: false
+validation_status: passed
+validator_note: P14 strict validator passed; focused unit tests passed; graph materialization
+  validator not run because no graph/set card was materialized.
+source_count: 4
+source_ids:
+- kgsrc_bili_bv16v9hbpenj
+- kgsrc_bili_bv1dkoxbyezc
+- kgsrc_bili_bv1kd5s6lecy
+- kgsrc_bili_bv1r796brefs
+source_segment_count: 1220
+repair_required_segment_count: 0
+candidate_item_count: 20
+candidate_item_counts_by_type:
+  species_set_candidate_from_source_inventory: 9
+  relation_candidate: 6
+  mechanism_dependency_signal: 5
+field_unresolved_or_not_observed_count: 51
+blocked_item_count: 20
+blocker_counts:
+  cross_source_consolidation_required: 9
+  incomplete_move_slots: 9
+  mechanism_rule_not_reviewed: 7
+  pm_review_required: 20
+  single_evidence_window: 5
+  source_inventory_not_reviewed: 9
+  source_phrase_only: 6
+set_pipeline_summary:
+  set_candidate_count: 77
+  s2_set_candidate_count: 9
+  relation_candidate_count: 6
+  blocker_counts:
+    mechanism_rule_not_reviewed: 7
+    pm_review_required: 83
+    role_needs_review: 62
+    selected_moves_missing: 68
+    single_evidence_window: 77
+    source_phrase_only: 6
+  quarantined_count: 77
+inventory_summary:
+  source_count: 4
+  coverage_record_count: 17
+  set_dossier_count: 9
+  complete_4_moves_count: 0
+  move_pool_4plus_unclustered_count: 0
+  partial_2_3_moves_count: 3
+  single_move_signal_count: 6
+  excluded_move_mention_count: 14
+  top_excluded_move_counts:
+    水刃: 3
+    光刃: 3
+    一拳: 2
+    龙吟: 1
+    示弱: 1
+    击鼓传花: 1
+    雷暴: 1
+    退化: 1
+    反弹: 1
+  species_with_multiple_source_or_dossier_signals:
+    帕帕斯卡: 2
+consolidation_summary:
+  inventory_source_count: 4
+  species_count: 20
+  split_blocked_count: 0
+  review_candidate_count: 0
+  emerging_count: 1
+  needs_more_source_count: 7
+  coverage_only_count: 12
+  split_hypothesis_count: 0
+  set_family_candidate_count: 8
+  family_review_candidate_count: 0
+  primary_source_count: 4
+  supporting_source_count: 0
+s2_status:
+  patch_date: '2026-05-21'
+  pre_s2_source_count: 4
+  s2_blocked_candidate_count: 0
+  policy: pre-S2 evidence remains candidate-only until post-S2 confirmation or PM
+    review

@@ -12,7 +12,7 @@ from tools.import_battle_dex_sqlite import write_sqlite
 
 ROOT = Path(__file__).resolve().parent.parent
 IMPORTER_RUN_DIR = ROOT / "data" / "importer_runs" / "2026-04-14Tpolicy_b_importer_dry_run"
-SCHEMA_PATH = ROOT / "specs" / "battle_dex_sqlite_schema_v1.sql"
+SCHEMA_PATH = ROOT / "docs" / "specs" / "battle_dex_sqlite_schema_v1.sql"
 
 
 class RetrievalPhaseAEvalTests(unittest.TestCase):

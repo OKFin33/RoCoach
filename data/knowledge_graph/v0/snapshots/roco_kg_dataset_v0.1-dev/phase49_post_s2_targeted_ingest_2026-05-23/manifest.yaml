@@ -1,0 +1,26 @@
+schema_version: p14.snapshot_manifest.v0
+snapshot_id: phase49_post_s2_targeted_ingest_2026-05-23
+created_at: '2026-05-23T20:12:06.321455+08:00'
+runtime_allowed: false
+promotion_status: candidate_only_drill_snapshot
+artifacts:
+- path: artifacts/knowledge_ops/dataset_pipeline_runs/phase49_post_s2_targeted_ingest_2026-05-23/source_bundle_manifest.yaml
+  sha256: 978ccb0e0a41c887ee15b35a8c434d86d5ca784a0b833a9c96a3b238c09ee109
+- path: artifacts/knowledge_ops/dataset_pipeline_runs/phase49_post_s2_targeted_ingest_2026-05-23/provenance_manifest.yaml
+  sha256: 804eb18eab3830061c578be20692015c830934773558fe376ebae0384d4212c3
+- path: artifacts/knowledge_ops/dataset_pipeline_runs/phase49_post_s2_targeted_ingest_2026-05-23/candidate_kg_items.yaml
+  sha256: b346ee334e4e1f69b097c941dd89a8fc66377468f935d65b4ce123f68f18a53f
+- path: artifacts/knowledge_ops/dataset_pipeline_runs/phase49_post_s2_targeted_ingest_2026-05-23/field_evidence_index.yaml
+  sha256: 9dfaecb03b09daa00d72d64f43e8215cd5a012f825973ed3e758aec09158ac33
+- path: artifacts/knowledge_ops/dataset_pipeline_runs/phase49_post_s2_targeted_ingest_2026-05-23/dashboard.yaml
+  sha256: fb558b28cf312e0b6de0562f8eadf9f3db23442ded5a2403beec172a57a705d0
+- path: artifacts/knowledge_ops/dataset_pipeline_runs/phase49_post_s2_targeted_ingest_2026-05-23/pm_review_packet.md
+  sha256: 59beb9f86bba6fb9b81f3ee3c6afc1dc2547cf601980454e91f2d2f553cdedb1
+- path: data/knowledge_graph/v0/eval/quality_dashboard_phase49_post_s2_targeted_ingest_2026-05-23.yaml
+  sha256: fb558b28cf312e0b6de0562f8eadf9f3db23442ded5a2403beec172a57a705d0
+- path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-20_official_balance_sources/s2_2026-05-20_official_balance_manifest.yaml
+  sha256: 0c4154a420e5e31c1fc33b8f54c3336540e439d76452660bcdc6732f891633a9
+- path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_patch_delta_pack_v0.yaml
+  sha256: ec0d64647061329c242aecf224a89ee47e8d6eca4e7c4225b57352e6b92f63ed
+- path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_a_layer_reconciliation_v0.yaml
+  sha256: 0a110367355808a7dc6e4ef9e0ae572c21f8c526336897412f786bfd2e0cda88

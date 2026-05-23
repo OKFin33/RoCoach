@@ -1,0 +1,179 @@
+schema_version: p14.review_state.v0
+last_updated: "2026-05-20"
+identity_policy:
+  required_for_new_review_decisions_after: "2026-05-23"
+  legacy_unknown_allowed_before: "2026-05-23"
+  required_fields:
+    - agent_id
+    - run_or_context_id
+    - reviewer_role
+  legacy_note: "This ledger contains PM/product decisions from before run identity capture. Future PM/reviewer decisions must record packet/run context or remain pending."
+pm_decisions:
+  set_graph_v0_target: "100-150 reviewed species_set cards"
+  source_discovery: "agent_owned_bilibili_and_community_sources"
+  source_boundary: "pvp_or_battle_related; gameplay commentary allowed when reasoning is present"
+  mechanism_rule_grain: "guardrail_first"
+  d_layer_scope: "gold_promotion_out_of_scope; analogy_candidates_only"
+  identity_resolution:
+    卡瓦重:
+      status: distinct_forms_confirmed_by_pm
+      policy: require_form_resolution_before_set_review
+      note: "PM clarified on 2026-05-20 that 卡瓦重's three forms have obvious differences."
+      product_consequence: "卡瓦重 set 证据必须绑定到具体形态后才能进入 PM review；否则可能把不同战斗身份误合并。"
+    化蝶:
+      status: form_difference_uncertain_possibly_cosmetic
+      policy: do_not_assume_battle_distinct_forms_without_source_evidence
+      note: "PM clarified on 2026-05-20 that 化蝶 form differences are uncertain and may be cosmetic only."
+      product_consequence: "不要默认按形态拆分化蝶；只有来源把形态与战斗机制、培养或 set 身份绑定时才拆。"
+  configuration_split_policy:
+    status: accepted_by_pm
+    accepted_at: "2026-05-20"
+    policy: build_or_training_axis_can_define_distinct_configuration
+    accept_when:
+      - 性格/个体/培养方向存在明显区别
+      - source ties the difference to output vs bulk/tank, physical vs magical, speed, bloodline, or role/build identity
+      - the split changes how the set should be completed or reviewed
+    does_not_allow:
+      - splitting by one or two skill differences alone
+      - promoting a runtime graph card without source spans and strict validation
+      - treating branch-level acceptance as a complete four-move set
+    product_consequence: "当输出/坦度这类培养轴清楚时，可以认定为同一物种同一 family 下的不同配置；后续 Agent 先按 branch 继续补技能槽、性格/个体、血脉和队友证据。"
+  axis_branch_resolution:
+    寂灭骨龙:
+      axis_id: bulk_defensive_vs_physical_pressure
+      status: pm_accepted_control_plane_boundary
+      accepted_at: "2026-05-20"
+      review_packet: artifacts/knowledge_ops/review_packets/phase36_bonedragon_axis_branch_pm_review_2026-05-20.md
+      identity_axis_audit: artifacts/knowledge_ops/identity_axis_binding/phase36_axis_branch_binding_after_phase35_2026-05-20.yaml
+      decision: "Accept 寂灭骨龙 as one family with two build/configuration branches, not two independent formal set cards yet."
+      branches:
+        bulk_defensive:
+          label: 联防生命/坦度流
+          build_signals:
+            - 生命
+            - 平和
+            - 坦度
+            - 联防
+            - 消耗
+          candidate_moves:
+            - 吓退
+            - 报复
+            - 先发制人
+        physical_pressure:
+          label: 压制输出/物攻流
+          build_signals:
+            - 物攻
+            - 固执
+            - 高物攻
+            - 输出
+            - 压制
+          candidate_moves:
+            - 偷袭
+            - 电弧
+            - 先发制人
+      downstream_policy:
+        runtime_allowed: false
+        graph_materialization_allowed: false
+        next_action: continue_branch_completion_not_runtime_promotion
+        required_before_set_card:
+          - branch-specific source spans for move slots
+          - nature_or_iv evidence where claimed
+          - bloodline and teammate evidence when available
+          - strict validators pass
+  wingking_waterblade_family:
+    review_id: family_review/wingking/waterblade_physical_2026-s1
+    status: pm_reviewed
+    family_name: 水刃物攻线
+    core_moves:
+      - 水刃
+      - 闪击
+      - 力量增效
+    flex_moves:
+      - 光之矛
+    magic_split_policy: do_not_merge_continue_source_expansion
+    parent_species_card_status: split_blocked
+  wingking_waterblade_flash_relation:
+    status: followup_source_expansion
+    hypothesis: 水刃线和闪击流可能很近，同属物攻/迅捷体系，差异可能来自队友配置和翼王特性触发方式
+    fact_status: not_reviewed_not_runtime
+  cosmetic_descriptor_policy:
+    status: accepted_by_pm
+    accepted_at: "2026-05-21"
+    reconfirmed_at: "2026-05-23"
+    reconfirmation_note: "PM clarified that 黑白 should be read as 黑白色炫彩, not as a battle archetype."
+    descriptors:
+      黑白:
+        meaning: "黑白色炫彩/外观描述"
+        not_an_archetype: true
+        source_context:
+          - "黑白虫队"
+          - "黑白爬爬"
+        extraction_policy: "Do not use 黑白 as team archetype, build axis, or set-family identity unless a source separately ties it to battle mechanics."
+        product_consequence: "黑白爬爬 should be parsed as a cosmetic descriptor attached to the observed battle form, not as proof of a distinct 黑白虫队 strategy archetype."
+  stateful_form_evidence_policy:
+    status: accepted_control_plane_boundary
+    accepted_at: "2026-05-21"
+    case: "化蝶/爬爬/萌化"
+    policy: "When a non-final form appears in battle near 萌化/化茧 context, treat it as possible observed battle form derived from an evolved roster species, not automatically as roster_species or species-level set evidence."
+    fields_to_preserve:
+      - roster_species_candidate
+      - observed_battle_form
+      - form_derivation_mechanism
+      - cosmetic_descriptor
+      - move_event
+    product_consequence: "This prevents 萌系 state changes from polluting Set Graph species-set cards while preserving useful tactical evidence."
+dataset_pipeline_drills:
+  phase48_controlled_pipeline_drill_2026-05-23:
+    status: pending_pm_review
+    extractor_identity: codex_coco
+    reviewer_identity: p14_validator_and_pm_packet_gate
+    source_count: 4
+    candidate_item_count: 20
+    decision: candidate_only_packet_created
+    runtime_allowed: false
+    packet_path: artifacts/knowledge_ops/dataset_pipeline_runs/phase48_controlled_pipeline_drill_2026-05-23/pm_review_packet.md
+    candidate_path: artifacts/knowledge_ops/dataset_pipeline_runs/phase48_controlled_pipeline_drill_2026-05-23/candidate_kg_items.yaml
+    dashboard_path: data/knowledge_graph/v0/eval/quality_dashboard_phase48_controlled_pipeline_drill_2026-05-23.yaml
+    snapshot_path: data/knowledge_graph/v0/snapshots/roco_kg_dataset_v0.1-dev/phase48_controlled_pipeline_drill_2026-05-23/manifest.yaml
+    risk_summary:
+      - all_selected_sources_are_pre_s2
+      - review_candidate_count_is_zero
+      - relation_candidates_remain_source_phrase_only
+      - mechanism_dependencies_require_reviewed_rules_before_any_runtime_use
+    supersession: none
+batch_policies:
+  family_level_review:
+    allowed: true
+    meaning: "A stable set family may be reviewed even when the parent species remains split_blocked."
+    does_not_allow:
+      - species_level_standard_set_card
+      - runtime_promotion_without_pm_review
+      - merging unresolved same-species families
+    requires:
+      - at_least_two_primary_sources
+      - at_least_two_repeated_core_moves
+      - core_moves_resolve_to_a_layer_move_names
+      - source_reliability_entries_exist
+      - parent_species_split_boundary_recorded
+      - pm_readable_family_review_packet
+  low_risk_auto_promotion:
+    allowed: true
+    requires:
+      - source_quality_good_or_usable
+      - source_spans_present
+      - a_layer_entities_resolve
+      - no_unresolved_asr_terms_in_promoted_fields
+      - no_open_contradiction
+      - no_high_risk_claim_only_edge
+      - mechanism_refs_reviewed_when_required
+      - no_matching_error_ledger_pattern
+      - strict_validators_pass
+      - promotion_audit_log_entry
+escalation_policy:
+  ask_pm_when:
+    - serious_graph_pollution_risk
+    - mechanism_contradiction_affects_multiple_promotable_assets
+    - candidate_revises_reviewed_mechanism_rule
+    - asr_error_vs_domain_entity_cannot_be_resolved
+    - schema_gap_blocks_repeated_source_pattern
+  default_when_unclear: defer

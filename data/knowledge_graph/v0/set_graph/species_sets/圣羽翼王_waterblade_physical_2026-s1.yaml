@@ -1,0 +1,210 @@
+schema_version: p14.species_set_card.v0
+id: "species_set/圣羽翼王/waterblade_physical_2026-s1"
+kg_item_projection:
+  schema_version: p14.kg_item.v0
+  kg_item_type: set_family
+  crosswalk_ref: "docs/specs/p14_species_set_kg_item_crosswalk_v0.md"
+  projection_status: complete
+  projection_note: "Runtime card shape is preserved, but reviewed fields now carry p14 field provenance and review identity overlay."
+canonical_species_id: "species_cfef25aadf9439cf"
+canonical_species_name: "圣羽翼王"
+source_aliases:
+  - "翼王"
+  - "水刃翼王"
+family_scope:
+  family_name: "水刃物攻线"
+  review_id: "family_review/wingking/waterblade_physical_2026-s1"
+  parent_species_state: "split_blocked"
+  scope_note: "Family-scoped reviewed card only. It does not claim a species-wide standard set for 圣羽翼王."
+moves:
+  - "水刃"
+  - "闪击"
+  - "力量增效"
+flex_moves:
+  - "光之矛"
+ability: "飓风"
+role_labels:
+  - "pivot"
+  - "setup_core"
+  - "speed_control"
+  - "wallbreaker"
+team_context:
+  common_partners: []
+  archetype_tags:
+    - "水刃物攻线"
+    - "迅捷体系候选"
+    - "物攻线"
+meta_snapshot: "2026-s1"
+graph_origin: "human"
+source_refs:
+  - source_type: "expert_review"
+    source_ref: "data/knowledge_graph/v0/review_state/family_review_ledger.yaml#family_review/wingking/waterblade_physical_2026-s1"
+    claim: "PM accepted 圣羽翼王 水刃物攻线 as a family-level reviewed unit with core 水刃/闪击/力量增效; 光之矛 remains flex-only."
+    date: "2026-05-18"
+    reviewer: "pm"
+    review_date: "2026-05-18"
+    notes: "Species-level 圣羽翼王 remains split_blocked because 魔攻/回旋风暴 and 魔攻/水花四溅 lines are unresolved."
+  - source_type: "community_video"
+    source_ref: "https://www.bilibili.com/video/BV1Mj9aBgEhT/"
+    claim: "Set Inventory source evidence contributed to repeated 圣羽翼王 水刃物攻线 core-move support."
+    date: "2026-04-30"
+    reviewer: "pm"
+    review_date: "2026-05-18"
+    notes: "Used as one primary source for the family-level review; not a standalone species-wide set claim."
+  - source_type: "community_video"
+    source_ref: "https://www.bilibili.com/video/BV1B3X3BFE9w/"
+    claim: "Set Inventory source evidence contributed to repeated 圣羽翼王 水刃/闪击/力量增效 support."
+    date: "2026-03-28"
+    reviewer: "pm"
+    review_date: "2026-05-18"
+    notes: "Used as one primary source for the family-level review; not a standalone species-wide set claim."
+  - source_type: "community_video"
+    source_ref: "https://www.bilibili.com/video/BV1kPDkB7Ejo/"
+    claim: "Set Inventory source evidence contributed to repeated 圣羽翼王 水刃/闪击/力量增效 support."
+    date: "2026-04-08"
+    reviewer: "pm"
+    review_date: "2026-05-18"
+    notes: "Used as one primary source for the family-level review; not a standalone species-wide set claim."
+confidence: "observed"
+review_status: "reviewed"
+notes: "PM-reviewed family-scoped card. Core moves are 水刃/闪击/力量增效; 光之矛 is flex-side evidence only. Do not infer nature, IV, bloodline, fixed fourth move, or team partners until source expansion supports them."
+
+mechanism_refs: []
+field_provenance:
+  species:
+    - field_path: "canonical_species_name"
+      source_span_ids:
+        - "span/kgsrc_wingking_best_team_20260328/S0020"
+        - "span/kgsrc_wingking_waterblade_top1_20260408/S0018"
+        - "span/kgsrc_poison_vs_starfall_20260430/S0163"
+      claim_atom_ids: []
+      support_type: explicit
+      notes: "Source spans mention 翼王/圣羽翼王 context; canonical id resolved through A-layer."
+  moves:
+    - field_path: "moves[0]"
+      value: "水刃"
+      source_span_ids:
+        - "span/kgsrc_wingking_best_team_20260328/S0020"
+        - "span/kgsrc_wingking_best_team_20260328/S0053"
+        - "span/kgsrc_wingking_waterblade_top1_20260408/S0018"
+        - "span/kgsrc_wingking_waterblade_top1_20260408/S0157"
+        - "span/kgsrc_poison_vs_starfall_20260430/S0163"
+        - "span/kgsrc_poison_vs_starfall_20260430/S0173"
+      claim_atom_ids: []
+      support_type: explicit
+      notes: "Repeated core move evidence across three primary sources."
+    - field_path: "moves[1]"
+      value: "闪击"
+      source_span_ids:
+        - "span/kgsrc_wingking_best_team_20260328/S0071"
+        - "span/kgsrc_wingking_waterblade_top1_20260408/S0157"
+      claim_atom_ids: []
+      support_type: explicit
+      notes: "Core move accepted by PM family review; source evidence is thinner than 水刃 but repeated across primary sources."
+    - field_path: "moves[2]"
+      value: "力量增效"
+      source_span_ids:
+        - "span/kgsrc_wingking_waterblade_top1_20260408/S0073"
+      claim_atom_ids: []
+      support_type: inferred_from_bundle
+      notes: "Accepted as core by PM family review from consolidated source bundle; not a standalone single-span fact."
+    - field_path: "flex_moves[0]"
+      value: "光之矛"
+      source_span_ids:
+        - "span/kgsrc_poison_vs_starfall_20260430/S0173"
+      claim_atom_ids: []
+      support_type: explicit
+      notes: "PM reviewed as flex-only, not core."
+  nature:
+    - field_path: "configuration.nature"
+      source_span_ids: []
+      claim_atom_ids: []
+      support_type: not_applicable
+      notes: "Not claimed by this family-scoped card."
+  iv:
+    - field_path: "configuration.iv"
+      source_span_ids: []
+      claim_atom_ids: []
+      support_type: not_applicable
+      notes: "Not claimed by this family-scoped card."
+  bloodline:
+    - field_path: "configuration.bloodline"
+      source_span_ids: []
+      claim_atom_ids: []
+      support_type: not_applicable
+      notes: "Not claimed by this family-scoped card."
+  role:
+    - field_path: "role_labels"
+      source_span_ids:
+        - "span/kgsrc_wingking_best_team_20260328/S0020"
+        - "span/kgsrc_wingking_best_team_20260328/S0023"
+        - "span/kgsrc_wingking_waterblade_top1_20260408/S0006"
+        - "span/kgsrc_wingking_waterblade_top1_20260408/S0014"
+        - "span/kgsrc_poison_vs_starfall_20260430/S0163"
+      claim_atom_ids: []
+      support_type: inferred_from_bundle
+      notes: "Semantic role bundle is reviewer-scoped: pivot/setup/speed-control/wallbreaker style, not a deterministic role fact."
+    - field_path: "family_scope.family_name"
+      source_span_ids:
+        - "span/kgsrc_wingking_best_team_20260328/S0020"
+        - "span/kgsrc_wingking_waterblade_top1_20260408/S0018"
+      claim_atom_ids: []
+      support_type: inferred_from_bundle
+      notes: "Family name accepted by PM; it is a reviewed grouping label."
+  teammate_relations:
+    - field_path: "team_context.common_partners"
+      source_span_ids: []
+      claim_atom_ids: []
+      support_type: not_applicable
+      notes: "No teammate relation is promoted by this card."
+  counter_relations:
+    - field_path: "related_to"
+      source_span_ids: []
+      claim_atom_ids: []
+      support_type: not_applicable
+      notes: "No counter/relation edge is promoted by this card."
+  mechanism_dependencies:
+    - field_path: "mechanism_refs"
+      source_span_ids: []
+      claim_atom_ids: []
+      support_type: not_applicable
+      notes: "No reviewed mechanism dependency is promoted by this card."
+review_identity:
+  identity_policy_ref: "docs/specs/p14_species_set_kg_item_crosswalk_v0.md#3-required-overlay-for-reviewed-cards"
+  extractor_role: "materializer_agent"
+  extractor_agent_id: "legacy_unknown"
+  extractor_run_id: "legacy_unknown"
+  reviewer_role: "pm"
+  reviewer_agent_id: "pm"
+  reviewer_run_id: "legacy_unknown"
+  identity_status: "legacy_pre_2026-05-23_identity_policy"
+  notes: "This card was materialized before the agent/run identity requirement existed; future reviewed cards must not use legacy_unknown."
+source_quality:
+  transcript_quality: "good"
+  asr_unresolved_terms: []
+  transcript_method: "subtitle_ai_zh"
+  source_ids:
+    - "kgsrc_poison_vs_starfall_20260430"
+    - "kgsrc_wingking_best_team_20260328"
+    - "kgsrc_wingking_waterblade_top1_20260408"
+  source_span_ids:
+    - "span/kgsrc_wingking_best_team_20260328/S0020"
+    - "span/kgsrc_wingking_best_team_20260328/S0053"
+    - "span/kgsrc_wingking_best_team_20260328/S0071"
+    - "span/kgsrc_wingking_waterblade_top1_20260408/S0018"
+    - "span/kgsrc_wingking_waterblade_top1_20260408/S0073"
+    - "span/kgsrc_wingking_waterblade_top1_20260408/S0157"
+    - "span/kgsrc_poison_vs_starfall_20260430/S0163"
+    - "span/kgsrc_poison_vs_starfall_20260430/S0173"
+  source_inventory_paths:
+    - "artifacts/knowledge_ops/set_inventory/kgsrc_poison_vs_starfall_20260430.source_inventory.yaml"
+    - "artifacts/knowledge_ops/set_inventory/kgsrc_wingking_best_team_20260328.source_inventory.yaml"
+    - "artifacts/knowledge_ops/set_inventory/kgsrc_wingking_waterblade_top1_20260408.source_inventory.yaml"
+promotion:
+  promotion_status: "pm_reviewed"
+  promotion_packet_id: "family_review/wingking/waterblade_physical_2026-s1"
+  runtime_promoted: false
+  runtime_blockers:
+    - "advisor_meta_graph_runtime_not_wired"
+    - "relation_between_waterblade_and_flash_flow_still_under_evidence_expansion"
+related_to: []

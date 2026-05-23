@@ -1,0 +1,114 @@
+schema_version: p14.dataset_pipeline_dashboard.v0
+batch_id: phase49_post_s2_targeted_ingest_2026-05-23
+generated_at: '2026-05-23T20:12:06.225666+08:00'
+runtime_allowed: false
+validation_status: p14_validator_and_focused_tests_passed
+validator_note: 'P14 strict validator passed; focused unittest suite passed: transcript_ab_refine,
+  transcript_quality, video_evidence_foundation, p14_source_queue_expand, p14_volume_ingest_batch,
+  p14_knowledge_graph_validate. Graph validator skipped because Phase49 produced no
+  graph materialization.'
+source_count: 5
+source_ids:
+- kgsrc_bili_bv1upgt64ees
+- kgsrc_bili_bv1cygb67eyu
+- kgsrc_bili_bv15ygq6beu8
+- kgsrc_bili_bv1fely6pe7g
+- kgsrc_bili_bv1upgi6jenf
+source_epoch_counts:
+  post_s2_candidate: 5
+source_segment_count: 881
+repair_required_segment_count: 0
+candidate_item_count: 50
+candidate_item_counts_by_type:
+  species_set_candidate_from_source_inventory: 19
+  relation_candidate: 9
+  mechanism_dependency_signal: 22
+field_unresolved_or_not_observed_count: 116
+blocked_item_count: 50
+review_candidate_count: 0
+blocker_counts:
+  cross_source_consolidation_required: 19
+  incomplete_move_slots: 19
+  mechanism_rule_not_reviewed: 23
+  pm_review_required: 50
+  s2_a_layer_reconciliation_required_before_runtime_or_gold: 5
+  single_evidence_window: 22
+  source_inventory_not_reviewed: 19
+  source_phrase_only: 9
+set_pipeline_summary:
+  set_candidate_count: 98
+  s2_set_candidate_count: 20
+  relation_candidate_count: 9
+  blocker_counts:
+    mechanism_rule_not_reviewed: 23
+    pm_review_required: 107
+    role_needs_review: 73
+    selected_moves_missing: 78
+    single_evidence_window: 98
+    source_phrase_only: 9
+  quarantined_count: 98
+inventory_summary:
+  source_count: 5
+  coverage_record_count: 24
+  set_dossier_count: 19
+  complete_4_moves_count: 0
+  move_pool_4plus_unclustered_count: 0
+  partial_2_3_moves_count: 4
+  single_move_signal_count: 15
+  excluded_move_mention_count: 26
+  top_excluded_move_counts:
+    落雷: 3
+    羽化加速: 3
+    雷暴: 2
+    移花接木: 2
+    淬火: 2
+    地刺: 2
+    赤子之心: 1
+    龙爪: 1
+    陨石: 1
+    星链: 1
+    水刃: 1
+    电弧: 1
+    惊吓盒子: 1
+    光之矛: 1
+    冰爪: 1
+    泡沫幻影: 1
+    撕咬: 1
+    加大功率: 1
+  species_with_multiple_source_or_dossier_signals: {}
+upstream_consolidation_summary:
+  scope: upstream_global_pool_not_batch_review_gate
+  note: These counts come from the upstream inventory/consolidation pool. They do
+    not override this batch's candidate_item_count, blocked_item_count, or review_candidate_count.
+  inventory_source_count: 800
+  species_count: 236
+  split_blocked_count: 45
+  review_candidate_count: 19
+  emerging_count: 36
+  needs_more_source_count: 43
+  coverage_only_count: 93
+  split_hypothesis_count: 169
+  set_family_candidate_count: 378
+  family_review_candidate_count: 36
+  primary_source_count: 799
+  supporting_source_count: 1
+s2_status:
+  patch_date: '2026-05-21'
+  pre_s2_source_count: 0
+  s2_boundary_source_count: 0
+  post_s2_source_count: 5
+  s2_impacted_candidate_count: 5
+  s2_blocked_candidate_count: 5
+  s2_gate_refs:
+  - path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-20_official_balance_sources/s2_2026-05-20_official_balance_manifest.yaml
+    sha256: 0c4154a420e5e31c1fc33b8f54c3336540e439d76452660bcdc6732f891633a9
+    label: official_s2_balance_source_manifest
+  - path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_patch_delta_pack_v0.yaml
+    sha256: ec0d64647061329c242aecf224a89ee47e8d6eca4e7c4225b57352e6b92f63ed
+    label: s2_patch_delta_pack
+  - path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_a_layer_reconciliation_v0.yaml
+    sha256: 0a110367355808a7dc6e4ef9e0ae572c21f8c526336897412f786bfd2e0cda88
+    label: s2_a_layer_reconciliation
+  policy: post-S2 or boundary candidates touching S2-affected species/moves remain
+    candidate-only and blocked until reconciled A-layer snapshot plus review gates
+    exist

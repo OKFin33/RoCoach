@@ -1,0 +1,43 @@
+schema_version: p14.a_layer_overlay_reconciliation_summary.v0
+runtime_allowed: false
+promotion_status: candidate_only
+reconciliation_id: s2_2026-05-21_a_layer_reconciliation_v0
+reconciliation_summary:
+  stat_overlay_entries: 25
+  stat_ready: 25
+  ability_overlay_entries: 10
+  ability_ready: 10
+  move_pool_addition_entries: 26
+  move_pool_ready: 26
+  move_effect_entries: 30
+  move_effect_ready: 30
+  wording_update_entries: 8
+  wording_ready: 8
+  mechanism_concept_routed: 1
+  unresolved_or_non_dex_items: 0
+overlay_summary:
+  stat_overlay_entries: 25
+  stat_ready: 25
+  ability_overlay_entries: 10
+  ability_ready: 10
+  move_pool_addition_entries: 26
+  move_pool_ready: 26
+  move_effect_entries: 30
+  move_effect_ready: 30
+  wording_update_entries: 8
+  wording_ready: 8
+  mechanism_concept_routed: 1
+  unresolved_or_non_dex_items: 0
+  overlay_stat_entries: 25
+  overlay_ability_entries: 10
+  overlay_move_pool_entries: 26
+  overlay_move_effect_entries: 30
+  overlay_wording_entries: 7
+  mechanism_concept_route_entries: 1
+  waterblade_response_state_energy_reduction_ok: true
+unresolved_or_non_dex_items: []
+remaining_blockers:
+- pm_review_required_before_runtime_or_a_layer_write
+- runtime_db_snapshot_required_before_runtime_promotion
+- do_not_overwrite_data_runtime_battle_dex_sqlite
+- b_layer_mechanism_concept_review_required_for_routed_wording_items

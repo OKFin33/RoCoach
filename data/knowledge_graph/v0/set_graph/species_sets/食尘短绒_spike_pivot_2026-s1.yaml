@@ -1,0 +1,99 @@
+id: "species_set/食尘短绒/spike_pivot_2026-s1"
+canonical_species_id: "species_78ab115216a5552f"
+canonical_species_name: "食尘短绒"
+source_aliases:
+  - "食尘短蛛"
+moves:
+  - "石锁"
+  - "壁垒"
+  - "地刺"
+  - "取念"
+nature: "生命↑魔攻↓"
+individual_value_bonuses:
+  speed: 31
+  defense: 31
+  hp: 31
+  spd: 31
+ability: "特殊清洁场景"
+stat_profile:
+  speed: 266
+speed_tier: 266
+role_labels:
+  - "hazard_setter"
+  - "pivot"
+  - "stall_anchor"
+team_context:
+  common_partners:
+    - "species_set/针叶巡林/photosynthesis_lead_2026-s1"
+    - "species_set/棋绮后/max_speed_reap_2026-s1"
+  archetype_tags:
+    - "光合武队"
+meta_snapshot: "2026-s1"
+graph_origin: "human"
+source_refs:
+  - source_type: "community_video"
+    source_ref: "B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析"
+    claim: "食尘短蛛（食尘短绒）地刺联防拖回合，技能为石锁/壁垒/地刺/取念"
+    date: "2026-05-14"
+    reviewer: "pm"
+    review_date: ""
+    notes: "OCR原料，名称'食尘短蛛'已校正为'食尘短绒'"
+confidence: "observed"
+review_status: "unreviewed"
+notes: "地刺拖回合、联防中枢。特殊清洁场景只是在回合结束偷取敌方1层印记，不能稳定主动产光合印记。速度266为全队最快"
+
+related_to:
+  - target_species_set_id: "species_set/棋绮后/max_speed_reap_2026-s1"
+    edge_type: "synergy"
+    description: "地刺持续消耗 + 联防拖回合，为全队光合回能窗口争取回合；特殊清洁场景只作为偶发偷敌方印记收益"
+    reasoning_quality: "partial_chain"
+    conditions:
+      - "在光合武队体系内"
+    confidence: "observed"
+    evidence_refs:
+      - source_type: "community_video"
+        source_ref: "B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析"
+        claim: "利用地刺拖回合，为全队光合回能窗口和棋绮后后续输出创造环境"
+        reasoning_available: true
+        reasoning_summary: "地刺每回合消耗/打断 → 拖慢对方节奏 → 光合印记的回合末回能更容易兑现 → 棋绮后获得上场/收割窗口；特殊清洁场景不是稳定产印记手段"
+        date: "2026-05-14"
+    tags:
+      - "光合武队"
+      - "地刺体系"
+      - "印记体系"
+
+  - target_species_set_id: "species_set/针叶巡林/photosynthesis_lead_2026-s1"
+    edge_type: "synergy"
+    description: "接替针叶巡林首发后的联防位，石锁+地刺延续场面压力，保护针叶巡林启动的光合资源窗口"
+    reasoning_quality: "partial_chain"
+    conditions:
+      - "在光合武队体系内"
+    confidence: "observed"
+    evidence_refs:
+      - source_type: "community_video"
+        source_ref: "B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析"
+        claim: "联防体系稳定，通过地刺拖回合保护光合资源窗口"
+        reasoning_available: true
+        reasoning_summary: "首发后换入食尘短绒持续地刺，维持场面压力"
+        date: "2026-05-14"
+    tags:
+      - "光合武队"
+      - "联防链"
+
+  - target_species_set_id: "species_set/声波缇塔/mid_speed_spike_2026-s1"
+    edge_type: "synergy"
+    description: "两只地刺手互补联防，声波缇塔提供中速输出节奏"
+    reasoning_quality: "partial_chain"
+    conditions:
+      - "在光合武队体系内"
+    confidence: "observed"
+    evidence_refs:
+      - source_type: "community_video"
+        source_ref: "B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析"
+        claim: "声波提塔（声波缇塔）中速输出，联防补位，打节奏压制"
+        reasoning_available: true
+        reasoning_summary: "食尘短绒+声波缇塔双地刺，交替联防维持地刺覆盖率"
+        date: "2026-05-14"
+    tags:
+      - "光合武队"
+      - "双地刺联防"

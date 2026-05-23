@@ -17,7 +17,7 @@ if ! ".venv/bin/python" -c "import uvicorn" >/dev/null 2>&1; then
   exit 1
 fi
 
-cd desktop
+cd apps/desktop
 if [[ ! -d "node_modules" ]]; then
   npm install
 fi

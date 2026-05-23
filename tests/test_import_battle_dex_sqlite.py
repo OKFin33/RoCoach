@@ -28,7 +28,7 @@ class ImportBattleDexSqliteTests(unittest.TestCase):
                 Namespace(
                     importer_run_dir=importer_run_dir,
                     db_path=db_path,
-                    schema_path=Path("/Users/okfin3/project/GitHub/OKFin33/Roco/specs/battle_dex_sqlite_schema_v1.sql"),
+                    schema_path=Path("/Users/okfin3/project/GitHub/OKFin33/Roco/docs/specs/battle_dex_sqlite_schema_v1.sql"),
                     write_run_id="test_policy_b_write",
                     replace_run=False,
                 )
@@ -67,7 +67,7 @@ class ImportBattleDexSqliteTests(unittest.TestCase):
             args = Namespace(
                 importer_run_dir=Path("/Users/okfin3/project/GitHub/OKFin33/Roco/data/importer_runs/2026-04-14Tpolicy_b_importer_dry_run"),
                 db_path=db_path,
-                schema_path=Path("/Users/okfin3/project/GitHub/OKFin33/Roco/specs/battle_dex_sqlite_schema_v1.sql"),
+                schema_path=Path("/Users/okfin3/project/GitHub/OKFin33/Roco/docs/specs/battle_dex_sqlite_schema_v1.sql"),
                 write_run_id="duplicate_run",
                 replace_run=False,
             )

@@ -1,0 +1,181 @@
+# Conservative ASR correction overlay for Roco video transcripts.
+#
+# The refinement tool applies entries only when the target canonical term is
+# found in the local A/B lexicon, unless `require_ab_term: false` is set.
+# Keep this file small and PM-reviewed; broad ASR guessing belongs in review
+# questions, not automatic rewrites.
+
+corrections:
+  - raw: "沙咏"
+    canonical: "沙涌"
+    status: "pm_confirmed"
+    note: "Sandstorm starter move name; Battle Dex confirms 沙涌."
+
+  - raw: "杀勇"
+    canonical: "沙涌"
+    status: "pm_confirmed"
+    note: "ASR homophone for 沙涌 in 光合武队 source."
+
+  - raw: "沙俑"
+    canonical: "沙涌"
+    status: "pm_confirmed"
+    note: "ASR homophone for 沙涌 in 光合武队 source."
+
+  - raw: "真夜巡邻"
+    canonical: "针叶巡林"
+    status: "pm_confirmed"
+    note: "ASR alias found in 光合武队 source."
+
+  - raw: "真夜巡林"
+    canonical: "针叶巡林"
+    status: "pm_confirmed"
+    note: "ASR alias found in 光合武队 source."
+
+  - raw: "针叶巡邻"
+    canonical: "针叶巡林"
+    status: "pm_confirmed"
+    note: "ASR alias found in 光合武队 source."
+
+  - raw: "食尘短蛛"
+    canonical: "食尘短绒"
+    status: "pm_confirmed"
+    note: "OCR/ASR alias found in 光合武队 source."
+
+  - raw: "时辰短容"
+    canonical: "食尘短绒"
+    status: "pm_confirmed"
+    note: "ASR alias found in 光合武队 source."
+
+  - raw: "时尘短容"
+    canonical: "食尘短绒"
+    status: "pm_confirmed"
+    note: "ASR alias found in 光合武队 source."
+
+  - raw: "短容"
+    canonical: "食尘短绒"
+    status: "pm_confirmed"
+    note: "Short ASR alias in 光合武队 source; review if seen outside this archetype."
+
+  - raw: "宇雾巨角蛛"
+    canonical: "芋香巨角蛛"
+    status: "pm_confirmed"
+    note: "OCR/ASR alias found in 光合武队 source."
+
+  - raw: "起起后"
+    canonical: "棋绮后"
+    status: "pm_confirmed"
+    note: "ASR alias found in 光合武队 source."
+
+  - raw: "棋齐后"
+    canonical: "棋绮后"
+    status: "pm_confirmed"
+    note: "ASR alias found in 光合武队 source."
+
+  - raw: "藤脚"
+    canonical: "藤绞"
+    status: "pm_confirmed"
+    note: "ASR alias for move name."
+
+  - raw: "的刺"
+    canonical: "地刺"
+    status: "pm_confirmed"
+    note: "ASR alias for move name."
+
+  - raw: "避雷"
+    canonical: "壁垒"
+    status: "pm_confirmed"
+    note: "ASR homophone for move name."
+
+  - raw: "毒包子"
+    canonical: "毒孢子"
+    status: "pm_confirmed"
+    note: "Common ASR error for move name."
+
+  - raw: "球卡"
+    canonical: "裘卡"
+    status: "pm_confirmed"
+    note: "Common ASR error in poison-team transcripts."
+
+  - raw: "不哭菇"
+    canonical: "怖哭菇"
+    status: "pm_confirmed"
+    note: "Common ASR error in 星陨队 transcripts."
+
+  - raw: "布哭菇"
+    canonical: "怖哭菇"
+    status: "pm_confirmed"
+    note: "Common ASR error in 星陨队 transcripts."
+
+  - raw: "布枯咕"
+    canonical: "怖哭菇"
+    status: "pm_confirmed"
+    note: "Common ASR error in 星陨队 transcripts."
+
+  - raw: "星引印记"
+    canonical: "星陨印记"
+    status: "pm_confirmed"
+    note: "Common ASR error for mark name."
+
+  - raw: "新引印记"
+    canonical: "星陨印记"
+    status: "pm_confirmed"
+    note: "Common ASR error for mark name."
+
+  - raw: "星引队"
+    canonical: "星陨队"
+    status: "pm_confirmed"
+    require_ab_term: false
+    note: "Archetype label; not necessarily an A-layer entity."
+
+  - raw: "新陨队"
+    canonical: "星陨队"
+    status: "pm_confirmed"
+    require_ab_term: false
+    note: "Archetype label; not necessarily an A-layer entity."
+
+  - raw: "星云印记"
+    canonical: "星陨印记"
+    status: "pm_confirmed"
+    note: "Narrow ASR correction in 星陨 source context; avoid broad 星云 replacement because 星云漩涡 is a valid move."
+
+  - raw: "星允帕尔"
+    canonical: "星陨帕尔"
+    status: "pm_confirmed"
+    require_ab_term: false
+    note: "Archetype phrase in 星陨帕尔 source title/context."
+
+  - raw: "星云帕尔"
+    canonical: "星陨帕尔"
+    status: "pm_confirmed"
+    require_ab_term: false
+    note: "Archetype phrase in 星陨帕尔 source context; not a broad 星云 replacement."
+
+  - raw: "手发"
+    canonical: "首发"
+    status: "pm_confirmed"
+    require_ab_term: false
+    note: "Generic ASR tactical-word correction."
+
+  - raw: "水人翼王"
+    canonical: "水刃翼王"
+    status: "pm_confirmed"
+    require_ab_term: false
+    note: "PM-confirmed archetype phrase correction from Round 1 review."
+
+  - raw: "水人遗王"
+    canonical: "水刃翼王"
+    status: "pm_confirmed"
+    require_ab_term: false
+    note: "PM-confirmed archetype phrase correction from Round 1 review."
+
+  - raw: "聚得"
+    canonical: "聚能"
+    status: "pm_confirmed"
+    require_ab_term: false
+    note: "PM-confirmed tactical verb correction from Round 1 review."
+
+  - raw: "电阅力"
+    canonical: "电愿力冲击"
+    status: "pm_confirmed"
+    require_ab_term: false
+    note: "PM-confirmed move/attack phrase correction from Round 1 review."

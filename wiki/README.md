@@ -53,7 +53,7 @@ wiki/
 See:
 
 ```text
-specs/battle_wiki_architecture_spec.md
+../docs/specs/battle_wiki_architecture_spec.md
 ```
 
 ## Hard Rules

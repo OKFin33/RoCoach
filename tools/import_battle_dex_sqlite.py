@@ -14,7 +14,7 @@ from typing import Any
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
-    sys.path.insert(0, str(REPO_ROOT))
+    sys.path.insert(0, str(REPO_ROOT / "src"))
 
 from tools.validate_p1e_importer_artifacts import iter_jsonl, load_json
 from tools.validate_p1f_write_inputs import validate_write_inputs

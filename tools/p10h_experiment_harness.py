@@ -12,7 +12,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
+    sys.path.insert(0, str(ROOT / "src"))
 
 from advisor.config import RocoNativeModelConfig
 from advisor.experiment_layers import ExperimentLayerConfig, P10hExperimentDocContextRetriever

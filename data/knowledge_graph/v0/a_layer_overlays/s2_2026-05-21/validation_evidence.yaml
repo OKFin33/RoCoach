@@ -1,0 +1,22 @@
+schema_version: p14.a_layer_overlay_validation_evidence.v0
+runtime_allowed: false
+validation_status: p14_validator_tests_hash_checks_passed
+validation_note: Required S2 reconciliation rerun passed with unresolved_or_non_dex_items=0;
+  P14 strict validator passed; required Battle Dex/P14/focused tests passed; runtime
+  DB and S1 snapshot hashes are byte-identical; graph validator intentionally not
+  run because no graph materialization.
+runtime_db_sha256_before: 76976d3f22f3fba8e55408bd098bbc0a5f8f9b9a81c7338706bd5cff60eb8543
+runtime_db_sha256_after: 76976d3f22f3fba8e55408bd098bbc0a5f8f9b9a81c7338706bd5cff60eb8543
+runtime_db_sha256_current: 76976d3f22f3fba8e55408bd098bbc0a5f8f9b9a81c7338706bd5cff60eb8543
+runtime_db_byte_identical_before_after: true
+commands:
+- command: PYTHONPATH=.:src .venv/bin/python tools/p14_reconcile_s2_patch_delta.py
+  required: true
+- command: PYTHONPATH=.:src .venv/bin/python -m tools.p14_validate_knowledge_graph
+    --strict
+  required: true
+- command: PYTHONPATH=.:src .venv/bin/python -m unittest tests.test_import_battle_dex_sqlite
+    tests.test_import_battle_dex_dry_run tests.test_p14_knowledge_graph_validate tests.test_p14_s2_a_layer_overlay_snapshot
+  required: true
+- command: snapshot manifest hash self-check
+  required: true

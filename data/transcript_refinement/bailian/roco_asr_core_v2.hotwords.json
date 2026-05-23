@@ -1,0 +1,2302 @@
+[
+  {
+    "text": "上岸蛙",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "乌拉塔",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "九幽菇",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "仪式巨像",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "伊丽莎白",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "伊兰亚龙",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "伊兰龙",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "伊贝粉粉",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "健猫教练",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "公平鸽",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "兽花蕾",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "冰钻布鲁斯",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "利灯鱼",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "加尔",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "化蝶",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "千棘海针",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "千棘盔",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "卡洛儿",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "卡瓦重",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "卷毛鸭",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "卷胡巨獭",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "厉毒修萝",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "厉毒鸩兽",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "古卷匣魔像",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "古卷执政官",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "古啦多",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "古齿帝牙",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "叮叮恶魔",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "叶冕魔力猫",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "咔咔鸟",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "嗜波螺",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "嘟嘟锅",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "噼啪鸟",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "圆号鱼",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "圣代甜甜",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "圣剑-X",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "圣剑骑士",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "圣水守护",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "圣羽翼王",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "声波缇塔",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "夜枭",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "夜游魔",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "奇丽果",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "奇丽花",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "奇梦咪",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "女王蜂",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "学院呱呱",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "寂灭骨龙",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "寒音蛇",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "小光",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "小皮球",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "尖嘴狐仙",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "岚鸟",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "巨噬针鼹",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "巨灵石",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "布克棱岩",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "帕帕斯卡",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "幻影灵菇",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "幻影荆棘",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "幽冥眼",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "幽影树",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "彩虹独角兽",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "彩蝶鲨",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "影狸",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "怒目怂猫",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "怖哭菇",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "恶魔狼",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "恶魔狼王",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "恶魔红钻",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "抹茶布丁",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "捕尘长绒",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "斑枭",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "星云旅者",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "星光狮",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "春花兔",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "晶石蜗",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "暮星辰",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "月亮砣",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "月牙雪熊",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "朔夜伊芙",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "机甲小子",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "权杖-V",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "格兰球",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "格斗小五",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "格斗小八",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "格斗小六",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "梦悠悠",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "梦想三三",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "棋契陛下",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "棋祈督",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "棋绮后",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "棋骑士",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "棋齐垒",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "椰浆布丁",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "武者鸡",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "水泡壳",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "水灵",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "波多西",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "波普鹿",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "泥吼牙",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "流浪鼠",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "海枝枝",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "海豹船长",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "深渊蛙",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "深蓝鲸",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "混乱鱿彩",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "游蛇魔使",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "火焰猿",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "火神",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "火羽",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "灵蔓草王",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "炽心勇狮",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "烈火守护",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "烈火战神",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "熔岩布丁",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "燃薪虫",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "爆角龙",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "爵士鹿",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "獠牙猪",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "琉璃水母",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "电企鹅",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "电球咩咩",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "画间沉铁兽",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "画间法师手",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "疾光千兽",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "白发路路",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "白金独角兽",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "皇家狮鹫",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "瞌睡王",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "石冠王蜥",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "神谕鲨",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "祭礼巨像",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "秩序鱿墨",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "窃光蚊",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "立方人",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "粉耳星兔",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "红绒十字",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "绅士鸡",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "绒仙子",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "绒光优优",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "罗隐",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "翠顶夫人",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "翼龙",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "芋香巨角蛛",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "花影羚羊",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "花衣蝶",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "花魁蜂后",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "荆棘电环",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "菊花梨",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "落陨星兔",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "蒲公英娃娃",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "蓝衣夜灵",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "蝶叶巨蜥",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "裘卡",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "记忆石",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "贝古斯",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "超能球球",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "蹦床松鼠",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "蹦蹦果",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "蹦蹦花",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "迪莫",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "迷嶂布莱克",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "迷迷眼",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "迷迷箱怪",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "遁地鼠",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "邪眼巨魔",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "酷拉",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "里拉鳐",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "针叶巡林",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "钻石蜗",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "铠甲虫",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "锤头鹳",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "闪电鳗鱼",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "陨星虫",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "障眼魔",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "雅丹鬃",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "雪巨人",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "雪影冰灵",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "雪影娃娃",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "雪灵",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "雷暴奔奔",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "霜翼领主",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "音速犬",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "风暴战犬",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "风滚暮虫",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "飞天刀螂",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "食尘短绒",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "饮雪狂兽",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "高脚鹬",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "魔力猫",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "魔眷鸟",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "魔草巫灵",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "鳗尾兽",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "鸭吉吉",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "鸭吉吉国王",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "黑猫密探",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "黑猫巫师",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "黑羽夫人",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "龙息帕尔",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "龙鱼",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "三鼓作气",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "不动如山",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "不可接触",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "主场优势",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "乘胜追击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "二律背反",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "交叉闪电",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "仙人掌刺击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "以毒攻毒",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "以重制重",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "休息回复",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "伪造账单",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "伺机而动",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "俯冲猛击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "偷袭",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "充分燃烧",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "先发制人",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "光合作用",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "光能聚集",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "冰冻光线",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "冰天雪地",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "冰锋横扫",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "击鼓传花",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "力量吞噬",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "力量增效",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "加大功率",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "升龙咆哮",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "午夜噪音",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "双联脉冲",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "叶绿光束",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "后发制人",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "吨位压制",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "啮合传递",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "四维降解",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "回旋风暴",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "坟场搏击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "垂死反击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "增程电池",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "多维击打",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "天旋地转",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "孢子爆散",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "导电撞击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "小偷小摸",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "岩土暴击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "岩脉崩毁",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "幼态延续",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "幽灵爆发",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "应激反应",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "强制重启",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "当头棒喝",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "彼岸之手",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "心灵洞悉",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "快速移动",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "念力膨胀",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "怨力打击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "恶念交换",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "恶意逃离",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "惊吓盒子",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "扬沙",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "技巧打击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "折线冲击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "持续高温",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "指指点点",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "旋转突击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "无畏之心",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "易燃物质",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "星云漩涡",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "星星撞击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "星轨裂变",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "暗箱操作",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "月光合奏",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "有效预防",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "杠杆置换",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "极寒领域",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "极速冷冻",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "极限撕裂",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "欺诈契约",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "毒液渗透",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "气势一击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "气沉丹田",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "水光冲击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "水刃",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "水幕冲击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "水花四溅",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "沙涌",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "泡沫幻影",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "泥巴喷射",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "泥浆铠甲",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "流星火雨",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "淤泥表皮",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "溃烂触碰",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "火焰冲锋",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "火焰切割",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "火焰护盾",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "炙热波动",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "烈焰风暴",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "热身运动",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "焚烧烙印",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "爆米花爆破",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "爆裂飞弹",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "猛烈撞击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "玩具乐园",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "球状闪电",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "甜心续航",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "生日蛋糕",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "电弧",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "电磁偏转",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "电离爆破",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "疫病吐息",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "疾风涡轮",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "疾风连袭",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "瘴气喷射",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "瞬间零度",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "砂石冲撞",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "砂糖弹球",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "破罐破摔",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "示弱",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "离子火花",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "离子震荡",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "种皮爆裂",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "移花接木",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "空间压迫",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "等价交换",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "筛管奔流",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "粒子对撞",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "精神扰乱",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "绵里藏针",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "羽化加速",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "羽翼庇护",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "联动装置",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "能量守恒",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "脉冲光线",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "腐蚀酸液",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "芳香诱引",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "草虫冲击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "落井下毒",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "蓄势待发",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "蓄能轰击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "虚假破产",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "虫群智慧",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "虫群过境",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "虹光冲击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "见招拆招",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "触底强击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "赤子之心",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "趁火打劫",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "超导加速",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "超新星馈赠",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "超级糖果",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "超维投射",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "轴承支撑",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "过载回路",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "远程访问",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "连续毒针",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "连续爪击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "迫近攻击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "逆向演化",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "酶浓度调整",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "金属噪音",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "针刺射击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "钢铁洪流",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "锐利眼神",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "镜像反射",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "闪光冲击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "闪击折返",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "防御反击",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "阳火增辉",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "隐藏条款",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "雾气环绕",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "顶端优势",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "高温回火",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "魔法增效",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "鸣沙陷阱",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "齿轮切开",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "齿轮扭矩",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "龙之利爪",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "龙息环爆",
+    "weight": 4,
+    "lang": "zh"
+  },
+  {
+    "text": "愿力冲击",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "愿力强化",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "共鸣魔法",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "血脉",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "血脉技能",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "聚能",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "应对",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "打断",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "迸发",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "蓄力",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "入场",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "离场",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "换人",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "替换上场",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "主动离场",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "蓄势印记",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "光合印记",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "星陨印记",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "龙噬印记",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "蓄电印记",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "中毒印记",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "降灵印记",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "棘刺印记",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "攻击印记",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "湿润印记",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "减速印记",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "风起印记",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "沙暴",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "雨天",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "雪天",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "暴风雪",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "润泽印记",
+    "weight": 5,
+    "lang": "zh"
+  },
+  {
+    "text": "联防",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "联防位",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "轮换",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "首发",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "打手",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "清线手",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "强化手",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "斩杀线",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "主C",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "副C",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "C位",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "配队",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "阵容",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "一图流",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "意图流",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "顶分",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "登顶",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "奉献",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "虫群",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "啃咬",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "灼烧",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "煤渣草",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "架势",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "嫉妒",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "萌化",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "脱离",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "迅捷",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "主动换人",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "被击败替换",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "强制离场",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "速冻",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "冥想",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "不朽",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "诈死",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "御驾亲征",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "壁垒",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "报复",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "天火",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "应对攻击",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "应对状态",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "应对防御",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "改为",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "速度",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "先手",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "冻结",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "中毒",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "寄生",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "传动",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "系别",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "晴天",
+    "weight": 3,
+    "lang": "zh"
+  },
+  {
+    "text": "沙咏",
+    "weight": 3,
+    "lang": "zh"
+  }
+]

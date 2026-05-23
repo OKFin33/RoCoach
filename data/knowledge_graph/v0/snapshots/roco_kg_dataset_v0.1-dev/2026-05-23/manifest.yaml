@@ -1,0 +1,163 @@
+schema_version: p14.dataset_snapshot_manifest.v0
+snapshot_id: roco_kg_dataset_v0.1-dev/2026-05-23
+created_at: "2026-05-23T00:00:00+08:00"
+created_by:
+  role: audit_repair_agent
+  agent_id: codex
+  run_or_context_id: "legacy_session_context"
+scope: audit_repair_baseline_plus_official_s2_patch_delta_candidate
+runtime_allowed: false
+schema_compatibility:
+  historical_roots:
+    - data/meta_graph/v0
+  current_target_root: data/knowledge_graph/v0
+  migration_required: false
+  migration_log_ref: data/knowledge_graph/v0/migration_log.yaml#migration/meta_graph_v0_to_knowledge_graph_v0_set_graph_2026-05-18
+components:
+  evidence_kb:
+    source_queue_ref: artifacts/knowledge_ops/source_queue/
+    source_reliability_ledger_ref: data/knowledge_graph/v0/review_state/source_reliability_ledger.yaml
+    evidence_manifest_refs:
+      - artifacts/knowledge_ops/set_inventory/kgsrc_poison_vs_starfall_20260430.source_inventory.yaml
+      - artifacts/knowledge_ops/set_inventory/kgsrc_wingking_best_team_20260328.source_inventory.yaml
+      - artifacts/knowledge_ops/set_inventory/kgsrc_wingking_waterblade_top1_20260408.source_inventory.yaml
+    excluded_raw_payloads:
+      - raw_media
+      - redistributable_transcripts
+    note: "Artifacts remain local/ignored input evidence; reviewed-card provenance leaves are hash anchored here, but this is not a public redistributable source package."
+  structured_kg:
+    root: data/knowledge_graph/v0
+    graph_registry_ref: data/knowledge_graph/v0/set_graph/graph_registry.yaml
+    set_family_refs:
+      - data/knowledge_graph/v0/set_graph/species_sets/圣羽翼王_waterblade_physical_2026-s1.yaml
+    patch_delta_refs:
+      - data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_patch_delta_pack_v0.yaml
+    patch_source_refs:
+      - data/knowledge_graph/v0/patch_deltas/s2_2026-05-20_official_balance_sources/s2_2026-05-20_official_balance_manifest.yaml
+    patch_reconciliation_refs:
+      - data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_a_layer_reconciliation_v0.yaml
+    mechanism_rule_refs:
+      - data/knowledge_graph/v0/mechanism_rules/rule_registry.yaml
+    review_state_refs:
+      - data/knowledge_graph/v0/review_state/family_review_ledger.yaml
+      - data/knowledge_graph/v0/review_state/promotion_audit_log.yaml
+      - data/knowledge_graph/v0/review_state/reviewer_ledger.yaml
+      - data/knowledge_graph/v0/review_state/error_ledger.yaml
+      - data/knowledge_graph/v0/review_state/source_reliability_ledger.yaml
+    excluded_runtime_indexes: []
+  gold_eval:
+    gold_manifest_ref: data/knowledge_graph/v0/eval/gold_set_v0_manifest.yaml
+    quality_dashboard_ref: data/knowledge_graph/v0/eval/quality_dashboard_baseline_2026-05-23.yaml
+    accepted_gold_count: 0
+    regression_result_ref: ""
+  contracts:
+    pipeline_plan_ref: docs/specs/p14_dataset_pipeline_plan_v0_1.md
+    snapshot_contract_ref: docs/specs/p14_dataset_snapshot_versioning_contract_v0.md
+    species_set_crosswalk_ref: docs/specs/p14_species_set_kg_item_crosswalk_v0.md
+    gold_mapping_contract_ref: docs/specs/p14_gold_candidate_to_item_mapping_v0.md
+    s2_patch_delta_gate_ref: docs/specs/p14_s2_patch_delta_gate_v0.md
+    pm_review_packet_ref: artifacts/knowledge_ops/review_packets/p14_dataset_pipeline_plan_v0_1_pm_review.md
+  validators:
+    p14_validator_ref: tools/p14_validate_knowledge_graph.py
+    p14_validator_test_ref: tests/test_p14_knowledge_graph_validate.py
+    s2_patch_reconciliation_tool_ref: tools/p14_reconcile_s2_patch_delta.py
+artifact_hashes:
+  algorithm: sha256
+  entries:
+    - path: data/knowledge_graph/v0/runtime_manifest.yaml
+      sha256: "82f92f0b53971de08928aaade24fdd3124ad34b8943a9dcfa4364cc33f93a83b"
+    - path: data/knowledge_graph/v0/migration_log.yaml
+      sha256: "1d660843353648a0cc396d9b10803bb9f630e2156ff022786d32ffb73d8b4113"
+    - path: data/knowledge_graph/v0/eval/gold_set_v0_manifest.yaml
+      sha256: "b83940fa22b640718391c0409c430a1a1bd1252aee0023b2073e97e1d9154a14"
+    - path: data/knowledge_graph/v0/eval/quality_dashboard_baseline_2026-05-23.yaml
+      sha256: "ff235a2bcc26c1953133892d48c2baf390855af2d0eeab4f12c56a9b0bde639e"
+    - path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_patch_delta_pack_v0.yaml
+      sha256: "ec0d64647061329c242aecf224a89ee47e8d6eca4e7c4225b57352e6b92f63ed"
+    - path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_a_layer_reconciliation_v0.yaml
+      sha256: "0a110367355808a7dc6e4ef9e0ae572c21f8c526336897412f786bfd2e0cda88"
+    - path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-20_official_balance_sources/s2_2026-05-20_official_balance_manifest.yaml
+      sha256: "0c4154a420e5e31c1fc33b8f54c3336540e439d76452660bcdc6732f891633a9"
+    - path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-20_official_balance_sources/official_article_18788872_api_response.js
+      sha256: "10c8671e31d7ef8906d6417fb1f8be3c861bedc60740ecf3fc13ad83628a55dc"
+    - path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-20_official_balance_sources/official_article_18788872_content.html
+      sha256: "8adf519457a7c22c24069d0a231c082f609369c3c00ddf1777307b2bd7d30fad"
+    - path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-20_official_balance_sources/official_article_18788872_text.md
+      sha256: "ec0fbeb02fc088c17d998b9e2a09a4f40622c7ca0ca17e3e279f5d0496a2ffdc"
+    - path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-20_official_balance_sources/s2_balance_official_img_001.png
+      sha256: "4914d3e966376a8f751f807eef3ab291e4c8117e4527b397724dc0f6747fd75b"
+    - path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_sources/s2_patch_img_001.jpg
+      sha256: "21fe80ccec85c5fde1a27d7a9f04ccf55825d8a9135e122a7b78fa90ad607f91"
+    - path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_sources/s2_patch_img_002.jpg
+      sha256: "2bf27620fcc72302d8e9d20e22c7221a65a06c1f80ad297cde2daf2c67748680"
+    - path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_sources/s2_patch_img_003.jpg
+      sha256: "b6c007a9c840619bcf95d5d9f6e65c0600d85bb3e67508c41cbfce201ff2d5b3"
+    - path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_sources/s2_patch_img_004.jpg
+      sha256: "8a78fc849d2ef2e5ff4a0779862ace0b5b0d2dbdbfb8802789f23e2148f9f8f0"
+    - path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_sources/s2_patch_img_005.jpg
+      sha256: "c3ed9375f9c3a3d8c08980bd3ff8167a1c4629f323a745a221359213f4bfba1d"
+    - path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_sources/s2_patch_img_006.jpg
+      sha256: "bd1ba40f7bcb0e0c74e0c834a17f4243acdf6af68c200055d3a0f7cfc0180f81"
+    - path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_sources/s2_patch_img_007.jpg
+      sha256: "576764252d9738f7dee1c24ed65a17c7fedb35e4a194fe5bbf712d78d5670c27"
+    - path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_sources/s2_patch_img_008.jpg
+      sha256: "10882496a455074014885b5da817bd81a88deac75ee9a9a86f45cf15f5a12fc3"
+    - path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_sources/s2_patch_img_009.jpg
+      sha256: "dfd314b0cdfb2b9dd56369b769dc905bfe64fee4f341b68dc8cb4adbe7e3f8e0"
+    - path: data/knowledge_graph/v0/set_graph/graph_registry.yaml
+      sha256: "e6c06134b2b25b5f2f468448c986f2835fa0bd9120cf69ff10b24e56e699bfdf"
+    - path: data/knowledge_graph/v0/set_graph/runtime_manifest.yaml
+      sha256: "f22a7361286093de6392b075dbebdafc75f3349bb34b589397f38080f8c426dd"
+    - path: data/knowledge_graph/v0/set_graph/edge_index.yaml
+      sha256: "42c8df60a430d2db933f27a7a60a5be9631a3b7030f5f659862cf5ae811305c6"
+    - path: data/knowledge_graph/v0/set_graph/speed_index.yaml
+      sha256: "a687466e52e4299f766704237fbd4c30b14edd60ade4f782f8e0348ef54911e0"
+    - path: data/knowledge_graph/v0/set_graph/species_sets/圣羽翼王_waterblade_physical_2026-s1.yaml
+      sha256: "4879c81fbde1961d616227a670e330bd22adc5e576533e64b9c387bcf59e0352"
+    - path: data/knowledge_graph/v0/review_state/family_review_ledger.yaml
+      sha256: "0a35cc424bf3eccac8629959b61ce6e38718422eea9f23921db9faea4a21ee7f"
+    - path: data/knowledge_graph/v0/review_state/promotion_audit_log.yaml
+      sha256: "a3095be04dcd83e0e899c2f78f6e2a27425def6c79bd37281df6492ad91588fe"
+    - path: data/knowledge_graph/v0/review_state/reviewer_ledger.yaml
+      sha256: "81b49f4fe8c736c85a0b4f9afa00949a84ecd5fd9d5c12c193d735adb3943444"
+    - path: data/knowledge_graph/v0/review_state/error_ledger.yaml
+      sha256: "5f4b2613f2064315f4aabb2999d8f108f9222cc06935f1eb41378986ac30f390"
+    - path: data/knowledge_graph/v0/review_state/source_reliability_ledger.yaml
+      sha256: "1a934b8a7e86f342faaafb20ccdd150b46f01bbae815d0205652317837ba335c"
+    - path: docs/specs/p14_species_set_kg_item_crosswalk_v0.md
+      sha256: "d014e1da7bf2268be50332783636ab524f143a4f7c99a8ae1b40be5ab7607657"
+    - path: docs/specs/p14_gold_candidate_to_item_mapping_v0.md
+      sha256: "315fa78ca644695cc26a2239069a507f803800ce29fd7cffdfde2d8c147e1c53"
+    - path: docs/specs/p14_s2_patch_delta_gate_v0.md
+      sha256: "51ee8d20fbf71309e9094340c480c8313555a389eb48a35fa8886d6c677fe167"
+    - path: docs/specs/p14_dataset_snapshot_versioning_contract_v0.md
+      sha256: "0d1882fa065b2a4c96e538125b73a44f58c11531c5e2b63d67a38f109d13d25d"
+    - path: docs/specs/p14_dataset_pipeline_plan_v0_1.md
+      sha256: "544204289b646e0398b409147771c72ea61f1d02dbc7663d12f28bd05c215711"
+    - path: artifacts/knowledge_ops/review_packets/p14_dataset_pipeline_plan_v0_1_pm_review.md
+      sha256: "d3c276ae4ceeda671b5ccee95e4f555e3bcb844a5d556d45f468efc18e7e6a90"
+    - path: artifacts/knowledge_ops/set_inventory/kgsrc_poison_vs_starfall_20260430.source_inventory.yaml
+      sha256: "dfc91043af73cae27440918c0ae5ed32e0777dc02e2636273bb017c531bbce3f"
+    - path: artifacts/knowledge_ops/set_inventory/kgsrc_wingking_best_team_20260328.source_inventory.yaml
+      sha256: "0e7b15d40d0cfc978f59a0eeeefe1da5a84fb0ea72bb77ca9d0af349c140b15f"
+    - path: artifacts/knowledge_ops/set_inventory/kgsrc_wingking_waterblade_top1_20260408.source_inventory.yaml
+      sha256: "fba9b145bed21eeadcb577180aa56ec4fc1e7ddb79b6b6557e3071385878c07d"
+    - path: tools/p14_validate_knowledge_graph.py
+      sha256: "354cd5347f5961e6128a90dd8f512d9ca36cf4dcea836719c8ccb2270167e800"
+    - path: tests/test_p14_knowledge_graph_validate.py
+      sha256: "42143d09280cfeb03e229e2c36828effce417c551c11b93a59e4b193c282b4ee"
+    - path: tools/p14_reconcile_s2_patch_delta.py
+      sha256: "25b580ca1d571ec128591059203178d579c67aebb94472fb146de4989d93e31d"
+quality:
+  dashboard_ref: data/knowledge_graph/v0/eval/quality_dashboard_baseline_2026-05-23.yaml
+  blocked_for_promotion: true
+  accepted_gold_count: 0
+  reviewed_kg_item_count: 1
+  candidate_kg_item_count: 6
+known_limits:
+  - "Snapshot is an internal audit-repair baseline, not a public dataset release."
+  - "Only one reviewed species_set card has field-level provenance."
+  - "Only the set_inventory files referenced by the reviewed card are hash anchored; broader artifacts remain local working evidence."
+  - "Gold-dependent and judge-dependent metrics remain baseline_needed."
+  - "Runtime promotion and advisor graph materialization are explicitly out of scope."
+  - "S2 patch deltas have an official patch-note source capture and mechanical A-layer reconciliation report, but remain candidate-only and must not overwrite A-layer or runtime values without PM/review gates and a runtime/A-layer snapshot."

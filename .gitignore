@@ -14,13 +14,14 @@ __pycache__/
 !.env.example
 
 # Mobile dependencies and generated output
-mobile/node_modules/
-mobile/.expo/
-mobile/dist/
+apps/mobile/node_modules/
+apps/mobile/.expo/
+apps/mobile/dist/
 
 # Desktop dependencies and generated output
-desktop/node_modules/
-desktop/dist/
+apps/desktop/node_modules/
+apps/desktop/dist/
+/desktop/
 
 # Figma Make prototype dependencies and generated output
 figma/**/node_modules/
@@ -42,22 +43,23 @@ wiki/cache/
 tmpforcc/
 
 # Internal dev docs (not for public release)
-specs/current_work.md
+docs/specs/current_work.md
 
 # Experiment artifacts and ablation data (not for public release)
 artifacts/
 
-# Desktop Electron build artifacts (not for public release)
-desktop/
-
 # Local AI assistant configuration
 .claude/
+.agent/
 
 # Internal dispatch artifacts
 .launchpad_dispatch_legacy_*/
 
 # Design reference materials (not for public release)
 前期文件/
+
+# Figma design artifacts (not for public release)
+figma/
 
 # Local database files
 *.sqlite

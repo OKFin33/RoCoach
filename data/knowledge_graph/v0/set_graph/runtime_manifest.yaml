@@ -1,0 +1,23 @@
+schema_version: p14.set_graph_runtime_manifest.v0
+runtime_asset: meta_graph_v0
+status: candidate_blocked_unreviewed
+created_at: "2026-05-16"
+source_root: artifacts/v2_meta_graph
+runtime_root: data/knowledge_graph/v0/set_graph
+knowledge_graph_root: data/knowledge_graph/v0
+meta_snapshot: "2026-s1"
+promotion_policy:
+  runtime_can_read_root: true
+  runtime_can_inject_unreviewed_cards: false
+  required_card_review_status: reviewed
+  s_graph_enabled: false
+current_counts:
+  species_set_cards: 7
+  reviewed_cards: 1
+  edge_index_edges: 11
+  speed_index_entries: 7
+known_blockers:
+  - Legacy copied Set Graph cards are still review_status=unreviewed except the family-scoped 圣羽翼王 waterblade card.
+  - First family-level reviewed card is materialized but not runtime-promoted.
+  - Advisor answer chain is not yet wired to Meta Graph retrieval.
+  - D-layer v0 runtime subset has not been promoted yet.

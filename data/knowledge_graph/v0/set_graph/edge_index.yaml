@@ -1,0 +1,310 @@
+generated_at: '2026-05-18'
+meta_snapshot: 2026-s1
+total_edges: 11
+edges:
+- id: edge/auto/0000
+  source_species_set_id: species_set/声波缇塔/mid_speed_spike_2026-s1
+  target_species_set_id: species_set/棋绮后/max_speed_reap_2026-s1
+  edge_type: synergy
+  description: 中速输出打节奏压制 + 地刺补联防，在棋绮后启动前维持场面均势
+  reasoning_quality: partial_chain
+  conditions:
+  - 在光合武队体系内
+  confidence: observed
+  evidence_refs:
+  - source_type: community_video
+    source_ref: B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析
+    claim: 中速输出，联防补位，打节奏压制
+    reasoning_available: true
+    reasoning_summary: 声波缇塔的速度优势可以在棋绮后慢启动期间维持节奏
+    date: '2026-05-14'
+  tags:
+  - 光合武队
+  - 节奏压制
+  mechanism_refs: []
+  evidence_bundle_id: ''
+  claim_risk: ''
+  review_status: unreviewed
+  meta_snapshot: 2026-s1
+  graph_origin: human
+  claimed_by_source_only: false
+  has_counter_claim: false
+  counter_claim_id: null
+- id: edge/auto/0001
+  source_species_set_id: species_set/声波缇塔/mid_speed_spike_2026-s1
+  target_species_set_id: species_set/食尘短绒/spike_pivot_2026-s1
+  edge_type: synergy
+  description: 双地刺联防搭档，声波缇塔提供速度压制 + 食尘短绒提供耐久联防
+  reasoning_quality: partial_chain
+  conditions:
+  - 在光合武队体系内
+  confidence: observed
+  evidence_refs:
+  - source_type: community_video
+    source_ref: B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析
+    claim: 地刺，联防补位
+    reasoning_available: false
+    date: '2026-05-14'
+  tags:
+  - 光合武队
+  - 双地刺联防
+  mechanism_refs: []
+  evidence_bundle_id: ''
+  claim_risk: ''
+  review_status: unreviewed
+  meta_snapshot: 2026-s1
+  graph_origin: human
+  claimed_by_source_only: false
+  has_counter_claim: true
+  counter_claim_id: edge/auto/0010
+- id: edge/auto/0002
+  source_species_set_id: species_set/布克棱岩/pressure_tank_2026-s1
+  target_species_set_id: species_set/棋绮后/max_speed_reap_2026-s1
+  edge_type: synergy
+  description: 前排抗压吸引火力 + 中后期岩土暴击补伤害，降低棋绮后上场时的仇恨压力
+  reasoning_quality: partial_chain
+  conditions:
+  - 在光合武队体系内
+  confidence: observed
+  evidence_refs:
+  - source_type: community_video
+    source_ref: B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析
+    claim: 抗压前排，中后期补伤害，提供联防稳定性
+    reasoning_available: true
+    reasoning_summary: 布克棱岩的高耐久吸引对方火力，棋绮后在安全回合上场收割
+    date: '2026-05-14'
+  tags:
+  - 光合武队
+  - 前排抗压
+  mechanism_refs: []
+  evidence_bundle_id: ''
+  claim_risk: ''
+  review_status: unreviewed
+  meta_snapshot: 2026-s1
+  graph_origin: human
+  claimed_by_source_only: false
+  has_counter_claim: false
+  counter_claim_id: null
+- id: edge/auto/0003
+  source_species_set_id: species_set/布克棱岩/pressure_tank_2026-s1
+  target_species_set_id: species_set/食尘短绒/spike_pivot_2026-s1
+  edge_type: synergy
+  description: 双前排联防，布克棱岩高耐久壁垒 + 食尘短绒地刺周转，形成稳固防线
+  reasoning_quality: partial_chain
+  conditions:
+  - 在光合武队体系内
+  confidence: observed
+  evidence_refs:
+  - source_type: community_video
+    source_ref: B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析
+    claim: 抗压前排，提供联防稳定性
+    reasoning_available: false
+    date: '2026-05-14'
+  tags:
+  - 光合武队
+  - 双前排联防
+  mechanism_refs: []
+  evidence_bundle_id: ''
+  claim_risk: ''
+  review_status: unreviewed
+  meta_snapshot: 2026-s1
+  graph_origin: human
+  claimed_by_source_only: false
+  has_counter_claim: false
+  counter_claim_id: null
+- id: edge/auto/0004
+  source_species_set_id: species_set/芋香巨角蛛/low_cost_poison_pivot_2026-s1
+  target_species_set_id: species_set/棋绮后/max_speed_reap_2026-s1
+  edge_type: synergy
+  description: 低耗扬沙 + 毒腺压中毒，晒太阳清增益，复写补控场；扬沙只按1耗地系物攻处理，不接入沙暴天气链
+  reasoning_quality: partial_chain
+  conditions:
+  - 在光合武队体系内
+  confidence: inferred
+  evidence_refs:
+  - source_type: community_video
+    source_ref: B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析
+    claim: 控场消耗，补联防，提供持续压制；扬沙按低耗地系物攻处理
+    reasoning_available: true
+    reasoning_summary: 扬沙是1耗地系物理攻击，配合毒腺作为低耗消耗/联防工具；不作为沙暴天气启动或沙暴资源关系
+    date: '2026-05-14'
+  tags:
+  - 光合武队
+  - 低耗消耗
+  mechanism_refs: []
+  evidence_bundle_id: ''
+  claim_risk: ''
+  review_status: unreviewed
+  meta_snapshot: 2026-s1
+  graph_origin: human
+  claimed_by_source_only: false
+  has_counter_claim: false
+  counter_claim_id: null
+- id: edge/auto/0005
+  source_species_set_id: species_set/芋香巨角蛛/low_cost_poison_pivot_2026-s1
+  target_species_set_id: species_set/食尘短绒/spike_pivot_2026-s1
+  edge_type: synergy
+  description: 联防补位搭档，芋香巨角蛛低耗扬沙/清增益 + 食尘短绒地刺消耗，双重压制
+  reasoning_quality: partial_chain
+  conditions:
+  - 在光合武队体系内
+  confidence: inferred
+  evidence_refs:
+  - source_type: community_video
+    source_ref: B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析
+    claim: 补联防，提供持续压制
+    reasoning_available: false
+    date: '2026-05-14'
+  tags:
+  - 光合武队
+  - 联防补位
+  mechanism_refs: []
+  evidence_bundle_id: ''
+  claim_risk: ''
+  review_status: unreviewed
+  meta_snapshot: 2026-s1
+  graph_origin: human
+  claimed_by_source_only: false
+  has_counter_claim: false
+  counter_claim_id: null
+- id: edge/auto/0006
+  source_species_set_id: species_set/针叶巡林/photosynthesis_lead_2026-s1
+  target_species_set_id: species_set/棋绮后/max_speed_reap_2026-s1
+  edge_type: synergy
+  description: 首发用光合作用启动全队光合印记/能量窗口 + 前排压制，为棋绮后等后续输出创造安全启动和收割环境
+  reasoning_quality: partial_chain
+  conditions:
+  - 在光合武队体系内
+  confidence: observed
+  evidence_refs:
+  - source_type: community_video
+    source_ref: B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析
+    claim: 利用光合印记建立低费技能循环，先服务全队能量续航，再为棋绮后输出创造环境
+    reasoning_available: true
+    reasoning_summary: 针叶巡林是稳定光合印记来源；印记按全队资源窗口理解，后续通过地刺/联防拖回合放大回能收益，最终给棋绮后等输出创造收割机会
+    date: '2026-05-14'
+  tags:
+  - 光合武队
+  - 印记体系
+  mechanism_refs: []
+  evidence_bundle_id: ''
+  claim_risk: ''
+  review_status: unreviewed
+  meta_snapshot: 2026-s1
+  graph_origin: human
+  claimed_by_source_only: false
+  has_counter_claim: false
+  counter_claim_id: null
+- id: edge/auto/0007
+  source_species_set_id: species_set/针叶巡林/photosynthesis_lead_2026-s1
+  target_species_set_id: species_set/食尘短绒/spike_pivot_2026-s1
+  edge_type: synergy
+  description: 针叶巡林首发用光合作用挂光合资源窗口 → 食尘短绒接棒联防 + 地刺拖回合，保护队伍能量收益
+  reasoning_quality: partial_chain
+  conditions:
+  - 在光合武队体系内
+  confidence: observed
+  evidence_refs:
+  - source_type: community_video
+    source_ref: B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析
+    claim: 利用地刺拖回合，通过地刺、偷回合等机制保护光合资源窗口与联防
+    reasoning_available: true
+    reasoning_summary: 针叶巡林首发启动光合印记后，由食尘短绒接替联防，地刺持续消耗并保护回能窗口
+    date: '2026-05-14'
+  tags:
+  - 光合武队
+  - 首发联防链
+  mechanism_refs: []
+  evidence_bundle_id: ''
+  claim_risk: ''
+  review_status: unreviewed
+  meta_snapshot: 2026-s1
+  graph_origin: human
+  claimed_by_source_only: false
+  has_counter_claim: true
+  counter_claim_id: edge/auto/0009
+- id: edge/auto/0008
+  source_species_set_id: species_set/食尘短绒/spike_pivot_2026-s1
+  target_species_set_id: species_set/棋绮后/max_speed_reap_2026-s1
+  edge_type: synergy
+  description: 地刺持续消耗 + 联防拖回合，为全队光合回能窗口争取回合；特殊清洁场景只作为偶发偷敌方印记收益
+  reasoning_quality: partial_chain
+  conditions:
+  - 在光合武队体系内
+  confidence: observed
+  evidence_refs:
+  - source_type: community_video
+    source_ref: B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析
+    claim: 利用地刺拖回合，为全队光合回能窗口和棋绮后后续输出创造环境
+    reasoning_available: true
+    reasoning_summary: 地刺每回合消耗/打断 → 拖慢对方节奏 → 光合印记的回合末回能更容易兑现 → 棋绮后获得上场/收割窗口；特殊清洁场景不是稳定产印记手段
+    date: '2026-05-14'
+  tags:
+  - 光合武队
+  - 地刺体系
+  - 印记体系
+  mechanism_refs: []
+  evidence_bundle_id: ''
+  claim_risk: ''
+  review_status: unreviewed
+  meta_snapshot: 2026-s1
+  graph_origin: human
+  claimed_by_source_only: false
+  has_counter_claim: false
+  counter_claim_id: null
+- id: edge/auto/0009
+  source_species_set_id: species_set/食尘短绒/spike_pivot_2026-s1
+  target_species_set_id: species_set/针叶巡林/photosynthesis_lead_2026-s1
+  edge_type: synergy
+  description: 接替针叶巡林首发后的联防位，石锁+地刺延续场面压力，保护针叶巡林启动的光合资源窗口
+  reasoning_quality: partial_chain
+  conditions:
+  - 在光合武队体系内
+  confidence: observed
+  evidence_refs:
+  - source_type: community_video
+    source_ref: B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析
+    claim: 联防体系稳定，通过地刺拖回合保护光合资源窗口
+    reasoning_available: true
+    reasoning_summary: 首发后换入食尘短绒持续地刺，维持场面压力
+    date: '2026-05-14'
+  tags:
+  - 光合武队
+  - 联防链
+  mechanism_refs: []
+  evidence_bundle_id: ''
+  claim_risk: ''
+  review_status: unreviewed
+  meta_snapshot: 2026-s1
+  graph_origin: human
+  claimed_by_source_only: false
+  has_counter_claim: true
+  counter_claim_id: edge/auto/0007
+- id: edge/auto/0010
+  source_species_set_id: species_set/食尘短绒/spike_pivot_2026-s1
+  target_species_set_id: species_set/声波缇塔/mid_speed_spike_2026-s1
+  edge_type: synergy
+  description: 两只地刺手互补联防，声波缇塔提供中速输出节奏
+  reasoning_quality: partial_chain
+  conditions:
+  - 在光合武队体系内
+  confidence: observed
+  evidence_refs:
+  - source_type: community_video
+    source_ref: B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析
+    claim: 声波提塔（声波缇塔）中速输出，联防补位，打节奏压制
+    reasoning_available: true
+    reasoning_summary: 食尘短绒+声波缇塔双地刺，交替联防维持地刺覆盖率
+    date: '2026-05-14'
+  tags:
+  - 光合武队
+  - 双地刺联防
+  mechanism_refs: []
+  evidence_bundle_id: ''
+  claim_risk: ''
+  review_status: unreviewed
+  meta_snapshot: 2026-s1
+  graph_origin: human
+  claimed_by_source_only: false
+  has_counter_claim: true
+  counter_claim_id: edge/auto/0001

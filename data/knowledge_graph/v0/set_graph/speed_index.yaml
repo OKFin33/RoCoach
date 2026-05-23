@@ -1,0 +1,139 @@
+generated_at: '2026-05-18'
+meta_snapshot: 2026-s1
+total_speed_entries: 6
+total_speed_relations: 14
+speed_tiers:
+  266:
+  - species_set_id: species_set/食尘短绒/spike_pivot_2026-s1
+    species_name: 食尘短绒
+    graph_origin: human
+    nature: 生命↑魔攻↓
+    config_note: 地刺拖回合、联防中枢。特殊清洁场景只是在回合结束偷取敌方1层印记，不能稳定主动产光合印记。速度266为全队最快
+  246:
+  - species_set_id: species_set/针叶巡林/photosynthesis_lead_2026-s1
+    species_name: 针叶巡林
+    graph_origin: human
+    nature: 物攻↑魔攻↓
+    config_note: 首发位。通过光合作用建立全队光合印记资源窗口（光合印记回合末回1能），不是单独给棋绮后的叠层；前排压制。野性感官特性提供应对后先手+1
+  237:
+  - species_set_id: species_set/声波缇塔/mid_speed_spike_2026-s1
+    species_name: 声波缇塔
+    graph_origin: human
+    nature: 速度↑魔攻↓
+    config_note: 中速输出 + 地刺联防补位。加速性格速度237，为全队中高速输出点。传感器+缠丝劲增加打击面
+  - species_set_id: species_set/棋绮后/max_speed_reap_2026-s1
+    species_name: 棋绮后
+    graph_origin: human
+    nature: 速度↑魔攻↓
+    config_note: 光合武队主C/收割位。依赖针叶巡林通过光合作用建立的全队光合印记资源窗口（回合末回能）和联防拖回合，再用听桥/鸣沙陷阱启动 → 影袭/借用收割。听桥可能提供先读/侦察能力
+  230:
+  - species_set_id: species_set/芋香巨角蛛/low_cost_poison_pivot_2026-s1
+    species_name: 芋香巨角蛛
+    graph_origin: human
+    nature: 生命↑速度↓
+    config_note: 控场消耗、补联防。Battle Dex/BWiki确认扬沙=1耗地系物攻伤害，和沙暴无关；不要把它写成天气启动或沙暴资源链。复写复制有利效果。速度因性格减速降为230
+  176:
+  - species_set_id: species_set/布克棱岩/pressure_tank_2026-s1
+    species_name: 布克棱岩
+    graph_origin: human
+    nature: 生命↑魔攻↓
+    config_note: 抗压前排，高双防种族（物防159/魔防150），地刺+壁垒站场消耗。速度176为全队最慢
+speed_relations:
+- id: speed_rel/auto/0000
+  faster: species_set/食尘短绒/spike_pivot_2026-s1
+  slower: species_set/针叶巡林/photosynthesis_lead_2026-s1
+  relation: outspeeds
+  margin: 20
+  nature_variants_known: true
+  note: ''
+- id: speed_rel/auto/0001
+  faster: species_set/食尘短绒/spike_pivot_2026-s1
+  slower: species_set/声波缇塔/mid_speed_spike_2026-s1
+  relation: outspeeds
+  margin: 29
+  nature_variants_known: true
+  note: ''
+- id: speed_rel/auto/0002
+  faster: species_set/食尘短绒/spike_pivot_2026-s1
+  slower: species_set/棋绮后/max_speed_reap_2026-s1
+  relation: outspeeds
+  margin: 29
+  nature_variants_known: true
+  note: ''
+- id: speed_rel/auto/0003
+  faster: species_set/食尘短绒/spike_pivot_2026-s1
+  slower: species_set/芋香巨角蛛/low_cost_poison_pivot_2026-s1
+  relation: outspeeds
+  margin: 36
+  nature_variants_known: true
+  note: ''
+- id: speed_rel/auto/0004
+  faster: species_set/食尘短绒/spike_pivot_2026-s1
+  slower: species_set/布克棱岩/pressure_tank_2026-s1
+  relation: outspeeds
+  margin: 90
+  nature_variants_known: true
+  note: ''
+- id: speed_rel/auto/0005
+  faster: species_set/针叶巡林/photosynthesis_lead_2026-s1
+  slower: species_set/声波缇塔/mid_speed_spike_2026-s1
+  relation: outspeeds
+  margin: 9
+  nature_variants_known: true
+  note: ''
+- id: speed_rel/auto/0006
+  faster: species_set/针叶巡林/photosynthesis_lead_2026-s1
+  slower: species_set/棋绮后/max_speed_reap_2026-s1
+  relation: outspeeds
+  margin: 9
+  nature_variants_known: true
+  note: ''
+- id: speed_rel/auto/0007
+  faster: species_set/针叶巡林/photosynthesis_lead_2026-s1
+  slower: species_set/芋香巨角蛛/low_cost_poison_pivot_2026-s1
+  relation: outspeeds
+  margin: 16
+  nature_variants_known: true
+  note: ''
+- id: speed_rel/auto/0008
+  faster: species_set/针叶巡林/photosynthesis_lead_2026-s1
+  slower: species_set/布克棱岩/pressure_tank_2026-s1
+  relation: outspeeds
+  margin: 70
+  nature_variants_known: true
+  note: ''
+- id: speed_rel/auto/0009
+  faster: species_set/声波缇塔/mid_speed_spike_2026-s1
+  slower: species_set/芋香巨角蛛/low_cost_poison_pivot_2026-s1
+  relation: outspeeds
+  margin: 7
+  nature_variants_known: true
+  note: ''
+- id: speed_rel/auto/0010
+  faster: species_set/声波缇塔/mid_speed_spike_2026-s1
+  slower: species_set/布克棱岩/pressure_tank_2026-s1
+  relation: outspeeds
+  margin: 61
+  nature_variants_known: true
+  note: ''
+- id: speed_rel/auto/0011
+  faster: species_set/棋绮后/max_speed_reap_2026-s1
+  slower: species_set/芋香巨角蛛/low_cost_poison_pivot_2026-s1
+  relation: outspeeds
+  margin: 7
+  nature_variants_known: true
+  note: ''
+- id: speed_rel/auto/0012
+  faster: species_set/棋绮后/max_speed_reap_2026-s1
+  slower: species_set/布克棱岩/pressure_tank_2026-s1
+  relation: outspeeds
+  margin: 61
+  nature_variants_known: true
+  note: ''
+- id: speed_rel/auto/0013
+  faster: species_set/芋香巨角蛛/low_cost_poison_pivot_2026-s1
+  slower: species_set/布克棱岩/pressure_tank_2026-s1
+  relation: outspeeds
+  margin: 54
+  nature_variants_known: true
+  note: ''

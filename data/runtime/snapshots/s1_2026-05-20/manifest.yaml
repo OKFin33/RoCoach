@@ -1,0 +1,19 @@
+schema_version: p14.a_layer_base_snapshot.v0
+id: s1_2026-05-20_battle_dex_freeze
+created_at: '2026-05-23T21:28:06.880497+08:00'
+game_epoch: s1_2026-05-20
+runtime_allowed: false
+promotion_status: immutable_historical_baseline
+immutable: true
+source:
+  path: data/runtime/battle_dex.sqlite
+  sha256: 76976d3f22f3fba8e55408bd098bbc0a5f8f9b9a81c7338706bd5cff60eb8543
+  bytes: 7843840
+snapshot:
+  path: data/runtime/snapshots/s1_2026-05-20/battle_dex.sqlite
+  sha256: 76976d3f22f3fba8e55408bd098bbc0a5f8f9b9a81c7338706bd5cff60eb8543
+  bytes: 7843840
+byte_identical_to_source: true
+may_write_runtime_db: false
+note: Frozen S1 baseline for candidate-only S2 overlay construction; this copy is
+  not a runtime promotion.

@@ -1,0 +1,23 @@
+schema_version: p14.annotation_guideline_version.v0
+active_guideline:
+  guideline_id: p14_annotation_guideline_v0
+  doc_path: docs/specs/p14_gold_eval_review_design.md
+  set_inventory_schema_path: docs/specs/p14_set_inventory_schema.md
+  activated_at: "2026-05-21"
+  runtime_allowed: false
+  core_decisions:
+    - set_identity_is_tactical_intent_not_field_equality
+    - single_field_difference_is_never_sufficient_for_separate_set
+    - nature_iv_bloodline_moves_role_and_team_context_form_a_signal_bundle
+    - bloodline_has_lower_standalone_weight_when_used_for_skill_unlock_or_coverage
+    - gold_acceptance_is_eval_calibration_not_runtime_promotion
+allowed_pm_actions:
+  - accept
+  - accept as gold
+  - batch accept low-risk
+  - split
+  - keep same family
+  - defer
+  - needs source
+  - reject
+  - "fix: ..."

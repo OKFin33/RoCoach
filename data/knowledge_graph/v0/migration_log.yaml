@@ -1,0 +1,34 @@
+schema_version: p14.kg_migration_log.v0
+last_updated: "2026-05-23"
+runtime_allowed: false
+migrations:
+  - migration_id: migration/meta_graph_v0_to_knowledge_graph_v0_set_graph_2026-05-18
+    status: completed_git_cleanup_staged
+    source_root: data/meta_graph/v0
+    target_root: data/knowledge_graph/v0/set_graph
+    started_at: "2026-05-18"
+    completed_at: "2026-05-18"
+    closed_at: "2026-05-23"
+    reason: "P14 moved Set Graph under the graph-owned Knowledge Graph root so mechanism rules and review ledgers share one governed data root."
+    copied_assets:
+      - graph_registry.yaml
+      - edge_index.yaml
+      - speed_index.yaml
+      - runtime_manifest.yaml
+      - species_sets/
+    compatibility_policy:
+      historical_root_allowed_as_read_reference: true
+      active_writes_allowed_to_source_root: false
+      active_runtime_root: data/knowledge_graph/v0/set_graph
+    validator_policy:
+      strict_mode_requires_no_active_species_sets_under_source_root: true
+      strict_mode_requires_target_root: true
+    git_cleanup:
+      old_root_deletion_required: true
+      old_root_deletion_staged: true
+      target_root_tracking_required: true
+      target_root_tracking_staged: true
+      note: "Audit repair pass stages the old-root deletion and the knowledge_graph/v0 target root together."
+    artifact_refs:
+      path_audit: artifacts/knowledge_ops/audits/meta_graph_path_audit_2026-05-18.md
+    runtime_allowed: false

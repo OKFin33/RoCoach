@@ -1,0 +1,25 @@
+schema_version: p14.gold_set_manifest.v0
+gold_set_id: gold_set_v0
+status: draft_no_pm_accepted_items
+created_at: "2026-05-21"
+runtime_allowed: false
+purpose:
+  - calibrate_extraction_and_recluster_behavior
+  - detect_regression_in_set_family_and_split_decisions
+  - protect_against_known_false_cluster_patterns
+current_counts:
+  gold_set_family: 0
+  gold_split_case: 0
+  gold_mechanism_boundary: 0
+  gold_stateful_form_boundary: 0
+  gold_negative_case: 0
+accepted_item_paths: []
+pending_review_packets:
+  - artifacts/knowledge_ops/review_packets/phase47f_gold_set_v0_seed_review_2026-05-21.md
+  - artifacts/knowledge_ops/review_packets/phase47f_gold_negative_candidates_review_2026-05-21.md
+candidate_sources:
+  - artifacts/knowledge_ops/gold_candidates/phase47f_gold_set_v0_seed_candidates_2026-05-21.yaml
+  - artifacts/knowledge_ops/gold_candidates/phase47f_gold_negative_candidates_2026-05-21.yaml
+notes:
+  - Gold acceptance is for eval/calibration only.
+  - Gold acceptance does not imply runtime promotion or graph materialization.

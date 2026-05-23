@@ -1,0 +1,11 @@
+schema_version: p14.error_ledger.v0
+last_updated: "2026-05-18"
+known_errors:
+  - id: "err/photosynthesis_mark_source_overgeneralized"
+    status: active
+    pattern: "Treating non-photosynthesis users as stable 光合印记 sources."
+    correction: "Only model stable active 光合印记 source when source/A-layer supports 光合作用; 食尘短绒 may steal/retain marks but is not a stable source."
+  - id: "err/yangsha_confused_with_sandstorm"
+    status: active
+    pattern: "Treating 扬沙 as sandstorm/weather setup."
+    correction: "扬沙 is a 1-cost ground physical attack; 沙涌 is the sandstorm weather setup move."

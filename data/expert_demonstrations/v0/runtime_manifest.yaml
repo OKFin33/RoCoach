@@ -1,0 +1,20 @@
+runtime_asset: expert_demonstrations_v0
+status: blocked_no_gold_cases
+created_at: "2026-05-16"
+source_roots:
+  - artifacts/p10h_expert_demo_extraction
+  - artifacts/p10h_full_spectrum_extraction_merged_v2
+  - artifacts/p10h_name_resolution_cleanup
+runtime_root: data/expert_demonstrations/v0
+promotion_policy:
+  runtime_can_read_root: true
+  runtime_can_inject_candidates: false
+  required_case_status: gold
+  required_review_status: pm_fidelity_reviewed
+current_counts:
+  gold_cases: 0
+  indexed_cases: 0
+known_blockers:
+  - No reviewed gold cases have been promoted.
+  - Retrieval index has not been built.
+  - Advisor answer chain is not wired to D-layer retrieval.

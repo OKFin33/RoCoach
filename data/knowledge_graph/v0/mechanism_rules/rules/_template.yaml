@@ -1,0 +1,27 @@
+id: "mechanism/example_rule/2026-s1"
+title: ""
+meta_snapshot: "2026-s1"
+mechanism_type: ""
+grain: "guardrail"
+scope:
+  applies_to: []
+  does_not_apply_to: []
+normalized_rule: ""
+source_claims: []
+a_layer_refs:
+  species_ids: []
+  move_names: []
+  ability_names: []
+b_layer_refs: []
+contradictions: []
+review:
+  review_status: "candidate"
+  reviewer: ""
+  review_date: ""
+  notes: ""
+runtime:
+  runtime_allowed: false
+  uncertainty_policy: "do_not_inject"
+affected_assets:
+  species_set_ids: []
+  edge_ids: []

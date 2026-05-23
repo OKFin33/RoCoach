@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "status": 200,
+  "statusText": "OK",
+  "target_model": "fun-asr",
+  "prefix": "rocoasr",
+  "hotword_count": 377,
+  "response": {
+    "output": {
+      "vocabulary_id": "vocab-rocoasr-d24ff258717846e49d79c362e81af7e2"
+    },
+    "usage": {
+      "count": 1
+    },
+    "request_id": "08b07f9a-284a-9eb3-af46-642bb3f5b7e8"
+  }
+}

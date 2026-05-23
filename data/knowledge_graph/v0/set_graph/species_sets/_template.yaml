@@ -1,0 +1,68 @@
+# ──────────────────────────────────────────
+# species_set 卡模板
+# 复制此文件，填入实际数据，删除以 _ 开头的注释字段
+# ──────────────────────────────────────────
+
+# === 必填 ===
+id: ""                                     # 全局唯一 species_set/{species}/{variant}_{snapshot}
+canonical_species_id: ""                   # Battle Dex species_id
+canonical_species_name: ""                 # 中文正名（Battle Dex display_name）
+moves: []                                  # 技能名列表（中文正名）
+ability: ""                                # 特性名（中文正名）
+meta_snapshot: ""                          # 版本标识，如 2026-s1
+
+# === Graph 来源（必填） ===
+graph_origin: "human"                      # human | shadow
+source_refs:                               # 此配置本身的来源
+  - source_type: "community_video"         # community_video | battle_dex | expert_review | p10h_case
+    source_ref: ""                         # URL / 文件路径 / 引用标识
+    claim: ""                              # 来源中的具体声明
+    date: ""                               # YYYY-MM-DD
+    reviewer: ""                           # PM 审核人
+    review_date: ""                        # YYYY-MM-DD
+    notes: ""
+
+confidence: "observed"                     # observed | inferred | speculative
+review_status: "unreviewed"                # unreviewed | reviewed | disputed | superseded
+
+# === 可选：配置细节 ===
+source_aliases: []                         # 社区简称、常见误名
+nature: ""                                 # 性格
+individual_value_bonuses:                  # 关键个体值（31 表示满个体）
+  speed: 31
+stat_profile:                              # 满级实际数值（speed 必填）
+  speed: 0
+speed_tier: 0                              # 速度值，speed_index 索引键
+role_labels: []                            # speed_control|wall|pivot|setup_core|killline_converter|weather_setter|hazard_setter|cleric|wallbreaker|revenge_killer|stall_anchor|sacrifice_piece
+team_context:
+  common_partners: []                      # 常见搭配的 species_set ID
+  archetype_tags: []                       # 阵容类型标签
+notes: ""                                  # 设计笔记、待验证事项
+mechanism_refs: []                         # 该 set 依赖的 reviewed mechanism rule id
+source_quality:
+  transcript_quality: ""                   # good | usable | poor
+  asr_unresolved_terms: []
+  source_span_ids: []
+promotion:
+  promotion_status: "candidate"            # candidate | agent_curated | pm_reviewed | runtime_promoted
+  promotion_packet_id: ""
+
+# === 可选：此配置与其他配置的关系 ===
+related_to:
+  - target_species_set_id: ""              # 关系指向的目标配置 ID
+    edge_type: ""                          # synergy|threat|counterplay|bait_punish|pivot_path|killline|resource_race|mindgame|volatility
+    description: ""                        # 核心。"为什么"——因果链、up主原话
+    reasoning_quality: "claim_only"        # full_chain|partial_chain|claim_only
+    conditions: []                         # 关系成立的前提
+    confidence: "observed"                 # observed | inferred | speculative
+    evidence_refs:
+      - source_type: "community_video"
+        source_ref: ""
+        claim: ""
+        reasoning_available: false         # up 主有没有解释"为什么"
+        reasoning_summary: ""
+        date: ""
+    tags: []
+    mechanism_refs: []                     # 关系依赖的 reviewed mechanism rule id
+    evidence_bundle_id: ""
+    claim_risk: ""                         # low | medium | high

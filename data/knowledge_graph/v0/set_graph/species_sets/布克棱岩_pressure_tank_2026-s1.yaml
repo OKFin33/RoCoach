@@ -1,0 +1,77 @@
+id: "species_set/布克棱岩/pressure_tank_2026-s1"
+canonical_species_id: "species_c5589b7981c1fc0a"
+canonical_species_name: "布克棱岩"
+source_aliases: []
+moves:
+  - "地刺"
+  - "吓退"
+  - "壁垒"
+  - "岩土暴击"
+nature: "生命↑魔攻↓"
+individual_value_bonuses:
+  speed: 31
+  atk: 31
+  defense: 31
+  hp: 31
+ability: "地脉"
+stat_profile:
+  speed: 176
+speed_tier: 176
+role_labels:
+  - "wall"
+  - "wallbreaker"
+team_context:
+  common_partners:
+    - "species_set/食尘短绒/spike_pivot_2026-s1"
+    - "species_set/棋绮后/max_speed_reap_2026-s1"
+  archetype_tags:
+    - "光合武队"
+meta_snapshot: "2026-s1"
+graph_origin: "human"
+source_refs:
+  - source_type: "community_video"
+    source_ref: "B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析"
+    claim: "布克棱岩抗压前排，中后期补伤害，提供联防稳定性，技能为地刺/吓退/壁垒/岩土暴击"
+    date: "2026-05-14"
+    reviewer: "pm"
+    review_date: ""
+    notes: ""
+confidence: "observed"
+review_status: "unreviewed"
+notes: "抗压前排，高双防种族（物防159/魔防150），地刺+壁垒站场消耗。速度176为全队最慢"
+
+related_to:
+  - target_species_set_id: "species_set/棋绮后/max_speed_reap_2026-s1"
+    edge_type: "synergy"
+    description: "前排抗压吸引火力 + 中后期岩土暴击补伤害，降低棋绮后上场时的仇恨压力"
+    reasoning_quality: "partial_chain"
+    conditions:
+      - "在光合武队体系内"
+    confidence: "observed"
+    evidence_refs:
+      - source_type: "community_video"
+        source_ref: "B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析"
+        claim: "抗压前排，中后期补伤害，提供联防稳定性"
+        reasoning_available: true
+        reasoning_summary: "布克棱岩的高耐久吸引对方火力，棋绮后在安全回合上场收割"
+        date: "2026-05-14"
+    tags:
+      - "光合武队"
+      - "前排抗压"
+
+  - target_species_set_id: "species_set/食尘短绒/spike_pivot_2026-s1"
+    edge_type: "synergy"
+    description: "双前排联防，布克棱岩高耐久壁垒 + 食尘短绒地刺周转，形成稳固防线"
+    reasoning_quality: "partial_chain"
+    conditions:
+      - "在光合武队体系内"
+    confidence: "observed"
+    evidence_refs:
+      - source_type: "community_video"
+        source_ref: "B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析"
+        claim: "抗压前排，提供联防稳定性"
+        reasoning_available: false
+        date: "2026-05-14"
+    tags:
+      - "光合武队"
+      - "双前排联防"

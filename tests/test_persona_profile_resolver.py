@@ -232,7 +232,7 @@ class PersonaProfileResolverTests(unittest.TestCase):
             self.assertTrue(rendered.persona.sanitized)
 
     def test_resolver_module_does_not_consume_raw_doctrine_projection_or_ledger_internals(self) -> None:
-        source = (Path(__file__).resolve().parent.parent / "agent_core" / "persona_profile_resolver.py").read_text(
+        source = (Path(__file__).resolve().parent.parent / "src" / "agent_core" / "persona_profile_resolver.py").read_text(
             encoding="utf-8"
         )
 
@@ -270,7 +270,7 @@ class PersonaProfileResolverTests(unittest.TestCase):
                 load_persona_projection_profile_materialization(invalid_path)
 
     def test_loader_module_consumes_only_materialized_profile_artifact_contract(self) -> None:
-        source = (Path(__file__).resolve().parent.parent / "agent_core" / "persona_profile_config.py").read_text(
+        source = (Path(__file__).resolve().parent.parent / "src" / "agent_core" / "persona_profile_config.py").read_text(
             encoding="utf-8"
         )
 
@@ -357,7 +357,7 @@ def _sample_response() -> AgentResponse:
             persona_id=None,
             facts_locked=True,
             fact_policy=FACT_POLICY,
-            source_contract="specs/presentation_response_contract.yaml",
+            source_contract="docs/specs/presentation_response_contract.yaml",
         ),
     )
     return AgentResponse(

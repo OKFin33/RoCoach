@@ -1,0 +1,79 @@
+id: "species_set/芋香巨角蛛/low_cost_poison_pivot_2026-s1"
+canonical_species_id: "species_418547d4fc0f0c17"
+canonical_species_name: "芋香巨角蛛"
+source_aliases:
+  - "宇雾巨角蛛"
+moves:
+  - "扬沙"
+  - "防御"
+  - "晒太阳"
+  - "复写"
+nature: "生命↑速度↓"
+individual_value_bonuses:
+  speed: 31
+  defense: 31
+  hp: 31
+  spd: 31
+ability: "毒腺"
+stat_profile:
+  speed: 230
+speed_tier: 230
+role_labels:
+  - "pivot"
+  - "stall_anchor"
+  - "wall"
+team_context:
+  common_partners:
+    - "species_set/食尘短绒/spike_pivot_2026-s1"
+    - "species_set/棋绮后/max_speed_reap_2026-s1"
+  archetype_tags:
+    - "光合武队"
+meta_snapshot: "2026-s1"
+graph_origin: "human"
+source_refs:
+  - source_type: "community_video"
+    source_ref: "B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析"
+    claim: "宇雾巨角蛛（芋香巨角蛛）控场消耗，补联防，提供持续压制，技能为扬沙/防御/晒太阳/复写"
+    date: "2026-05-14"
+    reviewer: "pm"
+    review_date: ""
+    notes: "OCR原料，名称'宇雾巨角蛛'已校正为'芋香巨角蛛'。Battle Dex特性为毒腺（非特殊清洁场景）"
+confidence: "observed"
+review_status: "unreviewed"
+notes: "控场消耗、补联防。Battle Dex/BWiki确认扬沙=1耗地系物攻伤害，和沙暴无关；不要把它写成天气启动或沙暴资源链。复写复制有利效果。速度因性格减速降为230"
+
+related_to:
+  - target_species_set_id: "species_set/棋绮后/max_speed_reap_2026-s1"
+    edge_type: "synergy"
+    description: "低耗扬沙 + 毒腺压中毒，晒太阳清增益，复写补控场；扬沙只按1耗地系物攻处理，不接入沙暴天气链"
+    reasoning_quality: "partial_chain"
+    conditions:
+      - "在光合武队体系内"
+    confidence: "inferred"
+    evidence_refs:
+      - source_type: "community_video"
+        source_ref: "B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析"
+        claim: "控场消耗，补联防，提供持续压制；扬沙按低耗地系物攻处理"
+        reasoning_available: true
+        reasoning_summary: "扬沙是1耗地系物理攻击，配合毒腺作为低耗消耗/联防工具；不作为沙暴天气启动或沙暴资源关系"
+        date: "2026-05-14"
+    tags:
+      - "光合武队"
+      - "低耗消耗"
+
+  - target_species_set_id: "species_set/食尘短绒/spike_pivot_2026-s1"
+    edge_type: "synergy"
+    description: "联防补位搭档，芋香巨角蛛低耗扬沙/清增益 + 食尘短绒地刺消耗，双重压制"
+    reasoning_quality: "partial_chain"
+    conditions:
+      - "在光合武队体系内"
+    confidence: "inferred"
+    evidence_refs:
+      - source_type: "community_video"
+        source_ref: "B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析"
+        claim: "补联防，提供持续压制"
+        reasoning_available: false
+        date: "2026-05-14"
+    tags:
+      - "光合武队"
+      - "联防补位"

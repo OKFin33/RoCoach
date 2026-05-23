@@ -1,0 +1,40 @@
+schema_version: p14.knowledge_graph_runtime_manifest.v0
+runtime_asset: knowledge_graph_v0
+status: phase1_first_reviewed_family_card_materialized
+created_at: "2026-05-18"
+knowledge_graph_root: data/knowledge_graph/v0
+set_graph_root: data/knowledge_graph/v0/set_graph
+mechanism_rules_root: data/knowledge_graph/v0/mechanism_rules
+review_state_root: data/knowledge_graph/v0/review_state
+patch_delta_root: data/knowledge_graph/v0/patch_deltas
+schema_compatibility:
+  historical_roots:
+    - data/meta_graph/v0
+  current_target_root: data/knowledge_graph/v0
+  migration_required: false
+  migration_log_ref: data/knowledge_graph/v0/migration_log.yaml#migration/meta_graph_v0_to_knowledge_graph_v0_set_graph_2026-05-18
+meta_snapshot: "2026-s1"
+promotion_policy:
+  runtime_can_read_root: true
+  runtime_can_inject_unreviewed_cards: false
+  runtime_can_inject_candidate_rules: false
+  required_card_review_status: reviewed
+  required_mechanism_rule_status: pm_reviewed
+  low_risk_auto_promotion_allowed: true
+  s_graph_enabled: false
+current_counts:
+  species_set_cards: 7
+  reviewed_cards: 1
+  runtime_mechanism_rules: 0
+  candidate_mechanism_rules: 4
+  family_review_entries: 1
+  family_review_pm_reviewed: 1
+  patch_delta_packs: 1
+  patch_reconciliation_reports: 1
+known_blockers:
+  - Legacy copied Set Graph cards are still review_status=unreviewed.
+  - Mechanism rules are candidate-only until PM/reviewer gates pass.
+  - First family-level reviewed card is materialized but not runtime-promoted.
+  - Advisor answer chain is not yet wired to Meta Graph retrieval.
+  - D-layer v0 runtime subset has not been promoted yet.
+  - S2 2026-05-21 patch deltas are aligned to the official balance article and have a candidate A-layer reconciliation report, but PM/review gates and a runtime/A-layer snapshot are still required before DB overwrite or runtime promotion.

@@ -1,0 +1,2913 @@
+schema_version: p14.s2_a_layer_reconciliation.v0
+id: s2_2026-05-21_a_layer_reconciliation_v0
+created_at: '2026-05-23T00:00:00+08:00'
+runtime_allowed: false
+promotion_status: candidate_only
+patch_delta_ref: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_patch_delta_pack_v0.yaml
+patch_delta_sha256: ec0d64647061329c242aecf224a89ee47e8d6eca4e7c4225b57352e6b92f63ed
+a_layer_db_ref: data/runtime/battle_dex.sqlite
+a_layer_db_sha256: 76976d3f22f3fba8e55408bd098bbc0a5f8f9b9a81c7338706bd5cff60eb8543
+source_policy:
+  may_write_runtime_db: false
+  may_generate_candidate_overlay: true
+  official_patch_note_ref: data/knowledge_graph/v0/patch_deltas/s2_2026-05-20_official_balance_sources/s2_2026-05-20_official_balance_manifest.yaml
+  requires_pm_review_before_a_layer_write: true
+  requires_runtime_db_snapshot_before_runtime_promotion: true
+pm_review_decisions:
+  爵士鹿_stat_old_value_conflict: 'PM accepted: freeze S1 Dex as historical baseline,
+    but use S2 patch new stat value for candidate overlay because 爵士鹿/波普鹿 S1 physical
+    attack may be uncertain.'
+  祭礼巨像_坠星_old_text_diff: PM accepted as wording-only old-text difference.
+  波普鹿_超级电池_old_text_diff: PM accepted as wording-only old-text difference.
+  双向光速_old_text_diff: PM accepted as wording-only old-text difference.
+  先手_route: 'Route to B-layer mechanism/concept clarification: 先手度 is priority +x-like
+    action priority, not speed; S2 screenshot explicitly states priority values can
+    stack. Treat as explicit documentation/clarification unless later evidence proves
+    this was a mechanical change.'
+summary:
+  stat_overlay_entries: 25
+  stat_ready: 25
+  ability_overlay_entries: 10
+  ability_ready: 10
+  move_pool_addition_entries: 26
+  move_pool_ready: 26
+  move_effect_entries: 30
+  move_effect_ready: 30
+  wording_update_entries: 8
+  wording_ready: 8
+  mechanism_concept_routed: 1
+  unresolved_or_non_dex_items: 0
+stat_overlays:
+- source_image_id: s2_patch_img_001
+  resolution:
+    status: resolved_exact
+    query:
+      entity: 武者鸡
+      form: null
+    canonical_query:
+      entity: 武者鸡
+      form: null
+    species:
+      species_id: species_76b12b94233987a3
+      display_name: 武者鸡
+      initial_species_name: 可立鸡
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 斗技
+      ability_effect_text: 应对成功后,获得全技能威力永久+20。
+    alias_notes: []
+  changes:
+  - stat: 生命
+    current_a_layer: 121
+    patch_old: 121
+    patch_new: 116
+    old_matches_current_a_layer: true
+  - stat: 物攻
+    current_a_layer: 144
+    patch_old: 144
+    patch_new: 137
+    old_matches_current_a_layer: true
+  - stat: 魔攻
+    current_a_layer: 58
+    patch_old: 58
+    patch_new: 66
+    old_matches_current_a_layer: true
+  - stat: 物防
+    current_a_layer: 92
+    patch_old: 92
+    patch_new: 111
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+- source_image_id: s2_patch_img_001
+  resolution:
+    status: resolved_exact
+    query:
+      entity: 绅士鸡
+      form: null
+    canonical_query:
+      entity: 绅士鸡
+      form: null
+    species:
+      species_id: species_e42e51148f390411
+      display_name: 绅士鸡
+      initial_species_name: 可立鸡
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 指挥家
+      ability_effect_text: 应对成功后,永久获得双攻+20%。
+    alias_notes: []
+  changes:
+  - stat: 生命
+    current_a_layer: 108
+    patch_old: 108
+    patch_new: 112
+    old_matches_current_a_layer: true
+  - stat: 物攻
+    current_a_layer: 132
+    patch_old: 132
+    patch_new: 120
+    old_matches_current_a_layer: true
+  - stat: 魔攻
+    current_a_layer: 132
+    patch_old: 132
+    patch_new: 120
+    old_matches_current_a_layer: true
+  - stat: 物防
+    current_a_layer: 92
+    patch_old: 92
+    patch_new: 102
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+- source_image_id: s2_patch_img_001
+  resolution:
+    status: resolved_exact
+    query:
+      entity: 梦悠悠
+      form: null
+    canonical_query:
+      entity: 梦悠悠
+      form: null
+    species:
+      species_id: species_09a0cceae6fa8d0c
+      display_name: 梦悠悠
+      initial_species_name: 梦游(穿旧睡衣的样子)
+      form_name: 原始形态
+      regional_form_name: 穿旧睡衣的样子
+      ability_name: 做噩梦
+      ability_effect_text: 敌方精灵离场后,更换入场的精灵失去3能量。
+    alias_notes: []
+  changes:
+  - stat: 物攻
+    current_a_layer: 50
+    patch_old: 50
+    patch_new: 65
+    old_matches_current_a_layer: true
+  - stat: 魔攻
+    current_a_layer: 133
+    patch_old: 133
+    patch_new: 157
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+- source_image_id: s2_patch_img_001
+  resolution:
+    status: resolved_exact
+    query:
+      entity: 叮叮恶魔
+      form: null
+    canonical_query:
+      entity: 叮叮恶魔
+      form: null
+    species:
+      species_id: species_636e2a123ffb3e2d
+      display_name: 叮叮恶魔
+      initial_species_name: 恶魔叮
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 渴求
+      ability_effect_text: 入场时获得50%吸血。
+    alias_notes: []
+  changes:
+  - stat: 生命
+    current_a_layer: 108
+    patch_old: 108
+    patch_new: 117
+    old_matches_current_a_layer: true
+  - stat: 物攻
+    current_a_layer: 140
+    patch_old: 140
+    patch_new: 125
+    old_matches_current_a_layer: true
+  - stat: 魔攻
+    current_a_layer: 55
+    patch_old: 55
+    patch_new: 53
+    old_matches_current_a_layer: true
+  - stat: 物防
+    current_a_layer: 73
+    patch_old: 73
+    patch_new: 103
+    old_matches_current_a_layer: true
+  - stat: 魔防
+    current_a_layer: 54
+    patch_old: 54
+    patch_new: 73
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+- source_image_id: s2_patch_img_001
+  resolution:
+    status: resolved_exact
+    query:
+      entity: 仪式巨像
+      form: null
+    canonical_query:
+      entity: 仪式巨像
+      form: null
+    species:
+      species_id: species_fcf2a8637a4a1f81
+      display_name: 仪式巨像
+      initial_species_name: 仪使者
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 观星
+      ability_effect_text: 敌方每有1层星陨印记,自己的地系技能威力+15%。
+    alias_notes: []
+  changes:
+  - stat: 物攻
+    current_a_layer: 90
+    patch_old: 90
+    patch_new: 84
+    old_matches_current_a_layer: true
+  - stat: 魔攻
+    current_a_layer: 95
+    patch_old: 95
+    patch_new: 89
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+- source_image_id: s2_patch_img_003
+  resolution:
+    status: resolved_exact
+    query:
+      entity: 皇家狮鹫
+      form: 崖间地的样子
+    canonical_query:
+      entity: 皇家狮鹫
+      form: 崖间地的样子
+    species:
+      species_id: species_d0860b5f5b991d24
+      display_name: 皇家狮鹫
+      initial_species_name: 小狮鹫(崖间地的样子)
+      form_name: 原始形态
+      regional_form_name: 崖间地的样子
+      ability_name: 乘风连击
+      ability_effect_text: 使用翼系技能后,获得连击数+1。
+    alias_notes: []
+  changes:
+  - stat: 生命
+    current_a_layer: 102
+    patch_old: 102
+    patch_new: 107
+    old_matches_current_a_layer: true
+  - stat: 魔攻
+    current_a_layer: 64
+    patch_old: 64
+    patch_new: 69
+    old_matches_current_a_layer: true
+  - stat: 物防
+    current_a_layer: 107
+    patch_old: 107
+    patch_new: 127
+    old_matches_current_a_layer: true
+  - stat: 魔防
+    current_a_layer: 55
+    patch_old: 55
+    patch_new: 65
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+- source_image_id: s2_patch_img_003
+  resolution:
+    status: resolved_exact
+    query:
+      entity: 皇家狮鹫
+      form: 高山地的样子
+    canonical_query:
+      entity: 皇家狮鹫
+      form: 高山地的样子
+    species:
+      species_id: species_a7ca7665918f5431
+      display_name: 皇家狮鹫
+      initial_species_name: 小狮鹫(高山地的样子)
+      form_name: 地区形态
+      regional_form_name: 高山地的样子
+      ability_name: 乘风连击
+      ability_effect_text: 使用翼系技能后,获得连击数+1。
+    alias_notes: []
+  changes:
+  - stat: 生命
+    current_a_layer: 103
+    patch_old: 103
+    patch_new: 109
+    old_matches_current_a_layer: true
+  - stat: 魔攻
+    current_a_layer: 53
+    patch_old: 53
+    patch_new: 59
+    old_matches_current_a_layer: true
+  - stat: 物防
+    current_a_layer: 103
+    patch_old: 103
+    patch_new: 123
+    old_matches_current_a_layer: true
+  - stat: 魔防
+    current_a_layer: 60
+    patch_old: 60
+    patch_new: 70
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+- source_image_id: s2_patch_img_003
+  resolution:
+    status: resolved_exact
+    query:
+      entity: 高脚鹬
+      form: null
+    canonical_query:
+      entity: 高脚鹬
+      form: null
+    species:
+      species_id: species_daf018bf238e465f
+      display_name: 高脚鹬
+      initial_species_name: 小鹬
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 起飞加速
+      ability_effect_text: 本场战斗首次使用的技能获得迅捷。
+    alias_notes: []
+  changes:
+  - stat: 生命
+    current_a_layer: 94
+    patch_old: 94
+    patch_new: 96
+    old_matches_current_a_layer: true
+  - stat: 物攻
+    current_a_layer: 63
+    patch_old: 63
+    patch_new: 98
+    old_matches_current_a_layer: true
+  - stat: 魔攻
+    current_a_layer: 63
+    patch_old: 63
+    patch_new: 98
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+- source_image_id: s2_patch_img_003
+  resolution:
+    status: resolved_exact
+    query:
+      entity: 锤头鹳
+      form: null
+    canonical_query:
+      entity: 锤头鹳
+      form: null
+    species:
+      species_id: species_299e7443a11e8394
+      display_name: 锤头鹳
+      initial_species_name: 锤头鹳
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 快锤
+      ability_effect_text: 携带的能耗小于3的技能,获得迅捷。
+    alias_notes: []
+  changes:
+  - stat: 生命
+    current_a_layer: 111
+    patch_old: 111
+    patch_new: 128
+    old_matches_current_a_layer: true
+  - stat: 物攻
+    current_a_layer: 67
+    patch_old: 67
+    patch_new: 77
+    old_matches_current_a_layer: true
+  - stat: 魔攻
+    current_a_layer: 65
+    patch_old: 65
+    patch_new: 75
+    old_matches_current_a_layer: true
+  - stat: 物防
+    current_a_layer: 91
+    patch_old: 91
+    patch_new: 101
+    old_matches_current_a_layer: true
+  - stat: 魔防
+    current_a_layer: 72
+    patch_old: 72
+    patch_new: 81
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+- source_image_id: s2_patch_img_003
+  resolution:
+    status: resolved_exact
+    query:
+      entity: 遁地鼠
+      form: 枯水期的样子
+    canonical_query:
+      entity: 遁地鼠
+      form: 枯水期的样子
+    species:
+      species_id: species_02319df64ebcb23d
+      display_name: 遁地鼠
+      initial_species_name: 地鼠(枯水期的样子)
+      form_name: 原始形态
+      regional_form_name: 枯水期的样子
+      ability_name: 警惕
+      ability_effect_text: 回合结束时,若自己能量为0则脱离。
+    alias_notes: []
+  changes:
+  - stat: 物防
+    current_a_layer: 102
+    patch_old: 102
+    patch_new: 121
+    old_matches_current_a_layer: true
+  - stat: 魔防
+    current_a_layer: 70
+    patch_old: 70
+    patch_new: 85
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+- source_image_id: s2_patch_img_003
+  resolution:
+    status: resolved_alias
+    query:
+      entity: 遁地鼠
+      form: 储水时的样子
+    canonical_query:
+      entity: 遁地鼠
+      form: 储水期的样子
+    species:
+      species_id: species_872ee62b954fcfde
+      display_name: 遁地鼠
+      initial_species_name: 遁地鼠(储水期的样子)
+      form_name: 地区形态
+      regional_form_name: 储水期的样子
+      ability_name: 警惕
+      ability_effect_text: 回合结束时,若自己能量为0则脱离。
+    alias_notes:
+    - raw_form: 储水时的样子
+      canonical_form: 储水期的样子
+      reason: wording_alias
+  changes:
+  - stat: 生命
+    current_a_layer: 99
+    patch_old: 99
+    patch_new: 112
+    old_matches_current_a_layer: true
+  - stat: 魔攻
+    current_a_layer: 38
+    patch_old: 38
+    patch_new: 23
+    old_matches_current_a_layer: true
+  - stat: 物防
+    current_a_layer: 102
+    patch_old: 102
+    patch_new: 85
+    old_matches_current_a_layer: true
+  - stat: 魔防
+    current_a_layer: 96
+    patch_old: 96
+    patch_new: 131
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+- source_image_id: s2_patch_img_004
+  resolution:
+    status: resolved_alias
+    query:
+      entity: 祭礼巨像
+      form: 仪式巨像首领化
+    canonical_query:
+      entity: 祭礼巨像
+      form: 首领形态
+    species:
+      species_id: species_100a2d04438c7200
+      display_name: 祭礼巨像
+      initial_species_name: 仪使者
+      form_name: 首领形态
+      regional_form_name: null
+      ability_name: 坠星
+      ability_effect_text: 敌方每有1层星陨印记,自己的技能威力+15%。
+    alias_notes:
+    - raw_form: 仪式巨像首领化
+      canonical_form: 首领形态
+      reason: boss_form_wording_alias
+  changes:
+  - stat: 物攻
+    current_a_layer: 105
+    patch_old: 105
+    patch_new: 96
+    old_matches_current_a_layer: true
+  - stat: 魔攻
+    current_a_layer: 111
+    patch_old: 111
+    patch_new: 101
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+- source_image_id: s2_patch_img_004
+  resolution:
+    status: resolved_exact
+    query:
+      entity: 彩蝶鲨
+      form: null
+    canonical_query:
+      entity: 彩蝶鲨
+      form: null
+    species:
+      species_id: species_b14766e38d1ffec1
+      display_name: 彩蝶鲨
+      initial_species_name: 风铃鲨
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 水翼推进
+      ability_effect_text: 己方精灵每使用1次水系技能,自己入场时获得全技能能耗-1。
+    alias_notes: []
+  changes:
+  - stat: 物攻
+    current_a_layer: 77
+    patch_old: 77
+    patch_new: 98
+    old_matches_current_a_layer: true
+  - stat: 魔攻
+    current_a_layer: 77
+    patch_old: 77
+    patch_new: 98
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+- source_image_id: s2_patch_img_004
+  resolution:
+    status: resolved_alias
+    query:
+      entity: 神谕鲨
+      form: 彩蝶鲨首领化
+    canonical_query:
+      entity: 神谕鲨
+      form: 首领形态
+    species:
+      species_id: species_a2cc44c0798518c9
+      display_name: 神谕鲨
+      initial_species_name: 风铃鲨
+      form_name: 首领形态
+      regional_form_name: null
+      ability_name: 水翼飞升
+      ability_effect_text: 己方精灵每使用1次水系技能,自己入场时获得全技能能耗-1,且能耗为0的技能威力+30%。
+    alias_notes:
+    - raw_form: 彩蝶鲨首领化
+      canonical_form: 首领形态
+      reason: boss_form_wording_alias
+  changes:
+  - stat: 物攻
+    current_a_layer: 77
+    patch_old: 77
+    patch_new: 98
+    old_matches_current_a_layer: true
+  - stat: 魔攻
+    current_a_layer: 77
+    patch_old: 77
+    patch_new: 98
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+- source_image_id: s2_patch_img_004
+  resolution:
+    status: resolved_exact
+    query:
+      entity: 窃光蚊
+      form: null
+    canonical_query:
+      entity: 窃光蚊
+      form: null
+    species:
+      species_id: species_8e0b6c73b598f6ba
+      display_name: 窃光蚊
+      initial_species_name: 嗜光嗡嗡
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 血型吸引
+      ability_effect_text: 敌方每携带1种系别的技能,自己攻击时威力+10。
+    alias_notes: []
+  changes:
+  - stat: 物攻
+    current_a_layer: 104
+    patch_old: 104
+    patch_new: 113
+    old_matches_current_a_layer: true
+  - stat: 魔攻
+    current_a_layer: 104
+    patch_old: 104
+    patch_new: 113
+    old_matches_current_a_layer: true
+  - stat: 物防
+    current_a_layer: 63
+    patch_old: 63
+    patch_new: 71
+    old_matches_current_a_layer: true
+  - stat: 魔防
+    current_a_layer: 113
+    patch_old: 113
+    patch_new: 125
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+- source_image_id: s2_patch_img_007
+  resolution:
+    status: resolved_exact
+    query:
+      entity: 古啦多
+      form: null
+    canonical_query:
+      entity: 古啦多
+      form: null
+    species:
+      species_id: species_e54045094ee9d1da
+      display_name: 古啦多
+      initial_species_name: 多多
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 毒牙
+      ability_effect_text: 使敌方获得中毒时,也会使其获得魔攻和魔防-40%。
+    alias_notes: []
+  changes:
+  - stat: 生命
+    current_a_layer: 79
+    patch_old: 79
+    patch_new: 85
+    old_matches_current_a_layer: true
+  - stat: 物防
+    current_a_layer: 136
+    patch_old: 136
+    patch_new: 134
+    old_matches_current_a_layer: true
+  - stat: 魔防
+    current_a_layer: 110
+    patch_old: 110
+    patch_new: 74
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+- source_image_id: s2_patch_img_007
+  resolution:
+    status: resolved_exact
+    query:
+      entity: 寒音蛇
+      form: null
+    canonical_query:
+      entity: 寒音蛇
+      form: null
+    species:
+      species_id: species_4c5ebb2f29821acc
+      display_name: 寒音蛇
+      initial_species_name: 古钟蛇
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 拨浪鼓
+      ability_effect_text: 己方精灵每使用1次状态技能,自己入场时毒系和萌系技能威力+10。
+    alias_notes:
+    - reason: duplicate_display_prefer_original_form_without_regional_suffix
+  changes:
+  - stat: 物攻
+    current_a_layer: 79
+    patch_old: 79
+    patch_new: 87
+    old_matches_current_a_layer: true
+  - stat: 魔攻
+    current_a_layer: 79
+    patch_old: 79
+    patch_new: 87
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+- source_image_id: s2_patch_img_007
+  resolution:
+    status: resolved_exact
+    query:
+      entity: 九幽菇
+      form: null
+    canonical_query:
+      entity: 九幽菇
+      form: null
+    species:
+      species_id: species_94d1757d6516093d
+      display_name: 九幽菇
+      initial_species_name: 菇菇丁
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 多人宿舍
+      ability_effect_text: 自己的能量可以超过能量上限。
+    alias_notes: []
+  changes:
+  - stat: 物攻
+    current_a_layer: 102
+    patch_old: 102
+    patch_new: 110
+    old_matches_current_a_layer: true
+  - stat: 魔攻
+    current_a_layer: 95
+    patch_old: 95
+    patch_new: 103
+    old_matches_current_a_layer: true
+  - stat: 物防
+    current_a_layer: 116
+    patch_old: 116
+    patch_new: 125
+    old_matches_current_a_layer: true
+  - stat: 魔防
+    current_a_layer: 95
+    patch_old: 95
+    patch_new: 103
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+- source_image_id: s2_patch_img_007
+  resolution:
+    status: resolved_exact
+    query:
+      entity: 龙鱼
+      form: null
+    canonical_query:
+      entity: 龙鱼
+      form: null
+    species:
+      species_id: species_d4fce8dedbba6013
+      display_name: 龙鱼
+      initial_species_name: 豆丁鱼
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 洄游
+      ability_effect_text: 每次进入蓄力状态,获得全技能能耗永久-1。
+    alias_notes: []
+  changes:
+  - stat: 生命
+    current_a_layer: 75
+    patch_old: 75
+    patch_new: 89
+    old_matches_current_a_layer: true
+  - stat: 物攻
+    current_a_layer: 116
+    patch_old: 116
+    patch_new: 103
+    old_matches_current_a_layer: true
+  - stat: 魔攻
+    current_a_layer: 123
+    patch_old: 123
+    patch_new: 109
+    old_matches_current_a_layer: true
+  - stat: 物防
+    current_a_layer: 112
+    patch_old: 112
+    patch_new: 100
+    old_matches_current_a_layer: true
+  - stat: 魔防
+    current_a_layer: 116
+    patch_old: 116
+    patch_new: 104
+    old_matches_current_a_layer: true
+  - stat: 速度
+    current_a_layer: 125
+    patch_old: 125
+    patch_new: 135
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+- source_image_id: s2_patch_img_007
+  resolution:
+    status: resolved_exact
+    query:
+      entity: 爵士鹿
+      form: null
+    canonical_query:
+      entity: 爵士鹿
+      form: null
+    species:
+      species_id: species_87f04b58d58cc78a
+      display_name: 爵士鹿
+      initial_species_name: 电动长颈鹿
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 蓄电池
+      ability_effect_text: 每入场1次,永久获得双攻+20%。
+    alias_notes: []
+  changes:
+  - stat: 物攻
+    current_a_layer: 99
+    patch_old: 90
+    patch_new: 77
+    old_matches_current_a_layer: false
+  - stat: 魔攻
+    current_a_layer: 34
+    patch_old: 34
+    patch_new: 20
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay_pm_accepted_old_value_conflict
+  pm_review_note: 'PM accepted: freeze S1 Dex as historical baseline, but use S2 patch
+    new stat value for candidate overlay because 爵士鹿/波普鹿 S1 physical attack may be
+    uncertain.'
+- source_image_id: s2_patch_img_008
+  resolution:
+    status: resolved_alias
+    query:
+      entity: 波普鹿
+      form: 爵士鹿首领化
+    canonical_query:
+      entity: 波普鹿
+      form: 首领形态
+    species:
+      species_id: species_4f32e0e75ec1e4aa
+      display_name: 波普鹿
+      initial_species_name: 电动长颈鹿
+      form_name: 首领形态
+      regional_form_name: null
+      ability_name: 超级电池
+      ability_effect_text: 每入场1次,获得双攻永久+30%。
+    alias_notes:
+    - raw_form: 爵士鹿首领化
+      canonical_form: 首领形态
+      reason: boss_form_wording_alias
+  changes:
+  - stat: 物攻
+    current_a_layer: 99
+    patch_old: 99
+    patch_new: 79
+    old_matches_current_a_layer: true
+  - stat: 魔攻
+    current_a_layer: 34
+    patch_old: 34
+    patch_new: 21
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+- source_image_id: s2_patch_img_008
+  resolution:
+    status: resolved_exact
+    query:
+      entity: 黑猫巫师
+      form: null
+    canonical_query:
+      entity: 黑猫巫师
+      form: null
+    species:
+      species_id: species_4bec80fc4236818a
+      display_name: 黑猫巫师
+      initial_species_name: 小黑猫
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 预警
+      ability_effect_text: 若敌方技能足够击败自己,回合开始时自己获得速度+50。
+    alias_notes: []
+  changes:
+  - stat: 生命
+    current_a_layer: 152
+    patch_old: 152
+    patch_new: 149
+    old_matches_current_a_layer: true
+  - stat: 物攻
+    current_a_layer: 91
+    patch_old: 91
+    patch_new: 53
+    old_matches_current_a_layer: true
+  - stat: 魔攻
+    current_a_layer: 163
+    patch_old: 163
+    patch_new: 124
+    old_matches_current_a_layer: true
+  - stat: 物防
+    current_a_layer: 67
+    patch_old: 67
+    patch_new: 90
+    old_matches_current_a_layer: true
+  - stat: 魔防
+    current_a_layer: 119
+    patch_old: 119
+    patch_new: 129
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+- source_image_id: s2_patch_img_008
+  resolution:
+    status: resolved_alias
+    query:
+      entity: 黑猫密探
+      form: 黑猫巫师首领化
+    canonical_query:
+      entity: 黑猫密探
+      form: 首领形态
+    species:
+      species_id: species_b00f0101643ec854
+      display_name: 黑猫密探
+      initial_species_name: 小黑猫
+      form_name: 首领形态
+      regional_form_name: null
+      ability_name: 先知
+      ability_effect_text: 若敌方技能足够击败自己,回合开始时自己获得速度+50,双攻+50%。
+    alias_notes:
+    - raw_form: 黑猫巫师首领化
+      canonical_form: 首领形态
+      reason: boss_form_wording_alias
+  changes:
+  - stat: 生命
+    current_a_layer: 152
+    patch_old: 152
+    patch_new: 149
+    old_matches_current_a_layer: true
+  - stat: 物攻
+    current_a_layer: 107
+    patch_old: 107
+    patch_new: 65
+    old_matches_current_a_layer: true
+  - stat: 魔攻
+    current_a_layer: 186
+    patch_old: 186
+    patch_new: 143
+    old_matches_current_a_layer: true
+  - stat: 物防
+    current_a_layer: 67
+    patch_old: 67
+    patch_new: 90
+    old_matches_current_a_layer: true
+  - stat: 魔防
+    current_a_layer: 119
+    patch_old: 119
+    patch_new: 129
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+- source_image_id: s2_patch_img_008
+  resolution:
+    status: resolved_exact
+    query:
+      entity: 圆号鱼
+      form: null
+    canonical_query:
+      entity: 圆号鱼
+      form: null
+    species:
+      species_id: species_9866399087db6497
+      display_name: 圆号鱼
+      initial_species_name: 号儿鱼
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 泛音列
+      ability_effect_text: 使用状态技能后,敌方获得【聒噪】技能的效果,持续3回合。
+    alias_notes: []
+  changes:
+  - stat: 生命
+    current_a_layer: 136
+    patch_old: 136
+    patch_new: 113
+    old_matches_current_a_layer: true
+  - stat: 物攻
+    current_a_layer: 34
+    patch_old: 34
+    patch_new: 31
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+- source_image_id: s2_patch_img_008
+  resolution:
+    status: resolved_alias
+    query:
+      entity: 幻影荆棘
+      form: 幽影树首领化
+    canonical_query:
+      entity: 幻影荆棘
+      form: 首领形态
+    species:
+      species_id: species_0ab7305cb1e23920
+      display_name: 幻影荆棘
+      initial_species_name: 幽影树
+      form_name: 首领形态
+      regional_form_name: null
+      ability_name: 大捞一笔
+      ability_effect_text: 回合结束时,偷取所有敌方精灵2能量。
+    alias_notes:
+    - raw_form: 幽影树首领化
+      canonical_form: 首领形态
+      reason: boss_form_wording_alias
+  changes:
+  - stat: 生命
+    current_a_layer: 125
+    patch_old: 125
+    patch_new: 113
+    old_matches_current_a_layer: true
+  - stat: 物防
+    current_a_layer: 72
+    patch_old: 72
+    patch_new: 66
+    old_matches_current_a_layer: true
+  - stat: 魔防
+    current_a_layer: 134
+    patch_old: 134
+    patch_new: 125
+    old_matches_current_a_layer: true
+  status: ready_candidate_overlay
+ability_overlays:
+- source_image_id: s2_patch_img_001
+  status: ready_candidate_overlay
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 武者鸡
+      form: null
+    canonical_query:
+      entity: 武者鸡
+      form: null
+    species:
+      species_id: species_76b12b94233987a3
+      display_name: 武者鸡
+      initial_species_name: 可立鸡
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 斗技
+      ability_effect_text: 应对成功后,获得全技能威力永久+20。
+    alias_notes: []
+  ability_resolution:
+    status: resolved_exact
+    query: 斗技
+    canonical_query: 斗技
+    ability:
+      ability_id: ability_8cd3398f93ff8511
+      ability_name: 斗技
+      effect_text: 应对成功后,获得全技能威力永久+20。
+      source_species_ids_json: '["species_76b12b94233987a3"]'
+    alias_notes: []
+  patch_old_effect: 应对成功后，获得全技能威力永久+20。
+  patch_new_effect: 应对成功后，获得全技能威力永久+30。
+- source_image_id: s2_patch_img_001
+  status: ready_candidate_overlay
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 绅士鸡
+      form: null
+    canonical_query:
+      entity: 绅士鸡
+      form: null
+    species:
+      species_id: species_e42e51148f390411
+      display_name: 绅士鸡
+      initial_species_name: 可立鸡
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 指挥家
+      ability_effect_text: 应对成功后,永久获得双攻+20%。
+    alias_notes: []
+  ability_resolution:
+    status: resolved_exact
+    query: 指挥家
+    canonical_query: 指挥家
+    ability:
+      ability_id: ability_41a46e11f262c462
+      ability_name: 指挥家
+      effect_text: 应对成功后,永久获得双攻+20%。
+      source_species_ids_json: '["species_05983b339f4e4881", "species_33dd742049439490",
+        "species_e42e51148f390411"]'
+    alias_notes: []
+  patch_old_effect: 应对成功后，永久获得双攻+20%。
+  patch_new_effect: 应对成功后，永久获得双攻+30%。
+- source_image_id: s2_patch_img_001
+  status: ready_candidate_overlay
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 仪式巨像
+      form: null
+    canonical_query:
+      entity: 仪式巨像
+      form: null
+    species:
+      species_id: species_fcf2a8637a4a1f81
+      display_name: 仪式巨像
+      initial_species_name: 仪使者
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 观星
+      ability_effect_text: 敌方每有1层星陨印记,自己的地系技能威力+15%。
+    alias_notes: []
+  ability_resolution:
+    status: resolved_exact
+    query: 观星
+    canonical_query: 观星
+    ability:
+      ability_id: ability_903e85581710ac93
+      ability_name: 观星
+      effect_text: 敌方每有1层星陨印记,自己的地系技能威力+15%。
+      source_species_ids_json: '["species_2cc80841a4c8235d", "species_64c31fb7043bd995",
+        "species_fcf2a8637a4a1f81"]'
+    alias_notes: []
+  patch_old_effect: 敌方每有1层星陨印记，自己的地系技能威力+15%。
+  patch_new_effect: 敌方每有1层星陨印记，自己的地系技能威力+20%。
+- source_image_id: s2_patch_img_004
+  status: ready_candidate_overlay_pm_accepted_text_diff
+  species_resolution:
+    status: resolved_alias
+    query:
+      entity: 祭礼巨像
+      form: 仪式巨像首领化
+    canonical_query:
+      entity: 祭礼巨像
+      form: 首领形态
+    species:
+      species_id: species_100a2d04438c7200
+      display_name: 祭礼巨像
+      initial_species_name: 仪使者
+      form_name: 首领形态
+      regional_form_name: null
+      ability_name: 坠星
+      ability_effect_text: 敌方每有1层星陨印记,自己的技能威力+15%。
+    alias_notes:
+    - raw_form: 仪式巨像首领化
+      canonical_form: 首领形态
+      reason: boss_form_wording_alias
+  ability_resolution:
+    status: resolved_exact
+    query: 坠星
+    canonical_query: 坠星
+    ability:
+      ability_id: ability_d7a077e64cf0b35a
+      ability_name: 坠星
+      effect_text: 敌方每有1层星陨印记,自己的技能威力+15%。
+      source_species_ids_json: '["species_100a2d04438c7200"]'
+    alias_notes: []
+  patch_old_effect: 敌方每有1层星陨印记，技能威力+15%。
+  patch_new_effect: 敌方每有1层星陨印记，技能威力+20%。
+  pm_review_note: PM accepted as wording-only old-text difference.
+- source_image_id: s2_patch_img_007
+  status: ready_candidate_overlay
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 古啦多
+      form: null
+    canonical_query:
+      entity: 古啦多
+      form: null
+    species:
+      species_id: species_e54045094ee9d1da
+      display_name: 古啦多
+      initial_species_name: 多多
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 毒牙
+      ability_effect_text: 使敌方获得中毒时,也会使其获得魔攻和魔防-40%。
+    alias_notes: []
+  ability_resolution:
+    status: resolved_exact
+    query: 毒牙
+    canonical_query: 毒牙
+    ability:
+      ability_id: ability_34dcbd168110053e
+      ability_name: 毒牙
+      effect_text: 使敌方获得中毒时,也会使其获得魔攻和魔防-40%。
+      source_species_ids_json: '["species_1fa31a02d66ecd5f", "species_2ff55b2fa2398b33",
+        "species_e54045094ee9d1da"]'
+    alias_notes: []
+  patch_old_effect: 使敌方获得中毒时，也会使其获得魔攻和魔防-40%。
+  patch_new_effect: 使敌方获得中毒时，也会使其获得物攻-40%，速度-40。
+- source_image_id: s2_patch_img_007
+  status: ready_candidate_overlay
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 龙鱼
+      form: null
+    canonical_query:
+      entity: 龙鱼
+      form: null
+    species:
+      species_id: species_d4fce8dedbba6013
+      display_name: 龙鱼
+      initial_species_name: 豆丁鱼
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 洄游
+      ability_effect_text: 每次进入蓄力状态,获得全技能能耗永久-1。
+    alias_notes: []
+  ability_resolution:
+    status: resolved_exact
+    query: 洄游
+    canonical_query: 洄游
+    ability:
+      ability_id: ability_978bc989f3b16fbb
+      ability_name: 洄游
+      effect_text: 每次进入蓄力状态,获得全技能能耗永久-1。
+      source_species_ids_json: '["species_00c65d2f4cf7814b", "species_941bfec952d2837d",
+        "species_d4fce8dedbba6013"]'
+    alias_notes: []
+  patch_old_effect: 每次进入蓄力状态，获得全技能能耗永久-1。
+  patch_new_effect: 每次进入蓄力状态，获得全技能能耗永久-2。
+- source_image_id: s2_patch_img_007
+  status: ready_candidate_overlay
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 爵士鹿
+      form: null
+    canonical_query:
+      entity: 爵士鹿
+      form: null
+    species:
+      species_id: species_87f04b58d58cc78a
+      display_name: 爵士鹿
+      initial_species_name: 电动长颈鹿
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 蓄电池
+      ability_effect_text: 每入场1次,永久获得双攻+20%。
+    alias_notes: []
+  ability_resolution:
+    status: resolved_exact
+    query: 蓄电池
+    canonical_query: 蓄电池
+    ability:
+      ability_id: ability_fdaec135b7853e31
+      ability_name: 蓄电池
+      effect_text: 每入场1次,永久获得双攻+20%。
+      source_species_ids_json: '["species_0ec783f56dfaf5ee", "species_87f04b58d58cc78a",
+        "species_fb438c633c4e8d35"]'
+    alias_notes: []
+  patch_old_effect: 每入场1次，永久获得双攻+20%。
+  patch_new_effect: 每入场1次，永久获得双攻+30%。
+- source_image_id: s2_patch_img_008
+  status: ready_candidate_overlay_pm_accepted_text_diff
+  species_resolution:
+    status: resolved_alias
+    query:
+      entity: 波普鹿
+      form: 爵士鹿首领化
+    canonical_query:
+      entity: 波普鹿
+      form: 首领形态
+    species:
+      species_id: species_4f32e0e75ec1e4aa
+      display_name: 波普鹿
+      initial_species_name: 电动长颈鹿
+      form_name: 首领形态
+      regional_form_name: null
+      ability_name: 超级电池
+      ability_effect_text: 每入场1次,获得双攻永久+30%。
+    alias_notes:
+    - raw_form: 爵士鹿首领化
+      canonical_form: 首领形态
+      reason: boss_form_wording_alias
+  ability_resolution:
+    status: resolved_exact
+    query: 超级电池
+    canonical_query: 超级电池
+    ability:
+      ability_id: ability_6896623e1288679f
+      ability_name: 超级电池
+      effect_text: 每入场1次,获得双攻永久+30%。
+      source_species_ids_json: '["species_4f32e0e75ec1e4aa"]'
+    alias_notes: []
+  patch_old_effect: 每入场1次，永久获得双攻+30%。
+  patch_new_effect: 每入场1次，永久获得双攻+40%。
+  pm_review_note: PM accepted as wording-only old-text difference.
+- source_image_id: s2_patch_img_008
+  status: ready_candidate_overlay
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 寂灭骨龙
+      form: null
+    canonical_query:
+      entity: 寂灭骨龙
+      form: null
+    species:
+      species_id: species_be4456493fe259d9
+      display_name: 寂灭骨龙
+      initial_species_name: 大头骨龙
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 不朽
+      ability_effect_text: 力竭3回合后复活。
+    alias_notes: []
+  ability_resolution:
+    status: resolved_exact
+    query: 不朽
+    canonical_query: 不朽
+    ability:
+      ability_id: ability_73350bfa7821c978
+      ability_name: 不朽
+      effect_text: 力竭3回合后复活。
+      source_species_ids_json: '["species_661217d5826d03c4", "species_be4456493fe259d9"]'
+    alias_notes: []
+  patch_old_effect: 力竭3回合后复活。
+  patch_new_effect: 力竭4回合后复活。
+- source_image_id: s2_patch_img_008
+  status: ready_candidate_overlay
+  species_resolution:
+    status: resolved_alias
+    query:
+      entity: 幻影荆棘
+      form: 幽影树首领化
+    canonical_query:
+      entity: 幻影荆棘
+      form: 首领形态
+    species:
+      species_id: species_0ab7305cb1e23920
+      display_name: 幻影荆棘
+      initial_species_name: 幽影树
+      form_name: 首领形态
+      regional_form_name: null
+      ability_name: 大捞一笔
+      ability_effect_text: 回合结束时,偷取所有敌方精灵2能量。
+    alias_notes:
+    - raw_form: 幽影树首领化
+      canonical_form: 首领形态
+      reason: boss_form_wording_alias
+  ability_resolution:
+    status: resolved_exact
+    query: 大捞一笔
+    canonical_query: 大捞一笔
+    ability:
+      ability_id: ability_0ae61434d56c46d6
+      ability_name: 大捞一笔
+      effect_text: 回合结束时,偷取所有敌方精灵2能量。
+      source_species_ids_json: '["species_0ab7305cb1e23920"]'
+    alias_notes: []
+  patch_old_effect: 回合结束时，偷取所有敌方精灵2能量。
+  patch_new_effect: 入场时偷取敌方场上所有精灵3能量。
+move_pool_additions:
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 古卷匣魔像
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 古卷匣魔像
+      form: null
+    canonical_query:
+      entity: 古卷匣魔像
+      form: null
+    species:
+      species_id: species_d3e2e87d9147350f
+      display_name: 古卷匣魔像
+      initial_species_name: 书魔虫
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 构装契约者
+      ability_effect_text: 入场时,若敌方魔力值为1,自己获得双防+50%。
+    alias_notes: []
+  move_resolution: &id001
+    status: resolved_exact
+    query: 有效预防
+    canonical_query: 有效预防
+    move:
+      move_id: move_23210d701e34635b
+      move_name: 有效预防
+      move_type: 普通
+      category_raw: 防御
+      power: 0
+      energy_cost: 1
+      effect_text: 减伤50%,应对攻击:下一次行动获得先手+1。
+      description_text: null
+    alias_notes: []
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 恶魔红钻
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 恶魔红钻
+      form: null
+    canonical_query:
+      entity: 恶魔红钻
+      form: null
+    species:
+      species_id: species_ad2e5a329fbc6c6a
+      display_name: 恶魔红钻
+      initial_species_name: 矮脚爬爬
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 振奋虫心
+      ability_effect_text: 主动击败敌方后,己方队伍获得5次随机奉献。
+    alias_notes: []
+  move_resolution: *id001
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 乌拉塔（极昼的样子）
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 乌拉塔
+      form: 极昼
+    canonical_query:
+      entity: 乌拉塔
+      form: 极昼
+    species:
+      species_id: species_91b20ccffdd46b70
+      display_name: 乌拉塔
+      initial_species_name: 乌达(极昼的样子)
+      form_name: 原始形态
+      regional_form_name: 极昼的样子
+      ability_name: 恶魔的晚宴
+      ability_effect_text: 主动击败敌方精灵时,自己获得双攻+50%。
+    alias_notes: []
+  move_resolution: *id001
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 乌拉塔（极夜的样子）
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 乌拉塔
+      form: 极夜
+    canonical_query:
+      entity: 乌拉塔
+      form: 极夜
+    species:
+      species_id: species_fa33f2130fbfdfa5
+      display_name: 乌拉塔
+      initial_species_name: 乌达(极夜的样子)
+      form_name: 地区形态
+      regional_form_name: 极夜的样子
+      ability_name: 恶魔的晚宴
+      ability_effect_text: 主动击败敌方精灵时,自己获得双攻+50%。
+    alias_notes: []
+  move_resolution: *id001
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 夜枭
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 夜枭
+      form: null
+    canonical_query:
+      entity: 夜枭
+      form: null
+    species:
+      species_id: species_f8eda97212b721b2
+      display_name: 夜枭
+      initial_species_name: 空空颅
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 搜刮
+      ability_effect_text: 敌方每使用1次【聚能】技能或更换精灵,自己入场时获得魔攻+20%。
+    alias_notes: []
+  move_resolution: *id001
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 抹茶布丁
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 抹茶布丁
+      form: null
+    canonical_query:
+      entity: 抹茶布丁
+      form: null
+    species:
+      species_id: species_dc93b41658b879b6
+      display_name: 抹茶布丁
+      initial_species_name: 果冻
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 茶多酚
+      ability_effect_text: 离场后,更换入场的精灵回复20%生命且免疫寄生。
+    alias_notes: []
+  move_resolution: &id002
+    status: resolved_exact
+    query: 富养化
+    canonical_query: 富养化
+    move:
+      move_id: move_b646576b206ea39e
+      move_name: 富养化
+      move_type: 草
+      category_raw: 状态
+      power: 0
+      energy_cost: 3
+      effect_text: 为场下每个精灵回复3能量。
+      description_text: null
+    alias_notes: []
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 伊贝粉粉
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 伊贝粉粉
+      form: null
+    canonical_query:
+      entity: 伊贝粉粉
+      form: null
+    species:
+      species_id: species_b8df455ffdac0fb3
+      display_name: 伊贝粉粉
+      initial_species_name: 伊贝儿
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 腐植循环
+      ability_effect_text: 每回复1能量,同时回复5%生命。
+    alias_notes: []
+  move_resolution: *id002
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 海枝枝（碧蓝珊瑚的样子）
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 海枝枝
+      form: 碧蓝珊瑚
+    canonical_query:
+      entity: 海枝枝
+      form: 碧蓝珊瑚
+    species:
+      species_id: species_5271dbaf5c3cc847
+      display_name: 海枝枝
+      initial_species_name: 海枝枝(碧蓝珊瑚)
+      form_name: 原始形态
+      regional_form_name: 碧蓝珊瑚
+      ability_name: 珊瑚骨
+      ability_effect_text: 敌方精灵离场时,自己获得全技能能耗-3。
+    alias_notes: []
+  move_resolution: &id003
+    status: resolved_exact
+    query: 速冻
+    canonical_query: 速冻
+    move:
+      move_id: move_3b4252d78dcffc14
+      move_name: 速冻
+      move_type: 冰
+      category_raw: 状态
+      power: 0
+      energy_cost: 4
+      effect_text: 敌方获得2层减速印记。
+      description_text: null
+    alias_notes: []
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 海枝枝（杏黄百合的样子）
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 海枝枝
+      form: 杏黄百合
+    canonical_query:
+      entity: 海枝枝
+      form: 杏黄百合
+    species:
+      species_id: species_02b8fb87b5f9fef0
+      display_name: 海枝枝
+      initial_species_name: 海枝枝(杏黄百合)
+      form_name: 地区形态
+      regional_form_name: 杏黄百合
+      ability_name: 珊瑚骨
+      ability_effect_text: 敌方精灵离场时,自己获得全技能能耗-3。
+    alias_notes: []
+  move_resolution: *id003
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 海枝枝（洋红沙丁的样子）
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 海枝枝
+      form: 洋红沙丁
+    canonical_query:
+      entity: 海枝枝
+      form: 洋红沙丁
+    species:
+      species_id: species_5955c9a2d2c1da50
+      display_name: 海枝枝
+      initial_species_name: 海枝枝(洋红沙丁)
+      form_name: 地区形态
+      regional_form_name: 洋红沙丁
+      ability_name: 珊瑚骨
+      ability_effect_text: 敌方精灵离场时,自己获得全技能能耗-3。
+    alias_notes: []
+  move_resolution: *id003
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 海枝枝（翠绿纶布的样子）
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 海枝枝
+      form: 翠绿纶布
+    canonical_query:
+      entity: 海枝枝
+      form: 翠绿纶布
+    species:
+      species_id: species_9531f9b48e5f9876
+      display_name: 海枝枝
+      initial_species_name: 海枝枝(翠绿纶布)
+      form_name: 地区形态
+      regional_form_name: 翠绿纶布
+      ability_name: 珊瑚骨
+      ability_effect_text: 敌方精灵离场时,自己获得全技能能耗-3。
+    alias_notes: []
+  move_resolution: *id003
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 獠牙猪
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 獠牙猪
+      form: null
+    canonical_query:
+      entity: 獠牙猪
+      form: null
+    species:
+      species_id: species_1e4351b75d52809e
+      display_name: 獠牙猪
+      initial_species_name: 呼呼猪
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 冻土
+      ability_effect_text: 每携带1个冰系技能进入战斗,地系技能威力+10%。
+    alias_notes: []
+  move_resolution:
+    status: resolved_exact
+    query: 冰墙
+    canonical_query: 冰墙
+    move:
+      move_id: move_2b7125c863922d9e
+      move_name: 冰墙
+      move_type: 冰
+      category_raw: 防御
+      power: 0
+      energy_cost: 2
+      effect_text: 减伤80%,应对攻击:敌方获得2层冻结。
+      description_text: null
+    alias_notes: []
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 风滚暮虫（金黄的样子）
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 风滚暮虫
+      form: 金黄
+    canonical_query:
+      entity: 风滚暮虫
+      form: 金黄
+    species:
+      species_id: species_f05fd9ced99616c4
+      display_name: 风滚暮虫
+      initial_species_name: 旋叶虫(金黄的样子)
+      form_name: 原始形态
+      regional_form_name: 金黄的样子
+      ability_name: 共鸣
+      ability_effect_text: 携带的【虫鸣】技能威力+20。
+    alias_notes: []
+  move_resolution: &id004
+    status: resolved_exact
+    query: 防反
+    canonical_query: 防反
+    move:
+      move_id: move_927c29f37379d163
+      move_name: 防反
+      move_type: 普通
+      category_raw: 防御
+      power: 0
+      energy_cost: 2
+      effect_text: 减伤60%,应对攻击:自己获得物攻和魔攻+40%。
+      description_text: null
+    alias_notes: []
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 风滚暮虫（枯叶的样子）
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 风滚暮虫
+      form: 枯叶
+    canonical_query:
+      entity: 风滚暮虫
+      form: 枯叶
+    species:
+      species_id: species_3fb11b09e9c53c12
+      display_name: 风滚暮虫
+      initial_species_name: 旋叶虫(枯叶的样子)
+      form_name: 地区形态
+      regional_form_name: 枯叶的样子
+      ability_name: 共鸣
+      ability_effect_text: 携带的【虫鸣】技能威力+20。
+    alias_notes: []
+  move_resolution: *id004
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 卷毛鸭
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 卷毛鸭
+      form: null
+    canonical_query:
+      entity: 卷毛鸭
+      form: null
+    species:
+      species_id: species_88eb8a28ba4c6629
+      display_name: 卷毛鸭
+      initial_species_name: 草头鸭
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 得寸进尺
+      ability_effect_text: 天气为雨天,或处于其他水系环境中时,获得双攻+100%。
+    alias_notes: []
+  move_resolution:
+    status: resolved_exact
+    query: 水环
+    canonical_query: 水环
+    move:
+      move_id: move_d8efff3de0902c29
+      move_name: 水环
+      move_type: 水
+      category_raw: 防御
+      power: 0
+      energy_cost: 2
+      effect_text: 减伤60%,应对攻击:自己获得全技能能耗-2。
+      description_text: null
+    alias_notes: []
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 彩蝶鲨
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 彩蝶鲨
+      form: null
+    canonical_query:
+      entity: 彩蝶鲨
+      form: null
+    species:
+      species_id: species_b14766e38d1ffec1
+      display_name: 彩蝶鲨
+      initial_species_name: 风铃鲨
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 水翼推进
+      ability_effect_text: 己方精灵每使用1次水系技能,自己入场时获得全技能能耗-1。
+    alias_notes: []
+  move_resolution:
+    status: resolved_exact
+    query: 血气
+    canonical_query: 血气
+    move:
+      move_id: move_fa3a85e55d0c129c
+      move_name: 血气
+      move_type: 普通
+      category_raw: 防御
+      power: 0
+      energy_cost: 2
+      effect_text: 减伤60%,应对攻击:本回合受到致命伤害时,保留1生命值。
+      description_text: null
+    alias_notes: []
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 烈火守护
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 烈火守护
+      form: null
+    canonical_query:
+      entity: 烈火守护
+      form: null
+    species:
+      species_id: species_b5205da6820c8c10
+      display_name: 烈火守护
+      initial_species_name: 火尾瓦特
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 蒸汽膨胀
+      ability_effect_text: 己方精灵每使用1次火系技能,自己入场时获得全技能威力+10。
+    alias_notes: []
+  move_resolution:
+    status: resolved_exact
+    query: 撕咬
+    canonical_query: 撕咬
+    move:
+      move_id: move_553350dfb18f421e
+      move_name: 撕咬
+      move_type: 恶
+      category_raw: 物攻
+      power: 30
+      energy_cost: 3
+      effect_text: 造成物伤,3连击,若自己的生命低于50%,本次技能连击数+2。
+      description_text: null
+    alias_notes: []
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 电球咩咩
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 电球咩咩
+      form: null
+    canonical_query:
+      entity: 电球咩咩
+      form: null
+    species:
+      species_id: species_c676341c126411a4
+      display_name: 电球咩咩
+      initial_species_name: 电咩咩
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 快充
+      ability_effect_text: 离场时回复10能量。
+    alias_notes: []
+  move_resolution: &id005
+    status: resolved_exact
+    query: 加大功率
+    canonical_query: 加大功率
+    move:
+      move_id: move_1c03db7999771001
+      move_name: 加大功率
+      move_type: 电
+      category_raw: 状态
+      power: 0
+      energy_cost: 4
+      effect_text: 自己脱离,替换入场的精灵回复8能量。
+      description_text: null
+    alias_notes: []
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 流浪鼠
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 流浪鼠
+      form: null
+    canonical_query:
+      entity: 流浪鼠
+      form: null
+    species:
+      species_id: species_d2f4beeb091cfd14
+      display_name: 流浪鼠
+      initial_species_name: 奔波鼠
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 奔波命
+      ability_effect_text: 使用防御技能后,回合结束时脱离。
+    alias_notes: []
+  move_resolution: *id005
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 幽冥眼（睁眼的样子）
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 幽冥眼
+      form: 睁眼
+    canonical_query:
+      entity: 幽冥眼
+      form: 睁眼
+    species:
+      species_id: species_9ab4193d191dec20
+      display_name: 幽冥眼
+      initial_species_name: 小灵面
+      form_name: 原始形态
+      regional_form_name: 睁眼的样子
+      ability_name: 惊吓
+      ability_effect_text: 能量等于0的精灵,无法对自己造成伤害。
+    alias_notes: []
+  move_resolution: &id006
+    status: resolved_exact
+    query: 易燃物质
+    canonical_query: 易燃物质
+    move:
+      move_id: move_32cd578268b4803e
+      move_name: 易燃物质
+      move_type: 火
+      category_raw: 魔攻
+      power: 30
+      energy_cost: 3
+      effect_text: 造成魔伤,2连击,每次连击使敌方获得2层灼烧。
+      description_text: null
+    alias_notes: []
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 幽冥眼（闭眼的样子）
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 幽冥眼
+      form: 闭眼
+    canonical_query:
+      entity: 幽冥眼
+      form: 闭眼
+    species:
+      species_id: species_1c0dbfe0ef894dbd
+      display_name: 幽冥眼
+      initial_species_name: 小灵面
+      form_name: 地区形态
+      regional_form_name: 闭眼的样子
+      ability_name: 惊吓
+      ability_effect_text: 能量等于0的精灵,无法对自己造成伤害。
+    alias_notes: []
+  move_resolution: *id006
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 雅丹鬃
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 雅丹鬃
+      form: null
+    canonical_query:
+      entity: 雅丹鬃
+      form: null
+    species:
+      species_id: species_ffb0f35676344beb
+      display_name: 雅丹鬃
+      initial_species_name: 火红尾
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 天通地明
+      ability_effect_text: 攻击时,若敌方血脉是污染血脉,技能威力+100%。
+    alias_notes: []
+  move_resolution: *id006
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 龙鱼
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 龙鱼
+      form: null
+    canonical_query:
+      entity: 龙鱼
+      form: null
+    species:
+      species_id: species_d4fce8dedbba6013
+      display_name: 龙鱼
+      initial_species_name: 豆丁鱼
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 洄游
+      ability_effect_text: 每次进入蓄力状态,获得全技能能耗永久-1。
+    alias_notes: []
+  move_resolution:
+    status: resolved_exact
+    query: 隼鳞
+    canonical_query: 隼鳞
+    move:
+      move_id: move_0e0f56d77f8d9fe5
+      move_name: 隼鳞
+      move_type: 龙
+      category_raw: 物攻
+      power: 140
+      energy_cost: 5
+      effect_text: 对敌方精灵造成物理伤害。
+      description_text: null
+    alias_notes: []
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 混乱鱿彩
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 混乱鱿彩
+      form: null
+    canonical_query:
+      entity: 混乱鱿彩
+      form: null
+    species:
+      species_id: species_fe6db52eb9e7a7c1
+      display_name: 混乱鱿彩
+      initial_species_name: 墨鱿士
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 涂鸦
+      ability_effect_text: 使用非本系技能时威力+50%。
+    alias_notes: []
+  move_resolution: &id007
+    status: resolved_exact
+    query: 天旋地转
+    canonical_query: 天旋地转
+    move:
+      move_id: move_6a3d813b44ac7283
+      move_name: 天旋地转
+      move_type: 普通
+      category_raw: 物攻
+      power: 60
+      energy_cost: 3
+      effect_text: 造成物理伤害,先手+1,迸发:本次技能威力+30。
+      description_text: null
+    alias_notes: []
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 熔岩布丁
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 熔岩布丁
+      form: null
+    canonical_query:
+      entity: 熔岩布丁
+      form: null
+    species:
+      species_id: species_7fe01fc0a6a2a512
+      display_name: 熔岩布丁
+      initial_species_name: 果冻
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 美拉德反应
+      ability_effect_text: 离场后,更换入场的精灵获得双攻+20%且免疫灼烧。
+    alias_notes: []
+  move_resolution: *id007
+  current_a_layer_entries: []
+- source_image_id: s2_patch_img_002
+  status: ready_candidate_addition
+  species_label: 爵士鹿
+  species_resolution:
+    status: resolved_exact
+    query:
+      entity: 爵士鹿
+      form: null
+    canonical_query:
+      entity: 爵士鹿
+      form: null
+    species:
+      species_id: species_87f04b58d58cc78a
+      display_name: 爵士鹿
+      initial_species_name: 电动长颈鹿
+      form_name: 原始形态
+      regional_form_name: null
+      ability_name: 蓄电池
+      ability_effect_text: 每入场1次,永久获得双攻+20%。
+    alias_notes: []
+  move_resolution:
+    status: resolved_exact
+    query: 恶意逃离
+    canonical_query: 恶意逃离
+    move:
+      move_id: move_3e8f0237168d7424
+      move_name: 恶意逃离
+      move_type: 恶
+      category_raw: 状态
+      power: 0
+      energy_cost: 1
+      effect_text: 脱离,应对防御:额外使敌方攻击技能能耗+4。
+      description_text: null
+    alias_notes: []
+  current_a_layer_entries: []
+wording_updates:
+- source_image_id: s2_patch_img_005
+  entity_type: move
+  status: ready_candidate_wording_update
+  resolution:
+    status: resolved_exact
+    query: 暴风眼
+    canonical_query: 暴风眼
+    move:
+      move_id: move_b6ebf82dc02c1590
+      move_name: 暴风眼
+      move_type: 翼
+      category_raw: 状态
+      power: 0
+      energy_cost: 2
+      effect_text: 行动时连击数+100%。
+      description_text: null
+    alias_notes: []
+  current_a_layer_text: 行动时连击数+100%。
+  patch_old_text: 行动时连击数+100%。
+  patch_new_text: 获得连击数+100%。
+- source_image_id: s2_patch_img_005
+  entity_type: move
+  status: ready_candidate_wording_update
+  resolution:
+    status: resolved_exact
+    query: 听桥
+    canonical_query: 听桥
+    move:
+      move_id: move_2f1ac932d674e9df
+      move_name: 听桥
+      move_type: 武
+      category_raw: 防御
+      power: 0
+      energy_cost: 4
+      effect_text: 减伤60%,应对攻击:对敌方造成物理伤害,威力与被应对技能相等。
+      description_text: null
+    alias_notes: []
+  current_a_layer_text: 减伤60%,应对攻击:对敌方造成物理伤害,威力与被应对技能相等。
+  patch_old_text: 减伤60%，应对攻击：对敌方造成物理伤害，威力与被应对技能相等。
+  patch_new_text: 减伤60%，应对攻击：对敌方造成武系物理伤害，威力与被应对技能相等。
+- source_image_id: s2_patch_img_005
+  entity_type: move
+  status: ready_candidate_wording_update
+  resolution:
+    status: resolved_exact
+    query: 极限撕裂
+    canonical_query: 极限撕裂
+    move:
+      move_id: move_b5aa6d2dbe2c049f
+      move_name: 极限撕裂
+      move_type: 恶
+      category_raw: 物攻
+      power: 135
+      energy_cost: 4
+      effect_text: 造成物伤,若生命高于50%,使用后自己获得双攻-50%。
+      description_text: null
+    alias_notes: []
+  current_a_layer_text: 造成物伤,若生命高于50%,使用后自己获得双攻-50%。
+  patch_old_text: 造成物伤，若生命高于50%，使用后自己获得双攻-50%。
+  patch_new_text: 造成物伤，若自己生命高于50%，使用后自己获得双攻-50%。
+- source_image_id: s2_patch_img_005
+  entity_type: ability
+  status: ready_candidate_wording_update
+  resolution:
+    status: resolved_exact
+    query: 化茧
+    canonical_query: 化茧
+    ability:
+      ability_id: ability_779bf07f3655b6fc
+      ability_name: 化茧
+      effect_text: 受到致命伤害时,获得1层萌化,并免疫此次伤害。
+      source_species_ids_json: '["species_0bd007ae8973b5af", "species_1c8182ccf3ee4dcf",
+        "species_2e556dd42e7a174e", "species_73f9af2ec1d415f7", "species_c39a753446943920",
+        "species_f4c77f0d5c64fcc0"]'
+    alias_notes: []
+  current_a_layer_text: 受到致命伤害时,获得1层萌化,并免疫此次伤害。
+  patch_old_text: 受到致命伤害时，获得1层萌化，并免疫此次伤害。
+  patch_new_text: 受到致命伤害时，获得1层萌化，并免疫此次伤害。（最多触发2次）
+- source_image_id: s2_patch_img_005
+  entity_type: ability
+  status: ready_candidate_wording_update
+  resolution:
+    status: resolved_exact
+    query: 小偷小摸
+    canonical_query: 小偷小摸
+    ability:
+      ability_id: ability_aa3a29fccdb094ab
+      ability_name: 小偷小摸
+      effect_text: 入场时偷取所有敌方精灵2能量。
+      source_species_ids_json: '["species_d7da2cae3f385c46"]'
+    alias_notes: []
+  current_a_layer_text: 入场时偷取所有敌方精灵2能量。
+  patch_old_text: 入场时偷取所有敌方精灵2能量。
+  patch_new_text: 入场时偷取敌方场上所有精灵2能量。
+- source_image_id: s2_patch_img_005
+  entity_type: ability
+  status: ready_candidate_wording_update_pm_accepted_text_diff
+  resolution:
+    status: resolved_exact
+    query: 双向光速
+    canonical_query: 双向光速
+    ability:
+      ability_id: ability_fdf47385b35db05d
+      ability_name: 双向光速
+      effect_text: 在场时,所有回合结束时触发,触发次数+1。
+      source_species_ids_json: '["species_bc9cd5a2098ec702", "species_f61c12e0663eb3cc"]'
+    alias_notes: []
+  current_a_layer_text: 在场时,所有回合结束时触发,触发次数+1。
+  patch_old_text: 在场时，所有回合结束时效果，触发次数+1。
+  patch_new_text: 在场时，双方回合结束时的效果会额外触发1次。
+  pm_review_note: PM accepted as wording-only old-text difference.
+- source_image_id: s2_patch_img_005
+  entity_type: ability
+  status: ready_candidate_wording_update
+  resolution:
+    status: resolved_exact
+    query: 复方汤剂
+    canonical_query: 复方汤剂
+    ability:
+      ability_id: ability_37fa2633446e0e5c
+      ability_name: 复方汤剂
+      effect_text: 回合结束时,中毒效果触发次数+1。
+      source_species_ids_json: '["species_bc7c998477757d7a", "species_db4d341fb1de8f09"]'
+    alias_notes: []
+  current_a_layer_text: 回合结束时,中毒效果触发次数+1。
+  patch_old_text: 回合结束时，中毒效果触发次数+1。
+  patch_new_text: 在场时，双方回合结束时的中毒效果会额外触发1次。
+- source_image_id: s2_patch_img_005
+  entity_type: concept
+  status: routed_to_mechanism_concept_candidate
+  resolution:
+    status: mechanism_concept
+    query: 先手
+    canonical_query: 先手
+  current_a_layer_text: null
+  patch_old_text: 技能行动的优先级，先手度更高的技能忽略双方精灵速度差异，优先释放。
+  patch_new_text: 先手度是技能行动的优先级，先手度更高的技能忽略双方精灵速度差异，优先释放，先手度可叠加。
+  mechanism_route_note: 'Route to B-layer mechanism/concept clarification: 先手度 is
+    priority +x-like action priority, not speed; S2 screenshot explicitly states priority
+    values can stack. Treat as explicit documentation/clarification unless later evidence
+    proves this was a mechanical change.'
+move_effect_overlays:
+- source_image_id: s2_patch_img_006
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 折射
+    canonical_query: 折射
+    move:
+      move_id: move_ec4bd199a114ec18
+      move_name: 折射
+      move_type: 光
+      category_raw: 魔攻
+      power: 50
+      energy_cost: 4
+      effect_text: 造成魔伤,携带其他系别技能会给本技能带来不同效果。
+      description_text: 地面系:减少对手40速度,连击-2; * 水系:全技能减少1点能耗; * 电系:+50速度值; * 草系:回复少量生命;
+        * 火系:给予对手4层灼烧; * 冰系:给予对手2层冻结; * 毒系:给予对手2层中毒; * 虫系:减少对手40%物防; * 龙系:减少对手40%魔防;
+        * 翼系:连击+1; * 普通系:增加20技能威力; * 武系:增加40%物攻; * 光系:增加40%魔攻; * 幻系:给予对手1层星陨印记; *
+        幽系:减少对手2点能量; * 恶系:增加30%吸血; * 机械系:增加40%双防; * 萌系:减少对手30%双攻;
+    alias_notes: []
+  field_checks: []
+  patch_old_text: null
+  patch_new_text: null
+  structured_changes:
+  - condition: 携带电系技能
+    old: 获得速度+50
+    new: 获得速度+20
+  - condition: 携带机械系技能
+    old: 获得双防+30%
+    new: 获得物防+30%
+  - condition: 携带光系技能
+    old: 获得魔攻+40%
+    new: 获得魔攻+30%
+  - condition: 携带武系技能
+    old: 获得物攻+40%
+    new: 获得物攻+30%
+  - condition: 携带普系技能
+    old: 获得技能威力+20
+    new: 获得技能威力+10
+- source_image_id: s2_patch_img_006
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 闪击
+    canonical_query: 闪击
+    move:
+      move_id: move_3488bbe17aa76c74
+      move_name: 闪击
+      move_type: 翼
+      category_raw: 物攻
+      power: 60
+      energy_cost: 4
+      effect_text: 造成物伤,速度比敌方越高,本次技能威力越高。
+      description_text: null
+    alias_notes: []
+  field_checks: []
+  patch_old_text: 速度低于对手或和对手相同时，威力仍为60，速度高于对手136及以上时，威力提升至200。
+  patch_new_text: 速度低于对手或和对手相同时，威力仍为60，速度高于对手271及以上时，威力提升至200。
+  structured_changes: []
+- source_image_id: s2_patch_img_006
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 鸣沙陷阱
+    canonical_query: 鸣沙陷阱
+    move:
+      move_id: move_a63288eddeb7f71d
+      move_name: 鸣沙陷阱
+      move_type: 地
+      category_raw: 物攻
+      power: 60
+      energy_cost: 4
+      effect_text: 造成物伤,物防比敌方越高,本次技能威力越高。
+      description_text: null
+    alias_notes: []
+  field_checks: []
+  patch_old_text: 物防低于对手或和对手相同时，威力仍为60，物防高于对手136及以上时，威力提升至200。
+  patch_new_text: 物防低于对手或和对手相同时，威力仍为60，物防高于对手271及以上时，威力提升至200。
+  structured_changes: []
+- source_image_id: s2_patch_img_006
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 啮合传递
+    canonical_query: 啮合传递
+    move:
+      move_id: move_b66a7c0532505a54
+      move_name: 啮合传递
+      move_type: 机械
+      category_raw: 状态
+      power: 0
+      energy_cost: 1
+      effect_text: 自己获得速度+80,本技能位于1号或3号位时额外获得物攻+60%,传动1。
+      description_text: null
+    alias_notes: []
+  field_checks: []
+  patch_old_text: 自己获得速度+80；本技能位于1号或3号位时额外获得物攻+60%，传动1。
+  patch_new_text: 自己获得速度+30；本技能位于1号或3号位时额外获得物攻+80%，传动1。
+  structured_changes: []
+- source_image_id: s2_patch_img_006
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 水刃
+    canonical_query: 水刃
+    move:
+      move_id: move_f715d26d08b30035
+      move_name: 水刃
+      move_type: 水
+      category_raw: 物攻
+      power: 115
+      energy_cost: 4
+      effect_text: 造成物伤,应对状态:本技能能耗永久-4。
+      description_text: null
+    alias_notes: []
+  field_checks: []
+  patch_old_text: 造成物伤，应对状态：本技能能耗永久-4。
+  patch_new_text: 造成物伤，应对状态：本技能能耗永久-3。
+  structured_changes: []
+- source_image_id: s2_patch_img_006
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 聚盐
+    canonical_query: 聚盐
+    move:
+      move_id: move_f235a826b4ef13e2
+      move_name: 聚盐
+      move_type: 草
+      category_raw: 状态
+      power: 0
+      energy_cost: 3
+      effect_text: 2连击,每次连击自己回复5%生命和1能量,使用后本技能连击数永久+1。
+      description_text: null
+    alias_notes: []
+  field_checks: []
+  patch_old_text: 2连击，每次连击自己回复5%生命，使用后本技能连击数永久+1（不再恢复能量）。
+  patch_new_text: 2连击，每次连击自己回复8%生命，使用后本技能连击数永久+1（不再恢复能量）。
+  structured_changes: []
+- source_image_id: s2_patch_img_006
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 聒噪
+    canonical_query: 聒噪
+    move:
+      move_id: move_180eb99ab5914d7d
+      move_name: 聒噪
+      move_type: 普通
+      category_raw: 状态
+      power: 0
+      energy_cost: 3
+      effect_text: 敌方获得全攻击技能能耗+3,持续3回合。
+      description_text: null
+    alias_notes: []
+  field_checks: []
+  patch_old_text: 敌方获得全攻击技能能耗+3，持续3回合。
+  patch_new_text: 敌方获得全攻击技能能耗+2，持续3回合。
+  structured_changes: []
+- source_image_id: s2_patch_img_006
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 落雷
+    canonical_query: 落雷
+    move:
+      move_id: move_dbd1198885906bdb
+      move_name: 落雷
+      move_type: 电
+      category_raw: 魔攻
+      power: 100
+      energy_cost: 4
+      effect_text: 造成魔伤,每次入场,本技能威力永久+20。
+      description_text: null
+    alias_notes: []
+  field_checks:
+  - field: power
+    current_a_layer: 100
+    patch_old: 100
+    patch_new: 35
+    old_matches_current_a_layer: true
+  - field: energy_cost
+    current_a_layer: 4
+    patch_old: 4
+    patch_new: 3
+    old_matches_current_a_layer: true
+  patch_old_text: 技能能耗4，威力100，造成魔伤，每次入场，本技能威力永久+20。
+  patch_new_text: 技能能耗3，威力35，造成魔伤，每次入场，本技能威力永久+40。
+  structured_changes: []
+- source_image_id: s2_patch_img_006
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 地刺
+    canonical_query: 地刺
+    move:
+      move_id: move_1538dc34b58ea171
+      move_name: 地刺
+      move_type: 地
+      category_raw: 物攻
+      power: 95
+      energy_cost: 3
+      effect_text: 造成物伤,应对状态:额外打断被应对技能。
+      description_text: null
+    alias_notes: []
+  field_checks:
+  - field: power
+    current_a_layer: 95
+    patch_old: 95
+    patch_new: 90
+    old_matches_current_a_layer: true
+  patch_old_text: 威力95，造成物伤，应对状态。
+  patch_new_text: 威力90，造成物伤，应对状态：额外打断被应对技能。
+  structured_changes: []
+- source_image_id: s2_patch_img_009
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 截拳
+    canonical_query: 截拳
+    move:
+      move_id: move_d760d29c0cabb3c3
+      move_name: 截拳
+      move_type: 武
+      category_raw: 物攻
+      power: 90
+      energy_cost: 3
+      effect_text: 造成物伤,应对状态:额外造成打断,回复该技能能耗的能量。
+      description_text: null
+    alias_notes: []
+  field_checks:
+  - field: power
+    current_a_layer: 90
+    patch_old: 90
+    patch_new: 85
+    old_matches_current_a_layer: true
+  patch_old_text: 威力90，造成物伤，应对状态。
+  patch_new_text: 威力85，造成物伤，应对状态：额外造成打断，回复该技能能耗的能量。
+  structured_changes: []
+- source_image_id: s2_patch_img_009
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 阻断
+    canonical_query: 阻断
+    move:
+      move_id: move_8b86214ed1116479
+      move_name: 阻断
+      move_type: 普通
+      category_raw: 魔攻
+      power: 80
+      energy_cost: 2
+      effect_text: 造成魔伤,应对状态:额外打断被应对技能。
+      description_text: null
+    alias_notes: []
+  field_checks:
+  - field: power
+    current_a_layer: 80
+    patch_old: 80
+    patch_new: 75
+    old_matches_current_a_layer: true
+  patch_old_text: 威力80，造成魔伤，应对状态。
+  patch_new_text: 威力75，造成魔伤，应对状态：额外打断被应对技能。
+  structured_changes: []
+- source_image_id: s2_patch_img_009
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 斩断
+    canonical_query: 斩断
+    move:
+      move_id: move_5e6abf215991ef28
+      move_name: 斩断
+      move_type: 武
+      category_raw: 物攻
+      power: 75
+      energy_cost: 2
+      effect_text: 造成物伤,应对状态:额外打断被应对技能。
+      description_text: null
+    alias_notes: []
+  field_checks:
+  - field: power
+    current_a_layer: 75
+    patch_old: 75
+    patch_new: 70
+    old_matches_current_a_layer: true
+  patch_old_text: 威力75，造成物伤，应对状态。
+  patch_new_text: 威力70，造成物伤，应对状态：额外打断被应对技能。
+  structured_changes: []
+- source_image_id: s2_patch_img_009
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 冰蛋壳
+    canonical_query: 冰蛋壳
+    move:
+      move_id: move_5e5472cc1ff9148d
+      move_name: 冰蛋壳
+      move_type: 冰
+      category_raw: 防御
+      power: 0
+      energy_cost: 3
+      effect_text: 减伤60%,应对攻击:敌方获得2层减速印记。
+      description_text: null
+    alias_notes: []
+  field_checks: []
+  patch_old_text: 减伤60%，应对攻击。
+  patch_new_text: 减伤70%，应对攻击：敌方获得2层减速印记。
+  structured_changes: []
+- source_image_id: s2_patch_img_009
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 涌泉
+    canonical_query: 涌泉
+    move:
+      move_id: move_7229d4de7f622a4e
+      move_name: 涌泉
+      move_type: 水
+      category_raw: 魔攻
+      power: 60
+      energy_cost: 6
+      effect_text: 造成魔伤,本技能能耗每-1,威力+10。
+      description_text: null
+    alias_notes: []
+  field_checks:
+  - field: power
+    current_a_layer: 60
+    patch_old: 60
+    patch_new: 90
+    old_matches_current_a_layer: true
+  patch_old_text: 威力60，造成魔伤，本技能能耗每-1，威力+10。
+  patch_new_text: 威力90，造成魔伤，本技能能耗每-1，威力+10。
+  structured_changes: []
+- source_image_id: s2_patch_img_009
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 破防
+    canonical_query: 破防
+    move:
+      move_id: move_74145ec89084836a
+      move_name: 破防
+      move_type: 武
+      category_raw: 状态
+      power: 0
+      energy_cost: 3
+      effect_text: 敌方获得双防-130%,应对防御:额外使被应对技能冷却2回合。
+      description_text: null
+    alias_notes: []
+  field_checks:
+  - field: energy_cost
+    current_a_layer: 3
+    patch_old: 3
+    patch_new: 2
+    old_matches_current_a_layer: true
+  patch_old_text: 技能能耗3，敌方获得双防-130%，应对防御。
+  patch_new_text: 技能能耗2，敌方获得双防-70%，应对防御：额外使被应对技能冷却2回合。
+  structured_changes: []
+- source_image_id: s2_patch_img_009
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 淬火
+    canonical_query: 淬火
+    move:
+      move_id: move_a9e04e853b78a2da
+      move_name: 淬火
+      move_type: 火
+      category_raw: 防御
+      power: 0
+      energy_cost: 4
+      effect_text: 减伤80%,应对攻击:下次攻击技能威力翻倍。
+      description_text: null
+    alias_notes: []
+  field_checks:
+  - field: energy_cost
+    current_a_layer: 4
+    patch_old: 4
+    patch_new: 2
+    old_matches_current_a_layer: true
+  patch_old_text: 技能能耗4，减伤80%，应对攻击。
+  patch_new_text: 技能能耗2，减伤80%，应对攻击：下次攻击技能威力翻倍。
+  structured_changes: []
+- source_image_id: s2_patch_img_009
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 触底强击
+    canonical_query: 触底强击
+    move:
+      move_id: move_1e5c27349511a796
+      move_name: 触底强击
+      move_type: 普通
+      category_raw: 魔攻
+      power: 65
+      energy_cost: 3
+      effect_text: 造成魔伤,使用后若能量耗尽,本次技能威力+110。
+      description_text: null
+    alias_notes: []
+  field_checks:
+  - field: power
+    current_a_layer: 65
+    patch_old: 65
+    patch_new: 95
+    old_matches_current_a_layer: true
+  - field: energy_cost
+    current_a_layer: 3
+    patch_old: 3
+    patch_new: 4
+    old_matches_current_a_layer: true
+  patch_old_text: 技能能耗3，威力65，造成魔伤。
+  patch_new_text: 技能能耗4，威力95，造成魔伤，使用后若能量耗尽，本次技能威力+120。
+  structured_changes: []
+- source_image_id: s2_patch_img_009
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 不动如山
+    canonical_query: 不动如山
+    move:
+      move_id: move_dc4f554db0a648e0
+      move_name: 不动如山
+      move_type: 地
+      category_raw: 防御
+      power: 0
+      energy_cost: 2
+      effect_text: 减伤90%,应对攻击。
+      description_text: null
+    alias_notes: []
+  field_checks:
+  - field: energy_cost
+    current_a_layer: 2
+    patch_old: 2
+    patch_new: 2
+    old_matches_current_a_layer: true
+  patch_old_text: 技能能耗2，减伤90%，应对攻击。
+  patch_new_text: 技能能耗2，减伤90%，应对攻击：自身物攻+50%。
+  structured_changes: []
+- source_image_id: s2_patch_img_009
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 灾厄
+    canonical_query: 灾厄
+    move:
+      move_id: move_bec92fe1f8f527cc
+      move_name: 灾厄
+      move_type: 恶
+      category_raw: 物攻
+      power: 150
+      energy_cost: 1
+      effect_text: 对自己造成物伤,应对状态:改为对敌方造成物伤。
+      description_text: null
+    alias_notes: []
+  field_checks: []
+  patch_old_text: 对自己造成150威力物伤，应对状态。
+  patch_new_text: 对自己造成60威力物伤，应对状态：改为对敌方造成180威力物伤。
+  structured_changes: []
+- source_image_id: s2_patch_img_009
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 感染病
+    canonical_query: 感染病
+    move:
+      move_id: move_e69b6a7527287d8e
+      move_name: 感染病
+      move_type: 毒
+      category_raw: 魔攻
+      power: 85
+      energy_cost: 4
+      effect_text: 造成魔伤,若击败敌方则将中毒转化为中毒印记。
+      description_text: null
+    alias_notes: []
+  field_checks:
+  - field: power
+    current_a_layer: 85
+    patch_old: 85
+    patch_new: 110
+    old_matches_current_a_layer: true
+  patch_old_text: 威力85，造成魔伤。
+  patch_new_text: 威力110，造成魔伤，若击败敌方则将中毒转化为中毒印记。
+  structured_changes: []
+- source_image_id: s2_patch_img_009
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 咆哮
+    canonical_query: 咆哮
+    move:
+      move_id: move_7e7266d7e5be95c9
+      move_name: 咆哮
+      move_type: 普通
+      category_raw: 状态
+      power: 0
+      energy_cost: 1
+      effect_text: 敌方获得物攻-130%。
+      description_text: null
+    alias_notes: []
+  field_checks: []
+  patch_old_text: 敌方获得物攻-130%，速度-60。
+  patch_new_text: 敌方获得物攻-60%，速度-60。
+  structured_changes: []
+- source_image_id: s2_patch_img_009
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 羽翼庇护
+    canonical_query: 羽翼庇护
+    move:
+      move_id: move_5541e469a0d09e7d
+      move_name: 羽翼庇护
+      move_type: 翼
+      category_raw: 防御
+      power: 0
+      energy_cost: 3
+      effect_text: 减伤70%,应对攻击:自己获得连击数+3。
+      description_text: null
+    alias_notes: []
+  field_checks:
+  - field: energy_cost
+    current_a_layer: 3
+    patch_old: 3
+    patch_new: 2
+    old_matches_current_a_layer: true
+  patch_old_text: 技能能耗3，减伤70%，应对攻击：自己获得连击数+3。
+  patch_new_text: 技能能耗2，减伤70%，应对攻击：自己获得连击数+2。
+  structured_changes: []
+- source_image_id: s2_patch_img_009
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 虫群过境
+    canonical_query: 虫群过境
+    move:
+      move_id: move_01890fc45e8aac28
+      move_name: 虫群过境
+      move_type: 虫
+      category_raw: 物攻
+      power: 45
+      energy_cost: 5
+      effect_text: 造成物伤,2连击。己方队伍获得1次奉献:获得连击数+1。
+      description_text: null
+    alias_notes: []
+  field_checks:
+  - field: power
+    current_a_layer: 45
+    patch_old: 45
+    patch_new: 30
+    old_matches_current_a_layer: true
+  - field: energy_cost
+    current_a_layer: 5
+    patch_old: 5
+    patch_new: 3
+    old_matches_current_a_layer: true
+  patch_old_text: 技能能耗5，威力45，造成物伤，2连击。
+  patch_new_text: 技能能耗3，威力30，造成物伤，2连击。己方队伍获得1次奉献：获得连击数+1。
+  structured_changes: []
+- source_image_id: s2_patch_img_009
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 焚毁
+    canonical_query: 焚毁
+    move:
+      move_id: move_66c494b7f8946e22
+      move_name: 焚毁
+      move_type: 火
+      category_raw: 魔攻
+      power: 60
+      energy_cost: 2
+      effect_text: 造成魔伤,驱散敌方所有印记。
+      description_text: null
+    alias_notes: []
+  field_checks:
+  - field: power
+    current_a_layer: 60
+    patch_old: 60
+    patch_new: 40
+    old_matches_current_a_layer: true
+  patch_old_text: 威力60，造成魔伤，驱散敌方所有印记。
+  patch_new_text: 威力40，造成魔伤，驱散敌方所有印记，每驱散1层，获得物攻+20%。
+  structured_changes: []
+- source_image_id: s2_patch_img_009
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 龙吟
+    canonical_query: 龙吟
+    move:
+      move_id: move_40d43aea49c1cf5a
+      move_name: 龙吟
+      move_type: 龙
+      category_raw: 状态
+      power: 0
+      energy_cost: 3
+      effect_text: 蓄力,自己获得双攻+100%和速度+60。
+      description_text: null
+    alias_notes: []
+  field_checks: []
+  patch_old_text: 蓄力，自身获得双攻+100%和速度+60。
+  patch_new_text: 蓄力，自身获得双攻+150%和速度+80。
+  structured_changes: []
+- source_image_id: s2_patch_img_009
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 防反
+    canonical_query: 防反
+    move:
+      move_id: move_927c29f37379d163
+      move_name: 防反
+      move_type: 普通
+      category_raw: 防御
+      power: 0
+      energy_cost: 2
+      effect_text: 减伤60%,应对攻击:自己获得物攻和魔攻+40%。
+      description_text: null
+    alias_notes: []
+  field_checks: []
+  patch_old_text: 减伤60%，应对攻击：自己获得物攻和魔攻+40%。
+  patch_new_text: 减伤70%，应对攻击：自己获得物攻和魔攻+70%。
+  structured_changes: []
+- source_image_id: s2_patch_img_009
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 甜心续航
+    canonical_query: 甜心续航
+    move:
+      move_id: move_637f76e751454b87
+      move_name: 甜心续航
+      move_type: 萌
+      category_raw: 状态
+      power: 0
+      energy_cost: 3
+      effect_text: 自己和敌方获得萌化:回复40%生命和4能量。
+      description_text: null
+    alias_notes: []
+  field_checks:
+  - field: energy_cost
+    current_a_layer: 3
+    patch_old: 3
+    patch_new: 3
+    old_matches_current_a_layer: true
+  patch_old_text: 技能能耗3，自己和敌方获得萌化：回复40%生命和4能量。
+  patch_new_text: 技能能耗3，自己和敌方获得萌化：回复40%生命和0能量。
+  structured_changes: []
+- source_image_id: s2_patch_img_009
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 绵里藏针
+    canonical_query: 绵里藏针
+    move:
+      move_id: move_7ffbbd5892dafceb
+      move_name: 绵里藏针
+      move_type: 龙
+      category_raw: 魔攻
+      power: 50
+      energy_cost: 2
+      effect_text: 造成魔伤,若敌方上回合没受到技能伤害,本技能威力永久+30。
+      description_text: null
+    alias_notes: []
+  field_checks:
+  - field: power
+    current_a_layer: 50
+    patch_old: 50
+    patch_new: 60
+    old_matches_current_a_layer: true
+  - field: energy_cost
+    current_a_layer: 2
+    patch_old: 2
+    patch_new: 2
+    old_matches_current_a_layer: true
+  patch_old_text: 技能能耗2，威力50，若自己上回合未攻击敌方并造成伤害，本技能每回合永久+30。
+  patch_new_text: 技能能耗2，威力60，若自己上回合未攻击敌方并造成伤害，本技能每回合永久+20。
+  structured_changes: []
+- source_image_id: s2_patch_img_009
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 芳香诱引
+    canonical_query: 芳香诱引
+    move:
+      move_id: move_ec330cbc115a50b9
+      move_name: 芳香诱引
+      move_type: 草
+      category_raw: 状态
+      power: 0
+      energy_cost: 1
+      effect_text: 自己获得连击数+3,应对防御:额外造成打断,且敌方下回合获得眩晕。
+      description_text: null
+    alias_notes: []
+  field_checks:
+  - field: energy_cost
+    current_a_layer: 1
+    patch_old: 1
+    patch_new: 2
+    old_matches_current_a_layer: true
+  patch_old_text: 技能能耗1，自己获得连击数+3，应对防御。
+  patch_new_text: 技能能耗2，自己获得连击数+2，应对防御：额外造成打断，且敌方下回合获得眩晕。
+  structured_changes: []
+- source_image_id: s2_patch_img_009
+  status: ready_candidate_overlay
+  move_resolution:
+    status: resolved_exact
+    query: 落雨
+    canonical_query: 落雨
+    move:
+      move_id: move_39736afad79a3b3a
+      move_name: 落雨
+      move_type: 水
+      category_raw: 状态
+      power: 0
+      energy_cost: 5
+      effect_text: 将天气改为雨天,持续8回合。
+      description_text: null
+    alias_notes: []
+  field_checks: []
+  patch_old_text: 将天气改为雨天，持续8回合。天气「雨天」：双方水系技能威力+50%。
+  patch_new_text: 将天气改为雨天，持续8回合。天气「雨天」：双方水系技能威力+75%。
+  structured_changes: []
+unresolved_or_non_dex_items: []

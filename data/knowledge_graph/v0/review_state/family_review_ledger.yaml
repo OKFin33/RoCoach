@@ -1,0 +1,1562 @@
+schema_version: p14.family_review_ledger.v0
+last_updated: "2026-05-20"
+identity_policy:
+  required_for_new_pm_reviewed_entries_after: "2026-05-23"
+  legacy_unknown_allowed_before: "2026-05-23"
+  required_fields:
+    - source_candidate.extractor_agent_id
+    - source_candidate.extractor_run_id
+    - review.reviewer_agent_id
+    - review.reviewer_run_id
+  legacy_note: "Entries accepted before this policy are backfilled as legacy_unknown. Do not infer true review independence from legacy_unknown alone."
+review_scope_policy:
+  family_level_review_allowed: true
+  allowed_when:
+    - set_family_has_at_least_two_primary_sources
+    - set_family_has_at_least_two_repeated_core_moves
+    - all_core_moves_resolve_to_a_layer_move_names
+    - no_unresolved_asr_terms_in_promoted_fields
+    - source_spans_present
+  species_level_card_remains_blocked_when:
+    - unresolved_split_hypotheses_exist_for_same_species
+  runtime_promotion_policy:
+    default_runtime_allowed: false
+    family_review_is_not_runtime_promotion: true
+    promotion_requires:
+      - pm_reviewed_family_entry
+      - reviewed_or_deferred_split_boundary_for_parent_species
+      - materialized_species_set_card
+      - graph_registry_and_indexes_rebuilt
+      - strict_validators_pass
+      - promotion_audit_log_entry
+entries:
+  - review_id: family_review/wingking/waterblade_physical_2026-s1
+    review_scope: set_family
+    source_candidate:
+      consolidation_batch_id: phase1_set_inventory_consolidation_e1_p1p9_wingking_flow_2026-05-18
+      consolidation_path: artifacts/knowledge_ops/set_inventory_consolidation/phase1_set_inventory_consolidation_e1_p1p9_wingking_flow_2026-05-18.yaml
+      review_packet: artifacts/knowledge_ops/review_packets/phase1_set_inventory_consolidation_e1_p1p9_wingking_flow_2026-05-18_family_review.md
+      species_name: 圣羽翼王
+      canonical_species_id: species_cfef25aadf9439cf
+      source_family_id: family_02
+      source_state: family_review_candidate
+      parent_species_state: split_blocked
+      pm_reviewed_at: "2026-05-18"
+      extractor_agent_id: legacy_unknown
+      extractor_run_id: legacy_unknown
+      identity_status: legacy_pre_2026-05-23_identity_policy
+    proposed_card:
+      draft_species_set_id: species_set/圣羽翼王/waterblade_physical_2026-s1
+      proposed_family_name: 水刃物攻线
+      canonical_species_name: 圣羽翼王
+      source_aliases:
+        - 翼王
+        - 水刃翼王
+      core_moves:
+        - 水刃
+        - 闪击
+        - 力量增效
+      flex_moves:
+        - 光之矛
+      damage_axis: physical
+      role_groups:
+        - lead
+        - offense
+        - pivot
+        - support
+      build_axes:
+        - speed
+      ability_policy: inherit_a_layer_species_ability_unless_source_review_overrides
+      configuration_status: sparse_source_evidence_do_not_infer_nature_iv_or_bloodline
+    evidence:
+      primary_source_count: 3
+      primary_source_ids:
+        - kgsrc_poison_vs_starfall_20260430
+        - kgsrc_wingking_best_team_20260328
+        - kgsrc_wingking_waterblade_top1_20260408
+      supporting_source_ids: []
+      transcript_method: subtitle_ai_zh
+      repair_required_segments: 0
+      source_inventory_paths:
+        - artifacts/knowledge_ops/set_inventory/kgsrc_poison_vs_starfall_20260430.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_wingking_best_team_20260328.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_wingking_waterblade_top1_20260408.source_inventory.yaml
+      source_quality_notes:
+        - All promoted fields in this family are A-layer resolved move names.
+        - Waterblade family has repeated core move evidence from three primary sources.
+        - 光之矛 appears as side/flex evidence only, not as a repeated core move.
+      post_review_evidence_updates:
+        - batch_id: phase1_set_inventory_consolidation_e1_p1p11_wingking_flash_relation_2026-05-18
+          status: candidate_only_not_auto_promoted
+          added_source_ids:
+            - kgsrc_wingking_flash_nerf_half_20260416
+            - kgsrc_wingking_flash_luck_mechanism_20260406
+          blocked_source_ids:
+            - kgsrc_wingking_max_speed_quick_waterblade_20260422
+          effect: family_02 primary_source_count increased from 3 to 5; core remains 水刃/闪击/力量增效; no evidence yet to split 闪击流 as an independent family.
+          runtime_allowed: false
+    species_card_boundary:
+      species_level_card_status: split_blocked
+      species_level_card_allowed: false
+      blocked_reason: same_species_set_family_split_unresolved
+      pm_boundary_decision: defer_unresolved_magic_families_do_not_merge_into_waterblade_family
+      unresolved_split_hypotheses:
+        - hypothesis_id: split_01_02
+          blocked_families:
+            - family_01
+            - family_02
+          reason_codes:
+            - damage_axis_divergence
+            - no_move_overlap
+          unresolved_family_summary: family_01=魔法增效 / 热身运动 / 回旋风暴 / 三连破
+        - hypothesis_id: split_02_03
+          blocked_families:
+            - family_02
+            - family_03
+          reason_codes:
+            - damage_axis_divergence
+          unresolved_family_summary: family_03=水花四溅
+      explicit_non_claims:
+        - This entry does not claim 圣羽翼王 has one standard species-wide set.
+        - This entry does not merge 魔攻/回旋风暴 or 魔攻/水花四溅 lines into the waterblade family.
+    pm_questions:
+      - question_id: q_family_name
+        question: 名称是否采用“水刃物攻线”？
+        recommended_decision: approve
+        status: approved
+        decision: accept_waterblade_physical_line_name
+      - question_id: q_flex_move_light_spear
+        question: 光之矛是否只作为 flex/旁证保留，不进入核心技能？
+        recommended_decision: approve_as_flex_only
+        status: approved
+        decision: keep_as_flex_only
+      - question_id: q_magic_split_policy
+        question: 魔攻线是否继续补源，而不是合并进这条 family？
+        recommended_decision: continue_source_expansion_do_not_merge
+        status: approved
+        decision: continue_source_expansion_do_not_merge
+      - question_id: q_waterblade_flash_relation
+        question: 水刃线和闪击流是否很近，可能同属物攻/迅捷体系但队友配置不同？
+        recommended_decision: investigate_as_relation_or_subfamily_not_as_fact_yet
+        status: accepted_followup
+        decision: collect_relation_evidence_before_schema_decision
+    review:
+      review_status: pm_reviewed
+      reviewer: pm
+      reviewer_agent_id: pm
+      reviewer_run_id: legacy_unknown
+      identity_status: legacy_pre_2026-05-23_identity_policy
+      review_date: "2026-05-18"
+      pm_decisions:
+        family_name: accepted_waterblade_physical_line
+        core_moves: accepted_waterblade_flash_power_boost
+        flex_moves: light_spear_flex_only
+        magic_split_policy: do_not_merge_continue_source_expansion
+        waterblade_flash_relation: accepted_as_followup_hypothesis_requires_sources
+      notes: "PM accepted the family-level entry and explicitly kept magical lines separate. PM also requested evidence expansion on the relation between 水刃线 and 闪击流, likely close because both are physical and may differ by teammates/ability-trigger setup."
+    promotion_gate:
+      allowed_scope: set_family_only
+      promotion_ready: true
+      runtime_allowed: false
+      materialization_allowed: true
+      materialized_card_id: species_set/圣羽翼王/waterblade_physical_2026-s1
+      materialized_card_path: data/knowledge_graph/v0/set_graph/species_sets/圣羽翼王_waterblade_physical_2026-s1.yaml
+      validation_status: strict_passed_2026-05-18
+      blocks:
+        - advisor_meta_graph_runtime_not_wired
+        - relation_between_waterblade_and_flash_flow_still_under_evidence_expansion
+  - review_id: family_review/seal_captain/waterblade_listenbridge_2026-s1
+    review_scope: set_family
+    source_candidate:
+      consolidation_batch_id: phase1_volume_ingest_p6p10_2026-05-18_consolidation
+      consolidation_path: artifacts/knowledge_ops/set_inventory_consolidation/phase1_volume_ingest_p6p10_2026-05-18_consolidation.yaml
+      review_packet: artifacts/knowledge_ops/review_packets/phase1_volume_ingest_p6p10_2026-05-18_new_family_candidate_pm_review.md
+      species_name: 海豹船长
+      canonical_species_id: species_922ada68d924d016
+      source_family_id: family_01
+      source_state: family_review_candidate
+      parent_species_state: split_blocked
+      pm_reviewed_at: "2026-05-18"
+      extractor_agent_id: legacy_unknown
+      extractor_run_id: legacy_unknown
+      identity_status: legacy_pre_2026-05-23_identity_policy
+    proposed_card:
+      draft_species_set_id: species_set/海豹船长/waterblade_listenbridge_2026-s1
+      proposed_family_name: 水刃听桥线
+      canonical_species_name: 海豹船长
+      source_aliases: []
+      core_moves:
+        - 水刃
+        - 听桥
+      flex_moves:
+        - 泡沫幻影
+        - 一拳
+        - 斩断
+      damage_axis: physical
+      role_groups:
+        - defense
+        - offense
+      build_axes: []
+      ability_policy: inherit_a_layer_species_ability_unless_source_review_overrides
+      configuration_status: sparse_source_evidence_do_not_infer_nature_iv_or_bloodline
+    evidence:
+      primary_source_count: 3
+      primary_source_ids:
+        - kgsrc_beastbud_firegod_balance_20260408
+        - kgsrc_blackcat_balance_master_20260329
+        - kgsrc_devilwolf_balance_20260330
+      supporting_source_ids: []
+      transcript_method: subtitle_ai_zh
+      repair_required_segments: 0
+      source_inventory_paths:
+        - artifacts/knowledge_ops/set_inventory/kgsrc_beastbud_firegod_balance_20260408.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_blackcat_balance_master_20260329.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_devilwolf_balance_20260330.source_inventory.yaml
+      source_quality_notes:
+        - All promoted fields in this family are A-layer resolved species or move names.
+        - PM confirmed 水刃听桥 is one of 海豹船长's mainstream configurations.
+        - 泡沫幻影 / 一拳 / 斩断 remain flex or side evidence, not repeated core moves.
+        - kgsrc_devilwolf_balance_20260330 is a multi-part, very long subtitle source and must not dominate promotion alone.
+    species_card_boundary:
+      species_level_card_status: split_blocked
+      species_level_card_allowed: false
+      blocked_reason: same_species_set_family_split_unresolved
+      pm_boundary_decision: keep_defense_pivot_line_blocked_do_not_merge_into_waterblade_listenbridge_family
+      unresolved_split_hypotheses:
+        - hypothesis_id: split_01_02
+          blocked_families:
+            - family_01
+            - family_02
+          reason_codes:
+            - role_axis_divergence
+          unresolved_family_summary: family_02=防御 / 一拳 / 水刃 / 掩护
+      explicit_non_claims:
+        - This entry does not claim 海豹船长 has one standard species-wide set.
+        - This entry does not merge 防御 / 一拳 / 水刃 / 掩护 into the 水刃听桥线 family.
+    pm_questions:
+      - question_id: q_family_scope
+        question: 是否接受 海豹船长 family_01 作为独立 set family？
+        recommended_decision: approve_family_scope
+        status: approved
+        decision: accept_waterblade_listenbridge_as_mainstream_family
+      - question_id: q_core_moves
+        question: 核心技能是否定为 水刃 / 听桥？
+        recommended_decision: approve_core_moves
+        status: approved
+        decision: accept_waterblade_listenbridge_core
+      - question_id: q_flex_moves
+        question: 泡沫幻影 / 一拳 / 斩断 是否只作为 flex/旁证？
+        recommended_decision: approve_as_flex_only
+        status: approved
+        decision: keep_bubble_phantom_one_punch_slash_as_flex
+      - question_id: q_split_policy
+        question: 防御 / 一拳 / 水刃 / 掩护 是否继续留 blocker，不合并？
+        recommended_decision: keep_split_blocked
+        status: approved
+        decision: keep_other_seal_captain_line_blocked
+    review:
+      review_status: pm_reviewed
+      reviewer: pm
+      reviewer_agent_id: pm
+      reviewer_run_id: legacy_unknown
+      identity_status: legacy_pre_2026-05-23_identity_policy
+      review_date: "2026-05-18"
+      pm_decisions:
+        family_scope: accepted_as_mainstream_configuration
+        family_name: accepted_waterblade_listenbridge_line
+        core_moves: accepted_waterblade_listenbridge
+        flex_moves: bubble_phantom_one_punch_slash_flex_only
+        split_policy: keep_defense_pivot_line_blocked_do_not_merge
+      notes: "PM accepted this family and confirmed 水刃听桥 is one of 海豹船长's mainstream configurations. Keep the parent species split-blocked and do not runtime-promote."
+    promotion_gate:
+      allowed_scope: set_family_only
+      promotion_ready: false
+      runtime_allowed: false
+      materialization_allowed: false
+      validation_status: strict_passed_2026-05-18
+      blocks:
+        - parent_species_still_split_blocked
+        - graph_card_materialization_deferred_until_more_configuration_evidence_or_explicit_PM_materialization
+  - review_id: family_review/luoyin/greed_sandtrap_2026-s1
+    review_scope: set_family
+    source_candidate:
+      consolidation_batch_id: phase1_volume_ingest_p16p20_2026-05-18_consolidation_after_gate_fix
+      consolidation_path: artifacts/knowledge_ops/set_inventory_consolidation/phase1_volume_ingest_p16p20_2026-05-18_consolidation_after_gate_fix.yaml
+      review_packet: artifacts/knowledge_ops/review_packets/phase1_volume_ingest_p16p20_2026-05-18_new_family_candidate_pm_review.md
+      species_name: 罗隐
+      canonical_species_id: species_9d75e1cac1147f93
+      source_family_id: family_01
+      source_state: family_review_candidate
+      parent_species_state: review_candidate
+      agent_deferred_at: "2026-05-19"
+    proposed_card:
+      draft_species_set_id: species_set/罗隐/greed_sandtrap_2026-s1
+      proposed_family_name: 贪婪鸣沙陷阱线
+      canonical_species_name: 罗隐
+      source_aliases: []
+      core_moves:
+        - 贪婪
+        - 鸣沙陷阱
+      flex_moves: []
+      damage_axis: physical/status_or_unknown
+      role_groups: []
+      build_axes: []
+      ability_policy: inherit_a_layer_species_ability_unless_source_review_overrides
+      configuration_status: two_move_skeleton_only_defer_until_luoyin_specific_sources
+    evidence:
+      primary_source_count: 3
+      primary_source_ids:
+        - kgsrc_launch_pvp_roster_logic_20260327
+        - kgsrc_starfall_strategy_parse_20260330
+        - kgsrc_wingking_three_styles_20260328
+      supporting_source_ids: []
+      transcript_method: mixed_subtitle_ai_zh_and_bailian_hotword_asr_v3
+      repair_required_segments: 0
+      source_inventory_paths:
+        - artifacts/knowledge_ops/set_inventory/kgsrc_launch_pvp_roster_logic_20260327.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_starfall_strategy_parse_20260330.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_wingking_three_styles_20260328.source_inventory.yaml
+      source_quality_notes:
+        - All candidate fields resolve to A-layer species or move names.
+        - Evidence is only a two-move skeleton and lacks 罗隐-specific team/set sources.
+        - One primary source uses Bailian hotword ASR fallback rather than Bilibili subtitles.
+        - Keep as expansion target; do not materialize graph card or runtime-promote.
+    species_card_boundary:
+      species_level_card_status: deferred_insufficient_configuration
+      species_level_card_allowed: false
+      blocked_reason: two_move_skeleton_and_no_luoyin_specific_source
+      pm_boundary_decision: technical_defer_unless_PM_overrides
+      unresolved_split_hypotheses: []
+      explicit_non_claims:
+        - This entry does not claim 罗隐 has a reviewed standard set.
+        - This entry does not claim 贪婪 / 鸣沙陷阱 is sufficient as a graph card.
+    pm_questions:
+      - question_id: q_family_scope
+        question: 是否接受 罗隐 family_01 贪婪 / 鸣沙陷阱 作为 reviewer ledger 条目？
+        recommended_decision: defer_until_luoyin_specific_sources
+        status: deferred
+        decision: technical_defer_continue_source_expansion
+    review:
+      review_status: deferred
+      reviewer: agent_reviewer
+      review_date: "2026-05-19"
+      pm_decisions: {}
+      notes: "Technically deferred to keep autorun moving: this is a plausible 罗隐 two-move skeleton, but current sources are broad/off-target and one source uses ASR fallback. Expand 罗隐-specific sources before ledger promotion."
+    promotion_gate:
+      allowed_scope: set_family_only
+      promotion_ready: false
+      runtime_allowed: false
+      materialization_allowed: false
+      validation_status: strict_passed_2026-05-19
+      blocks:
+        - two_move_skeleton_only
+        - no_luoyin_specific_set_source
+        - one_primary_source_uses_asr_fallback
+  - review_id: family_review/juka/poison_spore_defense_2026-s1
+    review_scope: set_family
+    source_candidate:
+      consolidation_batch_id: phase2_volume_ingest_p21p25_2026-05-19_consolidation
+      consolidation_path: artifacts/knowledge_ops/set_inventory_consolidation/phase2_volume_ingest_p21p25_2026-05-19_consolidation.yaml
+      review_packet: artifacts/knowledge_ops/review_packets/phase2_volume_ingest_p21p25_2026-05-19_autorun_dashboard_autorun_dashboard.md
+      species_name: 裘卡
+      canonical_species_id: species_3b0a4ef29e17e262
+      source_family_id: family_01
+      source_state: family_review_candidate
+      parent_species_state: review_candidate
+      agent_deferred_at: "2026-05-19"
+    proposed_card:
+      draft_species_set_id: species_set/裘卡/poison_spore_defense_2026-s1
+      proposed_family_name: 毒孢子防御线
+      canonical_species_name: 裘卡
+      source_aliases: []
+      core_moves:
+        - 毒孢子
+        - 防御
+      flex_moves:
+        - 阻断
+        - 毒囊
+      damage_axis: mixed/status_or_unknown
+      role_groups:
+        - lead
+        - offense
+      build_axes: []
+      ability_policy: inherit_a_layer_species_ability_unless_source_review_overrides
+      configuration_status: two_move_skeleton_only_defer_until_juka_specific_sources
+    evidence:
+      primary_source_count: 3
+      primary_source_ids:
+        - kgsrc_parr_balance_top10_20260502
+        - kgsrc_poison_vs_starfall_20260430
+        - kgsrc_water_poison_newbie_20251029
+      supporting_source_ids: []
+      transcript_method: subtitle_ai_zh
+      repair_required_segments: 0
+      source_inventory_paths:
+        - artifacts/knowledge_ops/set_inventory/kgsrc_parr_balance_top10_20260502.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_poison_vs_starfall_20260430.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_water_poison_newbie_20251029.source_inventory.yaml
+      source_quality_notes:
+        - All candidate fields resolve to A-layer species or move names.
+        - Evidence is only a two-core-move skeleton; 阻断 / 毒囊 are one-source flex signals.
+        - Current primary sources are mixed: one 帕尔平衡队 source, one 毒队对星陨 source, and one older/newbie 水毒队 source.
+        - Keep as 裘卡-specific expansion target; do not materialize graph card or runtime-promote.
+    species_card_boundary:
+      species_level_card_status: deferred_insufficient_configuration
+      species_level_card_allowed: false
+      blocked_reason: two_move_skeleton_and_no_current_juka_specific_source
+      pm_boundary_decision: technical_defer_unless_PM_overrides
+      unresolved_split_hypotheses: []
+      explicit_non_claims:
+        - This entry does not claim 裘卡 has a reviewed standard set.
+        - This entry does not claim 毒孢子 / 防御 is sufficient as a graph card.
+        - This entry does not decide whether 水毒队 裘卡 and 毒队对星陨 裘卡 are the same final set.
+    pm_questions:
+      - question_id: q_family_scope
+        question: 是否接受 裘卡 family_01 毒孢子 / 防御 作为 reviewer ledger 条目？
+        recommended_decision: defer_until_juka_specific_sources
+        status: deferred
+        decision: technical_defer_continue_source_expansion
+    review:
+      review_status: deferred
+      reviewer: agent_reviewer
+      review_date: "2026-05-19"
+      pm_decisions: {}
+      notes: "Technically deferred to keep autorun moving: this is a plausible 裘卡 two-move skeleton, but current sources are mixed and not enough for a reviewed Set Graph card. Expand 裘卡-specific current-meta sources before promotion."
+    promotion_gate:
+      allowed_scope: set_family_only
+      promotion_ready: false
+      runtime_allowed: false
+      materialization_allowed: false
+      validation_status: strict_passed_2026-05-19
+      blocks:
+        - two_move_skeleton_only
+        - no_current_juka_specific_set_source
+        - flex_moves_are_one_source_signals
+  - review_id: family_review/qilihua/light_energy_defense_sun_2026-s1
+    review_scope: set_family
+    source_candidate:
+      consolidation_batch_id: phase4_volume_ingest_p71p75_2026-05-19_consolidation
+      consolidation_path: artifacts/knowledge_ops/set_inventory_consolidation/phase4_volume_ingest_p71p75_2026-05-19_consolidation.yaml
+      review_packet: artifacts/knowledge_ops/review_packets/phase4_volume_ingest_p71p75_2026-05-19_qilihua_family_pm_review.md
+      species_name: 奇丽花
+      canonical_species_id: species_238e24fa10a03fbc
+      source_family_id: family_01
+      source_state: family_review_candidate
+      parent_species_state: split_blocked
+      pm_reviewed_at: "2026-05-19"
+      extractor_agent_id: legacy_unknown
+      extractor_run_id: legacy_unknown
+      identity_status: legacy_pre_2026-05-23_identity_policy
+    proposed_card:
+      draft_species_set_id: species_set/奇丽花/light_energy_defense_sun_2026-s1
+      proposed_family_name: 光能聚集防御线
+      canonical_species_name: 奇丽花
+      source_aliases: []
+      core_moves:
+        - 防御
+        - 光能聚集
+        - 晒太阳
+      flex_moves:
+        - 啮合传递
+        - 霜降
+        - 叶绿光束
+      damage_axis: magical/status_or_unknown
+      role_groups:
+        - defense
+        - lead
+        - offense
+        - pivot
+        - support
+      build_axes:
+        - bulk
+        - magical
+        - physical
+        - speed
+      ability_policy: inherit_a_layer_species_ability_unless_source_review_overrides
+      configuration_status: family_reviewed_but_not_materialized_multiple_clustered_source_dossiers
+    evidence:
+      primary_source_count: 6
+      primary_source_ids:
+        - kgsrc_cuiding_lady_full_guide_20260411
+        - kgsrc_qilihua_detailed_guide_20260405
+        - kgsrc_qilihua_pvp_dual_god_20260509
+        - kgsrc_qilihua_self_research_team_20260508
+        - kgsrc_sandstorm_fighting_research_20251116
+        - kgsrc_swan_unicorn_pass_20251101
+      supporting_source_ids: []
+      transcript_method: mixed_subtitle_ai_zh_and_bailian_hotword_asr_v3
+      repair_required_segments: 0
+      source_inventory_paths:
+        - artifacts/knowledge_ops/set_inventory/kgsrc_cuiding_lady_full_guide_20260411.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_qilihua_detailed_guide_20260405.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_qilihua_pvp_dual_god_20260509.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_qilihua_self_research_team_20260508.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_sandstorm_fighting_research_20251116.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_swan_unicorn_pass_20251101.source_inventory.yaml
+      source_quality_notes:
+        - All core moves resolve to A-layer move names in 奇丽花's move pool.
+        - PM approved this family only because multiple source dossiers cluster around the same three core moves.
+        - 啮合传递 / 霜降 / 叶绿光束 remain flex or side evidence, not reviewed core.
+        - One primary source uses Bailian hotword ASR fallback and older sources exist; these should not dominate future materialization.
+    species_card_boundary:
+      species_level_card_status: split_blocked
+      species_level_card_allowed: false
+      blocked_reason: same_species_set_family_split_unresolved
+      pm_boundary_decision: keep_fiberization_light_energy_oxygen_line_separate_do_not_merge
+      unresolved_split_hypotheses:
+        - hypothesis_id: qilihua_family_02_boundary
+          blocked_families:
+            - family_01
+            - family_02
+          reason_codes:
+            - shared_single_move_insufficient_to_merge
+            - possible_configuration_axis_divergence
+          unresolved_family_summary: family_02=纤维化 / 光能聚集 / 氧输送
+      explicit_non_claims:
+        - This entry does not claim 奇丽花 has one standard species-wide set.
+        - This entry does not merge 纤维化 / 光能聚集 / 氧输送 into the 光能聚集防御线 family.
+        - This entry does not promote flex moves into core.
+    pm_questions:
+      - question_id: q_family_scope
+        question: 如果有多个带 防御 / 光能聚集 / 晒太阳 的 set 可以聚类，是否接受这条 family？
+        recommended_decision: approve_if_multi_source_clustered
+        status: approved
+        decision: accept_because_multiple_source_dossiers_cluster
+      - question_id: q_core_moves
+        question: 核心技能是否定为 防御 / 光能聚集 / 晒太阳？
+        recommended_decision: approve_core_moves
+        status: approved
+        decision: accept_defense_light_energy_sun_core
+      - question_id: q_flex_moves
+        question: 啮合传递 / 霜降 / 叶绿光束 是否只作为 flex/旁证？
+        recommended_decision: approve_as_flex_only
+        status: approved
+        decision: keep_mesh_transfer_frost_leaf_beam_as_flex
+      - question_id: q_split_policy
+        question: 纤维化 / 光能聚集 / 氧输送 是否继续留作另一线，不合并？
+        recommended_decision: keep_split_blocked
+        status: approved
+        decision: keep_fiberization_oxygen_line_separate
+    review:
+      review_status: pm_reviewed
+      reviewer: pm
+      reviewer_agent_id: pm
+      reviewer_run_id: legacy_unknown
+      identity_status: legacy_pre_2026-05-23_identity_policy
+      review_date: "2026-05-19"
+      pm_decisions:
+        family_scope: accepted_if_multiple_source_dossiers_cluster
+        family_name: accepted_light_energy_defense_line
+        core_moves: accepted_defense_light_energy_sun
+        flex_moves: mesh_transfer_frost_leaf_beam_flex_only
+        split_policy: keep_fiberization_light_energy_oxygen_line_separate
+      notes: "PM accepted this family under the condition that multiple sets/source dossiers with 防御 / 光能聚集 / 晒太阳 can cluster. Consolidation has six primary sources for the family, so the entry is marked pm_reviewed. Do not materialize or runtime-promote yet."
+    promotion_gate:
+      allowed_scope: set_family_only
+      promotion_ready: false
+      runtime_allowed: false
+      materialization_allowed: false
+      validation_status: strict_passed_2026-05-19
+      blocks:
+        - parent_species_still_split_blocked
+        - sibling_fiberization_oxygen_line_unresolved
+        - graph_card_materialization_deferred_until_more_configuration_evidence_or_explicit_PM_materialization
+  - review_id: family_review/sonic_dog/headstrike_burnmark_firecart_meteor_2026-s1
+    review_scope: set_family
+    source_candidate:
+      consolidation_batch_id: phase4_volume_ingest_p76p80_2026-05-19_consolidation
+      consolidation_path: artifacts/knowledge_ops/set_inventory_consolidation/phase4_volume_ingest_p76p80_2026-05-19_consolidation.yaml
+      review_packet: artifacts/knowledge_ops/review_packets/phase4_volume_ingest_p76p80_2026-05-19_new_family_candidates_pm_review.md
+      species_name: 音速犬
+      canonical_species_id: species_9a53b76aa191b6e3
+      source_family_id: family_01
+      source_state: family_review_candidate
+      parent_species_state: review_candidate
+      pm_reviewed_at: "2026-05-19"
+      extractor_agent_id: legacy_unknown
+      extractor_run_id: legacy_unknown
+      identity_status: legacy_pre_2026-05-23_identity_policy
+    proposed_card:
+      draft_species_set_id: species_set/音速犬/headstrike_burnmark_firecart_meteor_2026-s1
+      proposed_family_name: 当头棒喝物攻线
+      canonical_species_name: 音速犬
+      source_aliases: []
+      core_moves:
+        - 当头棒喝
+        - 焚烧烙印
+        - 火云车
+        - 流星火雨
+      flex_moves:
+        - 热身
+        - 跌落
+      damage_axis: physical
+      role_groups:
+        - defense
+        - offense
+      build_axes: []
+      ability_policy: inherit_a_layer_species_ability_unless_source_review_overrides
+      configuration_status: family_reviewed_but_not_materialized_multiple_clustered_source_dossiers
+    evidence:
+      primary_source_count: 6
+      primary_source_ids:
+        - kgsrc_blackcat_balance_master_20260329
+        - kgsrc_launch_pvp_roster_logic_20260327
+        - kgsrc_pvp_weekly_006_20260426
+        - kgsrc_rain_wingking_real_team_20260328
+        - kgsrc_starfall_parr_master_streak_20260410
+        - kgsrc_waterblade_wingking_counter_tips_20260516
+      supporting_source_ids: []
+      transcript_method: mixed_subtitle_ai_zh_and_bailian_hotword_asr_v3
+      repair_required_segments: 0
+      source_inventory_paths:
+        - artifacts/knowledge_ops/set_inventory/kgsrc_blackcat_balance_master_20260329.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_launch_pvp_roster_logic_20260327.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_pvp_weekly_006_20260426.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_rain_wingking_real_team_20260328.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_starfall_parr_master_streak_20260410.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_waterblade_wingking_counter_tips_20260516.source_inventory.yaml
+      source_quality_notes:
+        - All core moves resolve to A-layer move names in 音速犬's move pool.
+        - The four core moves form a complete repeated move skeleton across six primary sources.
+        - 热身 / 跌落 remain flex or side evidence, not reviewed core.
+        - Some primary sources are broad team or counterplay sources; future materialization should still prefer more focused 音速犬 configuration sources.
+    species_card_boundary:
+      species_level_card_status: family_reviewed_species_not_materialized
+      species_level_card_allowed: false
+      blocked_reason: materialization_deferred_until_configuration_or_explicit_PM_materialization
+      pm_boundary_decision: accept_family_level_review_only
+      unresolved_split_hypotheses:
+        - hypothesis_id: sonic_dog_other_single_move_lines
+          blocked_families:
+            - family_02
+            - family_03
+            - family_04
+          reason_codes:
+            - single_move_lines_not_enough_to_merge_or_split
+          unresolved_family_summary: family_02=闪光冲击; family_03=偷袭; family_04=幻象
+      explicit_non_claims:
+        - This entry does not claim 音速犬 has one standard species-wide set.
+        - This entry does not promote 热身 / 跌落 into core.
+        - This entry does not materialize a graph card or runtime-promote the family.
+    pm_questions:
+      - question_id: q_family_scope
+        question: 是否接受 音速犬 family_01 作为 family-level reviewed 条目？
+        recommended_decision: approve_family_scope
+        status: approved
+        decision: accept_sonic_dog_family_level_review
+      - question_id: q_core_moves
+        question: 核心技能是否定为 当头棒喝 / 焚烧烙印 / 火云车 / 流星火雨？
+        recommended_decision: approve_core_moves
+        status: approved
+        decision: accept_headstrike_burnmark_firecart_meteor_core
+      - question_id: q_flex_moves
+        question: 热身 / 跌落 是否只作为 flex/旁证？
+        recommended_decision: approve_as_flex_only
+        status: approved
+        decision: keep_warmup_fall_as_flex
+    review:
+      review_status: pm_reviewed
+      reviewer: pm
+      reviewer_agent_id: pm
+      reviewer_run_id: legacy_unknown
+      identity_status: legacy_pre_2026-05-23_identity_policy
+      review_date: "2026-05-19"
+      pm_decisions:
+        family_scope: accepted_family_level_review
+        family_name: accepted_headstrike_physical_line
+        core_moves: accepted_headstrike_burnmark_firecart_meteor
+        flex_moves: warmup_fall_flex_only
+        materialization_policy: do_not_materialize_or_runtime_promote_yet
+      notes: "PM allowed continuation; agent applied the prior technical recommendation: accept 音速犬 as a reviewed family, but do not materialize or runtime-promote."
+    promotion_gate:
+      allowed_scope: set_family_only
+      promotion_ready: false
+      runtime_allowed: false
+      materialization_allowed: false
+      validation_status: strict_passed_2026-05-19
+      blocks:
+        - graph_card_materialization_deferred_until_more_configuration_evidence_or_explicit_PM_materialization
+        - several_primary_sources_are_broad_team_or_counterplay_sources
+  - review_id: family_review/cuiding_lady/waterblade_powerboost_firststrike_iceclaw_2026-s1
+    review_scope: set_family
+    source_candidate:
+      consolidation_batch_id: phase4_volume_ingest_p76p80_2026-05-19_consolidation
+      consolidation_path: artifacts/knowledge_ops/set_inventory_consolidation/phase4_volume_ingest_p76p80_2026-05-19_consolidation.yaml
+      review_packet: artifacts/knowledge_ops/review_packets/phase4_volume_ingest_p76p80_2026-05-19_new_family_candidates_pm_review.md
+      species_name: 翠顶夫人
+      canonical_species_id: species_85de0fab1c4adfe0
+      source_family_id: family_01
+      source_state: family_review_candidate
+      parent_species_state: split_blocked
+      agent_deferred_at: "2026-05-19"
+    proposed_card:
+      draft_species_set_id: species_set/翠顶夫人/waterblade_powerboost_firststrike_iceclaw_2026-s1
+      proposed_family_name: 水刃物攻线
+      canonical_species_name: 翠顶夫人
+      source_aliases: []
+      core_moves:
+        - 水刃
+        - 力量增效
+        - 先发制人
+        - 冰爪
+      flex_moves:
+        - 光刃
+      damage_axis: physical
+      role_groups:
+        - defense
+        - lead
+        - offense
+      build_axes: []
+      ability_policy: inherit_a_layer_species_ability_unless_source_review_overrides
+      configuration_status: deferred_off_target_source_cluster_needs_focused_cuiding_sources
+    evidence:
+      primary_source_count: 5
+      primary_source_ids:
+        - kgsrc_devilwolf_balance_20260330
+        - kgsrc_pvp_weekly_006_20260426
+        - kgsrc_starfall_team4_final_20260425
+        - kgsrc_waterblade_wingking_counter_tips_20260516
+        - kgsrc_wingking_t0_waterblade_20260429
+      supporting_source_ids: []
+      transcript_method: subtitle_ai_zh
+      repair_required_segments: 0
+      source_inventory_paths:
+        - artifacts/knowledge_ops/set_inventory/kgsrc_devilwolf_balance_20260330.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_pvp_weekly_006_20260426.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_starfall_team4_final_20260425.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_waterblade_wingking_counter_tips_20260516.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_wingking_t0_waterblade_20260429.source_inventory.yaml
+      source_quality_notes:
+        - All candidate core moves resolve to A-layer move names in 翠顶夫人's move pool.
+        - Evidence shape is suspicious: primary sources are mostly off-target team/counterplay sources rather than focused 翠顶夫人 configuration sources.
+        - Previously ingested 翠顶夫人-focused sources did not become this candidate's primary evidence, so treat this as a likely side-mention cluster until focused confirmation arrives.
+    species_card_boundary:
+      species_level_card_status: split_blocked
+      species_level_card_allowed: false
+      blocked_reason: off_target_source_cluster_and_same_species_split_unresolved
+      pm_boundary_decision: technical_defer_continue_source_expansion
+      unresolved_split_hypotheses:
+        - hypothesis_id: cuiding_family_02_03_boundary
+          blocked_families:
+            - family_01
+            - family_02
+            - family_03
+          reason_codes:
+            - same_species_set_family_split_unresolved
+            - focused_configuration_source_missing
+          unresolved_family_summary: family_02=润泽 / 力量增效 / 乘风; family_03=风墙
+      explicit_non_claims:
+        - This entry does not claim 翠顶夫人 has a reviewed standard set.
+        - This entry does not claim 水刃 / 力量增效 / 先发制人 / 冰爪 is a reviewed family yet.
+        - This entry does not materialize a graph card or runtime-promote.
+    pm_questions:
+      - question_id: q_family_scope
+        question: 是否接受 翠顶夫人 family_01 水刃 / 力量增效 / 先发制人 / 冰爪？
+        recommended_decision: defer_until_focused_cuiding_configuration_sources
+        status: deferred
+        decision: technical_defer_continue_source_expansion
+    review:
+      review_status: deferred
+      reviewer: agent_reviewer
+      review_date: "2026-05-19"
+      pm_decisions: {}
+      notes: "Technically deferred: the move skeleton is legal and repeated, but current primary evidence is mostly off-target team/counterplay material. Need focused 翠顶夫人 configuration sources before reviewer promotion."
+    promotion_gate:
+      allowed_scope: set_family_only
+      promotion_ready: false
+      runtime_allowed: false
+      materialization_allowed: false
+      validation_status: strict_passed_2026-05-19
+      blocks:
+        - off_target_source_cluster
+        - focused_cuiding_configuration_source_missing
+        - parent_species_still_split_blocked
+  - review_id: family_review/cuiding_lady/waterblade_windwall_lightblade_2026-s1
+    schema_version: p14.family_review.v0
+    review_scope: set_family
+    source_candidate:
+      species_name: 翠顶夫人
+      canonical_species_id: species_85de0fab1c4adfe0
+      source_family_id: family_01
+      source_batch: phase5_volume_ingest_p81p85_2026-05-19
+      review_packet: artifacts/knowledge_ops/review_packets/phase5_volume_ingest_p81p85_2026-05-19_consolidation_family_review.md
+      source_inventory_consolidation: artifacts/knowledge_ops/set_inventory_consolidation/phase5_volume_ingest_p81p85_2026-05-19_consolidation.yaml
+    proposed_card:
+      draft_species_set_id: species_set/翠顶夫人/waterblade_windwall_lightblade_2026-s1
+      proposed_family_name: 水刃风墙线
+      canonical_species_name: 翠顶夫人
+      source_aliases: []
+      core_moves:
+        - 水刃
+        - 风墙
+        - 光刃
+      flex_moves:
+        - 飞羽
+      damage_axis: mixed_or_unresolved
+      role_groups:
+        - support
+        - setup
+      build_axes: []
+      ability_policy: inherit_a_layer_species_ability_unless_source_review_overrides
+      configuration_status: deferred_mixed_source_cluster_needs_more_focused_cuiding_sources
+    evidence:
+      primary_source_count: 5
+      primary_source_ids:
+        - kgsrc_bonedragon_top_support_20260510
+        - kgsrc_cuiding_lady_support_guide_20260402
+        - kgsrc_devilwolf_balance_20260330
+        - kgsrc_starfall_parr_mechanism_20260404
+        - kgsrc_waterblade_wingking_counter_tips_20260516
+      supporting_source_ids: []
+      transcript_method: subtitle_ai_zh
+      repair_required_segments: 0
+      source_inventory_paths:
+        - artifacts/knowledge_ops/set_inventory/kgsrc_bonedragon_top_support_20260510.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_cuiding_lady_support_guide_20260402.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_devilwolf_balance_20260330.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_starfall_parr_mechanism_20260404.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_waterblade_wingking_counter_tips_20260516.source_inventory.yaml
+      source_quality_notes:
+        - One focused 翠顶夫人 support guide now exists, but the primary cluster still mixes bone-dragon support, devilwolf, starfall mechanism, and wingking counterplay sources.
+        - The split from the earlier deferred 水刃 / 力量增效 / 先发制人 / 冰爪 cluster suggests the family boundary is not yet stable.
+        - Treat as promising but not reviewer-ready; continue volume ingest and let focused sources stabilize the split.
+    species_card_boundary:
+      species_level_card_status: split_blocked
+      species_level_card_allowed: false
+      blocked_reason: mixed_source_cluster_and_same_species_split_unresolved
+      pm_boundary_decision: technical_defer_continue_volume
+      unresolved_split_hypotheses:
+        - hypothesis_id: cuiding_family_waterblade_support_vs_powerboost_boundary
+          blocked_families:
+            - family_01
+            - family_02
+          reason_codes:
+            - same_species_set_family_split_unresolved
+            - focused_configuration_source_insufficient
+      explicit_non_claims:
+        - This entry does not claim 翠顶夫人 has a reviewed standard set.
+        - This entry does not claim 水刃 / 风墙 / 光刃 is a reviewed family yet.
+        - This entry does not materialize a graph card or runtime-promote.
+    pm_questions:
+      - question_id: q_family_scope
+        question: 是否接受 翠顶夫人 family_01 水刃 / 风墙 / 光刃？
+        recommended_decision: defer_until_more_focused_cuiding_sources
+        status: deferred
+        decision: technical_defer_continue_volume
+    review:
+      review_status: deferred
+      reviewer: agent_reviewer
+      review_date: "2026-05-19"
+      pm_decisions: {}
+      notes: "Technically deferred: a focused 翠顶夫人 source exists, but the candidate is still a mixed-source cluster and should not be promoted before the family boundary stabilizes."
+    promotion_gate:
+      allowed_scope: set_family_only
+      promotion_ready: false
+      runtime_allowed: false
+      materialization_allowed: false
+      validation_status: pending_validation_2026-05-19
+      blocks:
+        - mixed_source_cluster
+        - focused_cuiding_source_count_insufficient
+        - parent_species_still_split_blocked
+  - review_id: family_review/cuiding_lady/powerboost_firststrike_iceclaw_2026-s1
+    schema_version: p14.family_review.v0
+    review_scope: set_family
+    source_candidate:
+      species_name: 翠顶夫人
+      canonical_species_id: species_85de0fab1c4adfe0
+      source_family_id: family_02
+      source_batch: phase5_volume_ingest_p81p85_2026-05-19
+      review_packet: artifacts/knowledge_ops/review_packets/phase5_volume_ingest_p81p85_2026-05-19_consolidation_family_review.md
+      source_inventory_consolidation: artifacts/knowledge_ops/set_inventory_consolidation/phase5_volume_ingest_p81p85_2026-05-19_consolidation.yaml
+    proposed_card:
+      draft_species_set_id: species_set/翠顶夫人/powerboost_firststrike_iceclaw_2026-s1
+      proposed_family_name: 力量增效线
+      canonical_species_name: 翠顶夫人
+      source_aliases: []
+      core_moves:
+        - 力量增效
+        - 先发制人
+        - 冰爪
+      flex_moves:
+        - 水刃
+      damage_axis: physical_or_unresolved
+      role_groups:
+        - offense
+        - lead
+      build_axes: []
+      ability_policy: inherit_a_layer_species_ability_unless_source_review_overrides
+      configuration_status: deferred_off_target_source_cluster_continuation
+    evidence:
+      primary_source_count: 3
+      primary_source_ids:
+        - kgsrc_pvp_weekly_006_20260426
+        - kgsrc_starfall_team4_final_20260425
+        - kgsrc_wingking_t0_waterblade_20260429
+      supporting_source_ids: []
+      transcript_method: subtitle_ai_zh
+      repair_required_segments: 0
+      source_inventory_paths:
+        - artifacts/knowledge_ops/set_inventory/kgsrc_pvp_weekly_006_20260426.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_starfall_team4_final_20260425.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_wingking_t0_waterblade_20260429.source_inventory.yaml
+      source_quality_notes:
+        - This is a narrower split from the previously deferred 翠顶夫人 off-target cluster.
+        - All primary sources are overview/starfall/wingking material rather than focused 翠顶夫人 configuration evidence.
+        - Do not send to PM until focused 翠顶夫人 sources repeat the same family.
+    species_card_boundary:
+      species_level_card_status: split_blocked
+      species_level_card_allowed: false
+      blocked_reason: off_target_source_cluster_and_same_species_split_unresolved
+      pm_boundary_decision: technical_defer_continue_volume
+      unresolved_split_hypotheses:
+        - hypothesis_id: cuiding_powerboost_family_needs_focused_confirmation
+          blocked_families:
+            - family_02
+          reason_codes:
+            - off_target_source_cluster
+            - focused_configuration_source_missing
+      explicit_non_claims:
+        - This entry does not claim 力量增效 / 先发制人 / 冰爪 is a reviewed family.
+        - This entry does not materialize a graph card or runtime-promote.
+    pm_questions:
+      - question_id: q_family_scope
+        question: 是否接受 翠顶夫人 family_02 力量增效 / 先发制人 / 冰爪？
+        recommended_decision: defer_until_focused_cuiding_configuration_sources
+        status: deferred
+        decision: technical_defer_continue_volume
+    review:
+      review_status: deferred
+      reviewer: agent_reviewer
+      review_date: "2026-05-19"
+      pm_decisions: {}
+      notes: "Technically deferred: source cluster is still off-target and should not consume PM attention."
+    promotion_gate:
+      allowed_scope: set_family_only
+      promotion_ready: false
+      runtime_allowed: false
+      materialization_allowed: false
+      validation_status: pending_validation_2026-05-19
+      blocks:
+        - off_target_source_cluster
+        - focused_cuiding_configuration_source_missing
+        - parent_species_still_split_blocked
+  - review_id: family_review/blackwing_lady/feather_bite_waterblade_2026-s1
+    schema_version: p14.family_review.v0
+    review_scope: set_family
+    source_candidate:
+      species_name: 黑羽夫人
+      canonical_species_id: species_3d21582b3ebd1a16
+      source_family_id: family_01
+      source_batch: phase5_volume_ingest_p81p85_2026-05-19
+      review_packet: artifacts/knowledge_ops/review_packets/phase5_volume_ingest_p81p85_2026-05-19_consolidation_family_review.md
+      source_inventory_consolidation: artifacts/knowledge_ops/set_inventory_consolidation/phase5_volume_ingest_p81p85_2026-05-19_consolidation.yaml
+    proposed_card:
+      draft_species_set_id: species_set/黑羽夫人/feather_bite_waterblade_2026-s1
+      proposed_family_name: 飞羽撕咬线
+      canonical_species_name: 黑羽夫人
+      source_aliases: []
+      core_moves:
+        - 飞羽
+        - 撕咬
+        - 水刃
+      flex_moves:
+        - 风墙
+      damage_axis: unresolved
+      role_groups:
+        - offense
+      build_axes: []
+      ability_policy: inherit_a_layer_species_ability_unless_source_review_overrides
+      configuration_status: deferred_discovered_from_non_target_sources
+    evidence:
+      primary_source_count: 3
+      primary_source_ids:
+        - kgsrc_bonedragon_top_support_20260510
+        - kgsrc_pvp_daily_top3_20260430
+        - kgsrc_pvp_weekly_006_20260426
+      supporting_source_ids: []
+      transcript_method: subtitle_ai_zh
+      repair_required_segments: 0
+      source_inventory_paths:
+        - artifacts/knowledge_ops/set_inventory/kgsrc_bonedragon_top_support_20260510.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_pvp_daily_top3_20260430.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_pvp_weekly_006_20260426.source_inventory.yaml
+      source_quality_notes:
+        - Candidate emerged as a side signal while processing bone-dragon and overview sources.
+        - No focused 黑羽夫人 configuration source is in the primary evidence list.
+        - Keep as a discovery pointer for future source search, not as PM-reviewable set evidence.
+    species_card_boundary:
+      species_level_card_status: split_blocked
+      species_level_card_allowed: false
+      blocked_reason: non_target_source_cluster
+      pm_boundary_decision: technical_defer_continue_volume
+      unresolved_split_hypotheses:
+        - hypothesis_id: blackwing_needs_focused_source_collection
+          blocked_families:
+            - family_01
+          reason_codes:
+            - focused_configuration_source_missing
+            - non_target_source_cluster
+      explicit_non_claims:
+        - This entry does not claim 黑羽夫人 has a reviewed standard set.
+        - This entry does not materialize a graph card or runtime-promote.
+    pm_questions:
+      - question_id: q_family_scope
+        question: 是否接受 黑羽夫人 family_01 飞羽 / 撕咬 / 水刃？
+        recommended_decision: defer_and_collect_focused_blackwing_sources
+        status: deferred
+        decision: technical_defer_continue_volume
+    review:
+      review_status: deferred
+      reviewer: agent_reviewer
+      review_date: "2026-05-19"
+      pm_decisions: {}
+      notes: "Technically deferred: useful discovery signal, but it came from non-target sources and should be source-searched before PM review."
+    promotion_gate:
+      allowed_scope: set_family_only
+      promotion_ready: false
+      runtime_allowed: false
+      materialization_allowed: false
+      validation_status: pending_validation_2026-05-19
+      blocks:
+        - non_target_source_cluster
+        - focused_blackwing_configuration_source_missing
+  - review_id: family_review/wingking/warmup_triplebreak_chase_2026-s1
+    schema_version: p14.family_review.v0
+    review_scope: set_family
+    source_candidate:
+      species_name: 圣羽翼王
+      canonical_species_id: species_cfef25aadf9439cf
+      source_family_id: family_02
+      source_batch: phase11_volume_ingest_p201p205_2026-05-19
+      review_packet: artifacts/knowledge_ops/review_packets/phase11_volume_ingest_p201p205_2026-05-19_new_family_candidates_technical_defer.md
+      source_inventory_consolidation: artifacts/knowledge_ops/set_inventory_consolidation/phase11_volume_ingest_p201p205_2026-05-19_consolidation.yaml
+    proposed_card:
+      draft_species_set_id: species_set/圣羽翼王/warmup_triplebreak_chase_2026-s1
+      proposed_family_name: 热身三连破线
+      canonical_species_name: 圣羽翼王
+      source_aliases:
+        - 翼王
+      core_moves:
+        - 热身运动
+        - 三连破
+        - 乘胜追击
+      flex_moves:
+        - 闪击
+        - 力量增效
+      damage_axis: physical_or_unresolved
+      role_groups:
+        - lead
+      build_axes:
+        - speed
+      ability_policy: inherit_a_layer_species_ability_unless_source_review_overrides
+      configuration_status: deferred_needs_more_focused_wingking_configuration_sources
+    evidence:
+      primary_source_count: 4
+      primary_source_ids:
+        - kgsrc_bili_bv1efxubee2a
+        - kgsrc_bili_bv1tootbtez8
+        - kgsrc_luoyin_formula_vs_wingking_20260408
+        - kgsrc_wingking_team_moves_20260328
+      supporting_source_ids: []
+      transcript_method: subtitle_ai_zh_or_existing_ingest
+      repair_required_segments: 0
+      source_inventory_paths:
+        - artifacts/knowledge_ops/set_inventory/kgsrc_bili_bv1efxubee2a.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_bili_bv1tootbtez8.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_luoyin_formula_vs_wingking_20260408.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_wingking_team_moves_20260328.source_inventory.yaml
+      source_quality_notes:
+        - Two newly ingested focused Wingking sources support a warmup or speed-leaning line.
+        - One primary source is a Luoyin-versus-Wingking formula/counterplay source and should not carry set-family promotion.
+        - 乘胜追击 still needs more focused configuration repetition before this becomes PM-reviewable.
+        - Keep relation to the reviewed 水刃物攻线 unresolved; do not merge or promote as a separate graph card yet.
+    species_card_boundary:
+      species_level_card_status: split_blocked
+      species_level_card_allowed: false
+      blocked_reason: focused_configuration_source_insufficient_and_same_species_split_unresolved
+      pm_boundary_decision: technical_defer_continue_volume
+      unresolved_split_hypotheses:
+        - hypothesis_id: wingking_warmup_line_needs_focused_confirmation
+          blocked_families:
+            - family_02
+          reason_codes:
+            - focused_configuration_source_insufficient
+            - mixed_counterplay_source_in_primary_evidence
+            - relation_to_reviewed_waterblade_physical_line_unresolved
+      explicit_non_claims:
+        - This entry does not claim 热身运动 / 三连破 / 乘胜追击 is a reviewed family.
+        - This entry does not merge this line into the reviewed 水刃物攻线.
+        - This entry does not materialize a graph card or runtime-promote.
+    pm_questions:
+      - question_id: q_family_scope
+        question: 是否接受 圣羽翼王 family_02 热身运动 / 三连破 / 乘胜追击？
+        recommended_decision: defer_until_more_focused_wingking_configuration_sources
+        status: deferred
+        decision: technical_defer_continue_volume
+    review:
+      review_status: deferred
+      reviewer: agent_reviewer
+      review_date: "2026-05-19"
+      pm_decisions: {}
+      notes: "Technically deferred: useful Wingking set-family hypothesis, but the evidence still mixes focused configuration sources with counterplay/PVE side evidence and should not consume PM attention yet."
+    promotion_gate:
+      allowed_scope: set_family_only
+      promotion_ready: false
+      runtime_allowed: false
+      materialization_allowed: false
+      validation_status: pending_validation_2026-05-19
+      blocks:
+        - focused_wingking_configuration_source_count_insufficient
+        - mixed_counterplay_source_in_primary_evidence
+        - parent_species_still_split_blocked
+  - review_id: family_review/wingking/waterblade_flash_defense_2026-s1
+    schema_version: p14.family_review.v0
+    review_scope: set_family
+    source_candidate:
+      species_name: 圣羽翼王
+      canonical_species_id: species_cfef25aadf9439cf
+      source_family_id: family_02
+      source_batch: phase12_volume_ingest_p221p225_2026-05-19
+      review_packet: artifacts/knowledge_ops/review_packets/phase12_volume_ingest_p221p225_2026-05-19_new_family_candidates_technical_defer.md
+      source_inventory_consolidation: artifacts/knowledge_ops/set_inventory_consolidation/phase12_volume_ingest_p221p225_2026-05-19_consolidation.yaml
+    proposed_card:
+      draft_species_set_id: species_set/圣羽翼王/waterblade_flash_defense_2026-s1
+      proposed_family_name: 水刃闪击防御线
+      canonical_species_name: 圣羽翼王
+      source_aliases:
+        - 翼王
+        - 水刃翼王
+      core_moves:
+        - 闪击
+        - 水刃
+        - 防御
+      flex_moves:
+        - 水炮
+        - 光之矛
+      damage_axis: mixed_physical_or_unresolved
+      role_groups:
+        - lead
+        - offense
+        - pivot
+      build_axes: []
+      ability_policy: inherit_a_layer_species_ability_unless_source_review_overrides
+      configuration_status: deferred_needs_focused_boundary_review_against_reviewed_waterblade_family
+    evidence:
+      primary_source_count: 4
+      primary_source_ids:
+        - kgsrc_bili_bv1hw5r6he2s
+        - kgsrc_bili_bv1p99gbvek7
+        - kgsrc_bili_bv1rtrtbuec9
+        - kgsrc_waterblade_wingking_balance_20260503
+      supporting_source_ids: []
+      transcript_method: subtitle_ai_zh
+      repair_required_segments: 0
+      source_inventory_paths:
+        - artifacts/knowledge_ops/set_inventory/kgsrc_bili_bv1hw5r6he2s.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_bili_bv1p99gbvek7.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_bili_bv1rtrtbuec9.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_waterblade_wingking_balance_20260503.source_inventory.yaml
+      source_quality_notes:
+        - Candidate overlaps the PM-reviewed 水刃物攻线 but replaces 力量增效 with 防御.
+        - Evidence mixes focused Wingking sources, a long 魔攻 Wingking source, a 沙暴 gameplay source, and an older Waterblade balance source.
+        - Treat as a boundary/recluster hypothesis, not as a PM-reviewable family until more focused Wingking configuration sources repeat 防御 as a set core.
+    species_card_boundary:
+      species_level_card_status: split_blocked
+      species_level_card_allowed: false
+      blocked_reason: relation_to_reviewed_waterblade_family_unresolved
+      pm_boundary_decision: technical_defer_continue_volume
+      unresolved_split_hypotheses:
+        - hypothesis_id: wingking_waterblade_flash_defense_vs_reviewed_waterblade_physical
+          blocked_families:
+            - family_01
+            - family_02
+          reason_codes:
+            - relation_to_reviewed_family_unresolved
+            - mixed_axis_source_cluster
+            - possible_alter_variant_not_independent_family
+      explicit_non_claims:
+        - This entry does not claim 闪击 / 水刃 / 防御 is a reviewed family.
+        - This entry does not modify the PM-reviewed 水刃物攻线 core.
+        - This entry does not materialize a graph card or runtime-promote.
+    pm_questions:
+      - question_id: q_family_scope
+        question: 是否接受 圣羽翼王 family_02 闪击 / 水刃 / 防御？
+        recommended_decision: defer_until_focused_boundary_sources_confirm_defense_as_core
+        status: deferred
+        decision: technical_defer_continue_volume
+    review:
+      review_status: deferred
+      reviewer: agent_reviewer
+      review_date: "2026-05-19"
+      pm_decisions: {}
+      notes: "Technically deferred: the candidate is plausible but currently looks like a boundary/recluster issue around the already reviewed Waterblade physical family, not a clean PM taxonomy decision."
+    promotion_gate:
+      allowed_scope: set_family_only
+      promotion_ready: false
+      runtime_allowed: false
+      materialization_allowed: false
+      validation_status: pending_validation_2026-05-19
+      blocks:
+        - relation_to_reviewed_waterblade_family_unresolved
+        - mixed_axis_source_cluster
+        - parent_species_still_split_blocked
+  - review_id: family_review/boduo_xi/spikes_barrier_defense_2026-s1
+    schema_version: p14.family_review.v0
+    review_scope: set_family
+    source_candidate:
+      species_name: 波多西
+      canonical_species_id: species_7e5f896eb39e4b8a
+      source_family_id: family_01
+      source_batch: phase14_volume_ingest_p263p267_2026-05-19
+      review_packet: artifacts/knowledge_ops/review_packets/phase14_volume_ingest_p263p267_2026-05-19_boduo_xi_family_pm_review.md
+      source_inventory_consolidation: artifacts/knowledge_ops/set_inventory_consolidation/phase14_volume_ingest_p263p267_2026-05-19_consolidation.yaml
+      source_state: family_review_candidate
+      parent_species_state: review_candidate
+      pm_reviewed_at: "2026-05-20"
+      extractor_agent_id: legacy_unknown
+      extractor_run_id: legacy_unknown
+      identity_status: legacy_pre_2026-05-23_identity_policy
+    proposed_card:
+      draft_species_set_id: species_set/波多西/spikes_barrier_defense_2026-s1
+      proposed_family_name: 地刺防御线
+      canonical_species_name: 波多西
+      source_aliases: []
+      core_moves:
+        - 地刺
+        - 壁垒
+        - 防御
+      flex_moves:
+        - 齿轮切开
+      damage_axis: physical_or_unresolved
+      role_groups:
+        - defense
+        - control
+      build_axes: []
+      ability_policy: inherit_a_layer_species_ability_unless_source_review_overrides
+      configuration_status: sparse_source_evidence_do_not_infer_nature_iv_or_bloodline
+    evidence:
+      primary_source_count: 7
+      primary_source_ids:
+        - kgsrc_bili_bv17prebqezf
+        - kgsrc_bili_bv1aqocbtehp
+        - kgsrc_bili_bv1jarmbrelg
+        - kgsrc_bili_bv1nv5e6ae5e
+        - kgsrc_bili_bv1zzdrbtexp
+        - kgsrc_seal_team_config_20260430
+        - kgsrc_springhare_spikes_stall_20260404
+      supporting_source_ids: []
+      core_cooccurrence_primary_source_count: 3
+      transcript_method: subtitle_ai_zh
+      repair_required_segments: 0
+      source_inventory_paths:
+        - artifacts/knowledge_ops/set_inventory/kgsrc_bili_bv17prebqezf.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_bili_bv1aqocbtehp.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_bili_bv1jarmbrelg.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_bili_bv1nv5e6ae5e.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_bili_bv1zzdrbtexp.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_seal_team_config_20260430.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_springhare_spikes_stall_20260404.source_inventory.yaml
+      source_quality_notes:
+        - All promoted fields in this family are A-layer resolved species or move names.
+        - 波多西 resolves to a single Battle Dex species id.
+        - 地刺 / 壁垒 / 防御 has enough repeated cross-source evidence for a family-level reviewed unit, but no nature, IV, bloodline, or ability claim is promoted.
+        - 齿轮切开 appears as a fuller variant/flex signal and is not promoted into core.
+    species_card_boundary:
+      species_level_card_status: review_candidate
+      species_level_card_allowed: false
+      blocked_reason: family_review_only_no_species_total_card_materialization
+      pm_boundary_decision: accept_family_only_keep_runtime_closed
+      unresolved_split_hypotheses: []
+      explicit_non_claims:
+        - This entry does not claim 波多西 has one complete species-wide standard set.
+        - This entry does not promote nature, individual values, bloodline, ability, or teammate requirements.
+        - This entry does not materialize a graph card or runtime-promote.
+    pm_questions:
+      - question_id: q_family_scope
+        question: 是否接受 波多西 family_01 作为 family-level set 单元？
+        recommended_decision: approve_family_scope
+        status: approved
+        decision: accept_boduo_xi_spikes_barrier_defense_family
+      - question_id: q_core_moves
+        question: 核心技能是否定为 地刺 / 壁垒 / 防御？
+        recommended_decision: approve_core_moves
+        status: approved
+        decision: accept_spikes_barrier_defense_core
+      - question_id: q_flex_move
+        question: 齿轮切开是否只作为 flex 保留，不进入核心技能？
+        recommended_decision: approve_as_flex_only
+        status: approved
+        decision: keep_gear_cut_as_flex_only
+      - question_id: q_runtime_boundary
+        question: 是否保持 runtime=false 且不生成物种总卡？
+        recommended_decision: keep_runtime_closed
+        status: approved
+        decision: keep_runtime_false_and_species_card_unmaterialized
+    review:
+      review_status: pm_reviewed
+      reviewer: pm
+      reviewer_agent_id: pm
+      reviewer_run_id: legacy_unknown
+      identity_status: legacy_pre_2026-05-23_identity_policy
+      review_date: "2026-05-20"
+      pm_decisions:
+        family_scope: accepted_family_level_only
+        family_name: accepted_spikes_defense_line
+        core_moves: accepted_spikes_barrier_defense
+        flex_moves: gear_cut_flex_only
+        runtime_boundary: runtime_false_no_species_total_card
+      notes: "PM accepted the focused review packet for 波多西 family_01. Keep the scope at set-family level and do not materialize or runtime-promote."
+    promotion_gate:
+      allowed_scope: set_family_only
+      promotion_ready: false
+      runtime_allowed: false
+      materialization_allowed: false
+      validation_status: pending_validation_2026-05-20
+      blocks:
+        - graph_card_materialization_deferred_until_explicit_PM_materialization
+        - advisor_meta_graph_runtime_not_wired
+  - review_id: family_review/sleeping_king/effective_prevention_devour_physical_2026-s1
+    schema_version: p14.family_review.v0
+    review_scope: set_family
+    source_candidate:
+      species_name: 瞌睡王
+      canonical_species_id: species_892fbbc69c5fe537
+      source_family_id: family_01
+      source_batch: phase15_volume_ingest_p288p292_2026-05-20
+      review_packet: artifacts/knowledge_ops/review_packets/phase15_sleeping_king_family_01_pm_review_gate_2026-05-20.md
+      source_inventory_consolidation: artifacts/knowledge_ops/set_inventory_consolidation/phase15_volume_ingest_p288p292_2026-05-20_consolidation.yaml
+      source_state: family_review_candidate
+      parent_species_state: split_blocked
+      pm_reviewed_at: "2026-05-20"
+      extractor_agent_id: legacy_unknown
+      extractor_run_id: legacy_unknown
+      identity_status: legacy_pre_2026-05-23_identity_policy
+    proposed_card:
+      draft_species_set_id: species_set/瞌睡王/effective_prevention_devour_physical_2026-s1
+      proposed_family_name: 有效预防吞噬物攻线
+      canonical_species_name: 瞌睡王
+      source_aliases: []
+      core_moves:
+        - 有效预防
+        - 吞噬
+        - 能量刃
+      flex_moves:
+        - 斩断
+      damage_axis: physical_or_defensive_setup
+      role_groups:
+        - offense
+        - support
+      build_axes: []
+      ability_policy: inherit_a_layer_species_ability_unless_source_review_overrides
+      configuration_status: sparse_source_evidence_do_not_infer_nature_iv_or_bloodline
+    evidence:
+      primary_source_count: 7
+      primary_source_ids:
+        - kgsrc_bili_bv15hs9bveij
+        - kgsrc_bili_bv1aelg69eew
+        - kgsrc_bili_bv1ba9wbqebw
+        - kgsrc_bili_bv1e3lw6qexv
+        - kgsrc_bili_bv1xz5k62ejc
+        - kgsrc_saint_sword_x_team_20260404
+        - kgsrc_sandstorm_fighting_strong_20260330
+      supporting_source_ids: []
+      core_cooccurrence_primary_source_count: 3
+      transcript_method: subtitle_ai_zh
+      repair_required_segments: 0
+      source_inventory_paths:
+        - artifacts/knowledge_ops/set_inventory/kgsrc_bili_bv15hs9bveij.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_bili_bv1aelg69eew.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_bili_bv1ba9wbqebw.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_bili_bv1e3lw6qexv.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_bili_bv1xz5k62ejc.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_saint_sword_x_team_20260404.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_sandstorm_fighting_strong_20260330.source_inventory.yaml
+      source_quality_notes:
+        - All promoted fields in this family are A-layer resolved species or move names.
+        - 瞌睡王 resolves to a single Battle Dex species id.
+        - 有效预防 / 吞噬 / 能量刃 has repeated cross-source evidence for a family-level reviewed unit.
+        - 斩断 appears as a fuller variant/flex signal and is not promoted into core.
+        - Nature, individual values, bloodline, ability, teammate requirements, and strength claims are not promoted.
+        - Parent species remains split_blocked because sparse lines such as 后发制人 / 一拳, 气沉丹田, and 先发制人 are not merged into this family.
+    species_card_boundary:
+      species_level_card_status: split_blocked
+      species_level_card_allowed: false
+      blocked_reason: family_review_only_parent_species_has_unresolved_sparse_lines
+      pm_boundary_decision: accept_family_only_keep_runtime_closed
+      unresolved_split_hypotheses:
+        - family_02=后发制人 / 一拳
+        - family_03=气沉丹田
+        - family_04=先发制人
+      explicit_non_claims:
+        - This entry does not claim 瞌睡王 has one complete species-wide standard set.
+        - This entry does not promote nature, individual values, bloodline, ability, teammate requirements, or strength claims.
+        - This entry does not materialize a graph card or runtime-promote.
+    pm_questions:
+      - question_id: q_family_scope
+        question: 是否接受 瞌睡王 family_01 作为 family-level set 单元？
+        recommended_decision: approve_family_scope
+        status: approved
+        decision: accept_sleeping_king_effective_prevention_devour_family
+      - question_id: q_family_name
+        question: 名称是否用 有效预防吞噬物攻线？
+        recommended_decision: approve_specific_family_name
+        status: approved
+        decision: accept_effective_prevention_devour_physical_name
+      - question_id: q_core_moves
+        question: 核心技能是否定为 有效预防 / 吞噬 / 能量刃？
+        recommended_decision: approve_core_moves
+        status: approved
+        decision: accept_effective_prevention_devour_energyblade_core
+      - question_id: q_flex_move
+        question: 斩断是否只作为 flex 保留，不进入核心技能？
+        recommended_decision: approve_as_flex_only
+        status: approved
+        decision: keep_slash_as_flex_only
+      - question_id: q_runtime_boundary
+        question: 是否保持 runtime=false 且不生成物种总卡？
+        recommended_decision: keep_runtime_closed
+        status: approved
+        decision: keep_runtime_false_and_species_card_unmaterialized
+    review:
+      review_status: pm_reviewed
+      reviewer: pm
+      reviewer_agent_id: pm
+      reviewer_run_id: legacy_unknown
+      identity_status: legacy_pre_2026-05-23_identity_policy
+      review_date: "2026-05-20"
+      pm_decisions:
+        family_scope: accepted_family_level_only
+        family_name: accepted_effective_prevention_devour_physical_line
+        core_moves: accepted_effective_prevention_devour_energyblade
+        flex_moves: slash_flex_only
+        runtime_boundary: runtime_false_no_species_total_card
+      notes: "PM accepted the focused review packet for 瞌睡王 family_01. Keep the scope at set-family level and do not materialize or runtime-promote."
+    promotion_gate:
+      allowed_scope: set_family_only
+      promotion_ready: false
+      runtime_allowed: false
+      materialization_allowed: false
+      validation_status: pending_validation_2026-05-20
+      blocks:
+        - graph_card_materialization_deferred_until_explicit_PM_materialization
+        - advisor_meta_graph_runtime_not_wired
+        - parent_species_still_split_blocked
+  - review_id: family_review/dragonfish/dragonchant_waterblade_physical_2026-s1
+    schema_version: p14.family_review.v0
+    review_scope: set_family
+    source_candidate:
+      species_name: 龙鱼
+      canonical_species_id: species_d4fce8dedbba6013
+      source_family_id: family_01
+      source_batch: phase15_volume_ingest_p283p287_2026-05-20
+      review_packet: artifacts/knowledge_ops/review_packets/phase15_dragonfish_family_01_pm_review_gate_2026-05-20.md
+      source_inventory_consolidation: artifacts/knowledge_ops/set_inventory_consolidation/phase15_volume_ingest_p283p287_2026-05-20_consolidation.yaml
+      source_state: family_review_candidate
+      parent_species_state: review_candidate
+      pm_reviewed_at: "2026-05-20"
+      extractor_agent_id: legacy_unknown
+      extractor_run_id: legacy_unknown
+      identity_status: legacy_pre_2026-05-23_identity_policy
+    proposed_card:
+      draft_species_set_id: species_set/龙鱼/dragonchant_waterblade_physical_2026-s1
+      proposed_family_name: 龙吟水刃物攻线
+      canonical_species_name: 龙鱼
+      source_aliases: []
+      core_moves:
+        - 龙吟
+        - 龙之利爪
+        - 水刃
+      flex_moves:
+        - 防御
+      damage_axis: physical_or_status_setup
+      role_groups:
+        - offense
+        - setup
+      build_axes:
+        - speed
+      ability_policy: inherit_a_layer_species_ability_unless_source_review_overrides
+      configuration_status: sparse_source_evidence_do_not_infer_nature_iv_or_bloodline
+    evidence:
+      primary_source_count: 5
+      primary_source_ids:
+        - kgsrc_bili_bv1abdwbee29
+        - kgsrc_bili_bv1cwlq6jetb
+        - kgsrc_bili_bv1gnln6uegm
+        - kgsrc_bili_bv1o3lp6leyy
+        - kgsrc_bili_bv1uslz6tezh
+      supporting_source_ids: []
+      core_cooccurrence_primary_source_count: 3
+      transcript_method: subtitle_ai_zh
+      repair_required_segments: 0
+      source_inventory_paths:
+        - artifacts/knowledge_ops/set_inventory/kgsrc_bili_bv1abdwbee29.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_bili_bv1cwlq6jetb.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_bili_bv1gnln6uegm.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_bili_bv1o3lp6leyy.source_inventory.yaml
+        - artifacts/knowledge_ops/set_inventory/kgsrc_bili_bv1uslz6tezh.source_inventory.yaml
+      source_quality_notes:
+        - All promoted fields in this family are A-layer resolved species or move names.
+        - 龙鱼 resolves to a single Battle Dex species id.
+        - 龙吟 / 龙之利爪 / 水刃 has repeated cross-source evidence for a family-level reviewed unit.
+        - 防御 appears as a fuller variant/flex signal and is not promoted into core.
+        - Nature, individual values, bloodline, ability, teammate requirements, and weather dependence are not promoted.
+    species_card_boundary:
+      species_level_card_status: review_candidate
+      species_level_card_allowed: false
+      blocked_reason: family_review_only_no_species_total_card_materialization
+      pm_boundary_decision: accept_family_only_keep_runtime_closed
+      unresolved_split_hypotheses: []
+      explicit_non_claims:
+        - This entry does not claim 龙鱼 has one complete species-wide standard set.
+        - This entry does not promote nature, individual values, bloodline, ability, teammate requirements, or rain/weather requirements.
+        - This entry does not materialize a graph card or runtime-promote.
+    pm_questions:
+      - question_id: q_family_scope
+        question: 是否接受 龙鱼 family_01 作为 family-level set 单元？
+        recommended_decision: approve_family_scope
+        status: approved
+        decision: accept_dragonfish_dragonchant_waterblade_physical_family
+      - question_id: q_family_name
+        question: 名称是否用 龙吟水刃物攻线，避免泛化成其它水刃线？
+        recommended_decision: approve_specific_family_name
+        status: approved
+        decision: accept_dragonchant_waterblade_physical_name
+      - question_id: q_core_moves
+        question: 核心技能是否定为 龙吟 / 龙之利爪 / 水刃？
+        recommended_decision: approve_core_moves
+        status: approved
+        decision: accept_dragonchant_claw_waterblade_core
+      - question_id: q_flex_move
+        question: 防御是否只作为 flex 保留，不进入核心技能？
+        recommended_decision: approve_as_flex_only
+        status: approved
+        decision: keep_defense_as_flex_only
+      - question_id: q_runtime_boundary
+        question: 是否保持 runtime=false 且不生成物种总卡？
+        recommended_decision: keep_runtime_closed
+        status: approved
+        decision: keep_runtime_false_and_species_card_unmaterialized
+    review:
+      review_status: pm_reviewed
+      reviewer: pm
+      reviewer_agent_id: pm
+      reviewer_run_id: legacy_unknown
+      identity_status: legacy_pre_2026-05-23_identity_policy
+      review_date: "2026-05-20"
+      pm_decisions:
+        family_scope: accepted_family_level_only
+        family_name: accepted_dragonchant_waterblade_physical_line
+        core_moves: accepted_dragonchant_claw_waterblade
+        flex_moves: defense_flex_only
+        runtime_boundary: runtime_false_no_species_total_card
+      notes: "PM accepted the focused review packet for 龙鱼 family_01. Keep the scope at set-family level and do not materialize or runtime-promote."
+    promotion_gate:
+      allowed_scope: set_family_only
+      promotion_ready: false
+      runtime_allowed: false
+      materialization_allowed: false
+      validation_status: pending_validation_2026-05-20
+      blocks:
+        - graph_card_materialization_deferred_until_explicit_PM_materialization
+        - advisor_meta_graph_runtime_not_wired

@@ -23,7 +23,7 @@ if [[ ! -x ".venv/bin/uvicorn" ]]; then
   exit 1
 fi
 
-exec .venv/bin/uvicorn api.main:app \
+exec env PYTHONPATH="${ROOT_DIR}/src" .venv/bin/uvicorn api.main:app \
   --reload \
   --host "${ROCO_API_HOST:-127.0.0.1}" \
   --port "${ROCO_API_PORT:-8000}"

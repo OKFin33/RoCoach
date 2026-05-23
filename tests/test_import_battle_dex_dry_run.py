@@ -13,7 +13,7 @@ from tools.validate_p1e_importer_artifacts import validate_artifacts
 class ImportBattleDexDryRunTests(unittest.TestCase):
     def test_parse_manual_supplement_extracts_expected_records_from_markdown(self) -> None:
         supplement = parse_manual_supplement(
-            Path("/Users/okfin3/project/GitHub/OKFin33/Roco/docs/manual_battle_data_supplement_2026-04-14.md")
+            Path("/Users/okfin3/project/GitHub/OKFin33/Roco/docs/research/manual_battle_data_supplement_2026-04-14.md")
         )
         self.assertIn("炽心勇狮（悲鸣的样子）", supplement.excluded_forms)
         self.assertIn("species_3d2f11185009b67c", supplement.species_canonical_overrides)
@@ -53,11 +53,11 @@ class ImportBattleDexDryRunTests(unittest.TestCase):
         self.assertNotIn("湿润印记", supplement.manual_moves)
         self.assertEqual(supplement.move_aliases["湿润印记"], "打湿")
         self.assertIn("current manual-verified baseline resolves conflicting wiki-derived effect texts", build_payload(
-            Path("/Users/okfin3/project/GitHub/OKFin33/Roco/docs/manual_battle_data_supplement_2026-04-14.md")
+            Path("/Users/okfin3/project/GitHub/OKFin33/Roco/docs/research/manual_battle_data_supplement_2026-04-14.md")
         )["ability_text_overrides"][0]["notes"])
 
     def test_export_payload_stays_aligned_with_markdown_parser(self) -> None:
-        markdown_path = Path("/Users/okfin3/project/GitHub/OKFin33/Roco/docs/manual_battle_data_supplement_2026-04-14.md")
+        markdown_path = Path("/Users/okfin3/project/GitHub/OKFin33/Roco/docs/research/manual_battle_data_supplement_2026-04-14.md")
         parsed = parse_manual_supplement_markdown(markdown_path)
         payload = build_payload(markdown_path)
         self.assertEqual(sorted(parsed.excluded_forms), sorted(row["display_name"] for row in payload["exclusions"]["species_forms"]))

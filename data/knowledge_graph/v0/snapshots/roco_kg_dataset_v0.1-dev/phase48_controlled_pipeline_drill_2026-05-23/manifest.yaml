@@ -1,0 +1,20 @@
+schema_version: p14.snapshot_manifest.v0
+snapshot_id: phase48_controlled_pipeline_drill_2026-05-23
+created_at: '2026-05-23T15:17:50.504334+08:00'
+runtime_allowed: false
+promotion_status: candidate_only_drill_snapshot
+artifacts:
+- path: artifacts/knowledge_ops/dataset_pipeline_runs/phase48_controlled_pipeline_drill_2026-05-23/source_bundle_manifest.yaml
+  sha256: 45d04faa6af4f81b59fd99a106c0be9c7042d6b68b36176d3a990a133c00d1f9
+- path: artifacts/knowledge_ops/dataset_pipeline_runs/phase48_controlled_pipeline_drill_2026-05-23/provenance_manifest.yaml
+  sha256: 09630796df5cc3cb9fb7fc08d5d3ad1b8ba1157047e328724a57f18a3abc8d52
+- path: artifacts/knowledge_ops/dataset_pipeline_runs/phase48_controlled_pipeline_drill_2026-05-23/candidate_kg_items.yaml
+  sha256: 4f30e85f7f67735ab90f72bea2a7451aac5d4f64a9038aaa7a4dff9d848d5d25
+- path: artifacts/knowledge_ops/dataset_pipeline_runs/phase48_controlled_pipeline_drill_2026-05-23/field_evidence_index.yaml
+  sha256: cb0940f41826c48bd0622da71bb50e299ba60aefc8e8aa2ed804109134deceef
+- path: artifacts/knowledge_ops/dataset_pipeline_runs/phase48_controlled_pipeline_drill_2026-05-23/dashboard.yaml
+  sha256: e1d5e0a30fa091eb87f4e08e7abf3a84ae5715ee4defaf4d72b7b86d38939e38
+- path: artifacts/knowledge_ops/dataset_pipeline_runs/phase48_controlled_pipeline_drill_2026-05-23/pm_review_packet.md
+  sha256: c15a179f7afa5931669f0aeecff183ca121e8cea0c3a83a7894846cf99935838
+- path: data/knowledge_graph/v0/eval/quality_dashboard_phase48_controlled_pipeline_drill_2026-05-23.yaml
+  sha256: e1d5e0a30fa091eb87f4e08e7abf3a84ae5715ee4defaf4d72b7b86d38939e38

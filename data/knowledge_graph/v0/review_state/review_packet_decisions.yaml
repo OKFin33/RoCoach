@@ -1,0 +1,74 @@
+schema_version: p14.review_packet_decisions.v0
+runtime_allowed: false
+packets:
+  - packet_id: phase47f_gold_set_v0_seed_review_2026-05-21
+    packet_path: artifacts/knowledge_ops/review_packets/phase47f_gold_set_v0_seed_review_2026-05-21.md
+    candidate_path: artifacts/knowledge_ops/gold_candidates/phase47f_gold_set_v0_seed_candidates_2026-05-21.yaml
+    status: pending_pm_review
+    requested_actions:
+      - accept as gold
+      - defer
+      - reject
+      - "fix: ..."
+    runtime_allowed: false
+    notes:
+      - First Review Packet Format v1 seed packet.
+      - PM decisions must be written back before any gold item path is added to the manifest.
+  - packet_id: phase47f_gold_negative_candidates_review_2026-05-21
+    packet_path: artifacts/knowledge_ops/review_packets/phase47f_gold_negative_candidates_review_2026-05-21.md
+    candidate_path: artifacts/knowledge_ops/gold_candidates/phase47f_gold_negative_candidates_2026-05-21.yaml
+    status: pending_pm_review
+    requested_actions:
+      - accept as gold negative
+      - defer
+      - reject
+      - "fix: ..."
+    runtime_allowed: false
+    notes:
+      - First Gold Set v0 negative candidate packet.
+      - Negative gold is for eval/calibration only and must not runtime-promote facts.
+  - packet_id: phase48_controlled_pipeline_drill_2026-05-23
+    packet_path: artifacts/knowledge_ops/dataset_pipeline_runs/phase48_controlled_pipeline_drill_2026-05-23/pm_review_packet.md
+    candidate_path: artifacts/knowledge_ops/dataset_pipeline_runs/phase48_controlled_pipeline_drill_2026-05-23/candidate_kg_items.yaml
+    status: pending_pm_review
+    requested_actions:
+      - defer and collect post-S2 sources
+      - accept candidate-only evidence structure
+      - reject polluted candidate groups
+      - "fix: ..."
+    runtime_allowed: false
+    notes:
+      - Controlled dataset pipeline drill only; not Gold, not reviewed graph, not runtime.
+      - PM review should focus on S1/pre-S2 reuse policy, 帕帕斯卡 expansion priority, and relation-edge strictness.
+  - packet_id: phase49_post_s2_targeted_ingest_2026-05-23
+    packet_path: artifacts/knowledge_ops/dataset_pipeline_runs/phase49_post_s2_targeted_ingest_2026-05-23/pm_review_packet.md
+    candidate_path: artifacts/knowledge_ops/dataset_pipeline_runs/phase49_post_s2_targeted_ingest_2026-05-23/candidate_kg_items.yaml
+    status: pending_pm_review
+    requested_actions:
+      - accept candidate-only evidence package
+      - confirm 帕帕斯卡 post-S2 direct-source bottleneck
+      - confirm 雷暴队/兽花蕾 remains counterplay-only
+      - audit S2 blocker coverage
+      - "fix: ..."
+    runtime_allowed: false
+    notes:
+      - Phase49 post-S2 targeted drill only; not Gold, not reviewed graph, not runtime.
+      - Five post-S2 PvP sources were processed through transcript/ASR, AB refinement, evidence foundation, candidate extraction, dashboard, and snapshot.
+      - Direct post-S2 帕帕斯卡 source remains a discovery bottleneck; incidental transcript mentions are not enough for set promotion.
+      - S2 affected candidates are blocked by s2_a_layer_reconciliation_required_before_runtime_or_gold.
+  - packet_id: s2_a_layer_overlay_snapshot_2026-05-23
+    packet_path: data/knowledge_graph/v0/a_layer_overlays/s2_2026-05-21/pm_review_packet.md
+    candidate_path: data/knowledge_graph/v0/a_layer_overlays/s2_2026-05-21/overlay.yaml
+    status: pending_pm_review
+    requested_actions:
+      - accept candidate-only S2 A-layer overlay reference surface
+      - confirm S1 Battle Dex freeze as historical baseline
+      - confirm post-S2 candidates may cite overlay while remaining blocked from runtime
+      - reject any runtime DB overwrite or promotion implied by this packet
+      - "fix: ..."
+    runtime_allowed: false
+    notes:
+      - Overlay snapshot package only; not Gold, not reviewed graph, not runtime.
+      - S1 Battle Dex is frozen as a byte-identical copy under data/runtime/snapshots/s1_2026-05-20.
+      - S2 overlay is candidate-only and must not overwrite data/runtime/battle_dex.sqlite.
+      - 水刃 is represented as response-state attached-effect energy reduction -4 to -3, not a base energy_cost change.

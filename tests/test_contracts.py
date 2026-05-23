@@ -1,6 +1,6 @@
 import unittest
 
-from battle_engine.contracts import (
+from engine.contracts import (
     AnalysisGoals,
     Archetype,
     ArchetypeScore,

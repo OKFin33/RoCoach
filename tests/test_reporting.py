@@ -4,8 +4,8 @@ import sys
 import unittest
 from pathlib import Path
 
-from battle_engine.contracts import TeamSlot
-from reporting.service import Phase15ReportService
+from engine.contracts import TeamSlot
+from knowledge.service import Phase15ReportService
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -50,7 +50,7 @@ class ReportingTests(unittest.TestCase):
             [
                 sys.executable,
                 "-m",
-                "reporting.phase15_cli",
+                "knowledge.phase15_cli",
                 "--slot",
                 "A,草",
                 "--slot",
@@ -78,7 +78,7 @@ class ReportingTests(unittest.TestCase):
             [
                 sys.executable,
                 "-m",
-                "reporting.phase15_cli",
+                "knowledge.phase15_cli",
                 "--input-file",
                 str(EXAMPLE_TEAM),
                 "--format",

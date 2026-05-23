@@ -1,0 +1,27 @@
+{
+  "name": "@roco/desktop",
+  "private": true,
+  "version": "0.1.0",
+  "description": "RoCoach desktop developer-clone shell",
+  "type": "module",
+  "main": "dist/main/main.js",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc -p tsconfig.json && vite build && vite build --config vite.main.config.ts && vite build --config vite.preload.config.ts",
+    "start": "electron dist/main/main.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "lucide-react": "0.487.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "4.7.0",
+    "electron": "39.8.9",
+    "typescript": "5.9.3",
+    "vite": "6.4.2"
+  }
+}

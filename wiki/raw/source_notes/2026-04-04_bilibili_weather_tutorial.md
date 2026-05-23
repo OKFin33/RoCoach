@@ -14,7 +14,7 @@ supporting_inputs:
   - "wiki/cache/速度线:词条 0403/NoteGPT_【洛克王国世界】pvp入坑指南硬核知识，全图鉴速度线计算_所有词条解释_配队逻辑.txt"
   - "wiki/cache/光合武队0414/NoteGPT_《光合武队怎么玩？一期视频讲清它的底层逻辑》.txt"
 human_corrections:
-  - "沙暴主要触发技能确认名为沙咏，能耗 7"
+  - "沙暴主要触发技能确认名为沙涌，能耗 7"
   - "沙暴天气没有类似宝可梦沙暴的回合结束伤害机制"
   - "雨天使水系技能伤害提升 50%"
   - "每层冻结冻结 5% 生命值；若精灵当前生命值低于冻结比例，则力竭；冰系精灵免疫冻结"
@@ -61,7 +61,7 @@ single-weather, 8-round framing and gives specific effect values.
 |---|---|---|
 | 雨天 | `落雨` skill | plausible |
 | 雪天 / 暴风雪 | `冬至` skill | plausible |
-| 沙暴 | `沙咏`, energy cost 7 | user-confirmed |
+| 沙暴 | `沙涌`, energy cost 7 | user-confirmed; corrected against Battle Dex/BWiki on 2026-05-16 |
 
 The listed starters are examples, not exhaustive sources. Traits, forms, or
 leader effects may also create weather.

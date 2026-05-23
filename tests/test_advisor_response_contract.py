@@ -9,7 +9,7 @@ from advisor.contracts import AdvisorToolResult, ToolStatus
 
 
 ROOT = Path(__file__).resolve().parent.parent
-CONTRACT_PATH = ROOT / "specs" / "advisor_response_contract.yaml"
+CONTRACT_PATH = ROOT / "docs" / "specs" / "advisor_response_contract.yaml"
 
 
 class AdvisorResponseContractTests(unittest.TestCase):

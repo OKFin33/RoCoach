@@ -40,7 +40,7 @@ from api.runtime_headers import (
 from api.services.advisor_service import AdvisorService
 from api.services.advisor_service import _native_timeout_for_model
 from api.services.session_store import ActiveSessionStore
-from reporting.contracts import ConfidenceTier
+from knowledge.contracts import ConfidenceTier
 from tools.import_battle_dex_sqlite import write_sqlite
 
 try:
@@ -57,7 +57,7 @@ except ModuleNotFoundError:  # pragma: no cover - environment dependent
 
 ROOT = Path(__file__).resolve().parent.parent
 IMPORTER_RUN_DIR = ROOT / "data" / "importer_runs" / "2026-04-14Tpolicy_b_importer_dry_run"
-SCHEMA_PATH = ROOT / "specs" / "battle_dex_sqlite_schema_v1.sql"
+SCHEMA_PATH = ROOT / "docs" / "specs" / "battle_dex_sqlite_schema_v1.sql"
 
 
 class ApiTests(unittest.TestCase):
@@ -2012,7 +2012,7 @@ class _FakeNativeAgent:
         deps.trace.add_evidence(
             AdvisorEvidenceItem(
                 source_type=SourceType.ENGINE,
-                source_label="battle_engine.team_structure",
+                source_label="engine.team_structure",
                 confidence=ConfidenceTier.CONFIRMED,
                 content=report.evidence[0] if report.evidence else "engine evidence",
                 retrieval_reason="fake_native_tool_trace",

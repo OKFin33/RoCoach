@@ -1,0 +1,42 @@
+schema_version: p14.promotion_audit.v0
+last_updated: "2026-05-18"
+identity_policy:
+  required_for_new_entries_after: "2026-05-23"
+  legacy_unknown_allowed_before: "2026-05-23"
+  required_fields:
+    - actor_identity.role
+    - actor_identity.agent_id
+    - actor_identity.run_or_context_id
+    - reviewer_identity.role
+    - reviewer_identity.agent_id
+    - reviewer_identity.run_or_context_id
+  legacy_note: "Existing entries from before the audit repair pass are backfilled as legacy_unknown rather than fabricated."
+promotions:
+  - audit_id: promotion_audit/wingking/waterblade_physical_materialized_2026-05-18
+    asset_id: species_set/圣羽翼王/waterblade_physical_2026-s1
+    asset_type: species_set_card
+    action: materialize_pm_reviewed_family_card
+    actor: agent
+    reviewed_by: pm
+    actor_identity:
+      role: materializer_agent
+      agent_id: legacy_unknown
+      run_or_context_id: legacy_unknown
+      identity_status: legacy_pre_2026-05-23_identity_policy
+    reviewer_identity:
+      role: pm
+      agent_id: pm
+      run_or_context_id: legacy_unknown
+      identity_status: legacy_pre_2026-05-23_identity_policy
+    review_id: family_review/wingking/waterblade_physical_2026-s1
+    from_state: family_review_ledger.pm_reviewed
+    to_state: set_graph_card.pm_reviewed
+    runtime_promoted: false
+    runtime_blockers:
+      - advisor_meta_graph_runtime_not_wired
+      - relation_between_waterblade_and_flash_flow_still_under_evidence_expansion
+    validation:
+      v2_validate_graph_strict: passed
+      p14_validate_knowledge_graph_strict: passed
+      unit_tests: tests.test_p14_knowledge_graph_validate tests.test_p14_set_inventory_consolidator tests.test_p14_set_inventory_builder tests.test_p14_set_pipeline tests.test_transcript_ab_refine tests.test_video_evidence_foundation tests.test_p14_source_gap_fill tests.test_transcript_quality
+    notes: "Materialization only. This does not lift the parent species split blocker and does not enable runtime injection."

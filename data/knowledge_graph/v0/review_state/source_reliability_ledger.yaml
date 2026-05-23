@@ -1,0 +1,1121 @@
+schema_version: p14.source_reliability.v0
+last_updated: '2026-05-23'
+sources:
+- source_id: kgsrc_official_s2_balance_20260520
+  url: https://rocom.qq.com/web202507/sub/detail.html?newsid=18788872
+  source_type: official_patch_note
+  publisher: 洛克王国：世界官方网站
+  transcript_method: official_html_text
+  discovered_from_url: https://rocom.qq.com/web202507/sub/detail.html?newsid=18788208
+  local_manifest_ref: data/knowledge_graph/v0/patch_deltas/s2_2026-05-20_official_balance_sources/s2_2026-05-20_official_balance_manifest.yaml
+  checked_with_chrome_cookies: false
+  segment_count: 0
+  claim_atom_count: 0
+  mechanism_relevant_claim_count: 0
+  repair_required_segments: 0
+  quality_gate_counts:
+    official_patch_note_captured: 1
+  reliability_notes:
+  - Official S2 balance article captured from the game's public site. Use as
+    source reliability upgrade for the S2 patch delta pack, not as direct
+    authorization for A-layer DB overwrite or runtime graph promotion.
+  runtime_allowed: false
+- source_id: kgsrc_poison_vs_starfall_20260430
+  url: https://www.bilibili.com/video/BV1Mj9aBgEhT/
+  source_type: matchup_counterplay
+  uploader: 毒酱只玩毒
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 230
+  claim_atom_count: 27
+  mechanism_relevant_claim_count: 16
+  repair_required_segments: 0
+  quality_gate_counts:
+    claim_ready: 86
+    claim_ready_caution: 1
+    coverage_only: 143
+  reliability_notes:
+  - Single-player poison-team perspective; useful for matchup/counterplay, not sufficient
+    alone for mechanism finalization.
+  - AB refinement applied high-signal ASR fixes including 星云印记 -> 星陨印记.
+  runtime_allowed: false
+- source_id: kgsrc_starfall_parr_mechanism_20260404
+  url: https://www.bilibili.com/video/BV1MPDNBXEjU/
+  source_type: mechanism_tutorial
+  uploader: 黑商-洛克王国世界
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 576
+  claim_atom_count: 24
+  mechanism_relevant_claim_count: 14
+  repair_required_segments: 0
+  quality_gate_counts:
+    claim_ready: 172
+    coverage_only: 404
+  reliability_notes:
+  - Mechanism tutorial source; useful cross-source support for 星陨印记, but many useful
+    spans remain coverage_only because A/B exact hits are sparse.
+  - AB refinement applied narrow 星陨帕尔 / 星陨印记 corrections; broad 星云 replacement remains
+    blocked.
+  runtime_allowed: false
+- source_id: kgsrc_wingking_best_team_20260328
+  url: https://www.bilibili.com/video/BV1B3X3BFE9w/
+  source_type: team_explainer
+  uploader: 没洛克玩的枫酱
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 163
+  claim_atom_count: 2
+  repair_required_segments: 0
+  quality_gate_counts:
+    claim_ready: 55
+    coverage_only: 108
+  set_candidate_count: 17
+  s2_set_candidate_count: 8
+  reliability_notes:
+  - Wingking team explainer; useful for common 圣羽翼王 set coverage. Requires source-target
+    alias gate because community subtitle mostly says 翼王 rather than canonical 圣羽翼王.
+  runtime_allowed: false
+- source_id: kgsrc_spirit_vs_sandstorm_fighting_20251116
+  url: https://www.bilibili.com/video/BV1soCDBbEej/
+  source_type: matchup_counterplay
+  uploader: 梦想ccccc
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 645
+  claim_atom_count: 29
+  repair_required_segments: 0
+  quality_gate_counts:
+    claim_ready: 136
+    coverage_only: 509
+  set_candidate_count: 15
+  s2_set_candidate_count: 4
+  reliability_notes:
+  - Older high-ladder matchup source for 沙暴/格斗; useful for matchup coverage, but timestamp/version
+    age should block direct promotion.
+  runtime_allowed: false
+- source_id: kgsrc_starfall_intro_20251107
+  url: https://www.bilibili.com/video/BV1nU2PBFEQ3/
+  source_type: gameplay_replay
+  uploader: 吕彦琛Lawliet
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 923
+  claim_atom_count: 10
+  repair_required_segments: 0
+  quality_gate_counts:
+    claim_ready: 108
+    coverage_only: 815
+  set_candidate_count: 42
+  s2_set_candidate_count: 8
+  reliability_notes:
+  - Low-confidence 星陨 cross-source confirmation source; author self-describes as newbie,
+    so use only for coverage/conflict detection, not primary promotion evidence.
+  runtime_allowed: false
+- source_id: kgsrc_wingking_waterblade_top1_20260408
+  url: https://www.bilibili.com/video/BV1kPDkB7Ejo/
+  source_type: team_explainer
+  uploader: 没洛克玩的枫酱
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 206
+  claim_atom_count: 9
+  repair_required_segments: 0
+  quality_gate_counts:
+    claim_ready: 52
+    coverage_only: 154
+  reliability_notes:
+  - High-rank waterblade wingking team explainer; useful as primary evidence for
+    圣羽翼王 waterblade family, but strength claims remain uploader/meta perspective.
+  - AB refinement applied 古龙 -> 寂灭骨龙 corrections; no repair_required spans.
+  runtime_allowed: false
+- source_id: kgsrc_wingking_waterblade_config_20260508
+  url: https://www.bilibili.com/video/BV1wsdMBeEoQ/
+  source_type: team_explainer
+  uploader: 听风说雨落99
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 136
+  claim_atom_count: 0
+  repair_required_segments: 0
+  quality_gate_counts:
+    claim_ready: 22
+    coverage_only: 114
+  reliability_notes:
+  - Waterblade wingking configuration source; useful as support for same-flow
+    expansion, but current extraction did not produce claim atoms.
+  - AB refinement applied narrow 古龙 -> 寂灭骨龙 corrections; no repair_required spans.
+  runtime_allowed: false
+- source_id: kgsrc_wingking_magic_waterbubble_20260403
+  url: https://www.bilibili.com/video/BV1wt9uBeEqp/
+  source_type: team_explainer
+  uploader: 血舞crazy
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 159
+  claim_atom_count: 3
+  repair_required_segments: 0
+  quality_gate_counts:
+    claim_ready: 47
+    claim_ready_caution: 2
+    coverage_only: 110
+  reliability_notes:
+  - Magic waterbubble wingking source; useful for resolving magical family split,
+    not evidence for waterblade physical family.
+  - AB refinement applied 一王 -> 翼王 correction; no repair_required spans.
+  runtime_allowed: false
+- source_id: kgsrc_wingking_magic_combo_20260408
+  url: https://www.bilibili.com/video/BV17SD7B6E27/
+  source_type: team_explainer
+  uploader: 历飞羽游戏分享
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 180
+  claim_atom_count: 2
+  repair_required_segments: 0
+  quality_gate_counts:
+    claim_ready: 55
+    coverage_only: 125
+  reliability_notes:
+  - Magic combo wingking source; useful for magical family split exploration, but
+    local term noise such as 翼龙 should not be globally repaired into 翼王.
+  runtime_allowed: false
+- source_id: kgsrc_wingking_flash_nerf_half_20260416
+  url: https://www.bilibili.com/video/BV1otd4B5EXs/
+  source_type: mechanism_tutorial
+  uploader: 二次元咸鱼玩家
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 5
+  claim_atom_count: 3
+  repair_required_segments: 0
+  quality_gate_counts:
+    claim_ready: 5
+  set_candidate_count: 3
+  s2_set_candidate_count: 3
+  reliability_notes:
+  - Flash nerf/mechanism source; useful for 闪击 speed-scaling evidence and waterblade-family
+    relation support, but only a single-move set signal by itself.
+  - Subtitle AB refinement produced no review questions or repair-required spans.
+  runtime_allowed: false
+- source_id: kgsrc_wingking_flash_luck_mechanism_20260406
+  url: https://www.bilibili.com/video/BV1YpSoBBE7n/
+  source_type: mechanism_tutorial
+  uploader: 灰鼠的蓝灯
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 13
+  claim_atom_count: 3
+  repair_required_segments: 0
+  quality_gate_counts:
+    claim_ready: 10
+    claim_ready_caution: 1
+    coverage_only: 2
+  set_candidate_count: 1
+  s2_set_candidate_count: 1
+  reliability_notes:
+  - Flash mechanism source; useful as cross-source support that 水刃 and 闪击 appear
+    in the same 圣羽翼王 physical-line discussion.
+  - AB refinement left fuzzy review questions for terms such as 冲猛击 / 星光 / 水泡,
+    but no repair-required span. Do not promote those fuzzy terms without review.
+  runtime_allowed: false
+- source_id: kgsrc_wingking_max_speed_quick_waterblade_20260422
+  url: https://www.bilibili.com/video/BV12Ed9BNEov/
+  source_type: gameplay_replay
+  uploader: 云烟凝雨
+  transcript_method: none
+  subtitle_available: false
+  checked_with_chrome_cookies: true
+  asr_fallback_attempted: true
+  asr_fallback_status: bailian_fun_asr_no_words_whisper_sample60_empty
+  repair_required_segments: null
+  reliability_notes:
+  - No ai-zh or Chinese subtitle track was available. Bailian fun-asr returned
+    ASR_RESPONSE_HAVE_NO_WORDS for the downloaded audio, and a local Whisper base
+    60-second sample produced an empty transcript.
+  - Treat as blocked for text-based Set Graph extraction unless OCR/manual transcript
+    is added later.
+  runtime_allowed: false
+- source_id: kgsrc_bili_bv1efxubee2a
+  url: https://www.bilibili.com/video/BV1efXuBEE2a/
+  source_type: team_explainer
+  uploader: 阿木的游戏时间
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 124
+  claim_atom_count: 1
+  repair_required_segments: 0
+  quality_gate_counts:
+    claim_ready: unknown
+    coverage_only: unknown
+  set_candidate_count: unknown
+  s2_set_candidate_count: unknown
+  reliability_notes:
+    - Focused 圣羽翼王 skill-setup source; useful for Wingking warmup/triplebreak hypothesis.
+    - Current extraction only yields partial move evidence, so it should not promote a complete family alone.
+  runtime_allowed: false
+- source_id: kgsrc_bili_bv1tootbtez8
+  url: https://www.bilibili.com/video/BV1tootBTEZ8/
+  source_type: matchup_counterplay
+  uploader: 柿番茄啊
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 271
+  claim_atom_count: 2
+  repair_required_segments: 0
+  quality_gate_counts:
+    claim_ready: unknown
+    coverage_only: unknown
+  set_candidate_count: unknown
+  s2_set_candidate_count: unknown
+  reliability_notes:
+    - Wingking-focused explainer discovered by Bilibili search; useful for warmup/speed-line hypothesis.
+    - Title and extraction mix skill teaching with matchup framing, so keep as candidate evidence until more focused sources repeat the same core.
+  runtime_allowed: false
+- source_id: kgsrc_luoyin_formula_vs_wingking_20260408
+  url: https://www.bilibili.com/video/BV1i8DjBeE5n/
+  source_type: matchup_counterplay
+  uploader: 血舞crazy
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 97
+  claim_atom_count: 0
+  repair_required_segments: 0
+  quality_gate_counts:
+    claim_ready: unknown
+    coverage_only: unknown
+  set_candidate_count: unknown
+  s2_set_candidate_count: unknown
+  reliability_notes:
+    - Luoyin-versus-Wingking formula/counterplay source; useful for opponent move observation only.
+    - Should not carry Wingking set-family promotion because it is not a focused Wingking configuration source.
+  runtime_allowed: false
+- source_id: kgsrc_wingking_team_moves_20260328
+  url: https://www.bilibili.com/video/BV16QXVBzEr2/
+  source_type: team_explainer
+  uploader: unknown
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 105
+  claim_atom_count: 1
+  repair_required_segments: 0
+  quality_gate_counts:
+    claim_ready: unknown
+    coverage_only: unknown
+  set_candidate_count: unknown
+  s2_set_candidate_count: unknown
+  reliability_notes:
+    - Focused 圣羽翼王 team/move source; useful support for Wingking family-boundary exploration.
+    - Includes skill acquisition framing, so keep unlock/acquisition spans out of promoted set fields.
+  runtime_allowed: false
+- source_id: kgsrc_beastbud_firegod_balance_20260408
+  url: https://www.bilibili.com/video/BV1tsDiBzETJ/
+  source_type: team_explainer
+  uploader: 狐牢大-洛克王国世界
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 708
+  claim_atom_count: 21
+  repair_required_segments: 0
+  quality_gate_counts:
+    claim_ready: 197
+    coverage_only: 511
+  reliability_notes:
+  - Team explainer source; useful as primary support for 海豹船长 水刃听桥线,
+    but strength framing is uploader/meta perspective.
+  - No repair-required spans after AB refinement.
+  runtime_allowed: false
+- source_id: kgsrc_blackcat_balance_master_20260329
+  url: https://www.bilibili.com/video/BV1bJXUBEEHV/
+  source_type: team_explainer
+  uploader: 爱望特-to福莱
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 1030
+  claim_atom_count: 12
+  repair_required_segments: 0
+  quality_gate_counts:
+    claim_ready: 216
+    claim_ready_caution: 1
+    coverage_only: 813
+  reliability_notes:
+  - Team explainer / ladder source; useful as primary support for 海豹船长 水刃听桥线.
+  - Multi-part/team context should be kept as candidate evidence, not direct runtime
+    proof.
+  runtime_allowed: false
+- source_id: kgsrc_devilwolf_balance_20260330
+  url: https://www.bilibili.com/video/BV1ksXYBfEAU/
+  source_type: team_explainer
+  uploader: 卓帅丶
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 4597
+  claim_atom_count: 69
+  repair_required_segments: 0
+  quality_gate_counts:
+    claim_ready: 924
+    claim_ready_caution: 3
+    coverage_only: 3670
+  reliability_notes:
+  - Long multi-part team explainer; useful as one primary source for 海豹船长 水刃听桥线,
+    but must not dominate promotion alone.
+  - Version-answer framing and large subtitle volume require consolidation/ledger review
+    before graph materialization.
+  runtime_allowed: false
+- source_id: kgsrc_launch_pvp_roster_logic_20260327
+  url: https://www.bilibili.com/video/BV1K8X8BfEsP/
+  source_type: mechanism_tutorial
+  uploader: 春风满马
+  transcript_method: bailian_hotword_asr_v3
+  subtitle_available: false
+  checked_with_chrome_cookies: true
+  asr_fallback_attempted: true
+  segment_count: 182
+  claim_atom_count: 41
+  repair_required_segments: 0
+  quality_gate_counts:
+    claim_ready: 72
+    claim_ready_caution: 11
+    coverage_only: 99
+  reliability_notes:
+  - Broad PVE/PVP roster guide; useful as candidate support for 罗隐 贪婪 / 鸣沙陷阱,
+    but not a species-specific set source.
+  - No Chinese subtitle track was used; transcript came from Bailian hotword ASR v3,
+    so keep promotion deferred until 罗隐-specific subtitle or team sources confirm.
+  runtime_allowed: false
+- source_id: kgsrc_starfall_strategy_parse_20260330
+  url: https://www.bilibili.com/video/BV1m9XhBwEtv/
+  source_type: team_explainer
+  uploader: 阿木的游戏时间
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 209
+  claim_atom_count: 6
+  repair_required_segments: 0
+  quality_gate_counts:
+    claim_ready: 50
+    coverage_only: 159
+  reliability_notes:
+  - Starfall team explainer; useful as weak cross-source support that 罗隐 appears
+    with 贪婪 in matchup context, but it only contributes one of the two repeated
+    moves.
+  - Do not promote a 罗隐 set from this source alone.
+  runtime_allowed: false
+- source_id: kgsrc_wingking_three_styles_20260328
+  url: https://www.bilibili.com/video/BV1FVXVBiE4Q/
+  source_type: team_explainer
+  uploader: 秋意Qe
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 71
+  claim_atom_count: 1
+  repair_required_segments: 0
+  quality_gate_counts:
+    claim_ready: 14
+    coverage_only: 57
+  reliability_notes:
+  - Wingking打法 source; useful as candidate support for 罗隐 贪婪 / 鸣沙陷阱 as
+    a counter or setup line, but target topic is not 罗隐.
+  - Keep as source-expansion target evidence, not reviewed set evidence by itself.
+  runtime_allowed: false
+- source_id: kgsrc_parr_balance_top10_20260502
+  url: https://www.bilibili.com/video/BV1nEREBsEoD/
+  source_type: team_explainer
+  uploader: ov南南vo
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 427
+  claim_atom_count: 7
+  repair_required_segments: 0
+  quality_gate_counts:
+    claim_ready: 86
+    coverage_only: 341
+  reliability_notes:
+  - High-rank 帕尔平衡队 source; useful as broad team/meta evidence and weak 裘卡
+    support via a single 防御 signal.
+  - Target topic is not 裘卡 configuration. Do not promote a 裘卡 set from this source
+    by itself.
+  runtime_allowed: false
+- source_id: kgsrc_water_poison_newbie_20251029
+  url: https://www.bilibili.com/video/BV1AfypB7EqB/
+  source_type: team_explainer
+  uploader: 俱心哀意
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 221
+  claim_atom_count: 10
+  repair_required_segments: 0
+  quality_gate_counts:
+    claim_ready: 71
+    claim_ready_caution: 1
+    coverage_only: 149
+  reliability_notes:
+  - Older/newbie-oriented 水毒队 explainer; currently the most complete 裘卡 partial
+    move signal, but it still only supports 毒孢子 / 防御 / 阻断.
+  - Treat as expansion seed for 裘卡, not a reviewed current-meta graph card without
+    newer species-specific confirmation.
+  runtime_allowed: false
+- source_id: kgsrc_cuiding_lady_full_guide_20260411
+  url: https://www.bilibili.com/video/BV1jkQMB7E2d/
+  source_type: team_explainer
+  uploader: 一只犯困的貓
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 240
+  claim_atom_count: 4
+  repair_required_segments: 0
+  reliability_notes:
+  - Mixed PVP/PVE guide source for 翠顶夫人 and 啮合队; useful as cross-source
+    support for 奇丽花 family clustering, but spans must be filtered before any promoted claim.
+  - Source contributes to the 奇丽花 光能聚集防御线 cluster; not sufficient alone for graph materialization.
+  runtime_allowed: false
+- source_id: kgsrc_qilihua_detailed_guide_20260405
+  url: https://www.bilibili.com/video/BV1VMD3B5EK6/
+  source_type: team_explainer
+  uploader: 沉默寡言白河愁
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 98
+  claim_atom_count: 8
+  repair_required_segments: 0
+  reliability_notes:
+  - Focused 奇丽花 guide; useful as primary evidence for 奇丽花 family clustering.
+  - Contains multiple 奇丽花 configuration lines, so family-level review must not collapse
+    every observed move into one species-wide set.
+  runtime_allowed: false
+- source_id: kgsrc_qilihua_pvp_dual_god_20260509
+  url: https://www.bilibili.com/video/BV12WRSBHEFZ/
+  source_type: team_explainer
+  uploader: 洛克研究所
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 112
+  claim_atom_count: 1
+  repair_required_segments: 0
+  reliability_notes:
+  - Short 奇丽花 PVP guide; useful as cross-source support for 光能聚集-related 奇丽花 set evidence.
+  - Claim volume is low, so use as corroborating source rather than single-source promotion basis.
+  runtime_allowed: false
+- source_id: kgsrc_qilihua_self_research_team_20260508
+  url: https://www.bilibili.com/video/BV17SdNBSEhK/
+  source_type: team_explainer
+  uploader: 你不吃年糕吗
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 51
+  claim_atom_count: 5
+  repair_required_segments: 0
+  reliability_notes:
+  - Self-researched 奇丽花 team source; useful for team/set-family clustering, but uploader
+    perspective should be cross-checked.
+  - Source contributes directly to the 防御 / 光能聚集 / 晒太阳 repeated family cluster.
+  runtime_allowed: false
+- source_id: kgsrc_sandstorm_fighting_research_20251116
+  url: https://www.bilibili.com/video/BV1JHCUByEz3/
+  source_type: team_explainer
+  uploader: 阿祖_Y
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 54
+  claim_atom_count: 1
+  repair_required_segments: 0
+  reliability_notes:
+  - Older third-test 沙暴武队 source; useful as corroborating evidence for recurring move
+    clusters, but version age blocks direct current-meta strength claims.
+  - Included as one primary source for 奇丽花 family clustering only because promoted fields
+    are A-layer move names and cross-source repeated.
+  runtime_allowed: false
+- source_id: kgsrc_swan_unicorn_pass_20251101
+  url: https://www.bilibili.com/video/BV1711jBdE1J/
+  source_type: team_explainer
+  uploader: 五耀
+  transcript_method: bailian_hotword_asr_v3
+  subtitle_available: false
+  checked_with_chrome_cookies: true
+  segment_count: 46
+  claim_atom_count: 16
+  repair_required_segments: 0
+  reliability_notes:
+  - Bailian hotword ASR fallback source for 天鹅独角兽接棒队; useful as corroborating
+    evidence, but ASR-derived text should not dominate promotion.
+  - Included in 奇丽花 family review only as one of multiple sources with A-layer-resolved move evidence.
+  runtime_allowed: false
+- source_id: kgsrc_pvp_weekly_006_20260426
+  url: https://www.bilibili.com/video/BV1tTovB9EfY/
+  source_type: tier_overview
+  uploader: 沐木-洛克王国世界
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 168
+  claim_atom_count: 13
+  repair_required_segments: 0
+  reliability_notes:
+  - PvP weekly overview source; useful for broad meta corroboration and coverage,
+    but not sufficient alone for set-family promotion.
+  - Contributes to 音速犬 and 翠顶夫人 candidate clusters; treat as support/overview rather than focused configuration source.
+  runtime_allowed: false
+- source_id: kgsrc_rain_wingking_real_team_20260328
+  url: https://www.bilibili.com/video/BV1oWXLBiEai/
+  source_type: team_explainer
+  uploader: 白免亦是白兔
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 473
+  claim_atom_count: 10
+  repair_required_segments: 0
+  reliability_notes:
+  - Rain/Wingking team explainer; useful for team context and recurring teammate set signals.
+  - Contributes to 音速犬 family clustering, but target topic is not 音速犬-specific.
+  runtime_allowed: false
+- source_id: kgsrc_starfall_parr_master_streak_20260410
+  url: https://www.bilibili.com/video/BV1bPQFB3EqC/
+  source_type: team_explainer
+  uploader: 君路ovo
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 288
+  claim_atom_count: 9
+  repair_required_segments: 0
+  reliability_notes:
+  - 星陨帕尔 team explainer; useful for meta/team context and recurring off-core set signals.
+  - Contributes to 音速犬 candidate clustering, but strength claims and non-target species claims require cross-source support.
+  runtime_allowed: false
+- source_id: kgsrc_waterblade_wingking_counter_tips_20260516
+  url: https://www.bilibili.com/video/BV1mNLG6HENm/
+  source_type: matchup_counterplay
+  uploader: 椰浆布丁-洛克王国
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 212
+  claim_atom_count: 14
+  repair_required_segments: 0
+  reliability_notes:
+  - Waterblade wingking counterplay source; useful for matchup edges and repeated move mentions.
+  - Contributes to 音速犬 and 翠顶夫人 clusters, but target topic is counterplay against 水刃翼王 rather than full set configuration.
+  runtime_allowed: false
+- source_id: kgsrc_starfall_team4_final_20260425
+  url: https://www.bilibili.com/video/BV1mmo9BuE4Z/
+  source_type: team_explainer
+  uploader: 君路ovo
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 314
+  claim_atom_count: 2
+  repair_required_segments: 0
+  reliability_notes:
+  - Starfall team 4.0 source; useful as team/meta context and repeated move support.
+  - Contributes to 翠顶夫人 candidate clustering, but is not focused 翠顶夫人 configuration evidence.
+  runtime_allowed: false
+- source_id: kgsrc_wingking_t0_waterblade_20260429
+  url: https://www.bilibili.com/video/BV1Pf9DBWEUS/
+  source_type: team_explainer
+  uploader: 迷路的小鹿a
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 63
+  claim_atom_count: 2
+  repair_required_segments: 0
+  reliability_notes:
+  - Waterblade wingking flow source; useful for wingking and team-composition evidence.
+  - Contributes to 翠顶夫人 candidate clustering, but target topic is 水刃翼王, so it should not dominate 翠顶夫人 review.
+  runtime_allowed: false
+- source_id: kgsrc_pvp_daily_top3_20260430
+  url: https://www.bilibili.com/video/BV11M9vBGECe/
+  source_type: tier_overview
+  uploader: 洛克王国北郭
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 102
+  claim_atom_count: 5
+  repair_required_segments: 0
+  reliability_notes:
+  - PvP daily overview source; useful for broad team discovery and corroboration,
+    but too compressed to promote a species set family by itself.
+  - Contributes to 黑羽夫人 side-signal clustering; treat as coverage/support only.
+  runtime_allowed: false
+- source_id: kgsrc_bonedragon_top_support_20260510
+  url: https://www.bilibili.com/video/BV1NkRZBGEv6/
+  source_type: team_explainer
+  uploader: Roco剑心
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 159
+  claim_atom_count: 9
+  repair_required_segments: 0
+  reliability_notes:
+  - Focused 寂灭骨龙/黑白双煞 support explainer; useful for bone-dragon role splitting
+    and teammate context.
+  - Treat 黑白 as source/title cosmetic descriptor unless the source separately binds it
+    to battle mechanics; do not use it as set-family or archetype identity.
+  - It mentions 翠顶夫人/黑羽夫人 side signals, but target topic is not those species,
+    so those signals require focused cross-source confirmation.
+  runtime_allowed: false
+- source_id: kgsrc_cuiding_lady_support_guide_20260402
+  url: https://www.bilibili.com/video/BV1SA9ABxE6M/
+  source_type: team_explainer
+  uploader: 洛克研究所
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 96
+  claim_atom_count: 4
+  repair_required_segments: 0
+  reliability_notes:
+  - Focused 翠顶夫人 support guide; good candidate input for set-family clustering.
+  - One focused source is not enough to overturn the earlier off-target 翠顶夫人 cluster,
+    so it should improve future clustering rather than force immediate promotion.
+  runtime_allowed: false
+- source_id: kgsrc_bili_bv1hw5r6he2s
+  url: https://www.bilibili.com/video/BV1Hw5R6hE2s/
+  source_type: team_explainer
+  uploader: 清明九歌
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 292
+  claim_atom_count: 5
+  repair_required_segments: 0
+  reliability_notes:
+  - Focused 翼王权杖平衡队 source; useful for Wingking variant and teammate-boundary exploration.
+  - It should not alone redefine the already reviewed 水刃物攻线; treat 防御 evidence as candidate until repeated by more focused Wingking sources.
+  runtime_allowed: false
+- source_id: kgsrc_bili_bv1p99gbvek7
+  url: https://www.bilibili.com/video/BV1p99gBvEK7/
+  source_type: team_explainer
+  uploader: 华卿水墨
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 1707
+  claim_atom_count: 22
+  repair_required_segments: 0
+  reliability_notes:
+  - Long multi-part 魔攻翼王 explainer; useful for magical/mixed Wingking split exploration.
+  - Because it is long and mixed-axis, extracted overlaps with 水刃/闪击 should be treated as candidate evidence, not immediate physical-line promotion.
+  runtime_allowed: false
+- source_id: kgsrc_bili_bv1rtrtbuec9
+  url: https://www.bilibili.com/video/BV1RtRTBUEc9/
+  source_type: gameplay_replay
+  uploader: 开摆单机猴
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 356
+  claim_atom_count: 9
+  repair_required_segments: 0
+  reliability_notes:
+  - 沙暴队 gameplay source; useful for matchup and teammate context around Wingking, not a focused Wingking configuration source.
+  - Candidate move co-occurrence from this source should support relation discovery rather than direct family review.
+  runtime_allowed: false
+- source_id: kgsrc_waterblade_wingking_balance_20260503
+  url: https://www.bilibili.com/video/BV1RERcBhEXi/
+  source_type: team_explainer
+  uploader: Nekrozlk
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 435
+  claim_atom_count: 24
+  repair_required_segments: 0
+  reliability_notes:
+  - Focused 水刃翼王平衡队 source; useful for Waterblade Wingking family evidence and alter-variant comparison.
+  - Long battle explainer; keep newly repeated 防御 as candidate evidence until the family boundary with 水刃 / 闪击 / 力量增效 is reviewed.
+  runtime_allowed: false
+- source_id: kgsrc_bili_bv17prebqezf
+  url: https://www.bilibili.com/video/BV17pREBQEZf/
+  source_type: gameplay_replay
+  uploader: 老狼就爱玩
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 130
+  claim_atom_count: 10
+  repair_required_segments: 0
+  reliability_notes:
+  - Broad seven-system overview; useful for 波多西/地刺 coverage and cross-source confirmation.
+  - Treat as supporting meta/team evidence, not sufficient alone for set-family promotion.
+  runtime_allowed: false
+- source_id: kgsrc_bili_bv1aqocbtehp
+  url: https://www.bilibili.com/video/BV1AqoCBTEhP/
+  source_type: team_explainer
+  uploader: 小林永不白给
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 226
+  claim_atom_count: 3
+  repair_required_segments: 0
+  reliability_notes:
+  - Focused 海豹船长 explainer; useful for teammate/context evidence around defensive team structures.
+  - Contributes 壁垒 as a side signal for 波多西; do not let this source dominate the 波多西 family alone.
+  runtime_allowed: false
+- source_id: kgsrc_bili_bv1jarmbrelg
+  url: https://www.bilibili.com/video/BV1JARMBRELg/
+  source_type: matchup_counterplay
+  uploader: 吉普莉尔桑酱
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 351
+  claim_atom_count: 24
+  repair_required_segments: 0
+  reliability_notes:
+  - High-signal 雪灵地刺队 source; useful primary evidence for 地刺/防御 related family clustering.
+  - Also contains Wingking/counterplay context, so use only span-backed move co-occurrence for 波多西.
+  runtime_allowed: false
+- source_id: kgsrc_bili_bv1nv5e6ae5e
+  url: https://www.bilibili.com/video/BV1Nv5E6AE5E/
+  source_type: gameplay_replay
+  uploader: 吉普莉尔桑酱
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 152
+  claim_atom_count: 15
+  repair_required_segments: 0
+  reliability_notes:
+  - 地武队 follow-up source; useful for repeated 波多西 壁垒/防御 evidence.
+  - Gameplay/research framing means strength claims require cross-source support.
+  runtime_allowed: false
+- source_id: kgsrc_bili_bv1zzdrbtexp
+  url: https://www.bilibili.com/video/BV1ZZdRBtEXP/
+  source_type: gameplay_replay
+  uploader: aim杨桃
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 197
+  claim_atom_count: 0
+  repair_required_segments: 0
+  reliability_notes:
+  - Infinite defense team source; useful as coverage for defensive-team move mentions.
+  - It provides little extracted claim structure, so use as supporting source for 波多西 and not as tactical rule evidence.
+  runtime_allowed: false
+- source_id: kgsrc_seal_team_config_20260430
+  url: https://www.bilibili.com/video/BV1vT9aBjEcu/
+  source_type: team_explainer
+  uploader: 凛冽sky
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 386
+  claim_atom_count: 9
+  repair_required_segments: 0
+  reliability_notes:
+  - Focused 海豹队 configuration source; strong for team structure and recurring support-slot signals.
+  - Provides the fullest 波多西 variant in this family, including 地刺 / 壁垒 / 齿轮切开, but target topic is still 海豹队.
+  runtime_allowed: false
+- source_id: kgsrc_springhare_spikes_stall_20260404
+  url: https://www.bilibili.com/video/BV1yfDTBXE35/
+  source_type: team_explainer
+  uploader: 吉普莉尔桑酱
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 213
+  claim_atom_count: 11
+  repair_required_segments: 0
+  reliability_notes:
+  - 春花兔受队 / 无限地刺 source; useful for 地刺 and defensive-stall context.
+  - Treat as cross-source support for 波多西 地刺 evidence, not as a complete 波多西 configuration by itself.
+  runtime_allowed: false
+- source_id: kgsrc_bili_bv1abdwbee29
+  url: https://www.bilibili.com/video/BV1abDWBEE29/
+  source_type: gameplay_replay
+  uploader: 村花770
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 120
+  claim_atom_count: 2
+  repair_required_segments: 0
+  reliability_notes:
+  - Focused 龙鱼 battle replay; useful for repeated 龙吟 / 水刃 / 龙之利爪 co-occurrence.
+  - Replay strength claims such as sweep potential still require cross-source support and are not promoted by this ledger entry.
+  runtime_allowed: false
+- source_id: kgsrc_bili_bv1cwlq6jetb
+  url: https://www.bilibili.com/video/BV1cWLq6jEtB/
+  source_type: gameplay_replay
+  uploader: 羊阳君
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 1010
+  claim_atom_count: 31
+  repair_required_segments: 0
+  reliability_notes:
+  - Long S2 adjustment / 龙鱼王朝 source; useful for 龙鱼 core co-occurrence and version context.
+  - Because it is broad and long, only span-backed Dragonfish move evidence should affect the reviewed family.
+  runtime_allowed: false
+- source_id: kgsrc_bili_bv1gnln6uegm
+  url: https://www.bilibili.com/video/BV1gNLN6uEgm/
+  source_type: team_explainer
+  uploader: 氢意
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 125
+  claim_atom_count: 4
+  repair_required_segments: 0
+  reliability_notes:
+  - Focused 龙鱼 S2 high-rank玩法 source; useful for setup/speed context and 龙吟 evidence.
+  - Current extraction only supports partial set evidence, so do not infer complete four-move configuration from this source alone.
+  runtime_allowed: false
+- source_id: kgsrc_bili_bv1o3lp6leyy
+  url: https://www.bilibili.com/video/BV1o3LP6LEyy/
+  source_type: gameplay_replay
+  uploader: 协行
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 851
+  claim_atom_count: 16
+  repair_required_segments: 0
+  reliability_notes:
+  - New-version PVP adjustment source; useful as cross-source 龙吟 support for the 龙鱼 family.
+  - It is not a Dragonfish-only configuration source, so use as family evidence only where transcript spans resolve to 龙鱼.
+  runtime_allowed: false
+- source_id: kgsrc_bili_bv1uslz6tezh
+  url: https://www.bilibili.com/video/BV1uSLz6TEzH/
+  source_type: team_explainer
+  uploader: 霜月-洛克王国世界
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 119
+  claim_atom_count: 2
+  repair_required_segments: 0
+  reliability_notes:
+  - 雨天队 explainer with 龙鱼 coverage; useful for 龙吟 / 龙之利爪 and speed-context evidence.
+  - Do not promote rain/weather dependency from this family review; weather is only observed context here.
+  runtime_allowed: false
+- source_id: kgsrc_bili_bv15hs9bveij
+  url: https://www.bilibili.com/video/BV15hS9BvEij/
+  source_type: gameplay_replay
+  uploader: 鸦鸦啊鸦鸦
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 2188
+  claim_atom_count: 40
+  repair_required_segments: 0
+  reliability_notes:
+  - Long 闪击翼王队 replay source; useful for repeated 瞌睡王 有效预防 evidence and broader team context.
+  - Because the source is long and Wingking-centered, only span-backed 瞌睡王 move evidence should affect the reviewed family.
+  runtime_allowed: false
+- source_id: kgsrc_bili_bv1aelg69eew
+  url: https://www.bilibili.com/video/BV1aeLg69EEw/
+  source_type: tier_overview
+  uploader: 树池来了
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 282
+  claim_atom_count: 14
+  repair_required_segments: 0
+  reliability_notes:
+  - 洛克时报 tier overview; useful for cross-source 瞌睡王 吞噬 evidence and environment context.
+  - Tier overview strength claims are not promoted by this family review.
+  runtime_allowed: false
+- source_id: kgsrc_bili_bv1ba9wbqebw
+  url: https://www.bilibili.com/video/BV1BA9wBqEbw/
+  source_type: tier_overview
+  uploader: KULAo-o
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 92
+  claim_atom_count: 12
+  repair_required_segments: 0
+  reliability_notes:
+  - PVP热门沙暴武 overview source; useful for 瞌睡王 有效预防 and sandstorm-team context.
+  - It mixes team explanation and acquisition/skill-stone material, so do not infer full set configuration from this source alone.
+  runtime_allowed: false
+- source_id: kgsrc_bili_bv1e3lw6qexv
+  url: https://www.bilibili.com/video/BV1e3Lw6qExV/
+  source_type: team_explainer
+  uploader: 证星河
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 350
+  claim_atom_count: 22
+  repair_required_segments: 0
+  reliability_notes:
+  - PVP阵容推荐 source; useful for 瞌睡王 有效预防 / 吞噬 partial family evidence and support-transfer context.
+  - The source is not 瞌睡王-only, so role and teammate claims need separate review before promotion.
+  runtime_allowed: false
+- source_id: kgsrc_bili_bv1xz5k62ejc
+  url: https://www.bilibili.com/video/BV1Xz5k62EjC/
+  source_type: gameplay_replay
+  uploader: QinGNUo17
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 213
+  claim_atom_count: 18
+  repair_required_segments: 0
+  reliability_notes:
+  - 沙暴队 / 地刺 source; strongest same-source evidence for 瞌睡王 吞噬 / 有效预防 / 能量刃 co-occurrence.
+  - Gameplay framing means strength claims remain candidate-only until supported by other reviewed evidence.
+  runtime_allowed: false
+- source_id: kgsrc_saint_sword_x_team_20260404
+  url: https://www.bilibili.com/video/BV1ZgDKBqE3u/
+  source_type: team_explainer
+  uploader: 逸枫凌雪
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 156
+  claim_atom_count: 8
+  repair_required_segments: 0
+  reliability_notes:
+  - 圣剑X队 team source; useful as cross-source 瞌睡王 能量刃 evidence.
+  - Do not promote broad matchup or strength claims from this source through the 瞌睡王 family review.
+  runtime_allowed: false
+- source_id: kgsrc_sandstorm_fighting_strong_20260330
+  url: https://www.bilibili.com/video/BV1PjXhBtEwZ/
+  source_type: team_explainer
+  uploader: 腋师傅
+  transcript_method: subtitle_ai_zh
+  subtitle_available: true
+  checked_with_chrome_cookies: true
+  segment_count: 261
+  claim_atom_count: 8
+  repair_required_segments: 0
+  reliability_notes:
+  - 沙暴武 team explainer; useful for 瞌睡王 有效预防 / 能量刃 and flex 斩断 evidence.
+  - Treat flex 斩断 as variant evidence only; it is not promoted into the reviewed core.
+  runtime_allowed: false
+uploaders:
+- uploader: 吕彦琛Lawliet
+  observed_source_ids:
+  - kgsrc_starfall_intro_20251107
+  provisional_bias:
+  - newbie_perspective
+- uploader: 梦想ccccc
+  observed_source_ids:
+  - kgsrc_spirit_vs_sandstorm_fighting_20251116
+  provisional_bias:
+  - older_meta_snapshot
+- uploader: 毒酱只玩毒
+  observed_source_ids:
+  - kgsrc_poison_vs_starfall_20260430
+  provisional_bias: []
+- uploader: 没洛克玩的枫酱
+  observed_source_ids:
+  - kgsrc_wingking_best_team_20260328
+  - kgsrc_wingking_waterblade_top1_20260408
+  provisional_bias:
+  - team_explainer_perspective
+- uploader: 听风说雨落99
+  observed_source_ids:
+  - kgsrc_wingking_waterblade_config_20260508
+  provisional_bias:
+  - configuration_claims_need_span_check
+- uploader: 历飞羽游戏分享
+  observed_source_ids:
+  - kgsrc_wingking_magic_combo_20260408
+  provisional_bias:
+  - build_showcase_may_overstate_strength
+- uploader: 血舞crazy
+  observed_source_ids:
+  - kgsrc_wingking_magic_waterbubble_20260403
+  provisional_bias:
+  - build_showcase_may_overstate_strength
+- uploader: 黑商-洛克王国世界
+  observed_source_ids:
+  - kgsrc_starfall_parr_mechanism_20260404
+  provisional_bias: []
+- uploader: 二次元咸鱼玩家
+  observed_source_ids:
+  - kgsrc_wingking_flash_nerf_half_20260416
+  provisional_bias:
+  - patch_or_balance_reaction_needs_date_context
+- uploader: 灰鼠的蓝灯
+  observed_source_ids:
+  - kgsrc_wingking_flash_luck_mechanism_20260406
+  provisional_bias:
+  - mechanism_claims_need_cross_source_confirmation
+- uploader: 云烟凝雨
+  observed_source_ids:
+  - kgsrc_wingking_max_speed_quick_waterblade_20260422
+  provisional_bias:
+  - gameplay_replay_needs_text_or_ocr
+- uploader: 狐牢大-洛克王国世界
+  observed_source_ids:
+  - kgsrc_beastbud_firegod_balance_20260408
+  provisional_bias:
+  - team_explainer_perspective
+- uploader: 爱望特-to福莱
+  observed_source_ids:
+  - kgsrc_blackcat_balance_master_20260329
+  provisional_bias:
+  - ladder_replay_team_context
+- uploader: 卓帅丶
+  observed_source_ids:
+  - kgsrc_devilwolf_balance_20260330
+  provisional_bias:
+  - version_answer_framing
+  - long_multi_part_source
+- uploader: 春风满马
+  observed_source_ids:
+  - kgsrc_launch_pvp_roster_logic_20260327
+  provisional_bias:
+  - broad_pve_pvp_mixed_source
+  - asr_fallback_source
+- uploader: 阿木的游戏时间
+  observed_source_ids:
+  - kgsrc_starfall_strategy_parse_20260330
+  provisional_bias:
+  - team_explainer_perspective
+- uploader: 秋意Qe
+  observed_source_ids:
+  - kgsrc_wingking_three_styles_20260328
+  provisional_bias:
+  - wingking_targeted_source_not_luoyin_specific
+- uploader: ov南南vo
+  observed_source_ids:
+  - kgsrc_parr_balance_top10_20260502
+  provisional_bias:
+  - high_rank_team_explainer_perspective
+- uploader: 俱心哀意
+  observed_source_ids:
+  - kgsrc_water_poison_newbie_20251029
+  provisional_bias:
+  - newbie_or_older_team_explainer_needs_current_meta_confirmation

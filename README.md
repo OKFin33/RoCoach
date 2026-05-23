@@ -2,6 +2,15 @@
 
 A vertical-domain fact-governance AI battle advisor for 洛克王国世界 (Roco Kingdom World) PvP decision support.
 
+## Current status
+
+The current context entrypoint is
+`docs/handoffs/ROCO_CURRENT_CONTEXT_MAP_2026_05_16.md`.
+
+That map supersedes older handoffs where they say V1 excludes Meta Graph or
+D-layer. The current V1 formal-release gate includes a small usable Meta Graph
+v0.1 and D-layer v0.1, not just A/B/C chat.
+
 ## Why this matters
 
 Roco is not a generic "LLM chat + search" wrapper. It's an **Engine-first, Agent-enabled** architecture: a deterministic battle engine performs all computation, and the LLM explains the engine's output. Persona affects only expression — never conclusions, scores, or recommendations.
@@ -10,8 +19,9 @@ Roco is not a generic "LLM chat + search" wrapper. It's an **Engine-first, Agent
 
 1. **Engine-first**: The deterministic battle engine is the upstream constraint. LLMs interpret, they don't calculate. SQLite battle-dex > model speculation.
 2. **A / B / Persona separation**: A = structured facts (SQLite), B = mechanical knowledge (retrieval docs), Persona = stylistic overlay. Persona only changes how things are said, never what is concluded.
-3. **Ablation-validated product hypotheses**: Product decisions are validated through layered ablation experiments, not subjective intuition. Blind packet → content guard → reveal → backlog pipeline.
-4. **Content guard at the output layer**: Prompt-level guards are insufficient. Output is checked post-generation before reaching the user.
+3. **Meta Graph / D-layer release gate**: V1 formal release now requires a small reviewed Meta Graph and expert-demonstration layer; raw artifacts alone are not runtime capability.
+4. **Ablation-validated product hypotheses**: Product decisions are validated through layered ablation experiments, not subjective intuition. Blind packet → content guard → reveal → backlog pipeline.
+5. **Content guard at the output layer**: Prompt-level guards are insufficient. Output is checked post-generation before reaching the user.
 
 ### Tech stack
 
@@ -40,38 +50,38 @@ Python FastAPI + PydanticAI + SQLite + Electron/React/Vite (desktop) + Expo Reac
 - `docs/model_centric_option_c.md`: recorded future model-centric advisor architecture and adoption preconditions
 - `docs/combat_ontology.md`: battle-analysis ontology for species, move, and ability entities
 - `docs/data_source_strategy.md`: source-tier policy for field discovery and later battle-data ingestion
-- `log/project_log.md`: persistent decision log, context log, and deferred-work tracker
+- `docs/changelog/project_log.md`: persistent decision log, context log, and deferred-work tracker
 - `docs/research/luoke_world_pvp_domain_primer_v2.md`: external domain primer research report
-- `specs/battle_data_model.yaml`: core data contracts for species, teams, roles, and meta snapshots
-- `specs/agent_tool_contracts.yaml`: Agent-facing tool contract definitions
-- `specs/role_taxonomy.md`: canonical species-role vocabulary
-- `specs/archetype_taxonomy.md`: canonical team-archetype vocabulary
-- `specs/scoring_system.md`: deterministic scoring rules for structure, role, and archetype analysis
-- `specs/report_layer.md`: report/advisor harness boundary and responsibilities
-- `specs/report_schema.yaml`: structured contract for Phase 1.5 report generation
-- `specs/report_confidence_policy.md`: confidence and grounding rules for generated reports
-- `specs/field_alignment_matrix.yaml`: candidate battle-data fields with confidence state and evidence notes
-- `specs/wiki_field_discovery_spec.md`: execution spec for wiki reconnaissance and candidate-field discovery
-- `specs/爬session.md`: crawl-track handoff for continuing wiki field discovery in a new thread
-- `specs/总session.md`: full-project handoff for resuming the entire current session in a new thread
-- `specs/change_policy.md`: change-management policy for specs, contracts, and implementation
-- `specs/change_specs/phase1_dual_type_rule_change_spec.md`: breaking-change execution spec for the Phase 1 dual-type rule update
-- `battle_engine/contracts.py`: Python contract layer for future Engine and Agent implementation
-- `battle_engine/team_structure.py`: Phase 1 team structure analyzer
-- `battle_engine/phase1_cli.py`: CLI entry point for Phase 1 structure analysis
-- `reporting/contracts.py`: Phase 1.5 report-layer contracts and schema models
-- `reporting/knowledge.py`: curated retrieval layer for approved domain snippets
-- `reporting/generator.py`: deterministic and PydanticAI-backed report generators
-- `reporting/service.py`: Phase 1.5 report service that composes engine, retrieval, generation, and validation
-- `reporting/phase15_cli.py`: CLI entry point for grounded narrative reports
-- `advisor/contracts.py`: typed advisor response and session-state contracts
-- `advisor/battle_dex.py`: typed SQLite repository plus runtime SQLite bootstrap helpers
-- `advisor/retrieval.py`: bounded local doc retrieval for advisor context
-- `advisor/runtime.py`: deterministic and `PydanticAI` native advisor runtime paths
-- `advisor/conversation_cli.py`: conversational advisor CLI
-- `advisor/config.py`: local native-agent env-file loader
-- `api/main.py`: local FastAPI Product API exposing the `AgentResponse` contract
-- `mobile/`: Expo + React Native + TypeScript mobile MVP scaffold that calls the Product API
+- `docs/specs/battle_data_model.yaml`: core data contracts for species, teams, roles, and meta snapshots
+- `docs/specs/agent_tool_contracts.yaml`: Agent-facing tool contract definitions
+- `docs/specs/role_taxonomy.md`: canonical species-role vocabulary
+- `docs/specs/archetype_taxonomy.md`: canonical team-archetype vocabulary
+- `docs/specs/scoring_system.md`: deterministic scoring rules for structure, role, and archetype analysis
+- `docs/specs/report_layer.md`: report/advisor harness boundary and responsibilities
+- `docs/specs/report_schema.yaml`: structured contract for Phase 1.5 report generation
+- `docs/specs/report_confidence_policy.md`: confidence and grounding rules for generated reports
+- `docs/specs/field_alignment_matrix.yaml`: candidate battle-data fields with confidence state and evidence notes
+- `docs/specs/wiki_field_discovery_spec.md`: execution spec for wiki reconnaissance and candidate-field discovery
+- `docs/specs/爬session.md`: crawl-track handoff for continuing wiki field discovery in a new thread
+- `docs/specs/总session.md`: full-project handoff for resuming the entire current session in a new thread
+- `docs/specs/change_policy.md`: change-management policy for specs, contracts, and implementation
+- `docs/specs/change_specs/phase1_dual_type_rule_change_spec.md`: breaking-change execution spec for the Phase 1 dual-type rule update
+- `src/engine/contracts.py`: Python contract layer for future Engine and Agent implementation
+- `src/engine/team_structure.py`: Phase 1 team structure analyzer
+- `src/engine/phase1_cli.py`: CLI entry point for Phase 1 structure analysis
+- `src/knowledge/contracts.py`: Phase 1.5 report-layer contracts and schema models
+- `src/knowledge/knowledge.py`: curated retrieval layer for approved domain snippets
+- `src/knowledge/generator.py`: deterministic and PydanticAI-backed report generators
+- `src/knowledge/service.py`: Phase 1.5 report service that composes engine, retrieval, generation, and validation
+- `src/knowledge/phase15_cli.py`: CLI entry point for grounded narrative reports
+- `src/advisor/contracts.py`: typed advisor response and session-state contracts
+- `src/advisor/battle_dex.py`: typed SQLite repository plus runtime SQLite bootstrap helpers
+- `src/advisor/retrieval.py`: bounded local doc retrieval for advisor context
+- `src/advisor/runtime.py`: deterministic and `PydanticAI` native advisor runtime paths
+- `src/advisor/conversation_cli.py`: conversational advisor CLI
+- `src/advisor/config.py`: local native-agent env-file loader
+- `src/api/main.py`: local FastAPI Product API exposing the `AgentResponse` contract
+- `apps/mobile/`: Expo + React Native + TypeScript mobile MVP scaffold that calls the Product API
 - `examples/phase1_sample_team.json`: example file-based input for the Phase 1 CLI
 - `tests/test_roco_world_model.py`: validation and regression tests
 - `tests/test_contracts.py`: contract serialization and shape tests
@@ -95,7 +105,7 @@ print(chart.immune_statuses(("草", "火")))             # ("寄生", "灼烧")
 ## Run tests
 
 ```bash
-.venv/bin/python -m unittest discover -s tests
+PYTHONPATH=src .venv/bin/python -m unittest discover -s tests
 ```
 
 ## Run local Product API
@@ -199,7 +209,7 @@ bash scripts/run_desktop_dev.sh
 Or manually:
 
 ```bash
-cd desktop
+cd apps/desktop
 npm install
 npm run dev
 ```
@@ -259,7 +269,7 @@ logic.
 ## Run Phase 1 CLI
 
 ```bash
-python3 -m battle_engine.phase1_cli \
+python3 -m engine.phase1_cli \
   --slot "A,草" \
   --slot "B,地" \
   --slot "C,龙" \
@@ -269,7 +279,7 @@ python3 -m battle_engine.phase1_cli \
 ```
 
 ```bash
-python3 -m battle_engine.phase1_cli \
+python3 -m engine.phase1_cli \
   --input-file examples/phase1_sample_team.json \
   --format json
 ```
@@ -277,12 +287,12 @@ python3 -m battle_engine.phase1_cli \
 ## Run Phase 1.5 Report CLI
 
 ```bash
-python3 -m reporting.phase15_cli \
+python3 -m knowledge.phase15_cli \
   --input-file examples/phase1_sample_team.json
 ```
 
 ```bash
-python3 -m reporting.phase15_cli \
+python3 -m knowledge.phase15_cli \
   --input-file examples/phase1_sample_team.json \
   --format json
 ```
@@ -294,7 +304,11 @@ python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 ```
 
-The project standard runtime is the local `.venv`.
+The project standard runtime is the local `.venv`. All Python source lives under `src/` — add it to `PYTHONPATH` or prefix commands:
+
+```bash
+export PYTHONPATH=src
+```
 
 ## Run conversational advisor CLI
 

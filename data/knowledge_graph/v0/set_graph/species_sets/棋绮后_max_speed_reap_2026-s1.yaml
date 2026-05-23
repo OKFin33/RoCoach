@@ -1,0 +1,43 @@
+id: "species_set/棋绮后/max_speed_reap_2026-s1"
+canonical_species_id: "species_2fb6a62d50f84441"
+canonical_species_name: "棋绮后"
+source_aliases: []
+moves:
+  - "听桥"
+  - "鸣沙陷阱"
+  - "影袭"
+  - "借用"
+nature: "速度↑魔攻↓"
+individual_value_bonuses:
+  speed: 31
+  atk: 31
+  hp: 31
+ability: "渗透"
+stat_profile:
+  speed: 237
+speed_tier: 237
+role_labels:
+  - "setup_core"
+  - "killline_converter"
+  - "revenge_killer"
+team_context:
+  common_partners:
+    - "species_set/针叶巡林/photosynthesis_lead_2026-s1"
+    - "species_set/食尘短绒/spike_pivot_2026-s1"
+  archetype_tags:
+    - "光合武队"
+meta_snapshot: "2026-s1"
+graph_origin: "human"
+source_refs:
+  - source_type: "community_video"
+    source_ref: "B站 灰鼠的蓝灯白色的黑熊 光合武队核心玩法解析"
+    claim: "棋绮后主力输出核心，在针叶巡林建立的光合资源窗口中后期持续收割，技能为听桥/鸣沙陷阱/影袭/借用"
+    date: "2026-05-14"
+    reviewer: "pm"
+    review_date: ""
+    notes: "使用原始形态 species_2fb6a62d50f84441。存在地区形态 species_c0b16345a8d556b5 需注意区分。2026-05-16机制校正: 光合印记来源按光合作用处理，收益按全队资源窗口理解；棋绮后不是印记来源，也不把印记写成只服务主C的单体叠层"
+confidence: "observed"
+review_status: "unreviewed"
+notes: "光合武队主C/收割位。依赖针叶巡林通过光合作用建立的全队光合印记资源窗口（回合末回能）和联防拖回合，再用听桥/鸣沙陷阱启动 → 影袭/借用收割。听桥可能提供先读/侦察能力"
+
+related_to: []

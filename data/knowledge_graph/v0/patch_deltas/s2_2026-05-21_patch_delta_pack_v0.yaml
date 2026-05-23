@@ -1,0 +1,649 @@
+schema_version: p14.s2_patch_delta_pack.v0
+id: s2_2026-05-21_patch_delta_pack_v0
+created_at: "2026-05-23"
+patch_date: "2026-05-21"
+game_epoch: post_s2_2026-05-21_candidate
+runtime_allowed: false
+promotion_status: candidate_only
+contract_ref: docs/specs/p14_s2_patch_delta_gate_v0.md
+
+source_policy:
+  source_type: user_supplied_patch_screenshots_plus_official_patch_note
+  apparent_platform: 小红书
+  watermark: 小红书号 279065802
+  reliability: official_patch_note_captured_with_screenshots_retained_as_secondary_visual_sources
+  caveat_from_source: "所有图片都非最终效果，仅供参考。一切以上线版本为准。"
+  raw_preservation:
+    - copied_to_repo_patch_delta_sources
+    - copied_to_repo_official_balance_source
+  extraction_method: manual_visual_extraction_by_agent_then_official_text_alignment
+  requires_pm_review: true
+  requires_a_layer_reconciliation: true
+  official_source:
+    title: S2赛季平衡性调整说明
+    news_id: "18788872"
+    article_page_url: https://rocom.qq.com/web202507/sub/detail.html?newsid=18788872
+    discovered_from_article_url: https://rocom.qq.com/web202507/sub/detail.html?newsid=18788208
+    source_manifest_ref: data/knowledge_graph/v0/patch_deltas/s2_2026-05-20_official_balance_sources/s2_2026-05-20_official_balance_manifest.yaml
+    source_text_ref: data/knowledge_graph/v0/patch_deltas/s2_2026-05-20_official_balance_sources/official_article_18788872_text.md
+    source_api_response_ref: data/knowledge_graph/v0/patch_deltas/s2_2026-05-20_official_balance_sources/official_article_18788872_api_response.js
+
+pm_review_decisions:
+  - id: pm_2026-05-23_jazz_deer_stat_old_value_conflict
+    applies_to: stat_deltas/爵士鹿
+    decision: accept_s2_new_values_for_candidate_overlay
+    rationale: S1 Battle Dex remains frozen as historical baseline; 爵士鹿 and 波普鹿 S1 physical attack values are uncertain enough that old-value mismatch should not block the S2 candidate overlay.
+  - id: pm_2026-05-23_text_diffs_accepted
+    applies_to:
+      - ability_deltas/祭礼巨像/坠星
+      - ability_deltas/波普鹿/超级电池
+      - wording_only_skill_description_deltas/双向光速
+    decision: accept_as_wording_only_old_text_differences
+  - id: pm_2026-05-23_crop_entries_accepted
+    applies_to:
+      - stat_deltas/仪式巨像
+      - stat_deltas/爵士鹿
+      - stat_deltas/幻影荆棘
+      - move_effect_deltas/地刺
+    decision: accept_visible_extraction_as_sufficient_for_candidate_overlay
+  - id: pm_2026-05-23_priority_concept_route
+    applies_to: wording_only_skill_description_deltas/先手
+    decision: route_to_b_layer_mechanism_concept
+    source_image_id: s2_patch_img_005
+    interpretation: 先手度 is analogous to Pokemon-style priority +x action priority; it is distinct from speed. The S2 screenshot explicitly states stackability, but this should be treated as documentation/clarification unless later evidence proves stackability itself changed in S2.
+    content: 先手度是技能行动的优先级，先手度更高的技能忽略双方精灵速度差异，优先释放，先手度可叠加。
+
+coverage:
+  includes:
+    - existing_species_stat_deltas
+    - existing_species_ability_deltas
+    - move_pool_additions_for_existing_species
+    - move_effect_deltas
+    - wording_only_skill_description_deltas
+  excludes:
+    - new_s2_species_base_records
+    - runtime_observation_after_live_patch
+    - direct_a_layer_db_overwrite
+
+source_images:
+  - id: s2_patch_img_001
+    repo_path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_sources/s2_patch_img_001.jpg
+    sha256: 21fe80ccec85c5fde1a27d7a9f04ccf55825d8a9135e122a7b78fa90ad607f91
+    visible_scope: species_trait_and_stat_deltas
+  - id: s2_patch_img_002
+    repo_path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_sources/s2_patch_img_002.jpg
+    sha256: 2bf27620fcc72302d8e9d20e22c7221a65a06c1f80ad297cde2daf2c67748680
+    visible_scope: move_pool_additions
+  - id: s2_patch_img_003
+    repo_path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_sources/s2_patch_img_003.jpg
+    sha256: b6c007a9c840619bcf95d5d9f6e65c0600d85bb3e67508c41cbfce201ff2d5b3
+    visible_scope: species_stat_deltas
+  - id: s2_patch_img_004
+    repo_path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_sources/s2_patch_img_004.jpg
+    sha256: 8a78fc849d2ef2e5ff4a0779862ace0b5b0d2dbdbfb8802789f23e2148f9f8f0
+    visible_scope: species_trait_and_stat_deltas
+  - id: s2_patch_img_005
+    repo_path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_sources/s2_patch_img_005.jpg
+    sha256: c3ed9375f9c3a3d8c08980bd3ff8167a1c4629f323a745a221359213f4bfba1d
+    visible_scope: wording_only_skill_description_deltas
+  - id: s2_patch_img_006
+    repo_path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_sources/s2_patch_img_006.jpg
+    sha256: bd1ba40f7bcb0e0c74e0c834a17f4243acdf6af68c200055d3a0f7cfc0180f81
+    visible_scope: move_effect_deltas
+  - id: s2_patch_img_007
+    repo_path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_sources/s2_patch_img_007.jpg
+    sha256: 576764252d9738f7dee1c24ed65a17c7fedb35e4a194fe5bbf712d78d5670c27
+    visible_scope: species_trait_and_stat_deltas
+  - id: s2_patch_img_008
+    repo_path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_sources/s2_patch_img_008.jpg
+    sha256: 10882496a455074014885b5da817bd81a88deac75ee9a9a86f45cf15f5a12fc3
+    visible_scope: species_trait_and_stat_deltas
+  - id: s2_patch_img_009
+    repo_path: data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_sources/s2_patch_img_009.jpg
+    sha256: dfd314b0cdfb2b9dd56369b769dc905bfe64fee4f341b68dc8cb4adbe7e3f8e0
+    visible_scope: move_effect_deltas
+
+stat_deltas:
+  - entity: 武者鸡
+    source_image_id: s2_patch_img_001
+    stats:
+      hp: {old: 121, new: 116}
+      physical_attack: {old: 144, new: 137}
+      magical_attack: {old: 58, new: 66}
+      physical_defense: {old: 92, new: 111}
+    confidence: high_visible
+  - entity: 绅士鸡
+    source_image_id: s2_patch_img_001
+    stats:
+      hp: {old: 108, new: 112}
+      physical_attack: {old: 132, new: 120}
+      magical_attack: {old: 132, new: 120}
+      physical_defense: {old: 92, new: 102}
+    confidence: high_visible
+  - entity: 梦悠悠
+    source_image_id: s2_patch_img_001
+    stats:
+      physical_attack: {old: 50, new: 65}
+      magical_attack: {old: 133, new: 157}
+    confidence: high_visible
+  - entity: 叮叮恶魔
+    source_image_id: s2_patch_img_001
+    stats:
+      hp: {old: 108, new: 117}
+      physical_attack: {old: 140, new: 125}
+      magical_attack: {old: 55, new: 53}
+      physical_defense: {old: 73, new: 103}
+      magical_defense: {old: 54, new: 73}
+    confidence: high_visible
+  - entity: 仪式巨像
+    source_image_id: s2_patch_img_001
+    stats:
+      physical_attack: {old: 90, new: 84}
+      magical_attack: {old: 95, new: 89}
+    confidence: medium_bottom_cropped
+    review_note: image bottom crops possible additional stats
+  - entity: 皇家狮鹫
+    form: 崖间地的样子
+    source_image_id: s2_patch_img_003
+    stats:
+      hp: {old: 102, new: 107}
+      magical_attack: {old: 64, new: 69}
+      physical_defense: {old: 107, new: 127}
+      magical_defense: {old: 55, new: 65}
+    confidence: high_visible
+  - entity: 皇家狮鹫
+    form: 高山地的样子
+    source_image_id: s2_patch_img_003
+    stats:
+      hp: {old: 103, new: 109}
+      magical_attack: {old: 53, new: 59}
+      physical_defense: {old: 103, new: 123}
+      magical_defense: {old: 60, new: 70}
+    confidence: high_visible
+  - entity: 高脚鹬
+    source_image_id: s2_patch_img_003
+    stats:
+      hp: {old: 94, new: 96}
+      physical_attack: {old: 63, new: 98}
+      magical_attack: {old: 63, new: 98}
+    confidence: high_visible
+  - entity: 锤头鹳
+    source_image_id: s2_patch_img_003
+    stats:
+      hp: {old: 111, new: 128}
+      physical_attack: {old: 67, new: 77}
+      magical_attack: {old: 65, new: 75}
+      physical_defense: {old: 91, new: 101}
+      magical_defense: {old: 72, new: 81}
+    confidence: high_visible
+  - entity: 遁地鼠
+    form: 枯水期的样子
+    source_image_id: s2_patch_img_003
+    stats:
+      physical_defense: {old: 102, new: 121}
+      magical_defense: {old: 70, new: 85}
+    confidence: high_visible
+  - entity: 遁地鼠
+    form: 储水时的样子
+    source_image_id: s2_patch_img_003
+    stats:
+      hp: {old: 99, new: 112}
+      magical_attack: {old: 38, new: 23}
+      physical_defense: {old: 102, new: 85}
+      magical_defense: {old: 96, new: 131}
+    confidence: high_visible
+  - entity: 祭礼巨像
+    form: 仪式巨像首领化
+    source_image_id: s2_patch_img_004
+    stats:
+      physical_attack: {old: 105, new: 96}
+      magical_attack: {old: 111, new: 101}
+    confidence: high_visible
+  - entity: 彩蝶鲨
+    source_image_id: s2_patch_img_004
+    stats:
+      physical_attack: {old: 77, new: 98}
+      magical_attack: {old: 77, new: 98}
+    confidence: high_visible
+  - entity: 神谕鲨
+    form: 彩蝶鲨首领化
+    source_image_id: s2_patch_img_004
+    stats:
+      physical_attack: {old: 77, new: 98}
+      magical_attack: {old: 77, new: 98}
+    confidence: high_visible
+  - entity: 窃光蚊
+    source_image_id: s2_patch_img_004
+    stats:
+      physical_attack: {old: 104, new: 113}
+      magical_attack: {old: 104, new: 113}
+      physical_defense: {old: 63, new: 71}
+      magical_defense: {old: 113, new: 125}
+    confidence: high_visible
+  - entity: 古啦多
+    source_image_id: s2_patch_img_007
+    stats:
+      hp: {old: 79, new: 85}
+      physical_defense: {old: 136, new: 134}
+      magical_defense: {old: 110, new: 74}
+    confidence: high_visible
+  - entity: 寒音蛇
+    source_image_id: s2_patch_img_007
+    stats:
+      physical_attack: {old: 79, new: 87}
+      magical_attack: {old: 79, new: 87}
+    confidence: high_visible
+  - entity: 九幽菇
+    source_image_id: s2_patch_img_007
+    stats:
+      physical_attack: {old: 102, new: 110}
+      magical_attack: {old: 95, new: 103}
+      physical_defense: {old: 116, new: 125}
+      magical_defense: {old: 95, new: 103}
+    confidence: high_visible
+  - entity: 龙鱼
+    source_image_id: s2_patch_img_007
+    stats:
+      hp: {old: 75, new: 89}
+      physical_attack: {old: 116, new: 103}
+      magical_attack: {old: 123, new: 109}
+      physical_defense: {old: 112, new: 100}
+      magical_defense: {old: 116, new: 104}
+      speed: {old: 125, new: 135}
+    confidence: high_visible
+  - entity: 爵士鹿
+    source_image_id: s2_patch_img_007
+    stats:
+      physical_attack: {old: 90, new: 77}
+      magical_attack: {old: 34, new: 20}
+    confidence: medium_bottom_cropped
+    review_note: image bottom crops possible additional stats
+  - entity: 波普鹿
+    form: 爵士鹿首领化
+    source_image_id: s2_patch_img_008
+    stats:
+      physical_attack: {old: 99, new: 79}
+      magical_attack: {old: 34, new: 21}
+    confidence: high_visible
+  - entity: 黑猫巫师
+    source_image_id: s2_patch_img_008
+    stats:
+      hp: {old: 152, new: 149}
+      physical_attack: {old: 91, new: 53}
+      magical_attack: {old: 163, new: 124}
+      physical_defense: {old: 67, new: 90}
+      magical_defense: {old: 119, new: 129}
+    confidence: high_visible
+  - entity: 黑猫密探
+    form: 黑猫巫师首领化
+    source_image_id: s2_patch_img_008
+    stats:
+      hp: {old: 152, new: 149}
+      physical_attack: {old: 107, new: 65}
+      magical_attack: {old: 186, new: 143}
+      physical_defense: {old: 67, new: 90}
+      magical_defense: {old: 119, new: 129}
+    confidence: high_visible
+  - entity: 圆号鱼
+    source_image_id: s2_patch_img_008
+    stats:
+      hp: {old: 136, new: 113}
+      physical_attack: {old: 34, new: 31}
+    confidence: high_visible
+  - entity: 幻影荆棘
+    form: 幽影树首领化
+    source_image_id: s2_patch_img_008
+    stats:
+      hp: {old: 125, new: 113}
+      physical_defense: {old: 72, new: 66}
+      magical_defense: {old: 134, new: 125}
+    confidence: medium_bottom_cropped
+    review_note: image bottom crops possible additional stats
+
+ability_deltas:
+  - entity: 武者鸡
+    ability: 斗技
+    source_image_id: s2_patch_img_001
+    old_effect: 应对成功后，获得全技能威力永久+20。
+    new_effect: 应对成功后，获得全技能威力永久+30。
+    confidence: high_visible
+  - entity: 绅士鸡
+    ability: 指挥家
+    source_image_id: s2_patch_img_001
+    old_effect: 应对成功后，永久获得双攻+20%。
+    new_effect: 应对成功后，永久获得双攻+30%。
+    confidence: high_visible
+  - entity: 仪式巨像
+    ability: 观星
+    source_image_id: s2_patch_img_001
+    old_effect: 敌方每有1层星陨印记，自己的地系技能威力+15%。
+    new_effect: 敌方每有1层星陨印记，自己的地系技能威力+20%。
+    confidence: high_visible
+  - entity: 祭礼巨像
+    form: 仪式巨像首领化
+    ability: 坠星
+    source_image_id: s2_patch_img_004
+    old_effect: 敌方每有1层星陨印记，技能威力+15%。
+    new_effect: 敌方每有1层星陨印记，技能威力+20%。
+    confidence: medium_unit_inferred
+    review_note: screenshot text displays "15→20%" formatting; percentage unit should be checked
+  - entity: 古啦多
+    ability: 毒牙
+    source_image_id: s2_patch_img_007
+    old_effect: 使敌方获得中毒时，也会使其获得魔攻和魔防-40%。
+    new_effect: 使敌方获得中毒时，也会使其获得物攻-40%，速度-40。
+    confidence: high_visible
+  - entity: 龙鱼
+    ability: 洄游
+    source_image_id: s2_patch_img_007
+    old_effect: 每次进入蓄力状态，获得全技能能耗永久-1。
+    new_effect: 每次进入蓄力状态，获得全技能能耗永久-2。
+    confidence: high_visible
+  - entity: 爵士鹿
+    ability: 蓄电池
+    source_image_id: s2_patch_img_007
+    old_effect: 每入场1次，永久获得双攻+20%。
+    new_effect: 每入场1次，永久获得双攻+30%。
+    confidence: high_visible
+  - entity: 波普鹿
+    form: 爵士鹿首领化
+    ability: 超级电池
+    source_image_id: s2_patch_img_008
+    old_effect: 每入场1次，永久获得双攻+30%。
+    new_effect: 每入场1次，永久获得双攻+40%。
+    confidence: high_visible
+  - entity: 寂灭骨龙
+    ability: 不朽
+    source_image_id: s2_patch_img_008
+    old_effect: 力竭3回合后复活。
+    new_effect: 力竭4回合后复活。
+    confidence: high_visible
+  - entity: 幻影荆棘
+    form: 幽影树首领化
+    ability: 大捞一笔
+    source_image_id: s2_patch_img_008
+    old_effect: 回合结束时，偷取所有敌方精灵2能量。
+    new_effect: 入场时偷取敌方场上所有精灵3能量。
+    confidence: high_visible
+
+move_pool_additions:
+  - move: 有效预防
+    source_image_id: s2_patch_img_002
+    added_learning_forms:
+      - 古卷匣魔像
+      - 恶魔红钻
+      - 乌拉塔（极昼的样子）
+      - 乌拉塔（极夜的样子）
+      - 夜枭
+  - move: 富养化
+    source_image_id: s2_patch_img_002
+    added_learning_forms:
+      - 抹茶布丁
+      - 伊贝粉粉
+  - move: 速冻
+    source_image_id: s2_patch_img_002
+    added_learning_forms:
+      - 海枝枝（碧蓝珊瑚的样子）
+      - 海枝枝（杏黄百合的样子）
+      - 海枝枝（洋红沙丁的样子）
+      - 海枝枝（翠绿纶布的样子）
+  - move: 冰墙
+    source_image_id: s2_patch_img_002
+    added_learning_forms:
+      - 獠牙猪
+  - move: 防反
+    source_image_id: s2_patch_img_002
+    added_learning_forms:
+      - 风滚暮虫（金黄的样子）
+      - 风滚暮虫（枯叶的样子）
+  - move: 水环
+    source_image_id: s2_patch_img_002
+    added_learning_forms:
+      - 卷毛鸭
+  - move: 血气
+    source_image_id: s2_patch_img_002
+    added_learning_forms:
+      - 彩蝶鲨
+  - move: 撕咬
+    source_image_id: s2_patch_img_002
+    added_learning_forms:
+      - 烈火守护
+  - move: 加大功率
+    source_image_id: s2_patch_img_002
+    added_learning_forms:
+      - 电球咩咩
+      - 流浪鼠
+  - move: 易燃物质
+    source_image_id: s2_patch_img_002
+    added_learning_forms:
+      - 幽冥眼（睁眼的样子）
+      - 幽冥眼（闭眼的样子）
+      - 雅丹鬃
+  - move: 隼鳞
+    source_image_id: s2_patch_img_002
+    review_note: user_confirmed_ocr_correction_from_集鳞_to_隼鳞
+    added_learning_forms:
+      - 龙鱼
+  - move: 天旋地转
+    source_image_id: s2_patch_img_002
+    added_learning_forms:
+      - 混乱鱿彩
+      - 熔岩布丁
+  - move: 恶意逃离
+    source_image_id: s2_patch_img_002
+    added_learning_forms:
+      - 爵士鹿
+
+wording_only_skill_description_deltas:
+  - move: 暴风眼
+    source_image_id: s2_patch_img_005
+    old_text: 行动时连击数+100%。
+    new_text: 获得连击数+100%。
+  - move: 听桥
+    source_image_id: s2_patch_img_005
+    old_text: 减伤60%，应对攻击：对敌方造成物理伤害，威力与被应对技能相等。
+    new_text: 减伤60%，应对攻击：对敌方造成武系物理伤害，威力与被应对技能相等。
+  - move: 极限撕裂
+    source_image_id: s2_patch_img_005
+    old_text: 造成物伤，若生命高于50%，使用后自己获得双攻-50%。
+    new_text: 造成物伤，若自己生命高于50%，使用后自己获得双攻-50%。
+  - move: 化茧
+    source_image_id: s2_patch_img_005
+    old_text: 受到致命伤害时，获得1层萌化，并免疫此次伤害。
+    new_text: 受到致命伤害时，获得1层萌化，并免疫此次伤害。（最多触发2次）
+  - move: 小偷小摸
+    source_image_id: s2_patch_img_005
+    old_text: 入场时偷取所有敌方精灵2能量。
+    new_text: 入场时偷取敌方场上所有精灵2能量。
+  - move: 双向光速
+    source_image_id: s2_patch_img_005
+    old_text: 在场时，所有回合结束时效果，触发次数+1。
+    new_text: 在场时，双方回合结束时的效果会额外触发1次。
+  - move: 复方汤剂
+    source_image_id: s2_patch_img_005
+    old_text: 回合结束时，中毒效果触发次数+1。
+    new_text: 在场时，双方回合结束时的中毒效果会额外触发1次。
+  - move: 先手
+    source_image_id: s2_patch_img_005
+    old_text: 技能行动的优先级，先手度更高的技能忽略双方精灵速度差异，优先释放。
+    new_text: 先手度是技能行动的优先级，先手度更高的技能忽略双方精灵速度差异，优先释放，先手度可叠加。
+
+move_effect_deltas:
+  - move: 折射
+    source_image_id: s2_patch_img_006
+    changes:
+      - condition: 携带电系技能
+        old: 获得速度+50
+        new: 获得速度+20
+      - condition: 携带机械系技能
+        old: 获得双防+30%
+        new: 获得物防+30%
+      - condition: 携带光系技能
+        old: 获得魔攻+40%
+        new: 获得魔攻+30%
+      - condition: 携带武系技能
+        old: 获得物攻+40%
+        new: 获得物攻+30%
+      - condition: 携带普系技能
+        old: 获得技能威力+20
+        new: 获得技能威力+10
+    confidence: high_visible
+  - move: 闪击
+    source_image_id: s2_patch_img_006
+    old_text: 速度低于对手或和对手相同时，威力仍为60，速度高于对手136及以上时，威力提升至200。
+    new_text: 速度低于对手或和对手相同时，威力仍为60，速度高于对手271及以上时，威力提升至200。
+    confidence: high_visible
+  - move: 鸣沙陷阱
+    source_image_id: s2_patch_img_006
+    old_text: 物防低于对手或和对手相同时，威力仍为60，物防高于对手136及以上时，威力提升至200。
+    new_text: 物防低于对手或和对手相同时，威力仍为60，物防高于对手271及以上时，威力提升至200。
+    confidence: high_visible
+  - move: 啮合传递
+    source_image_id: s2_patch_img_006
+    old_text: 自己获得速度+80；本技能位于1号或3号位时额外获得物攻+60%，传动1。
+    new_text: 自己获得速度+30；本技能位于1号或3号位时额外获得物攻+80%，传动1。
+    confidence: high_visible
+  - move: 水刃
+    source_image_id: s2_patch_img_006
+    old_text: 造成物伤，应对状态：本技能能耗永久-4。
+    new_text: 造成物伤，应对状态：本技能能耗永久-3。
+    confidence: high_visible
+  - move: 聚盐
+    source_image_id: s2_patch_img_006
+    old_text: 2连击，每次连击自己回复5%生命，使用后本技能连击数永久+1（不再恢复能量）。
+    new_text: 2连击，每次连击自己回复8%生命，使用后本技能连击数永久+1（不再恢复能量）。
+    confidence: high_visible
+  - move: 聒噪
+    source_image_id: s2_patch_img_006
+    old_text: 敌方获得全攻击技能能耗+3，持续3回合。
+    new_text: 敌方获得全攻击技能能耗+2，持续3回合。
+    confidence: high_visible
+  - move: 落雷
+    source_image_id: s2_patch_img_006
+    old_text: 技能能耗4，威力100，造成魔伤，每次入场，本技能威力永久+20。
+    new_text: 技能能耗3，威力35，造成魔伤，每次入场，本技能威力永久+40。
+    confidence: high_visible
+  - move: 地刺
+    source_image_id: s2_patch_img_006
+    old_text: 威力95，造成物伤，应对状态。
+    new_text: 威力90，造成物伤，应对状态：额外打断被应对技能。
+    confidence: medium_bottom_cropped
+  - move: 截拳
+    source_image_id: s2_patch_img_009
+    old_text: 威力90，造成物伤，应对状态。
+    new_text: 威力85，造成物伤，应对状态：额外造成打断，回复该技能能耗的能量。
+    confidence: high_visible
+  - move: 阻断
+    source_image_id: s2_patch_img_009
+    old_text: 威力80，造成魔伤，应对状态。
+    new_text: 威力75，造成魔伤，应对状态：额外打断被应对技能。
+    confidence: high_visible
+  - move: 斩断
+    source_image_id: s2_patch_img_009
+    old_text: 威力75，造成物伤，应对状态。
+    new_text: 威力70，造成物伤，应对状态：额外打断被应对技能。
+    confidence: high_visible
+  - move: 冰蛋壳
+    source_image_id: s2_patch_img_009
+    old_text: 减伤60%，应对攻击。
+    new_text: 减伤70%，应对攻击：敌方获得2层减速印记。
+    confidence: high_visible
+  - move: 涌泉
+    source_image_id: s2_patch_img_009
+    old_text: 威力60，造成魔伤，本技能能耗每-1，威力+10。
+    new_text: 威力90，造成魔伤，本技能能耗每-1，威力+10。
+    confidence: high_visible
+  - move: 破防
+    source_image_id: s2_patch_img_009
+    old_text: 技能能耗3，敌方获得双防-130%，应对防御。
+    new_text: 技能能耗2，敌方获得双防-70%，应对防御：额外使被应对技能冷却2回合。
+    confidence: high_visible
+  - move: 淬火
+    source_image_id: s2_patch_img_009
+    old_text: 技能能耗4，减伤80%，应对攻击。
+    new_text: 技能能耗2，减伤80%，应对攻击：下次攻击技能威力翻倍。
+    confidence: high_visible
+  - move: 触底强击
+    source_image_id: s2_patch_img_009
+    old_text: 技能能耗3，威力65，造成魔伤。
+    new_text: 技能能耗4，威力95，造成魔伤，使用后若能量耗尽，本次技能威力+120。
+    confidence: high_visible
+  - move: 不动如山
+    source_image_id: s2_patch_img_009
+    old_text: 技能能耗2，减伤90%，应对攻击。
+    new_text: 技能能耗2，减伤90%，应对攻击：自身物攻+50%。
+    confidence: high_visible
+  - move: 灾厄
+    source_image_id: s2_patch_img_009
+    old_text: 对自己造成150威力物伤，应对状态。
+    new_text: 对自己造成60威力物伤，应对状态：改为对敌方造成180威力物伤。
+    confidence: high_visible
+  - move: 感染病
+    source_image_id: s2_patch_img_009
+    old_text: 威力85，造成魔伤。
+    new_text: 威力110，造成魔伤，若击败敌方则将中毒转化为中毒印记。
+    confidence: high_visible
+  - move: 咆哮
+    source_image_id: s2_patch_img_009
+    old_text: 敌方获得物攻-130%，速度-60。
+    new_text: 敌方获得物攻-60%，速度-60。
+    confidence: high_visible
+  - move: 羽翼庇护
+    source_image_id: s2_patch_img_009
+    old_text: 技能能耗3，减伤70%，应对攻击：自己获得连击数+3。
+    new_text: 技能能耗2，减伤70%，应对攻击：自己获得连击数+2。
+    confidence: high_visible
+  - move: 虫群过境
+    source_image_id: s2_patch_img_009
+    old_text: 技能能耗5，威力45，造成物伤，2连击。
+    new_text: 技能能耗3，威力30，造成物伤，2连击。己方队伍获得1次奉献：获得连击数+1。
+    confidence: high_visible
+  - move: 焚毁
+    source_image_id: s2_patch_img_009
+    old_text: 威力60，造成魔伤，驱散敌方所有印记。
+    new_text: 威力40，造成魔伤，驱散敌方所有印记，每驱散1层，获得物攻+20%。
+    confidence: high_visible
+  - move: 龙吟
+    source_image_id: s2_patch_img_009
+    old_text: 蓄力，自身获得双攻+100%和速度+60。
+    new_text: 蓄力，自身获得双攻+150%和速度+80。
+    confidence: high_visible
+  - move: 防反
+    source_image_id: s2_patch_img_009
+    old_text: 减伤60%，应对攻击：自己获得物攻和魔攻+40%。
+    new_text: 减伤70%，应对攻击：自己获得物攻和魔攻+70%。
+    confidence: high_visible
+  - move: 甜心续航
+    source_image_id: s2_patch_img_009
+    old_text: 技能能耗3，自己和敌方获得萌化：回复40%生命和4能量。
+    new_text: 技能能耗3，自己和敌方获得萌化：回复40%生命和0能量。
+    confidence: high_visible
+  - move: 绵里藏针
+    source_image_id: s2_patch_img_009
+    old_text: 技能能耗2，威力50，若自己上回合未攻击敌方并造成伤害，本技能每回合永久+30。
+    new_text: 技能能耗2，威力60，若自己上回合未攻击敌方并造成伤害，本技能每回合永久+20。
+    confidence: high_visible
+  - move: 芳香诱引
+    source_image_id: s2_patch_img_009
+    old_text: 技能能耗1，自己获得连击数+3，应对防御。
+    new_text: 技能能耗2，自己获得连击数+2，应对防御：额外造成打断，且敌方下回合获得眩晕。
+    confidence: high_visible
+  - move: 落雨
+    source_image_id: s2_patch_img_009
+    old_text: 将天气改为雨天，持续8回合。天气「雨天」：双方水系技能威力+50%。
+    new_text: 将天气改为雨天，持续8回合。天气「雨天」：双方水系技能威力+75%。
+    confidence: high_visible
+
+pipeline_decision:
+  can_collect_post_s2_sources: true
+  can_use_for_candidate_extraction: true
+  can_use_for_runtime: false
+  can_overwrite_a_layer: false
+  quarantine_label: blocked_by_s2_a_layer_reconciliation
+  next_required_step: reconcile_patch_delta_against_a_layer_snapshot
+
+review_blockers:
+  - verify_against_official_or_runtime_values_before_a_layer_overwrite
+  - resolve_cropped_or_unit_uncertain_entries
+  - confirm new_s2_species are out of scope for this pack
+  - add validator_or_dashboard_check for unresolved S2 patch blockers before autorun

@@ -1,0 +1,150 @@
+schema_version: p14.dataset_quality_dashboard.v0
+dashboard_id: quality_dashboard_baseline_2026-05-23
+created_at: "2026-05-23T00:00:00+08:00"
+scope: audit_repair_baseline
+snapshot_ref: roco_kg_dataset_v0.1-dev/2026-05-23
+pipeline_version: p14.dataset_pipeline_plan_v0_1
+runtime_allowed: false
+summary:
+  status: warn
+  blocked_for_promotion: true
+  accepted_gold_count: 0
+  reviewed_kg_item_count: 1
+  candidate_kg_item_count: 6
+  note: "Baseline is limited to currently reviewed Set Graph card, control-plane manifests, and the candidate-only S2 patch delta pack. Official S2 balance text is captured as source evidence, but Gold/RAG/judge metrics remain baseline_needed until PM accepts Gold and eval fixtures exist."
+metrics:
+  entity_resolution_rate:
+    sample_unit: reviewed_species_set_card_promoted_entities
+    numerator: 5
+    denominator: 5
+    value: 1.0
+    threshold: 1.0
+    status: pass
+    evidence_refs:
+      - data/knowledge_graph/v0/set_graph/species_sets/圣羽翼王_waterblade_physical_2026-s1.yaml
+    notes: "圣羽翼王 plus 水刃/闪击/力量增效/光之矛 are A-layer resolved in the reviewed family card evidence. Ability is not counted in this first baseline."
+  move_legality_rate:
+    sample_unit: reviewed_species_set_card_promoted_moves
+    numerator: 4
+    denominator: 4
+    value: 1.0
+    threshold: 1.0
+    status: pass
+    evidence_refs:
+      - data/knowledge_graph/v0/review_state/family_review_ledger.yaml#family_review/wingking/waterblade_physical_2026-s1
+    notes: "Family ledger states all promoted fields in this family are A-layer resolved move names."
+  source_span_coverage:
+    sample_unit: reviewed_species_set_card_field_provenance_groups
+    numerator: 7
+    denominator: 7
+    value: 1.0
+    threshold: 1.0
+    status: pass
+    evidence_refs:
+      - data/knowledge_graph/v0/set_graph/species_sets/圣羽翼王_waterblade_physical_2026-s1.yaml
+    notes: "Species, core moves, flex move, and role/family intent now have span-level or explicit review provenance. Unclaimed nature/IV/bloodline/team/counter fields are explicit not_applicable."
+  field_completeness:
+    sample_unit: reviewed_species_set_card
+    value: partial
+    threshold: baseline_needed
+    status: warn
+    notes: "The reviewed family intentionally does not claim nature, IV, bloodline, fixed fourth move, or team partners."
+  field_provenance_coverage:
+    sample_unit: reviewed_species_set_card_promoted_fields
+    numerator: 7
+    denominator: 7
+    value: 1.0
+    threshold: 1.0
+    status: pass
+  review_identity_coverage:
+    sample_unit: materialized_reviewed_cards
+    numerator: 1
+    denominator: 1
+    value: 1.0
+    threshold: 1.0
+    status: warn
+    notes: "Identity fields exist, but the only materialized card is legacy_unknown because it predates the 2026-05-23 identity policy."
+  merge_split_regression:
+    status: baseline_needed
+    blocker: accepted_gold_count_is_zero
+  negative_case_protection:
+    status: baseline_needed
+    blocker: accepted_gold_count_is_zero
+  review_pass_defer_reject_rate:
+    status: baseline_needed
+    blocker: no_versioned_review_packet_metrics_snapshot
+  rag_context_precision:
+    status: baseline_needed
+    blocker: retrieval_eval_fixtures_not_seeded
+  rag_context_recall:
+    status: baseline_needed
+    blocker: retrieval_eval_fixtures_not_seeded
+  answer_faithfulness:
+    status: baseline_needed
+    blocker: retrieval_eval_fixtures_not_seeded
+  llm_judge_pm_agreement_rate:
+    status: baseline_needed
+    blocker: judge_calibration_batch_not_run
+  llm_judge_gold_agreement_rate:
+    status: baseline_needed
+    blocker: accepted_gold_count_is_zero
+  llm_judge_conflict_rate:
+    status: baseline_needed
+    blocker: judge_calibration_batch_not_run
+  human_escalation_rate:
+    status: baseline_needed
+    blocker: judge_calibration_batch_not_run
+  drift_staleness:
+    status: baseline_needed
+    blocker: s2_runtime_or_a_layer_snapshot_pending
+  s2_patch_delta_pack:
+    sample_unit: user_supplied_patch_screenshot_pack_plus_official_balance_text
+    source_image_count: 9
+    official_source_count: 1
+    status: warn
+    runtime_allowed: false
+    evidence_refs:
+      - data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_patch_delta_pack_v0.yaml
+      - data/knowledge_graph/v0/patch_deltas/s2_2026-05-20_official_balance_sources/s2_2026-05-20_official_balance_manifest.yaml
+      - data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_a_layer_reconciliation_v0.yaml
+    notes: "Candidate-only drift control pack now aligned to the official S2 balance article. It may guide quarantine and A-layer reconciliation, but cannot overwrite A-layer or enter runtime without PM/review gates and a runtime/A-layer snapshot."
+  s2_a_layer_reconciliation:
+    sample_unit: patch_delta_to_current_runtime_battle_dex
+    status: warn
+    runtime_allowed: false
+    evidence_refs:
+      - data/knowledge_graph/v0/patch_deltas/s2_2026-05-21_a_layer_reconciliation_v0.yaml
+      - tools/p14_reconcile_s2_patch_delta.py
+    counts:
+      stat_ready: 25
+      stat_total: 25
+      ability_ready: 10
+      ability_total: 10
+      move_pool_ready: 26
+      move_pool_total: 26
+      move_effect_ready: 30
+      move_effect_total: 30
+      wording_ready: 8
+      wording_total: 8
+      mechanism_concept_routed: 1
+      unresolved_or_non_dex_items: 0
+    notes: "Mechanical A-layer alignment now has no unresolved items after PM decisions. 爵士鹿 old-stat conflict is accepted for S2 candidate overlay while S1 Dex remains frozen; 祭礼巨像/坠星, 波普鹿/超级电池, and 双向光速 old-text diffs are accepted as wording differences; 先手 is routed to B-layer mechanism clarification as priority +x-like action priority distinct from speed, with stackability explicitly documented in the S2 screenshot; 龙鱼->隼鳞 is resolved after user-confirmed OCR correction."
+error_distribution:
+  open_audit_findings:
+    F1_durability: repaired_by_snapshot_manifest_and_git_tracking
+    F2_schema_crosswalk: repaired_by_crosswalk_contract
+    F3_review_identity: repaired_with_legacy_unknown_backfill_and_post_policy_validator_gate
+    F4_field_provenance: repaired_for_first_reviewed_card_with_hash_anchored_set_inventory_leaves
+    F5_meta_graph_migration: repaired_by_migration_log_validator_update_and_clean_index_state
+    F6_gold_mapping: repaired_by_mapping_contract
+    F7_metrics: partial_baseline_created_gold_metrics_pending
+stop_reasons:
+  - accepted_gold_count_is_zero
+  - runtime_promotion_out_of_scope
+  - advisor_meta_graph_runtime_not_wired
+  - gold_dependent_metrics_baseline_needed
+  - s2_runtime_or_a_layer_snapshot_pending
+open_risks:
+  - "Only one reviewed card has field-level provenance; future reviewed cards must use the same overlay before materialization."
+  - "Artifacts remain ignored and must be referenced by snapshot hashes/paths, not assumed durable through git."
+  - "S2 patch screenshots and official balance article text are preserved, hashed, and mechanically reconciled to the current runtime Battle Dex, but remain candidate-only; post-S2 candidates that depend on changed stats, abilities, move pools, or move effects must stay quarantined until PM/review gates and runtime/A-layer snapshot are available."

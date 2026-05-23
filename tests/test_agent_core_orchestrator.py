@@ -29,7 +29,7 @@ from agent_core.persona import (
 )
 from agent_core.persona_registry import ALTERNATE_PERSONA_DISPLAY_NAME, ALTERNATE_PERSONA_ID
 from agent_core.safety import SafetyDecision, SafetyGuard
-from reporting.contracts import ConfidenceTier
+from knowledge.contracts import ConfidenceTier
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -63,11 +63,11 @@ class AgentCoreOrchestratorTests(unittest.TestCase):
 
     def test_pure_agent_core_module_sources_have_no_advisor_imports(self) -> None:
         for relative_path in (
-            "agent_core/contracts.py",
-            "agent_core/tools.py",
-            "agent_core/safety.py",
-            "agent_core/persona.py",
-            "agent_core/orchestrator.py",
+            "src/agent_core/contracts.py",
+            "src/agent_core/tools.py",
+            "src/agent_core/safety.py",
+            "src/agent_core/persona.py",
+            "src/agent_core/orchestrator.py",
         ):
             source = (ROOT / relative_path).read_text(encoding="utf-8")
             self.assertNotIn("advisor.", source, relative_path)
@@ -336,7 +336,7 @@ def _sample_response() -> AgentResponse:
             EvidenceItem(
                 id="ev_001",
                 source_type="engine",
-                source_label="battle_engine.team_structure",
+                source_label="engine.team_structure",
                 confidence=ConfidenceTier.CONFIRMED,
                 content="engine evidence",
                 retrieval_reason="test_fixture",

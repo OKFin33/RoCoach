@@ -33,7 +33,7 @@ from agent_core.adapters.advisor import (
     agent_response_from_advisor,
     analytical_substrate_from_advisor,
 )
-from reporting.contracts import ConfidenceTier
+from knowledge.contracts import ConfidenceTier
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -56,7 +56,7 @@ class AgentCoreContractTests(unittest.TestCase):
         self.assertEqual(completed.stdout, "")
 
     def test_contract_source_has_no_advisor_import(self) -> None:
-        source = (ROOT / "agent_core" / "contracts.py").read_text(encoding="utf-8")
+        source = (ROOT / "src" / "agent_core" / "contracts.py").read_text(encoding="utf-8")
 
         self.assertNotIn("advisor.contracts", source)
         self.assertNotIn("from advisor", source)
@@ -234,7 +234,7 @@ class AgentCoreContractTests(unittest.TestCase):
                         persona_id=None,
                         facts_locked=True,
                         fact_policy="persona_may_not_alter_facts",
-                        source_contract="specs/presentation_response_contract.yaml",
+                        source_contract="docs/specs/presentation_response_contract.yaml",
                     ),
                 )
             }
@@ -246,7 +246,7 @@ class AgentCoreContractTests(unittest.TestCase):
         self.assertEqual(payload["presentation"]["detail_sections"][0]["content_kind"], "analytical_base")
         self.assertEqual(
             payload["presentation"]["presentation_metadata"]["source_contract"],
-            "specs/presentation_response_contract.yaml",
+            "docs/specs/presentation_response_contract.yaml",
         )
 
 
@@ -271,7 +271,7 @@ def _team_advisor_response() -> AdvisorResponse:
         evidence_summary=[
             AdvisorEvidenceItem(
                 source_type=SourceType.ENGINE,
-                source_label="battle_engine.team_structure",
+                source_label="engine.team_structure",
                 confidence=ConfidenceTier.CONFIRMED,
                 content="engine fact",
                 retrieval_reason="deterministic_structure_output",
